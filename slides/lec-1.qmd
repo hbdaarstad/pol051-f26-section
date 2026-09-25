@@ -105,7 +105,7 @@ knitr::include_graphics("img/sciencetific-lit.png")
 # Course info {.smaller}
 
 |   | Day | Time | Location |
-|----|----|----|----|
+|------------------|------------------|------------------|------------------|
 | Lectures | Tue & Thur. | 3:10 pm - 4:30 pm | Wellman 2 |
 | Discussion/Lab | Fri. | A04: 9:00 AM - 9:50 AM<br>A05: 10:00 AM - 10:50 AM<br>A06: 11:00 AM - 11:50 AM | Kerr Hall 451 |
 | Office Hours | Tue | 12:00 - 3:00 PM | Kerr Hall 569 |
@@ -243,11 +243,13 @@ There are four primary quadrants in RStudio:
 
 ![RStudio Layout](images/layout.png)
 
-# Working Directory
+# Creating an R Project 
 
-## What is a working directory?
+## What is a R Project?
 
-The working directory is the folder on your computer that you have set to save files to during your working session in R.
+An *R project* is a self-contained directory, that automatically will set the working directory to the project's root folder.
+
+The *working directory* is the folder on your computer that you have set to save files to during your working session in R.
 
 Essentially, you are telling your computer to save any new documents or updates to this specific folder, rather than maybe your downloads folder.
 
@@ -269,7 +271,7 @@ Essentially, you are telling your computer to save any new documents or updates 
 
             -   Name this folder POL 051 - F26
 
-## Step 2: Create the Working Directory. {.smaller}
+## Step 2: Create the R Project. {.smaller}
 
 To create a new working directory in RStudio:
 
@@ -277,9 +279,11 @@ To create a new working directory in RStudio:
 2.  This will open the “New Project Wizard” popup.
 3.  Click "Existing Directory".
 4.  Click "Browse" and search for your folder "POL 051 - F26"
-5.  This sets the working directory to the folder you just created.
+5.  This sets the working directory automatically to the folder you just created.
 
 ## Step 3: Set the Working Directory.
+
+If you have a sub folder in the project you will need to manually set the working directory.
 
 ```{r}
 #| echo: True

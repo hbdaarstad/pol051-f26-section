@@ -75,11 +75,23 @@ MacBooks and Windows computers have different starts to their file paths; here i
 
 C:/Users/John/*desktop/POL 051/Homework1.qmd*
 
+## What is an R Project?
+
+Setting up an R Project is now considered best practice, the project is a self-contained directory, that automatically will set the working directory to the project's root folder.
+
+It also can restore open scripts, history, and workspace settings.
+
+![](https://raw.githubusercontent.com/martinctc/blog/master/images/RPROJECT_2000dpi.png)
+
+More Info: <https://martinctc.github.io/blog/rstudio-projects-and-working-directories-a-beginner%27s-guide/>
+
 ## What is a working directory?
 
 The working directory is the folder on your computer that you have set to save files to during your working session in R. Essentially, you are telling your computer to save any new documents or updates to this specific folder, rather than maybe your downloads folder.
 
 It is important to keep all the files associated with a given project, such as data, scripts, analytical results, and figures, together. To do this we need to make a working directory.
+
+{{< video https://youtu.be/reiKRkwfUxo?si=2xGExO1KSWMCFLQh >}}
 
 For full step-by-step instructions on creating and setting a working directory (with code for both Mac and Windows), see the [Setting up a Working Directory](/supplemental/r-basics.html#setting-up-a-working-directory) section on the R Basics page.
 
