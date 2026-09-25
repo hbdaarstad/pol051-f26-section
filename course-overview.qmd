@@ -2,47 +2,45 @@
 title: "POL 051: The Scientific Study of Politics"
 ---
 
-### Welcome to The Scientific Study of Politics!
+### Welcome to The Scientific Study of Politics - Discussion Section!
 
 Data is everywhere in our world, especially in politics. From policymakers to journalists to NGOs, and so many others, we use data to inform our world and make decisions. We use data to argue for or against policies that can improve or worsen our lives.
 
 This undergraduate course is focused on building the skills and knowledge needed to conduct data analysis and think causally about the political world. We will cover topics in political data science, causal inference, and uncertainty.
 
-:::::::: columns
-::: {.column width="50%"}
-![](images/pic01.jpg){width="308"}
-:::
+::::::: columns
+{{< video https://youtu.be/ogeGJS0GEF4?si=9goHMz6Bf03nPhWO >}}
 
 :::::: {.column width="50%"}
-#### Instructor:
+TA:
 
 ::: {style="padding-left: 2rem;"}
 | Ms. Haley Daarstad
 | 569 Kerr Hall
 | hbdaarstad\@ucdavis.edu
-| Office Hours: Tue 2:00 - 4:00 PM
+| Office Hours: Tue 12:00 - 3:00 PM
 :::
 
 #### Lecture:
 
 ::: {style="padding-left: 2rem;"}
-| Monday - Wednesday
-| 12:10 pm - 1:50 pm
-| Hoagland Hall 168
+| Tuesday & Thursday
+| 3:10 pm - 4:30 pm
+| Wellman 2
 :::
 
 #### Discussion/Lab:
 
 ::: {style="padding-left: 2rem;"}
-| Thursday
-| 12:10 pm - 1:50 pm
-| Teaching and Learning Complex 2212
+| Friday
+| A04: 9:00 am - 9:50 am
+| A05: 10:00 am - 10:50 am
+| A06: 11:00 am - 11:50 am
+| Kerr 451
 :::
 ::::::
-::::::::
+:::::::
 
 <br><br>
-
-{{< video https://youtu.be/ogeGJS0GEF4?si=9goHMz6Bf03nPhWO >}}
 
 These course materials have been inspired by Juan Tellez, Chris Hare, Mine Çetinkaya-Rundel, Andrew Heiss, Nick C. Huntington-Klein, Kieran Healy, Scott Cunningham, Richard McElreath and others who have made their courses publicly available. The lecture slides were developed by Juan Tellez and edited by me to fit the course.

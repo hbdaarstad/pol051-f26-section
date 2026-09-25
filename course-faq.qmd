@@ -35,9 +35,27 @@ Posit Cloud is the most common cloud service used when working with RStudio and 
 -   Third, go to the "Tutorial" tab in the upper right corner, scroll to the bottom, and select “Getting Started with Tutorials,” then press the “Start Tutorial” button.
 -   You will work in a single RProject space for the majority of the class.
 
+## What is an R script?
+
+An **R script** is a reusable text file (typically ending in the `.R` extension) that contains a sequence of commands written in the R programming language.
+
+{{< video https://youtu.be/Zr81Xn-sic4?si=TrW89qm3anVgUBpy >}}
+
+## What is an R Markdown file?
+
+A R Markdown (`.rmd`) is a file format for making dynamic documents with R. An R Markdown document is written in markdown (an easy-to-write plain text format) and contains chunks of embedded R code.
+
+You can transform an R Markdown file in two ways.
+
+1.  **knit** - You can *knit* the file. The `rmarkdown` package will call the `knitr` package. `knitr` will run each chunk of R code in the document and append the results of the code to the document next to the code chunk. This workflow saves time and facilitates reproducible reports.
+
+2.  **convert** - You can *convert* the file. The `rmarkdown` package will use the `pandoc` program to transform the file into a new format. For example, you can convert your .Rmd file into an HTML, PDF, or Microsoft Word file. You can even turn the file into an HTML5 or PDF slideshow. `rmarkdown` will preserve the text, code results, and formatting contained in your original .Rmd file.
+
+{{< video https://youtu.be/asHhuHRxhvo?si=Z3EtrWqXPr5Y9l8q >}}
+
 ## What is a Quarto file?
 
-If you have ever used an Rmarkdown file before, Quarto is the next generation version of this! Quarto files allow you to make PDF, Word documents, presentations, and even websites. In this course you will be making a Word document using a provided Quarto file for your lab submissions.
+If you have ever used an R Markdown file before, Quarto is the next-generation version of this! Quarto files allow you to make PDF, Word documents, presentations, and even websites. In this course you will be making a Word document using a provided Quarto file for your lab submissions.
 
 {{< video https://youtu.be/tDw3pTtLnp4?si=sUlkeADjr5aKTNyi >}}
 

@@ -8,27 +8,15 @@ editor: visual
 -   Peer Review Due - Wed. July 22
 :::
 
-## Prepare
+## Discussion Materials
+
+🖥️ [Lecture 13 - Hypothesis testing](/slides/lec-13.html)
+
+## Recommended Readings
 
 📖 Read [CH.6 in ModernDive](https://moderndive.com/v2/multiple-regression.html), but ignore the stuff on interactions
 
 📖 Read [Chapter 9 in ModernDive](https://moderndive.com/v2/hypothesis-testing.html)
-
-## Lectures
-
-🖥️ [Lecture 13 - Hypothesis testing](/slides/lec-13.html)
-
-🖥️ [Lecture 14 - Prediction](/slides/lec-14.html)
-
-🖥️ [Lecture 15 - Natural Experiments](/slides/lec-15.html)
-
-## Participation
-
-📋 Thinking about Natural Experiments + Cutoffs
-
-## Lab
-
-⌨️ [Lab 5 - Hypothesis Testing and Prediction](/labs/lab-5.qmd){download="lab-5.qmd"}
 
 <br><br>
 

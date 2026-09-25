@@ -4,29 +4,65 @@
 
 $font-family: "Atkinson Hyperlegible", sans-serif;
 
-// Base document colors
-$body-bg: #181818;
-$body-color: white;
-$link-color: #75AADB;
+// PWHL San Jose-inspired palette, dark mode
+$sj-blue: #0E3A6B;
+$sj-orange: #F37021;
+$sj-orange-light: #FF9A5C;
+
+// Base document colors: neutral dark page, like the white page in light mode
+$body-bg: #16181D;
+$body-color: #EDEDED;
+$link-color: $sj-orange-light;
+$link-hover-color: #FFC299;
+$primary: $sj-orange-light;
 
 $light: #525252;
 
-// Navigation element colors
-$footer-bg: #181818;
-$navbar-bg: #303030;
-$sidebar-bg: #303030;
+// Navigation element colors: same solid blue sidebar/footer as light mode
+$sidebar-bg: $sj-blue;
+$sidebar-fg: #FFFFFF;
+$sidebar-hl: $sj-orange-light;
+$navbar-bg: $sj-blue;
+$footer-bg: $sj-blue;
+$footer-fg: #FFFFFF;
 
 // Code blocks
 $code-block-bg-alpha: -.8;
 
 // Bootstrap popovers
-$popover-bg: #242424;
+$popover-bg: #22252B;
 
 // Bootstrap inputs
-$input-bg: #242424;
+$input-bg: #22252B;
 
 
 /*-- scss:rules --*/
+
+h1, h2, h3, .quarto-title .title { color: #FFFFFF; }
+h2 { border-bottom: 2px solid $sj-orange !important; }
+
+// Sidebar: solid blue with an orange edge
+#quarto-sidebar { border-right: 5px solid $sj-orange; }
+#quarto-sidebar .sidebar-item-section > .sidebar-item-container a,
+#quarto-sidebar .sidebar-section-item { color: #FFFFFF; font-weight: 700; }
+#quarto-sidebar .sidebar-item-text:hover, #quarto-sidebar .sidebar-link:hover { color: $sj-orange-light; }
+#quarto-sidebar .sidebar-link.active { background: rgba(255,255,255,0.12); border-left: 4px solid $sj-orange; padding-left: 6px; border-radius: 3px; }
+#quarto-sidebar .quarto-navigation-tool, #quarto-sidebar .bi { color: #FFFFFF; }
+
+// Page title with an orange underline bar
+.quarto-title .title { border-bottom: 5px solid $sj-orange; padding-bottom: 0.25em; }
+
+// Tables: blue header row, subtle striping
+thead th { background: $sj-blue; color: #FFFFFF; border-bottom: 2px solid $sj-orange !important; }
+tbody tr:nth-child(even) { background: rgba(255,255,255,0.05); }
+
+// Footer: blue with orange top edge
+.nav-footer { border-top: 5px solid $sj-orange; }
+.nav-footer a { color: $sj-orange-light; }
+
+// Callouts and blockquotes
+blockquote { border-left: 4px solid $sj-orange; }
+.callout { border-left-color: $sj-orange !important; }
 
 .layout-example {
   background: $gray-700;
@@ -36,7 +72,7 @@ $input-bg: #242424;
   padding: 0.5em 0.5em 0em 3em;
   margin-top: 5px;
   margin-bottom: 5px;
-  background: #181818 5px center/3em no-repeat;
+  background: #16181D 5px center/3em no-repeat;
   border-top: 1px solid #adadad;
   border-bottom: 1px solid #adadad;
   background-image: url("images/render-commit-push.png");
@@ -48,7 +84,7 @@ $input-bg: #242424;
   padding: 0.5em 0.5em 0em 3em;
   margin-top: 5px;
   margin-bottom: 5px;
-  background: #181818 5px center/3em no-repeat;
+  background: #16181D 5px center/3em no-repeat;
   border-top: 1px solid #adadad;
   border-bottom: 1px solid #adadad;
   background-image: url("images/pull.png");

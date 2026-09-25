@@ -1,0 +1,32 @@
+---
+title: "Installing Packages and juanr"
+format: html
+---
+
+# **Install packages** 
+
+Most R packages are easy to install with RStudio. Select the packages panel, click on “Install,” type the name of the package you want to install, and press enter. R will download the package from the web, so make sure you are connected to wifi when you do it.
+
+![](https://quantpol.juanftellez.com/images/install-r-package-panel.png){width="320" height="62"}
+
+A less tedious way to do this is via the console or in your script (just make sure to delete afterwards!), by running the following code:
+
+```{r}
+#| echo: true
+#| eval: false
+
+install.packages("name_of_package")
+```
+
+# Install juanr (and other GitHub packages) 
+
+Some packages, like `juanr`, cannot be installed using `install.packages()` because they are hosted on GitHub. To install `juanr`, you will first need to install {remotes} and then use `install_github()`, like so:
+
+```{r}
+#| echo: true
+#| eval: false
+
+install.packages("remotes")
+remotes::install_github("hail2thief/juanr")
+
+```

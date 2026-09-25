@@ -1,0 +1,20 @@
+---
+title: "Web/Cloud Based R"
+format: html
+---
+
+The easiest way to get started with R is to run RStudio in your browser. This is free and you don’t have to install anything on your computer.
+
+-   Go to <https://posit.cloud/>
+
+-   Click on “Sign up” and create an account
+
+-   Click on “New Project” and select “New Project from Template”
+
+-   Select “Data Analysis in R with the Tidyverse” and click “OK”
+
+::: callout-note
+Note: Professor Tellez made a [video](https://www.dropbox.com/scl/fi/5hlxo79v8vnbr70j2o68w/posit-cloud.mov?rlkey=wspngdpdh1l0lyrhqcz7h7tt6&st=4zegdtip&dl=0) of himself clicking through these screens.
+:::
+
+You're done!

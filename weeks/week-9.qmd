@@ -1,0 +1,37 @@
+---
+title: "Week 6"
+subtitle: "Final Presentations"
+editor: visual
+---
+
+::: callout-important
+PRESENTATION - Mon, July 27
+
+PROJECT DUE - Wed, July 29
+:::
+
+## Prepare
+
+Prepare for your presentation Monday and your project due Wednesday.
+
+## Participate
+
+No lectures
+
+## Practice
+
+No application exercises
+
+## Perform
+
+No lab
+
+# We made it!!
+
+![](/weeks/images/pwhl-montreal-maureen-murphy.gif)
+
+<br><br>
+
+::: {style="font-size: 0.875em;"}
+Back to [course schedule](/ "Course schedule") ⏎
+:::

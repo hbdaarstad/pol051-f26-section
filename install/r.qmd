@@ -1,0 +1,28 @@
+---
+title: "Install R and RStudio"
+format: html
+---
+
+## **Install R**
+
+First you need to install R itself (the engine).
+
+1.  If you have a **WINDOWS**, click here: [Download R for Windows](https://cran.r-project.org/bin/windows/base/) and download the most recent version of R
+
+2.  If you have a **MAC**, click here: [Download for macOS](https://cran.r-project.org/bin/macosx/) and download the most recent version of R
+
+3.  Double-click on the downloaded file (check your `Downloads` folder). Click yes through all the prompts to install like any other program.
+
+## **Install RStudio**
+
+Next, you need to install RStudio, the nicer graphical user interface (GUI) for R (the dashboard). Once R and RStudio are both installed, you can ignore R and only use RStudio. RStudio will use R automatically and you won’t ever have to interact with R directly.
+
+1.  Go here: <https://posit.co/download/rstudio-desktop/>
+
+2.  Scroll down, download the most recent version for either Mac or Windows
+
+3.  Double-click on the downloaded file (check your `Downloads` folder). Click yes through all the prompts to install like any other program.
+
+Double-click on RStudio to run it (check your applications folder or start menu).
+
+You’re done!

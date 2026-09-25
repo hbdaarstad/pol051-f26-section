@@ -5,34 +5,26 @@ editor: visual
 ---
 
 ::: callout-important
-Classes begin this week on Monday June 22.
+No section Sept. 25!
 
-Project Idea due - Fri, June 28
+Sections start Oct. 2.
 :::
 
 ## Prepare
 
 📖 Read the [syllabus](/course-syllabus.html)
 
-📖 Read [Ch.2 in ModernDive on Data Visualization](https://moderndive.com/v2/viz.html)
+## Discussion Materials
 
-📖 Read [Ch.1 in R for Data Science](https://r4ds.hadley.nz/data-visualize.html)
+🖥️ [Lecture 1 - Meet + greet; Welcome to POL 051](slides/lec-1.html)
 
-## Lectures
+## Recommended Readings
 
-🖥️ [Lecture 1 - Meet + greet; Welcome to POL 051](/slides/lec-1.html)
+📖 Read [Workflow: basics \| R for Data Science](https://r4ds.had.co.nz/workflow-basics.html)
 
-🖥️ [Lecture 2 - Data Visualization I + II](/slides/lec-2.html)
+-   en español: [Flujo de trabajo \| conocimientos básicos](https://es.r4ds.hadley.nz/04-workflow-basics.html)
 
-🖥️ [Lecture 3 - Data Wrangling I](/slides/lec-3.html)
-
-## Participation
-
-📋 [AE 1 - R Basics](/ae/files/ae-1-rbasics.qmd){download="ae-1-rbasics.qmd"}
-
-## Lab
-
-⌨️ [Lab 1 - Data Visualization + Data Wrangling I](/labs/lab-1.qmd){download="lab-1.qmd"}
+📖 Read [R Basics \| AFIT Data Science Lab R Programming Guide](https://afit-r.github.io/basics "Home")
 
 <br><br>
 

@@ -1,53 +1,99 @@
 ---
-title: "Welcome to POL 051!"
-subtitle: "POL 051 - Summer Session 1 2026"
+title: "Introduction to R"
+subtitle: "POL 051 - A04, A05, & A06"
 author: "Haley Daarstad"
 footer:  "[haleydaarstad.com/pol051-su26/](http://haleydaarstad.com/pol051-su26/)"
 logo: "images/logo.png"
-format: 
+format:
   revealjs: 
-    theme: slides.scss
-    multiplex: false
-    transition: fade
     slide-number: true
-editor: visual
-execute:
-  freeze: auto
+    height: 900
+    width: 1600
+    code-line-numbers: true
+    smooth-scrawl: true
+    theme: [simple, html/custom.scss]
+    incremental: true
+    title-slide-attributes:
+      data-background-image: img/dubois-spiral-2.png
+      data-background-size: contain
+      data-background-position: right
+      data-background-color: "#dc354a"
 ---
 
-```{r}
-#| include: false
-library(countdown)
+```{r setup, include=FALSE}
+# set knit options
+
+knitr::opts_chunk$set(
+  fig.width=9, 
+  fig.height=5, 
+  fig.retina=3,
+  fig.align="center",
+  out.width = "100%",
+  cache = FALSE,
+  echo = FALSE,
+  message = FALSE, 
+  warning = FALSE
+)
+
+# libraries
+library(gapminder)
+library(socviz)
+
+# source
+source(here::here("slides/R/funcs.R"))
+
 ```
 
-# Welcome
+## Welcome to POL 051 Discussion Section!
 
-## Meet the professor
-
-::::: columns
-::: {.column width="50%"}
-![Haley Daarstad (she/her)](images/pic01.jpg){fig-alt="Headshot of Dr. Mine Çetinkaya-Rundel" fig-align="center" width="278"}
+::: incremental
+Why should we care about data?
 :::
 
-::: {.column width="50%" style="font-size: 75%;"}
+## Misinformation
+
+```{r,out.width="60%"}
+knitr::include_graphics("img/misinformation.png")
+```
+
+## Scientific Literacy
+
+```{r,out.width="40%"}
+knitr::include_graphics("img/sciencetific-lit.png")
+```
+
+## Meet your TA
+
+:::::: columns
+::: {.column width="50%"}
 -   Political Science PhD Candidate
     -   Comparative Politics and Methodology
     -   Crime, Violence, Behavior, and Gender
--   My Summer Ins:
-    -   Hockey, Hiking, Iced Tea
--   My Summer Outs:
-    -   Humidity, Fires, Allergies
+-   Go Beavs! (Oregon State Alum)
+-   Enjoy paddle boarding, gravel/mountain biking, downhill/xc skiing, and playing hockey
 :::
-:::::
+
+:::: {.column width="50%"}
+::: {layout-ncol="2"}
+![](images/clipboard-20811518.jpeg){style="width:100%; aspect-ratio:1/1; object-fit:cover;"}
+
+![](images/clipboard-150271380.jpeg){style="width:100%; aspect-ratio:1/1; object-fit:cover;"}
+
+![](images/clipboard-635727753.jpeg){style="width:100%; aspect-ratio:1/1; object-fit:cover;"}
+
+![](images/clipboard-285844452.jpeg){style="width:100%; aspect-ratio:1/1; object-fit:cover;"}
+:::
+::::
+::::::
 
 ## Tell Me About you!
 
 -   What is your name?
 -   What is your major?
 -   What year are you?
--   What is one summer in for you and what is one summer out?
+-   What was your favorite childhood book, movie, or TV show?
 
-## Course learning objectives
+## Section learning objectives
 
 -   By the end of this course you will be able to...
     -   Analyze real-world data to answer questions about different relationships.
@@ -60,167 +106,76 @@ library(countdown)
 
 |   | Day | Time | Location |
 |----|----|----|----|
-| Lectures | Mon, Tue & Wed. | 12:10 pm - 1:50 pm | Hoagland Hall 168 |
-| Discussion/Lab | Thu | 12:10 pm - 1:50 pm | Teaching and Learning Complex 2212 |
-| Office Hours | Tue | 2:00 - 4:00 PM | Kerr Hall 569 |
+| Lectures | Tue & Thur. | 3:10 pm - 4:30 pm | Wellman 2 |
+| Discussion/Lab | Fri. | A04: 9:00 AM - 9:50 AM<br>A05: 10:00 AM - 10:50 AM<br>A06: 11:00 AM - 11:50 AM | Kerr Hall 451 |
+| Office Hours | Tue | 12:00 - 3:00 PM | Kerr Hall 569 |
 
-# Course toolkit
+## Course toolkit
 
 -   All materials for this course are **free and online.** You will do all of your analysis with the open source (and free) programming language R and RStudio.
 
-    -   Lets walk through the course website: <http://haleydaarstad.com/pol051-su26/>
-
-## Activities: Prepare, Participate, Practice, Perform {.smaller}
-
--   **Prepare:** Introduce new content and prepare for lectures by completing the readings (and sometimes watching the videos)
-
--   **Participate:** Attend and actively participate in lectures and labs, office hours, team meetings
-
--   **Practice:** Practice applying statistical concepts and computing with application exercises during lecture, graded for completion
-
--   **Perform:** Put together what you've learned to analyze real-world data
-
-    | Category                              | Percentage   |
-    |---------------------------------------|--------------|
-    | Application Exercises (Participation) | 15%          |
-    | Labs                                  | 35% (7% x 5) |
-    | Final Project                         | 50%          |
-
-## Final Project {.smaller}
-
--   *Make a Research Question, pick a data set, and do analysis. That is your final project.*
-
--   The goal of the final project is for you to apply the skills you have been learning through out the quarter and apply to real life data to answer a question YOU HAVE MADE.
-
--   You will be split into teams, I recommend sitting with these teams during lecture and labs.
-
--   You will have time during lab this Thursday (about 30 minutes) to discuss and write up your project proposal for your group.
-
-    -   The project proposal will be due **Sunday June 28**
-
--   Learn More on the [Project Description](project-description.qmd) page on the course website.
-
-## Teams {.smaller}
-
--   Team assignments
-    -   Application exercises, labs, and project
-    -   Anonymous Peer evaluation after completion of Final Project
--   Expectations and roles
-    -   Everyone is expected to contribute equal *effort*
-    -   Everyone is expected to understand *all* code turned in
-    -   Individual contribution evaluated by peer evaluation, commits, etc.
-
-## Team Assignment {.smaller}
-
--   **What’s the category?**
-
-    -   I have written down different words that fit under a category. Based on the word you have find the other members of your category.
-
-        -   Colors
-
-        -   Food
-
-        -   Sports
-
-        -   Animals
-
-        -   Classic Books
-
-    -   Introduce yourself to your team and choose a team name and a "team captain" (5 minutes)
-
-        -   The "team captain" will be in charge of submitting everything, they are not the leader!!
+    -   Let's walk through the course website: <http://haleydaarstad.com/pol051-su26/>
 
 ## Support
 
 -   Attend office hours
 -   Reserve email for questions that can be answered quickly and timely
 
-## Diversity + inclusion {.smaller}
-
-It is my intent that students from all diverse backgrounds and perspectives be well-served by this course, that students' learning needs be addressed both in and out of class, and that the diversity that the students bring to this class be viewed as a resource, strength and benefit.
-
-::: incremental
--   This is a political science course, and as such we will be discussing political issues. As each of us comes into the section with unique opinions about political issues, there may be disagreements. I insist we discuss our differences with respect, civility, and empathy. Please do your best to keep an open mind about your peers’ perspectives as your peers will expect the same of you.
--   This does not mean you should avoid participating if/when you have an alternative point of view just because you may not wish to provoke an argument. Be bold, and share what you think (respectfully)
-    -   *If I believe any of the discussion is becoming disrespectful or includes hateful or inappropriate speech, I hold the right to end the discussion.*
-:::
-
 ## Accessibility
 
 -   If you believe you have a disability requiring an accommodation or would like additional information about the resources available for students with disabilities, please visit the UC Davis Student Disability Center website at [sdc.ucdavis.edu](sdc.ucdavis.edu).
 
--   Students must contact me about any accommodations.
+-   Students must contact me about any accommodations, as the TA, I have limited access.
 
--   Outside Resources - The Student Academic Success Center is a campus wide resource assisting students by helping them improve in study skills, academic writing, and other specific topics
+-   Outside Resources - The Student Academic Success Center is a campus-wide resource assisting students by helping them improve in study skills, academic writing, and other specific topics.
 
-# Course policies
-
-## Late work, waivers, regrades policy
-
--   If there are circumstances that prevent you from completing a lab or project assignment by the stated due date, you may email me before the deadline to waive the late penalty
-    -   FINAL PROJECT REPORT IS EXCLUDED FROM THIS
--   Labs may be submitted up to 3 days late. There will be a 5% deduction for each 24-hour period the assignment is late.
+# Section policies
 
 ## Sharing / reusing code policy
 
--   I am aware that there is a large amount of code is available online, and many tasks may have solutions posted
+-   I am aware that there is a large amount of code available online, and many tasks may have solutions posted
 
 -   Unless explicitly stated otherwise, this course's policy is that you may make use of any online resources (e.g. RStudio Community, StackOverflow, etc.) but you must explicitly state where you obtained any code you directly use or use as inspiration in your solution(s).
 
--   Any recycled code that is discovered and is not explicitly cited will be treated as plagiarism, regardless of source.
+-   AI cannot be used to generate code/answers.
 
 ## Policy on AI
 
-**AI is NOT allowed for usage in this classroom.**
+**AI is NOT allowed for usage in this classroom to generate any code or answers.**
 
 -   You may not use artificial intelligence tools such as ChatGPT, Gemini, Claude, Grok, etc. to complete academic work
 
-    -   The Office of Student Support and Judicial Affairs (OSSJA) considers the unauthorized use of content generated by artificial intelligence (AI) to be academic misconduct and/or plagiarism (see: <https://ossja.ucdavis.edu/code-academic-conduct).>
+    -   The Office of Student Support and Judicial Affairs (OSSJA) considers the unauthorized use of content generated by artificial intelligence (AI) to be academic misconduct and/or plagiarism (see: <https://ossja.ucdavis.edu/code-academic-conduct>).
 
 ## Academic Integrity
 
 -   Cheating and plagiarism will be evaluated and disciplined according to University policy.
 
--   For information on academic integrity, please read: <http://cai.ucdavis.edu/aip.html.>
+-   For information on academic integrity, please read: <http://cai.ucdavis.edu/aip.html>.
 
 -   You are responsible for understanding and following all aspects of University policy on academic integrity; ignorance is not an excuse.
 
 ## Most importantly!
 
-Ask if you're not sure if something violates a policy!
+Ask if you're not sure if something violates a policy
 
 ## This week's tasks
 
--   Download R and Rstudio
+-   Download R and RStudio
 -   R Basics
--   Data Visualization I and II
--   Project Topic Idea Submission Due Sunday
--   Lab 1 Due Sunday
-
-# What is Political Science? {.smaller}
-
-First and foremost what is political science?
-
-::: incremental
--   **Political science** is the scientific study of political phenomena.
-
-    -   Depending on the year you are, you have probably read at the minimum one academic article, and in these pieces you probably have seen a section on the methodology.
-        -   **Methodology** is the approach used by political scientists to provide information on events with the goal to make a causal identification.
-    -   In this class, you will learn the various approaches political scientists use to understand politics and how we are able to make the claims we make, such as using R!
-:::
 
 # Downloading R
 
 ## Why R? {.smaller}
 
 ::: incremental
--   R is a coding language language and environment built for statistical computing and graphics that includes a large variety in statistical and graphical techniques.
+-   R is a coding language and environment built for statistical computing and graphics that includes a large variety of statistical and graphical techniques.
 
 -   As political scientists R is an effective way to store and handle data, and a large selection of data analysis tools including graphing tools in a coherent and effective language.
 
--   The majority of users will use Rstudio an IDE or integrated development environment to write the code and see outputs.
+-   The majority of users will use RStudio, an IDE or integrated development environment, to write the code and see outputs.
 
-    -   **Rstudio** is a software application with a code editor, compiler, debugger, and project manager in a single interface that allows us to write, edit, compile, and debug code in a singular location.
+    -   **RStudio** is a software application with a code editor, compiler, debugger, and project manager in a single interface that allows us to write, edit, compile, and debug code in a singular location.
 :::
 
 ## R
@@ -243,15 +198,15 @@ First and foremost what is political science?
 
 # Downloading RStudio
 
-## What is Rstudio?
+## What is RStudio?
 
 -   One way to picture what RStudio does is to compare it to Microsoft Word, a software application that allows us to write documents.
 
 -   RStudio, instead of being a platform to write text, helps us write in the coding language R. Follow the instructions below to download RStudio.
 
-    -   In more complex terms Rstudio is an IDE for R
+    -   In more complex terms, RStudio is an IDE for R
 
-## Instructions for Downloading Rstudio {.smaller}
+## Instructions for Downloading RStudio {.smaller}
 
 -   Go to the [Posit RStudio Desktop page](https://posit.co/download/rstudio-desktop/).
 
@@ -270,9 +225,9 @@ First and foremost what is political science?
 ## R as a language
 
 ::: incremental
--   Think of R as a language it has: vocabulary, punctuation, grammar, and syntax
+-   Think of R as a language; it has: vocabulary, punctuation, grammar, and syntax
 
--   R is a language you can use to speak to your computer to tell it how to manage and visual data
+-   R is a language you can use to speak to your computer to tell it how to manage and visualize data
 :::
 
 ## R Layout
@@ -292,7 +247,7 @@ There are four primary quadrants in RStudio:
 
 ## What is a working directory?
 
-The working directory is the folder in your computer that you have set to save files to during your working session on R.
+The working directory is the folder on your computer that you have set to save files to during your working session in R.
 
 Essentially, you are telling your computer to save any new documents or updates to this specific folder, rather than maybe your downloads folder.
 
@@ -302,17 +257,17 @@ Essentially, you are telling your computer to save any new documents or updates 
 
     -   Open **Finder** and click **Desktop** on the left side
 
-        -   On the top of your screen got to **File** and click **New Folder**
+        -   On the top of your screen go to **File** and click **New Folder**
 
-            -   Name this folder POL 051 - SU26
+            -   Name this folder POL 051 - F26
 
 -   Windows
 
     -   Open **File Explorer** and go to **Desktop**
 
-        -   Click/tap on **New** on the command bar, and click/tap on **Folder** in the drop menu.
+        -   Click/tap on **New** on the command bar, and click/tap on **Folder** in the drop-down menu.
 
-            -   Name this folder POL 051 - SU26
+            -   Name this folder POL 051 - F26
 
 ## Step 2: Create the Working Directory. {.smaller}
 
@@ -320,7 +275,9 @@ To create a new working directory in RStudio:
 
 1.  Use **File → New Project** or use the **New Project** button (available on the Projects toolbar in the top right corner or on the global toolbar at the top left corner).
 2.  This will open the “New Project Wizard” popup.
-3.  Click "New Directory".
+3.  Click "Existing Directory".
+4.  Click "Browse" and search for your folder "POL 051 - F26"
+5.  This sets the working directory to the folder you just created.
 
 ## Step 3: Set the Working Directory.
 
@@ -342,17 +299,11 @@ setwd("C:/Users/YourName/Documents/MyFolder")
 getwd()
 ```
 
-# Application exercise
-
-::: appex
-Submit a .qmd file of the code from class today. The template can be found on Week 1 on our course website.
-:::
-
 # R Coding Basics
 
 ## Writing "Text"
 
--   Writing text in R is called a script, a strong of letters connected by the use of " " or ' '.
+-   Writing text in R is called a script, a string of letters connected by the use of " " or ' '.
 
 ```{r}
 #| echo: True
@@ -391,7 +342,7 @@ R at its core is a gigantic calculator, so let's practice doing basic calculatio
 # subtraction
 10 - 2
 
-# multipilication
+# multiplication
 10 * 2
 
 # division
@@ -415,7 +366,7 @@ R at its core is a gigantic calculator, so let's practice doing basic calculatio
 # subtraction
 10 - 2
 
-# multipilication
+# multiplication
 10 * 2
 
 # division
@@ -443,14 +394,14 @@ In R, we save our data in what we call objects! Objects store information about 
 
 -   `print()` is a function that 'prints' out an output from an object.
 
--   **R functions** are like the verbs of the R coding language, they tell your computer what action to make with sets of information.
+-   **R functions** are like the verbs of the R coding language; they tell your computer what action to make with sets of information.
 
-    -   A function is usually defined by a keyword and then parenthesis.
+    -   A function is usually defined by a keyword and then parentheses.
 
 ```{r}
 #| echo: true
 
-# The <- saves the caculation as math
+# The <- saves the calculation as math
 math <- 10 + 2
 #print()
 print(math)
@@ -460,7 +411,7 @@ print(math)
 ```{r}
 #| echo: true
 
-# The = saves the caculation as math
+# The = saves the calculation as math
 math = 10 + 2
 # print() will print out what is saved in the object math
 print(math)
@@ -472,7 +423,7 @@ There are 6 types of data in R that are important to know, but the essential one
 
 In this class we are going to focus on only three: Logical, Numeric, and Characters.
 
-1.  **Logical** Also known as boolean data, logical data is shown as TRUE or FALSE values:
+1.  **Logical**: also known as Boolean data, logical data is shown as TRUE or FALSE values:
 
 ```{r}
 #| echo: true
@@ -491,7 +442,7 @@ print(class(logical2))
 
 ## Data Types
 
-2.  **Numeric** represents all data types that are real numbers with or with out decimal points.
+2.  **Numeric** represents all data types that are real numbers with or without decimal points.
 
 ```{r}
 #| echo: true
@@ -529,7 +480,7 @@ print(class(motorsports))
 
 -   Some packages come pre-installed in R.
 
--   However, the majority do not, so you need to install them first using the r function `install.packages`
+-   However, the majority do not, so you need to install them first using the R function `install.packages`
 
 ```{r}
 #| echo: true
@@ -540,7 +491,7 @@ install.packages("tidyverse") # install this package
 
 ## Using a Package
 
--   After installing the packages we need to "attach" the package.
+-   After installing the packages, we need to "attach" the package.
 
     -   This means telling your computer that you want to use that package during this working session
 
@@ -551,4 +502,19 @@ install.packages("tidyverse") # install this package
 #| eval: false
 
 library("tidyverse")
+```
+
+## Using juanr
+
+-   We need to install the package juanr
+
+    -   This package includes a curated set of data created by Professor Juan Tellez.
+
+```{r}
+#| echo: true
+#| eval: false
+
+install.packages("remotes")
+remotes::install_github("hail2thief/juanr")
+
 ```

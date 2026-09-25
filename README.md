@@ -1,3 +1,2 @@
-# Website for POL 051 at UC Davus (Summer 2026)
-
-🔗 https://pol051-s26.github.io/website/
+# pol051-f26-section
+POL 051 at UC Davis Fall 2026 section website. 

@@ -1,0 +1,15 @@
+{
+  "hash": "50cf03227b890b92918bee7b5089588b",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Installing Packages and juanr\"\nformat: html\n---\n\n\n\n\n\n\n# **Install packages** \n\nMost R packages are easy to install with RStudio. Select the packages panel, click on “Install,” type the name of the package you want to install, and press enter. R will download the package from the web, so make sure you are connected to wifi when you do it.\n\n![](https://quantpol.juanftellez.com/images/install-r-package-panel.png){width=\"320\" height=\"62\"}\n\nA less tedious way to do this is via the console or in your script (just make sure to delete afterwards!), by running the following code:\n\n\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\ninstall.packages(\"name_of_package\")\n```\n:::\n\n\n\n\n\n\n# Install juanr (and other Github packages) \n\nSome packages, like `juanr` cannot be installed using `install.packages()` because they are hosted on Github. To install `juanr`, you will first need to install {remotes} and then use `install_github()`, like so:\n\n\n\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\ninstall.packages(\"remotes\")\nremotes::install_github(\"hail2thief/juanr\")\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
