@@ -2246,261 +2246,268 @@
   {
     "objectID": "slides/lec-1.html#welcome-to-pol-051-discussion-section",
     "href": "slides/lec-1.html#welcome-to-pol-051-discussion-section",
-    "title": "Data Visualization I & II",
+    "title": "Introduction to R",
     "section": "Welcome to POL 051 Discussion Section!",
     "text": "Welcome to POL 051 Discussion Section!\n\nWhy should we care about data?"
   },
   {
     "objectID": "slides/lec-1.html#misinformation",
     "href": "slides/lec-1.html#misinformation",
-    "title": "Data Visualization I & II",
+    "title": "Introduction to R",
     "section": "Misinformation",
     "text": "Misinformation"
   },
   {
     "objectID": "slides/lec-1.html#scientific-literacy",
     "href": "slides/lec-1.html#scientific-literacy",
-    "title": "Data Visualization I & II",
+    "title": "Introduction to R",
     "section": "Scientific Literacy",
     "text": "Scientific Literacy"
   },
   {
     "objectID": "slides/lec-1.html#meet-your-ta",
     "href": "slides/lec-1.html#meet-your-ta",
-    "title": "Data Visualization I & II",
+    "title": "Introduction to R",
     "section": "Meet your TA",
     "text": "Meet your TA\n\n\n\nPolitical Science PhD Candidate\n\nComparative Politics and Methodology\nCrime, Violence, Behavior, and Gender\n\nGo Beavs! (Oregon State Alum)\nEnjoy paddle boarding, gravel/mountain biking, downhill/xc skiing, and playing hockey"
   },
   {
     "objectID": "slides/lec-1.html#tell-me-about-you",
     "href": "slides/lec-1.html#tell-me-about-you",
-    "title": "Data Visualization I & II",
+    "title": "Introduction to R",
     "section": "Tell Me About you!",
     "text": "Tell Me About you!\n\nWhat is your name?\nWhat is your major?\nWhat year are you?\nWhat was your favorite childhood book, movie, or TV show?"
   },
   {
     "objectID": "slides/lec-1.html#section-learning-objectives",
     "href": "slides/lec-1.html#section-learning-objectives",
-    "title": "Data Visualization I & II",
+    "title": "Introduction to R",
     "section": "Section learning objectives",
     "text": "Section learning objectives\n\nBy the end of this course you will be able to…\n\nAnalyze real-world data to answer questions about different relationships.\nFeel comfortable manipulating data in R\nCraft effective visualizations of patterns in data\nDraw causal diagrams and identify obstacles to causal claims\nUnderstand the basics of regression and uncertainty"
   },
   {
     "objectID": "slides/lec-1.html#course-toolkit",
     "href": "slides/lec-1.html#course-toolkit",
-    "title": "Data Visualization I & II",
+    "title": "Introduction to R",
     "section": "Course toolkit",
-    "text": "Course toolkit\n\nAll materials for this course are free and online. You will do all of your analysis with the open source (and free) programming language R and RStudio.\n\nLets walk through the course website: http://haleydaarstad.com/pol051-su26/"
+    "text": "Course toolkit\n\nAll materials for this course are free and online. You will do all of your analysis with the open source (and free) programming language R and RStudio.\n\nLet’s walk through the course website: http://haleydaarstad.com/pol051-su26/"
   },
   {
     "objectID": "slides/lec-1.html#support",
     "href": "slides/lec-1.html#support",
-    "title": "Data Visualization I & II",
+    "title": "Introduction to R",
     "section": "Support",
     "text": "Support\n\nAttend office hours\nReserve email for questions that can be answered quickly and timely"
   },
   {
     "objectID": "slides/lec-1.html#accessibility",
     "href": "slides/lec-1.html#accessibility",
-    "title": "Data Visualization I & II",
+    "title": "Introduction to R",
     "section": "Accessibility",
-    "text": "Accessibility\n\nIf you believe you have a disability requiring an accommodation or would like additional information about the resources available for students with disabilities, please visit the UC Davis Student Disability Center website at sdc.ucdavis.edu.\nStudents must contact me about any accommodations, as the TA I have limited access.\nOutside Resources - The Student Academic Success Center is a campus wide resource assisting students by helping them improve in study skills, academic writing, and other specific topics"
+    "text": "Accessibility\n\nIf you believe you have a disability requiring an accommodation or would like additional information about the resources available for students with disabilities, please visit the UC Davis Student Disability Center website at sdc.ucdavis.edu.\nStudents must contact me about any accommodations, as the TA, I have limited access.\nOutside Resources - The Student Academic Success Center is a campus-wide resource assisting students by helping them improve in study skills, academic writing, and other specific topics."
   },
   {
     "objectID": "slides/lec-1.html#sharing-reusing-code-policy",
     "href": "slides/lec-1.html#sharing-reusing-code-policy",
-    "title": "Data Visualization I & II",
+    "title": "Introduction to R",
     "section": "Sharing / reusing code policy",
-    "text": "Sharing / reusing code policy\n\nI am aware that there is a large amount of code is available online, and many tasks may have solutions posted\nUnless explicitly stated otherwise, this course’s policy is that you may make use of any online resources (e.g. RStudio Community, StackOverflow, etc.) but you must explicitly state where you obtained any code you directly use or use as inspiration in your solution(s).\nAI can not be used to generate code/answers."
+    "text": "Sharing / reusing code policy\n\nI am aware that there is a large amount of code available online, and many tasks may have solutions posted\nUnless explicitly stated otherwise, this course’s policy is that you may make use of any online resources (e.g. RStudio Community, StackOverflow, etc.) but you must explicitly state where you obtained any code you directly use or use as inspiration in your solution(s).\nAI cannot be used to generate code/answers."
   },
   {
     "objectID": "slides/lec-1.html#policy-on-ai",
     "href": "slides/lec-1.html#policy-on-ai",
-    "title": "Data Visualization I & II",
+    "title": "Introduction to R",
     "section": "Policy on AI",
     "text": "Policy on AI\nAI is NOT allowed for usage in this classroom to generate any code or answers.\n\nYou may not use artificial intelligence tools such as ChatGPT, Gemini, Claude, Grok, etc. to complete academic work\n\nThe Office of Student Support and Judicial Affairs (OSSJA) considers the unauthorized use of content generated by artificial intelligence (AI) to be academic misconduct and/or plagiarism (see: https://ossja.ucdavis.edu/code-academic-conduct)."
   },
   {
     "objectID": "slides/lec-1.html#academic-integrity",
     "href": "slides/lec-1.html#academic-integrity",
-    "title": "Data Visualization I & II",
+    "title": "Introduction to R",
     "section": "Academic Integrity",
     "text": "Academic Integrity\n\nCheating and plagiarism will be evaluated and disciplined according to University policy.\nFor information on academic integrity, please read: http://cai.ucdavis.edu/aip.html.\nYou are responsible for understanding and following all aspects of University policy on academic integrity; ignorance is not an excuse."
   },
   {
     "objectID": "slides/lec-1.html#most-importantly",
     "href": "slides/lec-1.html#most-importantly",
-    "title": "Data Visualization I & II",
+    "title": "Introduction to R",
     "section": "Most importantly!",
-    "text": "Most importantly!\nAsk if you’re not sure if something violates a policyThis week’s tasks\n\nDownload R and Rstudio\nR Basics"
+    "text": "Most importantly!\nAsk if you’re not sure if something violates a policy"
+  },
+  {
+    "objectID": "slides/lec-1.html#this-weeks-tasks",
+    "href": "slides/lec-1.html#this-weeks-tasks",
+    "title": "Introduction to R",
+    "section": "This week’s tasks",
+    "text": "This week’s tasks\n\nDownload R and RStudio\nR Basics"
   },
   {
     "objectID": "slides/lec-1.html#why-r",
     "href": "slides/lec-1.html#why-r",
-    "title": "Data Visualization I & II",
+    "title": "Introduction to R",
     "section": "Why R?",
-    "text": "Why R?\n\n\nR is a coding language language and environment built for statistical computing and graphics that includes a large variety in statistical and graphical techniques.\nAs political scientists R is an effective way to store and handle data, and a large selection of data analysis tools including graphing tools in a coherent and effective language.\nThe majority of users will use Rstudio an IDE or integrated development environment to write the code and see outputs.\n\nRstudio is a software application with a code editor, compiler, debugger, and project manager in a single interface that allows us to write, edit, compile, and debug code in a singular location."
+    "text": "Why R?\n\n\nR is a coding language and environment built for statistical computing and graphics that includes a large variety of statistical and graphical techniques.\nAs political scientists R is an effective way to store and handle data, and a large selection of data analysis tools including graphing tools in a coherent and effective language.\nThe majority of users will use RStudio, an IDE or integrated development environment, to write the code and see outputs.\n\nRStudio is a software application with a code editor, compiler, debugger, and project manager in a single interface that allows us to write, edit, compile, and debug code in a singular location."
   },
   {
     "objectID": "slides/lec-1.html#r",
     "href": "slides/lec-1.html#r",
-    "title": "Data Visualization I & II",
+    "title": "Introduction to R",
     "section": "R",
     "text": "R\n\nR is freely maintained by an international team of developers and is available through The Comprehensive R Archive Network.\nFollow the instructions to download R.\nIf you are using an older computer or iPad, go to Using Posit Cloud for R in the FAQ page."
   },
   {
     "objectID": "slides/lec-1.html#instructions-for-downloading-r",
     "href": "slides/lec-1.html#instructions-for-downloading-r",
-    "title": "Data Visualization I & II",
+    "title": "Introduction to R",
     "section": "Instructions for Downloading R",
     "text": "Instructions for Downloading R\n\nGo to The Comprehensive R Archive Network webpage:\n\nhttps://cran.r-project.org\n\nTo install R on Windows, click the “Download R for Windows” link.\nTo install R on a Mac, click the “Download R for Mac” link."
   },
   {
     "objectID": "slides/lec-1.html#what-is-rstudio",
     "href": "slides/lec-1.html#what-is-rstudio",
-    "title": "Data Visualization I & II",
-    "section": "What is Rstudio?",
-    "text": "What is Rstudio?\n\nOne way to picture what RStudio does is to compare it to Microsoft Word, a software application that allows us to write documents.\nRStudio, instead of being a platform to write text, helps us write in the coding language R. Follow the instructions below to download RStudio.\n\nIn more complex terms Rstudio is an IDE for R"
+    "title": "Introduction to R",
+    "section": "What is RStudio?",
+    "text": "What is RStudio?\n\nOne way to picture what RStudio does is to compare it to Microsoft Word, a software application that allows us to write documents.\nRStudio, instead of being a platform to write text, helps us write in the coding language R. Follow the instructions below to download RStudio.\n\nIn more complex terms, RStudio is an IDE for R"
   },
   {
     "objectID": "slides/lec-1.html#instructions-for-downloading-rstudio",
     "href": "slides/lec-1.html#instructions-for-downloading-rstudio",
-    "title": "Data Visualization I & II",
-    "section": "Instructions for Downloading Rstudio",
-    "text": "Instructions for Downloading Rstudio\n\nGo to the Posit RStudio Desktop page.\nTo install for Mac:\nScroll to the button that says “Install R on a Mac,” and click the “Download R for Mac OS 13+” link.\n\nIf you’re using an older version, click the “Previous Versions” link to find a version that works with your computer.\n\nTo install for Windows:\n\nScroll to the button that says “Install R on Windows 10/11,” and click the link to download."
+    "title": "Introduction to R",
+    "section": "Instructions for Downloading RStudio",
+    "text": "Instructions for Downloading RStudio\n\nGo to the Posit RStudio Desktop page.\nTo install for Mac:\nScroll to the button that says “Install R on a Mac,” and click the “Download R for Mac OS 13+” link.\n\nIf you’re using an older version, click the “Previous Versions” link to find a version that works with your computer.\n\nTo install for Windows:\n\nScroll to the button that says “Install R on Windows 10/11,” and click the link to download."
   },
   {
     "objectID": "slides/lec-1.html#r-as-a-language",
     "href": "slides/lec-1.html#r-as-a-language",
-    "title": "Data Visualization I & II",
+    "title": "Introduction to R",
     "section": "R as a language",
-    "text": "R as a language\n\n\nThink of R as a language it has: vocabulary, punctuation, grammar, and syntax\nR is a language you can use to speak to your computer to tell it how to manage and visual data"
+    "text": "R as a language\n\n\nThink of R as a language; it has: vocabulary, punctuation, grammar, and syntax\nR is a language you can use to speak to your computer to tell it how to manage and visualize data"
   },
   {
     "objectID": "slides/lec-1.html#r-layout",
     "href": "slides/lec-1.html#r-layout",
-    "title": "Data Visualization I & II",
+    "title": "Introduction to R",
     "section": "R Layout",
     "text": "R Layout\nThere are four primary quadrants in RStudio:\n\nSource pane\nConsole pane\nEnvironment pane\nOutput pane"
   },
   {
     "objectID": "slides/lec-1.html#r-layout-1",
     "href": "slides/lec-1.html#r-layout-1",
-    "title": "Data Visualization I & II",
+    "title": "Introduction to R",
     "section": "R Layout",
     "text": "R Layout\n\nRStudio Layout"
   },
   {
-    "objectID": "slides/lec-1.html#what-is-a-working-directory",
-    "href": "slides/lec-1.html#what-is-a-working-directory",
-    "title": "Data Visualization I & II",
-    "section": "What is a working directory?",
-    "text": "What is a working directory?\nThe working directory is the folder in your computer that you have set to save files to during your working session on R.\nEssentially, you are telling your computer to save any new documents or updates to this specific folder, rather than maybe your downloads folder."
+    "objectID": "slides/lec-1.html#what-is-a-r-project",
+    "href": "slides/lec-1.html#what-is-a-r-project",
+    "title": "Introduction to R",
+    "section": "What is a R Project?",
+    "text": "What is a R Project?\nAn R project is a self-contained directory, that automatically will set the working directory to the project’s root folder.\nThe working directory is the folder on your computer that you have set to save files to during your working session in R.\nEssentially, you are telling your computer to save any new documents or updates to this specific folder, rather than maybe your downloads folder."
   },
   {
     "objectID": "slides/lec-1.html#step-1-make-a-folder",
     "href": "slides/lec-1.html#step-1-make-a-folder",
-    "title": "Data Visualization I & II",
+    "title": "Introduction to R",
     "section": "Step 1: Make a Folder",
-    "text": "Step 1: Make a Folder\n\nMac\n\nOpen Finder and click Desktop on the left side\n\nOn the top of your screen got to File and click New Folder\n\nName this folder POL 051 - F26\n\n\n\nWindows\n\nOpen File Explorer and go to Desktop\n\nClick/tap on New on the command bar, and click/tap on Folder in the drop menu.\n\nName this folder POL 051 - F26"
+    "text": "Step 1: Make a Folder\n\nMac\n\nOpen Finder and click Desktop on the left side\n\nOn the top of your screen go to File and click New Folder\n\nName this folder POL 051 - F26\n\n\n\nWindows\n\nOpen File Explorer and go to Desktop\n\nClick/tap on New on the command bar, and click/tap on Folder in the drop-down menu.\n\nName this folder POL 051 - F26"
   },
   {
-    "objectID": "slides/lec-1.html#step-2-create-the-working-directory.",
-    "href": "slides/lec-1.html#step-2-create-the-working-directory.",
-    "title": "Data Visualization I & II",
-    "section": "Step 2: Create the Working Directory.",
-    "text": "Step 2: Create the Working Directory.\nTo create a new working directory in RStudio:\n\nUse File → New Project or use the New Project button (available on the Projects toolbar in the top right corner or on the global toolbar at the top left corner).\nThis will open the “New Project Wizard” popup.\nClick “Existing Directory”.\nClick “Browse” and search for your folder “POL 051 - F26”\nThis sets the working directory to the folder you just created."
+    "objectID": "slides/lec-1.html#step-2-create-the-r-project.",
+    "href": "slides/lec-1.html#step-2-create-the-r-project.",
+    "title": "Introduction to R",
+    "section": "Step 2: Create the R Project.",
+    "text": "Step 2: Create the R Project.\nTo create a new working directory in RStudio:\n\nUse File → New Project or use the New Project button (available on the Projects toolbar in the top right corner or on the global toolbar at the top left corner).\nThis will open the “New Project Wizard” popup.\nClick “Existing Directory”.\nClick “Browse” and search for your folder “POL 051 - F26”\nThis sets the working directory automatically to the folder you just created."
   },
   {
     "objectID": "slides/lec-1.html#step-3-set-the-working-directory.",
     "href": "slides/lec-1.html#step-3-set-the-working-directory.",
-    "title": "Data Visualization I & II",
+    "title": "Introduction to R",
     "section": "Step 3: Set the Working Directory.",
-    "text": "Step 3: Set the Working Directory.\n\n# Set working directory (replace this with your own)\n\n# Mac Users\nsetwd(\"/Users/yourname/Desktop/filename/filename\")\n\n# Windows Users\nsetwd(\"C:/Users/YourName/Documents/MyFolder\")\n\n# To check if the working directory is set correctly, use the following code:\n\n# Returns the filepath of the current working directory\ngetwd()"
+    "text": "Step 3: Set the Working Directory.\nIf you have a sub folder in the project you will need to manually set the working directory.\n\n# Set working directory (replace this with your own)\n\n# Mac Users\nsetwd(\"/Users/yourname/Desktop/filename/filename\")\n\n# Windows Users\nsetwd(\"C:/Users/YourName/Documents/MyFolder\")\n\n# To check if the working directory is set correctly, use the following code:\n\n# Returns the filepath of the current working directory\ngetwd()"
   },
   {
     "objectID": "slides/lec-1.html#writing-text",
     "href": "slides/lec-1.html#writing-text",
-    "title": "Data Visualization I & II",
+    "title": "Introduction to R",
     "section": "Writing “Text”",
-    "text": "Writing “Text”\n\nWriting text in R is called a script, a strong of letters connected by the use of ” ” or ’ ’.\n\n\n\"Hello World!\"\n\n[1] \"Hello World!\"\n\n'Hello World!' \n\n[1] \"Hello World!\""
+    "text": "Writing “Text”\n\nWriting text in R is called a script, a string of letters connected by the use of ” ” or ’ ’.\n\n\n\"Hello World!\"\n\n[1] \"Hello World!\"\n\n'Hello World!' \n\n[1] \"Hello World!\""
   },
   {
     "objectID": "slides/lec-1.html#writing-numbers",
     "href": "slides/lec-1.html#writing-numbers",
-    "title": "Data Visualization I & II",
+    "title": "Introduction to R",
     "section": "Writing Numbers",
     "text": "Writing Numbers\n\nTo output numbers you just type out the number. Also, note that I do not use a comma when writing out my four-digit number:\n\n\n5\n\n[1] 5\n\n75\n\n[1] 75\n\n1000\n\n[1] 1000"
   },
   {
     "objectID": "slides/lec-1.html#basic-calculations",
     "href": "slides/lec-1.html#basic-calculations",
-    "title": "Data Visualization I & II",
+    "title": "Introduction to R",
     "section": "Basic Calculations",
-    "text": "Basic Calculations\nR at its core is a gigantic calculator, so let’s practice doing basic calculations.\n\n# addition\n10 + 2\n\n# subtraction\n10 - 2\n\n# multipilication\n10 * 2\n\n# division\n10/2\n\n# exponent\n10^2"
+    "text": "Basic Calculations\nR at its core is a gigantic calculator, so let’s practice doing basic calculations.\n\n# addition\n10 + 2\n\n# subtraction\n10 - 2\n\n# multiplication\n10 * 2\n\n# division\n10/2\n\n# exponent\n10^2"
   },
   {
     "objectID": "slides/lec-1.html#basic-calculations-1",
     "href": "slides/lec-1.html#basic-calculations-1",
-    "title": "Data Visualization I & II",
+    "title": "Introduction to R",
     "section": "Basic Calculations",
-    "text": "Basic Calculations\nR at its core is a gigantic calculator, so let’s practice doing basic calculations.\n\n# addition\n10 + 2\n\n[1] 12\n\n# subtraction\n10 - 2\n\n[1] 8\n\n# multipilication\n10 * 2\n\n[1] 20\n\n# division\n10/2\n\n[1] 5\n\n# exponent\n10^2\n\n[1] 100"
+    "text": "Basic Calculations\nR at its core is a gigantic calculator, so let’s practice doing basic calculations.\n\n# addition\n10 + 2\n\n[1] 12\n\n# subtraction\n10 - 2\n\n[1] 8\n\n# multiplication\n10 * 2\n\n[1] 20\n\n# division\n10/2\n\n[1] 5\n\n# exponent\n10^2\n\n[1] 100"
   },
   {
     "objectID": "slides/lec-1.html#comments",
     "href": "slides/lec-1.html#comments",
-    "title": "Data Visualization I & II",
+    "title": "Introduction to R",
     "section": "Comments",
     "text": "Comments\nIt’s also important to annotate your code. It will help you write notes and explain what you are doing. To annotate your code, you will use the number sign #:\n\n# addition\n10 + 2\n\n[1] 12\n\n# the answer is 12"
   },
   {
     "objectID": "slides/lec-1.html#creating-objects",
     "href": "slides/lec-1.html#creating-objects",
-    "title": "Data Visualization I & II",
+    "title": "Introduction to R",
     "section": "Creating Objects",
-    "text": "Creating Objects\nIn R, we save our data in what we call objects! Objects store information about different types of elements. If you know any other coding languages, they typically call these variables.\n\nprint() is a function that ‘prints’ out an output from an object.\nR functions are like the verbs of the R coding language, they tell your computer what action to make with sets of information.\n\nA function is usually defined by a keyword and then parenthesis.\n\n\n\n# The &lt;- saves the caculation as math\nmath &lt;- 10 + 2\n#print()\nprint(math)\n\n[1] 12\n\n\n\n# The = saves the caculation as math\nmath = 10 + 2\n# print() will print out what is saved in the object math\nprint(math)\n\n[1] 12"
+    "text": "Creating Objects\nIn R, we save our data in what we call objects! Objects store information about different types of elements. If you know any other coding languages, they typically call these variables.\n\nprint() is a function that ‘prints’ out an output from an object.\nR functions are like the verbs of the R coding language; they tell your computer what action to make with sets of information.\n\nA function is usually defined by a keyword and then parentheses.\n\n\n\n# The &lt;- saves the calculation as math\nmath &lt;- 10 + 2\n#print()\nprint(math)\n\n[1] 12\n\n\n\n# The = saves the calculation as math\nmath = 10 + 2\n# print() will print out what is saved in the object math\nprint(math)\n\n[1] 12"
   },
   {
     "objectID": "slides/lec-1.html#data-types",
     "href": "slides/lec-1.html#data-types",
-    "title": "Data Visualization I & II",
+    "title": "Introduction to R",
     "section": "Data Types",
-    "text": "Data Types\nThere are 6 types of data in R that are important to know, but the essential ones are logical, numeric, and character.\nIn this class we are going to focus on only three: Logical, Numeric, and Characters.\n\nLogical Also known as boolean data, logical data is shown as TRUE or FALSE values:\n\n\nlogical1 &lt;- TRUE\nlogical2 &lt;- FALSE\n\n# The class() function outputs the data type of the object\nclass(logical1)\n\n[1] \"logical\"\n\nprint(logical2)\n\n[1] FALSE\n\nprint(class(logical2))\n\n[1] \"logical\""
+    "text": "Data Types\nThere are 6 types of data in R that are important to know, but the essential ones are logical, numeric, and character.\nIn this class we are going to focus on only three: Logical, Numeric, and Characters.\n\nLogical: also known as Boolean data, logical data is shown as TRUE or FALSE values:\n\n\nlogical1 &lt;- TRUE\nlogical2 &lt;- FALSE\n\n# The class() function outputs the data type of the object\nclass(logical1)\n\n[1] \"logical\"\n\nprint(logical2)\n\n[1] FALSE\n\nprint(class(logical2))\n\n[1] \"logical\""
   },
   {
     "objectID": "slides/lec-1.html#data-types-1",
     "href": "slides/lec-1.html#data-types-1",
-    "title": "Data Visualization I & II",
+    "title": "Introduction to R",
     "section": "Data Types",
-    "text": "Data Types\n\nNumeric represents all data types that are real numbers with or with out decimal points.\n\n\nheight &lt;- 5.5\nacres &lt;- 1000\n\nclass(height)\n\n[1] \"numeric\"\n\nprint(acres)\n\n[1] 1000\n\nprint(class(acres))\n\n[1] \"numeric\""
+    "text": "Data Types\n\nNumeric represents all data types that are real numbers with or without decimal points.\n\n\nheight &lt;- 5.5\nacres &lt;- 1000\n\nclass(height)\n\n[1] \"numeric\"\n\nprint(acres)\n\n[1] 1000\n\nprint(class(acres))\n\n[1] \"numeric\""
   },
   {
     "objectID": "slides/lec-1.html#data-types-2",
     "href": "slides/lec-1.html#data-types-2",
-    "title": "Data Visualization I & II",
+    "title": "Introduction to R",
     "section": "Data Types",
     "text": "Data Types\n\nCharacter specifies character or string values in a variable such as a singular character ‘A’ or a string of characters in ‘Apple’.\n\n\n# Use '' or \"\" to show it's a string of characters\nmotorsports &lt;- \"formula1\"\n\nprint(motorsports)\n\n[1] \"formula1\"\n\nprint(class(motorsports))\n\n[1] \"character\""
   },
   {
     "objectID": "slides/lec-1.html#what-is-a-package",
     "href": "slides/lec-1.html#what-is-a-package",
-    "title": "Data Visualization I & II",
+    "title": "Introduction to R",
     "section": "What is a Package?",
-    "text": "What is a Package?\n\nPackages are collections of R functions, data, and code compiled in a well-defined format\nSome packages come pre-installed in R.\nHowever, the majority do not, so you need to install them first using the r function install.packages\n\n\ninstall.packages(\"tidyverse\") # install this package"
+    "text": "What is a Package?\n\nPackages are collections of R functions, data, and code compiled in a well-defined format\nSome packages come pre-installed in R.\nHowever, the majority do not, so you need to install them first using the R function install.packages\n\n\ninstall.packages(\"tidyverse\") # install this package"
   },
   {
     "objectID": "slides/lec-1.html#using-a-package",
     "href": "slides/lec-1.html#using-a-package",
-    "title": "Data Visualization I & II",
+    "title": "Introduction to R",
     "section": "Using a Package",
-    "text": "Using a Package\n\nAfter installing the packages we need to “attach” the package.\n\nThis means telling your computer that you want to use that package during this working session\n\nYou can do this by using the function library() and the name of the package.\n\n\nlibrary(\"tidyverse\")"
+    "text": "Using a Package\n\nAfter installing the packages, we need to “attach” the package.\n\nThis means telling your computer that you want to use that package during this working session\n\nYou can do this by using the function library() and the name of the package.\n\n\nlibrary(\"tidyverse\")"
   },
   {
-    "objectID": "slides/lec-1.html#using-a-juanr",
-    "href": "slides/lec-1.html#using-a-juanr",
-    "title": "Data Visualization I & II",
-    "section": "Using a juanr",
-    "text": "Using a juanr\n\nWe need to install the package juanr\n\nThis package includes a curated set of data created by Professor Juan Tellez.\n\n\n\ninstall.packages(\"remotes\")\nremotes::install_github(\"hail2thief/juanr\")"
+    "objectID": "slides/lec-1.html#using-juanr",
+    "href": "slides/lec-1.html#using-juanr",
+    "title": "Introduction to R",
+    "section": "Using juanr",
+    "text": "Using juanr\n\nWe need to install the package juanr\n\nThis package includes a curated set of data created by Professor Juan Tellez.\n\n\n\ninstall.packages(\"remotes\")\nremotes::install_github(\"hail2thief/juanr\")"
   },
   {
     "objectID": "install/posit-cloud.html",
@@ -2723,11 +2730,22 @@
     ]
   },
   {
+    "objectID": "course-faq.html#what-is-an-r-project",
+    "href": "course-faq.html#what-is-an-r-project",
+    "title": "FAQ",
+    "section": "What is an R Project?",
+    "text": "What is an R Project?\nSetting up an R Project is now considered best practice, the project is a self-contained directory, that automatically will set the working directory to the project’s root folder.\nIt also can restore open scripts, history, and workspace settings.\n\nMore Info: https://martinctc.github.io/blog/rstudio-projects-and-working-directories-a-beginner%27s-guide/",
+    "crumbs": [
+      "Course information",
+      "FAQ"
+    ]
+  },
+  {
     "objectID": "course-faq.html#what-is-a-working-directory",
     "href": "course-faq.html#what-is-a-working-directory",
     "title": "FAQ",
     "section": "What is a working directory?",
-    "text": "What is a working directory?\nThe working directory is the folder on your computer that you have set to save files to during your working session in R. Essentially, you are telling your computer to save any new documents or updates to this specific folder, rather than maybe your downloads folder.\nIt is important to keep all the files associated with a given project, such as data, scripts, analytical results, and figures, together. To do this we need to make a working directory.\nFor full step-by-step instructions on creating and setting a working directory (with code for both Mac and Windows), see the Setting up a Working Directory section on the R Basics page.\nIf you still feel like this ⤸\n\nPLEASE PLEASE PLEASE come to office hours or email me!",
+    "text": "What is a working directory?\nThe working directory is the folder on your computer that you have set to save files to during your working session in R. Essentially, you are telling your computer to save any new documents or updates to this specific folder, rather than maybe your downloads folder.\nIt is important to keep all the files associated with a given project, such as data, scripts, analytical results, and figures, together. To do this we need to make a working directory.\n\nFor full step-by-step instructions on creating and setting a working directory (with code for both Mac and Windows), see the Setting up a Working Directory section on the R Basics page.\nIf you still feel like this ⤸\n\nPLEASE PLEASE PLEASE come to office hours or email me!",
     "crumbs": [
       "Course information",
       "FAQ"
