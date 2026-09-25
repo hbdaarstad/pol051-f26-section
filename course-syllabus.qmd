@@ -10,19 +10,19 @@ Welcome! Each section is an opportunity for students to meet in smaller groups a
 
 ## Course info
 
-+-----------------+-----------------+--------------------------+-----------------+
-|                 | Day             | Time                     | Location        |
-+=================+=================+==========================+=================+
-| Lectures        | Tue & Thur.     | 3:10 pm - 4:30 pm        | Wellman 2       |
-+-----------------+-----------------+--------------------------+-----------------+
-| Discussion/Lab  | Fri.            | A04: 9:00 AM - 9:50 AM   | Kerr Hall 451   |
-|                 |                 |                          |                 |
-|                 |                 | A05: 10:00 AM - 10:50 AM |                 |
-|                 |                 |                          |                 |
-|                 |                 | A06: 11:00 AM - 11:50 AM |                 |
-+-----------------+-----------------+--------------------------+-----------------+
-| Office Hours    | Tue             | 12:00 - 3:00 PM          | Kerr Hall 569   |
-+-----------------+-----------------+--------------------------+-----------------+
++----------------+---------------+--------------------------+---------------+
+|                | Day           | Time                     | Location      |
++================+===============+==========================+===============+
+| Lectures       | Tue & Thur.   | 3:10 pm - 4:30 pm        | Wellman 2     |
++----------------+---------------+--------------------------+---------------+
+| Discussion/Lab | Fri.          | A04: 9:00 AM - 9:50 AM   | Kerr Hall 451 |
+|                |               |                          |               |
+|                |               | A05: 10:00 AM - 10:50 AM |               |
+|                |               |                          |               |
+|                |               | A06: 11:00 AM - 11:50 AM |               |
++----------------+---------------+--------------------------+---------------+
+| Office Hours   | Tue           | 12:00 - 3:00 PM          | Kerr Hall 569 |
++----------------+---------------+--------------------------+---------------+
 
 ## Learning objectives
 
@@ -95,8 +95,6 @@ Regrade requests must be submitted within a week of when an assignment is return
 ### Policy on video recording course content
 
 If you feel that you need to record the lectures yourself, you must get permission from me ahead of time and these recordings should be used for personal study only, not for distribution. Unauthorized distribution is a cause for disciplinary action by the Judicial Board.
-
-*Note:* If you've read this far in the syllabus, email me a picture of your pet if you have one or your favorite meme for extra credit!
 
 ## Community and UC Davis Policies
 
