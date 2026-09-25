@@ -13,14 +13,14 @@ This page contains an outline of the topics and materials for the Fall 2026 disc
 
 | Week | Date | Topic | Readings | Slides |
 |:--:|:--:|:---|:--:|:--:|
-| [1](/weeks/week-1.html) | Fri, Sep 25 | Welcome to POL 051; R Basics | [📖](/weeks/week-1.html#prepare) | [🖥️](slides/lec-1.html) |
-| 2 | Fri, Oct 2 | Data Visualization |  |  |
-| 3 | Fri, Oct 9 | Data Wrangling |  |  |
-| 4 | Fri, Oct 16 | Relationships |  |  |
-| 5 | Fri, Oct 23 | Modeling |  |  |
-| 6 | Fri, Oct 30 | Causality |  |  |
-| 7 | Fri, Nov 6 | DAGs |  |  |
-| 8 | Fri, Nov 13 | Uncertainty & Hypothesis Testing |  |  |
-| 9 | Fri, Nov 20 | Prediction & Natural Experiments |  |  |
-| 10 | Fri, Nov 27 | *No section - Thanksgiving holiday* |  |  |
-| 11 | Fri, Dec 4 | Review & Wrap-up |  |  |
+| 0 | Fri, Sep 25 | *No Section* |  | |
+| [1](/weeks/week-1.html) | Fri, Oct 2 | Introduction to R | [📖](/weeks/week-1.html#prepare) | [🖥️](slides/lec-1.html) |
+| 2 | Fri, Oct 9 | Data Visualization |  |  |
+| 3 | Fri, Oct 16 | Data Wrangling |  |  |
+| 4 | Fri, Oct 23 | Relationships |  |  |
+| 5 | Fri, Oct 30 | Modeling |  |  |
+| 6 | Fri, Nov 6 | Causality  |  |  |
+| 7 | Fri, Nov 13 | Uncertainty & Hypothesis Testing |  |  |
+| 8 | Fri, Nov 20 | Prediction & Natural Experiments |  |  |
+| 9 | Fri, Nov 27 | *No section - Thanksgiving holiday* |  |  |
+| 10 | Fri, Dec 4 | Review & Wrap-up |  |  |
