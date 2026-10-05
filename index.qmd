@@ -15,7 +15,7 @@ This page contains an outline of the topics and materials for the Fall 2026 disc
 |:--:|:--:|:---|:--:|:--:|
 | 0 | Fri, Sep 25 | *No Section* |  | |
 | [1](/weeks/week-1.html) | Fri, Oct 2 | Introduction to R | [📖](/weeks/week-1.html#prepare) | [🖥️](slides/lec-1.html) |
-| 2 | Fri, Oct 9 | Data Visualization |  |  |
+| 2 | Fri, Oct 9 | Data Visualization | [📖](/weeks/week-2.html#prepare)  |  |
 | 3 | Fri, Oct 16 | Data Wrangling |  |  |
 | 4 | Fri, Oct 23 | Relationships |  |  |
 | 5 | Fri, Oct 30 | Modeling |  |  |

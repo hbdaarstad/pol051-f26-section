@@ -2,7 +2,7 @@
 title: "Introduction to R"
 subtitle: "POL 051 - A04, A05, & A06"
 author: "Haley Daarstad"
-footer:  "[haleydaarstad.com/pol051-su26/](http://haleydaarstad.com/pol051-su26/)"
+footer:  "[haleydaarstad.com/pol051-f26-section/](https://haleydaarstad.com/pol051-f26-section/)"
 logo: "images/logo.png"
 format:
   revealjs: 
@@ -105,7 +105,7 @@ knitr::include_graphics("img/sciencetific-lit.png")
 # Course info {.smaller}
 
 |   | Day | Time | Location |
-|----|----|----|----|
+|------------------|------------------|------------------|------------------|
 | Lectures | Tue & Thur. | 3:10 pm - 4:30 pm | Wellman 2 |
 | Discussion/Lab | Fri. | A04: 9:00 AM - 9:50 AM<br>A05: 10:00 AM - 10:50 AM<br>A06: 11:00 AM - 11:50 AM | Kerr Hall 451 |
 | Office Hours | Tue | 12:00 - 3:00 PM | Kerr Hall 569 |
