@@ -102,7 +102,7 @@ website:
             text: "Week 10"
       - section: "Code Examples"
         contents:
-          - href: supplemental/coming-soon-code.qmd
+          - href: supplemental/r-basics.qmd
             text: R Basics
           - href: supplemental/coming-soon-code.qmd
             text: Data Visualization (ggplot2)
