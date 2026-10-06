@@ -1,6 +1,6 @@
 ---
-title: "Data Visualization I & II"
-subtitle: "POL 051 - Summer Session 1 2026"
+title: "Data Visualization"
+subtitle: "POL 051 F26 A04, A05, & A06 2026"
 author: "Haley Daarstad"
 footer:  "[haleydaarstad.com/pol051-su26/](http://haleydaarstad.com/pol051-su26/)"
 logo: "images/logo.png"
@@ -42,7 +42,30 @@ library(socviz)
 # source
 source(here::here("slides/R/funcs.R"))
 
+# subset data to focus on 2007
+gap_07 = 
+  gapminder %>% 
+  filter(year == 2007)
 
+
+# calculate average life span by year
+life_yr = 
+  gapminder %>% 
+  select(year, lifeExp) %>% 
+  group_by(year) %>% 
+  summarise(avg_yrs = mean(lifeExp))
+
+# calculate average life expectancy by continent
+life_region = 
+  gap_07 %>% 
+  group_by(continent) %>% 
+  summarise(avg_yrs = mean(lifeExp))
+
+# calculate average life expectancy by continent-year
+life_region_yr = 
+  gapminder %>% 
+  group_by(continent, year) %>% 
+  summarise(avg_yrs = mean(lifeExp))
 
 
 ```
@@ -94,103 +117,6 @@ p1 + p2 + plot_annotation(title = "Life expectancy in the Americas (2007)",
 ```
 
 # Making graphs in `R` {background-color="#dc354a"}
-
-## The Gapminder dataset
-
-```{r}
-gapminder |> 
-  slice(1:5) |> 
-  kbl(digits = 0) %>% 
-  kable_styling(bootstrap_options = c("striped", "hover"))
-```
-
-## Rows are observations
-
-```{r}
-gapminder |> 
-  slice(1:5) |> 
-  kbl(digits = 0) %>% 
-  kable_styling(bootstrap_options = c("striped", "hover")) |> 
-  row_spec(row = 1, bold = TRUE, background = yellow)
-```
-
-In a dataset, **rows** are **observations**
-
-. . .
-
-The data we **observe** for *Afghanistan* in the year *1952*
-
-## Rows are observations
-
-```{r}
-gss_sm |> 
-  select(id, age, degree, race, sex) |> 
-  slice(1:5) |> 
-  kbl(digits = 0) %>% 
-  kable_styling(bootstrap_options = c("striped", "hover")) |> 
-  row_spec(row = 3, bold = TRUE, background = yellow)
-```
-
-In **survey** data, an observation is typically a **person** who took the survey (a *respondent*)
-
-## Columns are variables
-
-```{r}
-gapminder |> 
-  slice(1:5) |> 
-  kbl(digits = 0) %>% 
-  kable_styling(bootstrap_options = c("striped", "hover")) |> 
-  column_spec(column = 4, bold = TRUE, background = yellow)
-```
-
-In a dataset, **columns** are **variables**
-
-. . .
-
-Life expectancy and GDP per capita are some of the **variables** in our data
-
-## The final graph
-
-```{r,echo = FALSE}
-# subset data to focus on 2007
-gap_07 = 
-  gapminder %>% 
-  filter(year == 2007)
-
-
-# calculate average life span by year
-life_yr = 
-  gapminder %>% 
-  select(year, lifeExp) %>% 
-  group_by(year) %>% 
-  summarise(avg_yrs = mean(lifeExp))
-
-# calculate average life expectancy by continent
-life_region = 
-  gap_07 %>% 
-  group_by(continent) %>% 
-  summarise(avg_yrs = mean(lifeExp))
-
-# calculate average life expectancy by continent-year
-life_region_yr = 
-  gapminder %>% 
-  group_by(continent, year) %>% 
-  summarise(avg_yrs = mean(lifeExp))
-
-# plot
-ggplot(gap_07, aes(x = gdpPercap, y = lifeExp, 
-                      color = continent, 
-                      size = pop)) + 
-  geom_point() + 
-  labs(x = "GDP per capita ($USD, inflation-adjusted)", 
-       y = "Life expectancy (in years)", 
-       title = "Wealth and Health Around the World", 
-       subtitle = "Data from 2007. Source: gapminder package.",
-       color = NULL, size = "Population") + 
-  scale_size_continuous(labels = scales::comma) 
-```
-
-There are four variables on this graph. What are they?
 
 ## The **grammar** of graphics {.center}
 
@@ -462,14 +388,6 @@ knitr::kable(df)
 ```
 
 Take your *data*, map it onto an *aesthetic*, represent with a *geometry*
-
-# A graph for every season {.center}
-
--   There are many graphs out there
-
--   Each one works best in a specific **context**
-
--   Each one combines different **aesthetics** and **geometries**
 
 # Key plotting questions {.center}
 
@@ -1037,24 +955,6 @@ ggplot(gap_07, aes(x = gdpPercap, y = lifeExp)) +
 ```
 
 Take your aesthetics out of `aes()` and into `geom()` to make them *static*
-
-## Ridge plots (better than grouped histograms)
-
-```{r, echo = TRUE, out.width="70%"}
-library(ggridges)
-ggplot(gapminder, aes(y = continent, x = lifeExp)) + geom_density_ridges() 
-```
-
-Ease visual comparison + kinda looks like the Joy Division album
-
-## Beeswarm plots (alternative boxplots)
-
-```{r, echo = TRUE, out.width="60%"}
-library(ggbeeswarm)
-ggplot(gapminder, aes(y = continent, x = lifeExp)) +  geom_quasirandom() 
-```
-
-Beeswarm plots tell us something boxplots don't: the number observations by group; used recently by the [NYT](https://www.nytimes.com/2022/09/11/nyregion/hasidic-yeshivas-schools-new-york.html)
 
 ## Use different color and fill scales
 
