@@ -10,19 +10,19 @@ Welcome! Each section is an opportunity for students to meet in smaller groups a
 
 ## Course info
 
-+----------------+-------------+--------------------------+---------------+
-|                | Day         | Time                     | Location      |
-+================+=============+==========================+===============+
-| Lectures       | Tue & Thur. | 3:10 pm - 4:30 pm        | Wellman 2     |
-+----------------+-------------+--------------------------+---------------+
-| Discussion/Lab | Fri.        | A04: 9:00 AM - 9:50 AM   | Kerr Hall 451 |
-|                |             |                          |               |
-|                |             | A05: 10:00 AM - 10:50 AM |               |
-|                |             |                          |               |
-|                |             | A06: 11:00 AM - 11:50 AM |               |
-+----------------+-------------+--------------------------+---------------+
-| Office Hours   | Tue         | 12:00 - 3:00 PM          | Kerr Hall 569 |
-+----------------+-------------+--------------------------+---------------+
++----------------+--------------+--------------------------+---------------+
+|                | Day          | Time                     | Location      |
++================+==============+==========================+===============+
+| Lectures       | Tue & Thur.  | 3:10 pm - 4:30 pm        | Wellman 2     |
++----------------+--------------+--------------------------+---------------+
+| Discussion/Lab | Fri.         | A04: 9:00 AM - 9:50 AM   | Kerr Hall 451 |
+|                |              |                          |               |
+|                |              | A05: 10:00 AM - 10:50 AM |               |
+|                |              |                          |               |
+|                |              | A06: 11:00 AM - 11:50 AM |               |
++----------------+--------------+--------------------------+---------------+
+| Office Hours   | Tue          | 12:00 - 3:00 PM          | Kerr Hall 569 |
++----------------+--------------+--------------------------+---------------+
 
 ## Learning objectives
 
@@ -71,6 +71,22 @@ If there are circumstances that prevent you from attending section, you receive 
 If you are absent due to illness, religious reasons, etc., please email me directly. Please note that work conflicts are not considered an excused absence.
 
 ## Course policies
+
+### Try Three Things Rule
+
+Before you reach out to me with a question about the course, you must try three things:
+
+1.   Read the Syllabus
+
+    -   Can your question be answered by the syllabus?
+
+2.  Check the lectures or readings
+
+    -    Was this already discussed in the lecture material?
+
+3.  Ask a classmate
+
+    -   Does my classmate know this information?
 
 ### Academic integrity
 
