@@ -1097,7 +1097,7 @@
     "href": "slides/lec-2.html#multiple-time-series",
     "title": "Data Visualization",
     "section": "Multiple time series",
-    "text": "Multiple time series\nSometimes we observe multiple units over time; how can we visualize these?\n\n\n\n\n\ncountry\ncontinent\nyear\nlifeExp\npop\ngdpPercap\n\n\n\n\nUnited States\nAmericas\n2002\n77.310\n287675526\n39097.0995\n\n\nGhana\nAfrica\n1967\n48.072\n8490213\n1125.6972\n\n\nDenmark\nEurope\n1997\n76.110\n5283663\n29804.3457\n\n\nBolivia\nAmericas\n2002\n63.883\n8445134\n3413.2627\n\n\nGhana\nAfrica\n1992\n57.501\n16278738\n925.0602"
+    "text": "Multiple time series\nSometimes we observe multiple units over time; how can we visualize these?\n\n\n\n\n\ncountry\ncontinent\nyear\nlifeExp\npop\ngdpPercap\n\n\n\n\nGhana\nAfrica\n2007\n60.022\n22873338\n1327.609\n\n\nGhana\nAfrica\n2002\n58.453\n20550751\n1111.985\n\n\nUnited States\nAmericas\n1952\n68.440\n157553000\n13990.482\n\n\nUnited States\nAmericas\n1977\n73.380\n220239000\n24072.632\n\n\nDenmark\nEurope\n1977\n74.690\n5088419\n20422.901"
   },
   {
     "objectID": "slides/lec-2.html#multiple-time-series-1",
@@ -1139,7 +1139,7 @@
     "href": "slides/lec-2.html#your-turn-organs",
     "title": "Data Visualization",
     "section": "🚨 Your turn: organs 🫁🧠 🚨",
-    "text": "🚨 Your turn: organs 🫁🧠 🚨\n\n\nIn some countries, when you die it is assumed you want to donate your organs\n\nTo not donate, you have to opt out\nIn other countries, when you die it is assumed you do not want to donate your organs\nTo not donate, you have to opt in\n\n\n\n\n\nSample from organdata\n\n\ncountry\ndonors\nopt\n\n\n\n\nCanada\n13.9\nIn\n\n\nUnited States\n20.1\nIn\n\n\nNetherlands\n10.9\nIn\n\n\nAustralia\n12.3\nIn\n\n\nIreland\nNA\nIn"
+    "text": "🚨 Your turn: organs 🫁🧠 🚨\n\n\nIn some countries, when you die it is assumed you want to donate your organs\n\nTo not donate, you have to opt out\nIn other countries, when you die it is assumed you do not want to donate your organs\nTo not donate, you have to opt in\n\n\n\n\n\nSample from organdata\n\n\ncountry\ndonors\nopt\n\n\n\n\nFrance\n16.2\nOut\n\n\nUnited States\n17.6\nIn\n\n\nDenmark\n12.9\nIn\n\n\nDenmark\n11.4\nIn\n\n\nNorway\n15.6\nOut"
   },
   {
     "objectID": "slides/lec-2.html#your-turn-organs-1",

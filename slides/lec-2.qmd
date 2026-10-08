@@ -2,7 +2,7 @@
 title: "Data Visualization"
 subtitle: "POL 051 F26 A04, A05, & A06 2026"
 author: "Haley Daarstad"
-footer:  "[haleydaarstad.com/pol051-su26/](http://haleydaarstad.com/pol051-su26/)"
+footer:  "[haleydaarstad.com/pol051-f26-section/](https://haleydaarstad.com/pol051-f26-section/)"
 logo: "images/logo.png"
 format:
   revealjs: 
