@@ -929,14 +929,7 @@
     "href": "slides/lec-2.html#mapping-data-to-aesthetics",
     "title": "Data Visualization",
     "section": "Mapping data to aesthetics",
-    "text": "Mapping data to aesthetics\n\n\n\n\n\nData\nAesthetic\nGeometry\n\n\n\n\nGDP per capita\nPosition(x-axis)\nPoint\n\n\nLife expectancy\nPosition (y-axis)\nPoint\n\n\nContinent\nColor\nPoint\n\n\nPopulation\nSize\nPoint\n\n\n\n\n\n\nTake the data,\nmap it onto an aesthetic,\nand visualize it with a geometry"
-  },
-  {
-    "objectID": "slides/lec-2.html#in-r",
-    "href": "slides/lec-2.html#in-r",
-    "title": "Data Visualization",
-    "section": "In R",
-    "text": "In R\n\n\n\n\n\nData\naes()\ngeom_\n\n\n\n\ngdpPercap\nx\ngeom_point()\n\n\nlifeExp\ny\ngeom_point()\n\n\ncontinent\ncolor\ngeom_point()\n\n\npop\nsize\ngeom_point()\n\n\n\n\n\nUse the variable names exactly as they appear in the data, map them onto the exact function names in R"
+    "text": "Mapping data to aesthetics\n\nTake the data,\nmap it onto an aesthetic,\nand visualize it with a geometry"
   },
   {
     "objectID": "slides/lec-2.html#ggplot-our-first-function",
@@ -957,7 +950,7 @@
     "href": "slides/lec-2.html#use-aes-to-map-variables-to-aesthetics",
     "title": "Data Visualization",
     "section": "Use aes() to map variables to aesthetics",
-    "text": "Use aes() to map variables to aesthetics\n\nggplot(data = gap_07, aes(x = gdpPercap, y = lifeExp))"
+    "text": "Use aes() to map variables to aesthetics\n\nggplot(data = gap_07, aes(x = gdpPercap, y = lifeExp)) \n\n\n\n\n\n\n\n\nImportant\n\n\nUse the variable names exactly as they appear in the data, map them onto the exact function names in R"
   },
   {
     "objectID": "slides/lec-2.html#add-geometries-and-layers-using",
@@ -1037,18 +1030,11 @@
     "text": "Scatterplots are for continuous variables\n\nPlot is uninformative because continent is discrete (i.e., a category)"
   },
   {
-    "objectID": "slides/lec-2.html#the-presidents",
-    "href": "slides/lec-2.html#the-presidents",
-    "title": "Data Visualization",
-    "section": "🇺🇸 The presidents 🇺🇸",
-    "text": "🇺🇸 The presidents 🇺🇸\n\nelections_historic %&gt;% \n  select(year, winner, win_party, ec_pct, popular_pct, two_term) %&gt;% \n  slice_head(n = 4) %&gt;% \n  knitr::kable(caption = \"Sample of presidential elections\", digits = 2)"
-  },
-  {
     "objectID": "slides/lec-2.html#the-presidents-your-turn",
     "href": "slides/lec-2.html#the-presidents-your-turn",
     "title": "Data Visualization",
     "section": "🇺🇸 🚨 The presidents Your turn 🚨🇺🇸",
-    "text": "🇺🇸 🚨 The presidents Your turn 🚨🇺🇸\n\nMake a plot of presidential election results using the elections_historic dataset\n% of popular vote (x-axis, popular_pct) and % of electoral college vote (y-axis, ec_pct)\nmap the winner’s party to the color aesthetic, whether or not president served two terms to shape, and add labels to each point (use winner_label)\n\n\ninstall.packages(\"socviz\")\nlibrary(socviz)\n\n?elections_historic"
+    "text": "🇺🇸 🚨 The presidents Your turn 🚨🇺🇸\n\nMake a plot of presidential election results using the elections_historic dataset\n% of popular vote (x-axis, popular_pct) and % of electoral college vote (y-axis, ec_pct)\nmap the winner’s party to the color aesthetic, whether or not president served two terms to shape, and add labels to each point (use winner_label)\n\nUse geom_text() to add text labels, make sure to put a label = in the aes() to tell how to label it\n\n\n\ninstall.packages(\"tidyverse\")\ninstall.packages(\"socviz\")\n\nlibrary(tidyverse)\nlibrary(socviz)\n\n?elections_historic"
   },
   {
     "objectID": "slides/lec-2.html#your-turn-answer",
@@ -1090,14 +1076,14 @@
     "href": "slides/lec-2.html#your-turn-recession-answer",
     "title": "Data Visualization",
     "section": "🚨 Your turn: 💸Recession💸 Answer 🚨",
-    "text": "🚨 Your turn: 💸Recession💸 Answer 🚨"
+    "text": "🚨 Your turn: 💸Recession💸 Answer 🚨\n\n?economics\n\nggplot(economics, aes(x = date, y = unemploy)) +\n  geom_line()"
   },
   {
     "objectID": "slides/lec-2.html#multiple-time-series",
     "href": "slides/lec-2.html#multiple-time-series",
     "title": "Data Visualization",
     "section": "Multiple time series",
-    "text": "Multiple time series\nSometimes we observe multiple units over time; how can we visualize these?\n\n\n\n\n\ncountry\ncontinent\nyear\nlifeExp\npop\ngdpPercap\n\n\n\n\nGhana\nAfrica\n2007\n60.022\n22873338\n1327.609\n\n\nGhana\nAfrica\n2002\n58.453\n20550751\n1111.985\n\n\nUnited States\nAmericas\n1952\n68.440\n157553000\n13990.482\n\n\nUnited States\nAmericas\n1977\n73.380\n220239000\n24072.632\n\n\nDenmark\nEurope\n1977\n74.690\n5088419\n20422.901"
+    "text": "Multiple time series\nSometimes we observe multiple units over time; how can we visualize these?\n\n\n\n\n\ncountry\ncontinent\nyear\nlifeExp\npop\ngdpPercap\n\n\n\n\nEgypt\nAfrica\n1962\n46.99200\n28173309\n1693.3359\n\n\nBolivia\nAmericas\n1967\n45.03200\n4040665\n2586.8861\n\n\nChina\nAsia\n1952\n44.00000\n556263527\n400.4486\n\n\nEgypt\nAfrica\n1967\n49.29300\n31681188\n1814.8807\n\n\nChina\nAsia\n1972\n63.11888\n862030000\n676.9001"
   },
   {
     "objectID": "slides/lec-2.html#multiple-time-series-1",
@@ -1139,14 +1125,14 @@
     "href": "slides/lec-2.html#your-turn-organs",
     "title": "Data Visualization",
     "section": "🚨 Your turn: organs 🫁🧠 🚨",
-    "text": "🚨 Your turn: organs 🫁🧠 🚨\n\n\nIn some countries, when you die it is assumed you want to donate your organs\n\nTo not donate, you have to opt out\nIn other countries, when you die it is assumed you do not want to donate your organs\nTo not donate, you have to opt in\n\n\n\n\n\nSample from organdata\n\n\ncountry\ndonors\nopt\n\n\n\n\nFrance\n16.2\nOut\n\n\nUnited States\n17.6\nIn\n\n\nDenmark\n12.9\nIn\n\n\nDenmark\n11.4\nIn\n\n\nNorway\n15.6\nOut"
+    "text": "🚨 Your turn: organs 🫁🧠 🚨\n\n\nIn some countries, when you die it is assumed you want to donate your organs\n\nTo not donate, you have to opt out\nIn other countries, when you die it is assumed you do not want to donate your organs\nTo not donate, you have to opt in\n\n\n\n\n\nSample from organdata\n\n\ncountry\ndonors\nopt\n\n\n\n\nBelgium\n22.5\nOut\n\n\nCanada\n14.8\nIn\n\n\nSweden\n11.9\nOut\n\n\nSpain\n25.0\nOut\n\n\nFinland\n16.3\nNA"
   },
   {
     "objectID": "slides/lec-2.html#your-turn-organs-1",
     "href": "slides/lec-2.html#your-turn-organs-1",
     "title": "Data Visualization",
     "section": "🚨 Your turn: organs 🫁🧠 🚨",
-    "text": "🚨 Your turn: organs 🫁🧠 🚨\nUsing the organdata dataset:\n\nMake a histogram of country’s organ donation rate (donors)\nThen set the fill aesthetic to opt, whether donors have to opt in or opt out of donating. How does the graph change?"
+    "text": "🚨 Your turn: organs 🫁🧠 🚨\nUsing the organdata dataset in the package socviz:\n\nMake a histogram of country’s organ donation rate (donors)\nThen set the fill aesthetic to opt, whether donors have to opt in or opt out of donating. How does the graph change?"
   },
   {
     "objectID": "slides/lec-2.html#your-turn-organs-answer",
@@ -2338,7 +2324,7 @@
     "href": "index.html",
     "title": "POL 051: The Scientific Study of Politics",
     "section": "",
-    "text": "This page contains an outline of the topics and materials for the Fall 2026 discussion sections (A04, A05, A06). Note that this schedule will be updated as the quarter progresses, with all changes documented here.\n\n\n\n\n\n\n\n\nTA\nLecture\nDiscussion/Lab\n\n\n\n\nHaley Daarstad569 Kerr Hallhbdaarstad@ucdavis.eduOffice Hours: Tue 12:00 - 3:00 PM\nTuesday & Thursday3:10 pm - 4:30 pmWellman Hall 2\nFridayA04: 9:00 am - 9:50 amA05: 10:00 am - 10:50 amA06: 11:00 am - 11:50 amKerr Hall 451\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\nReadings\nSlides\n\n\n\n\n0\nFri, Sep 25\nNo Section\n\n\n\n\n1\nFri, Oct 2\nIntroduction to R\n📖\n🖥️\n\n\n2\nFri, Oct 9\nData Visualization\n📖\n\n\n\n3\nFri, Oct 16\nData Wrangling\n\n\n\n\n4\nFri, Oct 23\nRelationships\n\n\n\n\n5\nFri, Oct 30\nModeling\n\n\n\n\n6\nFri, Nov 6\nCausality\n\n\n\n\n7\nFri, Nov 13\nUncertainty & Hypothesis Testing\n\n\n\n\n8\nFri, Nov 20\nPrediction & Natural Experiments\n\n\n\n\n9\nFri, Nov 27\nNo section - Thanksgiving holiday\n\n\n\n\n10\nFri, Dec 4\nReview & Wrap-up",
+    "text": "This page contains an outline of the topics and materials for the Fall 2026 discussion sections (A04, A05, A06). Note that this schedule will be updated as the quarter progresses, with all changes documented here.\n\n\n\n\n\n\n\n\nTA\nLecture\nDiscussion/Lab\n\n\n\n\nHaley Daarstad569 Kerr Hallhbdaarstad@ucdavis.eduOffice Hours: Tue 12:00 - 3:00 PM\nTuesday & Thursday3:10 pm - 4:30 pmWellman Hall 2\nFridayA04: 9:00 am - 9:50 amA05: 10:00 am - 10:50 amA06: 11:00 am - 11:50 amKerr Hall 451\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\nReadings\nSlides\n\n\n\n\n0\nFri, Sep 25\nNo Section\n\n\n\n\n1\nFri, Oct 2\nIntroduction to R\n📖\n🖥️\n\n\n2\nFri, Oct 9\nData Visualization\n📖\n🖥️\n\n\n3\nFri, Oct 16\nData Wrangling\n\n\n\n\n4\nFri, Oct 23\nRelationships\n\n\n\n\n5\nFri, Oct 30\nModeling\n\n\n\n\n6\nFri, Nov 6\nCausality\n\n\n\n\n7\nFri, Nov 13\nUncertainty & Hypothesis Testing\n\n\n\n\n8\nFri, Nov 20\nPrediction & Natural Experiments\n\n\n\n\n9\nFri, Nov 27\nNo section - Thanksgiving holiday\n\n\n\n\n10\nFri, Dec 4\nReview & Wrap-up",
     "crumbs": [
       "Course information",
       "Schedule"

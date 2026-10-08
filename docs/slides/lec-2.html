@@ -243,85 +243,11 @@ Haley Daarstad
 </section>
 <section id="mapping-data-to-aesthetics" class="slide level2">
 <h2>Mapping data to aesthetics</h2>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Data</th>
-<th style="text-align: left;">Aesthetic</th>
-<th style="text-align: left;">Geometry</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">GDP per capita</td>
-<td style="text-align: left;">Position(x-axis)</td>
-<td style="text-align: left;">Point</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Life expectancy</td>
-<td style="text-align: left;">Position (y-axis)</td>
-<td style="text-align: left;">Point</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Continent</td>
-<td style="text-align: left;">Color</td>
-<td style="text-align: left;">Point</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Population</td>
-<td style="text-align: left;">Size</td>
-<td style="text-align: left;">Point</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
 <ol type="1">
 <li class="fragment"><p>Take the <strong>data</strong>,</p></li>
 <li class="fragment"><p>map it onto an <strong>aesthetic</strong>,</p></li>
 <li class="fragment"><p>and visualize it with a <strong>geometry</strong></p></li>
 </ol>
-</section>
-<section id="in-r" class="slide level2">
-<h2>In R</h2>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th style="text-align: left;">Data</th>
-<th style="text-align: left;">aes()</th>
-<th style="text-align: left;">geom_</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">gdpPercap</td>
-<td style="text-align: left;">x</td>
-<td style="text-align: left;">geom_point()</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">lifeExp</td>
-<td style="text-align: left;">y</td>
-<td style="text-align: left;">geom_point()</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">continent</td>
-<td style="text-align: left;">color</td>
-<td style="text-align: left;">geom_point()</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">pop</td>
-<td style="text-align: left;">size</td>
-<td style="text-align: left;">geom_point()</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<p>Use the variable names <em>exactly</em> as they appear in the data, map them onto the <em>exact</em> function names in R</p>
 </section>
 <section id="ggplot-our-first-function" class="slide level2">
 <h2><code>ggplot()</code>: our first function 😢</h2>
@@ -329,7 +255,7 @@ Haley Daarstad
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">ggplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"><p>don’t fret; You will not memorize these as they appear on screen</p>
+<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"><p>don’t fret; You will not memorize these as they appear on screen</p>
 </section>
 <section id="ggplot-specify-the-data" class="slide level2">
 <h2><code>ggplot</code>: specify the data</h2>
@@ -337,21 +263,34 @@ Haley Daarstad
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> gap_07) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
 <section id="use-aes-to-map-variables-to-aesthetics" class="slide level2">
 <h2>Use <code>aes()</code> to map variables to aesthetics</h2>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> gap_07, <span class="fu">aes</span>(<span class="at">x =</span> gdpPercap, <span class="at">y =</span> lifeExp)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"><div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Use the variable names <em>exactly</em> as they appear in the data, map them onto the <em>exact</em> function names in R</p>
+</div>
+</div>
+</div>
+</section>
 <section id="add-geometries-and-layers-using" class="slide level2">
 <h2>add geometries and layers using <code>+</code></h2>
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">ggplot</span>(<span class="at">data =</span> gap_07, <span class="fu">aes</span>(<span class="at">x =</span> gdpPercap, <span class="at">y =</span> lifeExp)) <span class="sc">+</span> <span class="fu">geom_point</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section>
+<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section>
 <section id="mapping-population-to-size-in-aes" class="slide level2">
 <h2>mapping population to size in <code>aes()</code></h2>
 <div class="cell" data-layout-align="center">
@@ -359,7 +298,7 @@ Haley Daarstad
 <span id="cb5-2"><a></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section>
+<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section>
 <section id="mapping-continent-to-color-in-aes" class="slide level2">
 <h2>mapping continent to color in <code>aes()</code></h2>
 <div class="cell" data-layout-align="center">
@@ -367,7 +306,7 @@ Haley Daarstad
 <span id="cb6-2"><a></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section>
+<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section>
 <section id="other-layers-add-the-missing-titles-with-labs" class="slide level2">
 <h2>Other layers: add the missing titles with <code>labs()</code></h2>
 <div class="cell" data-layout-align="center">
@@ -377,7 +316,7 @@ Haley Daarstad
 <span id="cb7-4"><a></a>       <span class="at">color =</span> <span class="st">""</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"><p>Notice that text is placed within <strong>quotation marks</strong>!</p>
+<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"><p>Notice that text is placed within <strong>quotation marks</strong>!</p>
 </section>
 <section id="other-layers-add-a-theme" class="slide level2">
 <h2>Other layers: add a theme</h2>
@@ -388,7 +327,7 @@ Haley Daarstad
 <span id="cb8-4"><a></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"><p>There are many more themes, <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">here are a few</a></p>
+<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"><p>There are many more themes, <a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">here are a few</a></p>
 </section>
 <section id="the-final-formula" class="slide level2">
 <h2>The final formula</h2>
@@ -552,7 +491,7 @@ Haley Daarstad
 <section id="graph-1---the-scatterplot" class="slide level2">
 <h2>Graph 1 - The Scatterplot</h2>
 
-<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-14-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"><div class="fragment">
+<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-12-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"><div class="fragment">
 <p>The <strong>scatterplot</strong> visualizes the relationship between two <strong>continuous</strong> variables</p>
 </div>
 <div class="fragment">
@@ -642,56 +581,50 @@ Haley Daarstad
 <section id="scatterplots-are-for-continuous-variables" class="slide level2">
 <h2>Scatterplots are for <em>continuous</em> variables</h2>
 
-<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-18-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"><p>Plot is uninformative because continent is <em>discrete</em> (i.e., a category)</p>
-</section>
-<section id="the-presidents" class="slide level2">
-<h2>🇺🇸 The presidents 🇺🇸</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>elections_historic <span class="sc">%&gt;%</span> </span>
-<span id="cb11-2"><a></a>  <span class="fu">select</span>(year, winner, win_party, ec_pct, popular_pct, two_term) <span class="sc">%&gt;%</span> </span>
-<span id="cb11-3"><a></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">4</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb11-4"><a></a>  knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="at">caption =</span> <span class="st">"Sample of presidential elections"</span>, <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-16-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"><p>Plot is uninformative because continent is <em>discrete</em> (i.e., a category)</p>
 </section>
 <section id="the-presidents-your-turn" class="slide level2">
 <h2>🇺🇸 🚨 The presidents Your turn 🚨🇺🇸</h2>
 <ol type="1">
 <li class="fragment"><p>Make a plot of presidential election results using the <code>elections_historic</code> dataset</p></li>
 <li class="fragment"><p>% of popular vote (x-axis, <code>popular_pct</code>) and % of electoral college vote (y-axis, <code>ec_pct</code>)</p></li>
-<li class="fragment"><p>map the winner’s party to the <code>color</code> aesthetic, whether or not president served two terms to <code>shape</code>, and add labels to each point (use <code>winner_label</code>)</p></li>
+<li class="fragment"><p>map the winner’s party to the <code>color</code> aesthetic, whether or not president served two terms to <code>shape</code>, and add labels to each point (use <code>winner_label</code>)</p>
+<ul>
+<li class="fragment">Use <code>geom_text()</code> to add text labels, make sure to put a <code>label =</code> in the <code>aes()</code> to tell how to label it</li>
+</ul></li>
 </ol>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">install.packages</span>(<span class="st">"socviz"</span>)</span>
-<span id="cb12-2"><a></a><span class="fu">library</span>(socviz)</span>
-<span id="cb12-3"><a></a></span>
-<span id="cb12-4"><a></a>?elections_historic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
+<span id="cb11-2"><a></a><span class="fu">install.packages</span>(<span class="st">"socviz"</span>)</span>
+<span id="cb11-3"><a></a></span>
+<span id="cb11-4"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb11-5"><a></a><span class="fu">library</span>(socviz)</span>
+<span id="cb11-6"><a></a></span>
+<span id="cb11-7"><a></a>?elections_historic</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_ae964c2a" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_e1ca68be" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
 <section id="your-turn-answer" class="slide level2">
 <h2>🚨 Your turn: Answer 🚨</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">ggplot</span>(elections_historic, <span class="fu">aes</span>(<span class="at">x =</span> popular_pct, <span class="at">y =</span> ec_pct, </span>
-<span id="cb13-2"><a></a>                               <span class="at">color =</span> win_party, </span>
-<span id="cb13-3"><a></a>                               <span class="at">shape =</span> two_term,</span>
-<span id="cb13-4"><a></a>                               <span class="at">label =</span> winner_label)) <span class="sc">+</span></span>
-<span id="cb13-5"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb13-6"><a></a>  <span class="fu">geom_text</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">ggplot</span>(elections_historic, <span class="fu">aes</span>(<span class="at">x =</span> popular_pct, <span class="at">y =</span> ec_pct, </span>
+<span id="cb12-2"><a></a>                               <span class="at">color =</span> win_party, </span>
+<span id="cb12-3"><a></a>                               <span class="at">shape =</span> two_term,</span>
+<span id="cb12-4"><a></a>                               <span class="at">label =</span> winner_label)) <span class="sc">+</span></span>
+<span id="cb12-5"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb12-6"><a></a>  <span class="fu">geom_text</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-22-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"><p>What’s going on here?</p>
-</section>
-<section id="section" class="slide level2">
-<h2></h2>
+<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-19-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"><p>What’s going on here?</p>
 </section>
 <section id="graph-2-the-time-series" class="slide level2">
 <h2>Graph 2: the time series</h2>
 
-<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-23-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"><p>The <strong>time series</strong> uses a <em>line</em> to show you how a variable (y-axis) moves over time (x-axis)</p>
+<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-20-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"><p>The <strong>time series</strong> uses a <em>line</em> to show you how a variable (y-axis) moves over time (x-axis)</p>
 </section>
 <section id="the-grammar-of-time-series" class="slide level2">
 <h2>The grammar of time series</h2>
@@ -772,11 +705,11 @@ Haley Daarstad
 <section id="the-time-series" class="slide level2">
 <h2>The time series</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">ggplot</span>(life_yr, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> avg_yrs)) <span class="sc">+</span></span>
-<span id="cb14-2"><a></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">ggplot</span>(life_yr, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> avg_yrs)) <span class="sc">+</span></span>
+<span id="cb13-2"><a></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-26-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-23-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
 <section id="your-turn-recession" class="slide level2">
 <h2>🚨 Your turn: 💸Recession💸 🚨</h2>
 <ul>
@@ -788,14 +721,20 @@ Haley Daarstad
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_6506d928" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_93f91b58" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
 <section id="your-turn-recession-answer" class="slide level2">
 <h2>🚨 Your turn: 💸Recession💸 Answer 🚨</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>?economics</span>
+<span id="cb14-2"><a></a></span>
+<span id="cb14-3"><a></a><span class="fu">ggplot</span>(economics, <span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> unemploy)) <span class="sc">+</span></span>
+<span id="cb14-4"><a></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
-<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-28-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+</div>
+<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-25-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
 <section id="multiple-time-series" class="slide level2">
 <h2>Multiple time series</h2>
 <p>Sometimes we observe multiple <strong>units</strong> over time; how can we visualize these?</p>
@@ -814,44 +753,44 @@ Haley Daarstad
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Ghana</td>
+<td style="text-align: left;">Egypt</td>
 <td style="text-align: left;">Africa</td>
-<td style="text-align: right;">2007</td>
-<td style="text-align: right;">60.022</td>
-<td style="text-align: right;">22873338</td>
-<td style="text-align: right;">1327.609</td>
+<td style="text-align: right;">1962</td>
+<td style="text-align: right;">46.99200</td>
+<td style="text-align: right;">28173309</td>
+<td style="text-align: right;">1693.3359</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Ghana</td>
-<td style="text-align: left;">Africa</td>
-<td style="text-align: right;">2002</td>
-<td style="text-align: right;">58.453</td>
-<td style="text-align: right;">20550751</td>
-<td style="text-align: right;">1111.985</td>
+<td style="text-align: left;">Bolivia</td>
+<td style="text-align: left;">Americas</td>
+<td style="text-align: right;">1967</td>
+<td style="text-align: right;">45.03200</td>
+<td style="text-align: right;">4040665</td>
+<td style="text-align: right;">2586.8861</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">United States</td>
-<td style="text-align: left;">Americas</td>
+<td style="text-align: left;">China</td>
+<td style="text-align: left;">Asia</td>
 <td style="text-align: right;">1952</td>
-<td style="text-align: right;">68.440</td>
-<td style="text-align: right;">157553000</td>
-<td style="text-align: right;">13990.482</td>
+<td style="text-align: right;">44.00000</td>
+<td style="text-align: right;">556263527</td>
+<td style="text-align: right;">400.4486</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">United States</td>
-<td style="text-align: left;">Americas</td>
-<td style="text-align: right;">1977</td>
-<td style="text-align: right;">73.380</td>
-<td style="text-align: right;">220239000</td>
-<td style="text-align: right;">24072.632</td>
+<td style="text-align: left;">Egypt</td>
+<td style="text-align: left;">Africa</td>
+<td style="text-align: right;">1967</td>
+<td style="text-align: right;">49.29300</td>
+<td style="text-align: right;">31681188</td>
+<td style="text-align: right;">1814.8807</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Denmark</td>
-<td style="text-align: left;">Europe</td>
-<td style="text-align: right;">1977</td>
-<td style="text-align: right;">74.690</td>
-<td style="text-align: right;">5088419</td>
-<td style="text-align: right;">20422.901</td>
+<td style="text-align: left;">China</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">1972</td>
+<td style="text-align: right;">63.11888</td>
+<td style="text-align: right;">862030000</td>
+<td style="text-align: right;">676.9001</td>
 </tr>
 </tbody>
 </table>
@@ -865,19 +804,19 @@ Haley Daarstad
 <span id="cb15-2"><a></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-30-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"><div class="fragment">
+<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-27-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"><div class="fragment">
 <p>These are useful for <em>comparing</em> <strong>trends</strong> across units (countries, places, people, etc)</p>
 </div>
 </section>
 <section id="graph-3-the-histogram" class="slide level2">
 <h2>Graph 3: the histogram</h2>
 
-<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-31-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"><p>A <strong>histogram</strong> shows you how a continuous variable is <em>distributed</em></p>
+<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-28-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"><p>A <strong>histogram</strong> shows you how a continuous variable is <em>distributed</em></p>
 </section>
 <section id="interpreting-histograms" class="slide level2">
 <h2>Interpreting histograms</h2>
 
-<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-32-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"><aside class="notes">
+<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-29-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"><aside class="notes">
 <p>What do we see here?</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
@@ -962,7 +901,7 @@ Haley Daarstad
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a><span class="fu">ggplot</span>(gap_07, <span class="fu">aes</span>(<span class="at">x =</span> lifeExp)) <span class="sc">+</span> <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-35-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-32-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
 <section id="your-turn-organs" class="slide level2">
 <h2>🚨 Your turn: organs 🫁🧠 🚨</h2>
 <div class="columns">
@@ -987,29 +926,29 @@ Haley Daarstad
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">France</td>
-<td style="text-align: right;">16.2</td>
+<td style="text-align: left;">Belgium</td>
+<td style="text-align: right;">22.5</td>
 <td style="text-align: left;">Out</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">United States</td>
-<td style="text-align: right;">17.6</td>
+<td style="text-align: left;">Canada</td>
+<td style="text-align: right;">14.8</td>
 <td style="text-align: left;">In</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Denmark</td>
-<td style="text-align: right;">12.9</td>
-<td style="text-align: left;">In</td>
+<td style="text-align: left;">Sweden</td>
+<td style="text-align: right;">11.9</td>
+<td style="text-align: left;">Out</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Denmark</td>
-<td style="text-align: right;">11.4</td>
-<td style="text-align: left;">In</td>
+<td style="text-align: left;">Spain</td>
+<td style="text-align: right;">25.0</td>
+<td style="text-align: left;">Out</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Norway</td>
-<td style="text-align: right;">15.6</td>
-<td style="text-align: left;">Out</td>
+<td style="text-align: left;">Finland</td>
+<td style="text-align: right;">16.3</td>
+<td style="text-align: left;">NA</td>
 </tr>
 </tbody>
 </table>
@@ -1021,14 +960,14 @@ Haley Daarstad
 </section>
 <section id="your-turn-organs-1" class="slide level2">
 <h2>🚨 Your turn: organs 🫁🧠 🚨</h2>
-<p>Using the <code>organdata</code> dataset:</p>
+<p>Using the <code>organdata</code> dataset in the package <code>socviz</code>:</p>
 <ol type="1">
 <li class="fragment"><p>Make a histogram of country’s organ donation rate (<code>donors</code>)</p></li>
 <li class="fragment"><p>Then set the fill aesthetic to <code>opt</code>, whether donors have to opt in or opt out of donating. How does the graph change?</p></li>
 </ol>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_ed347c8f" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_0087971c" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -1039,11 +978,11 @@ Haley Daarstad
 <span id="cb17-2"><a></a>  <span class="fu">geom_histogram</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-38-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-35-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
 <section id="graph-4-the-barplot" class="slide level2">
 <h2>Graph 4: the barplot</h2>
 
-<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-39-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"><div class="fragment">
+<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-36-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"><div class="fragment">
 <p>Barplots place a <em>category</em> (place, country, person, etc) on one axis and a <em>quantity</em> (amount, average, median, etc.) on another</p>
 </div>
 <div class="fragment">
@@ -1158,11 +1097,11 @@ Haley Daarstad
 <span id="cb18-2"><a></a>  <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-42-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-39-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
 <section id="graph-5-the-boxplot" class="slide level2">
 <h2>Graph 5: the boxplot</h2>
 
-<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-43-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"><div class="fragment">
+<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-40-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"><div class="fragment">
 <p>Boxplots compare <strong>distributions</strong> of <em>continuous</em> variables across groups</p>
 <aside class="notes">
 <p>they show us <em>more</em> than the barplot which only gives us a quantity for each group</p>
@@ -1195,7 +1134,7 @@ Haley Daarstad
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="lec-2_files/figure-revealjs/unnamed-chunk-44-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+<p><img data-src="lec-2_files/figure-revealjs/unnamed-chunk-41-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -1369,7 +1308,7 @@ Haley Daarstad
 <section id="showing-movement-using-panels" class="slide level2">
 <h2>Showing “movement” using panels</h2>
 
-<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-48-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"><div class="fragment">
+<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-45-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"><div class="fragment">
 <p>We can use <strong>panels</strong> to show <em>movement</em> of a variable across time, space, etc.</p>
 <aside class="notes">
 <p>What is this graph showing us?</p>
@@ -1393,7 +1332,7 @@ Haley Daarstad
 <span id="cb19-2"><a></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(year)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-49-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"><div class="callout callout-note callout-titled callout-style-default">
+<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-46-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"><div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
@@ -1414,7 +1353,7 @@ Haley Daarstad
 <span id="cb20-2"><a></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>, <span class="at">color =</span> <span class="st">"orange"</span>, <span class="at">shape =</span> <span class="dv">2</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-50-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"><p>Take your aesthetics out of <code>aes()</code> and into <code>geom()</code> to make them <em>static</em></p>
+<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-47-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"><p>Take your aesthetics out of <code>aes()</code> and into <code>geom()</code> to make them <em>static</em></p>
 </section>
 <section id="use-different-color-and-fill-scales" class="slide level2">
 <h2>Use different color and fill scales</h2>
@@ -1423,7 +1362,7 @@ Haley Daarstad
 <span id="cb21-2"><a></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Blues"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-51-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"><p><code>scale_fill_brewer()</code> for <code>fill</code>, <code>scale_color_brewer</code> for <code>color</code></p>
+<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-48-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"><p><code>scale_fill_brewer()</code> for <code>fill</code>, <code>scale_color_brewer</code> for <code>color</code></p>
 </section>
 <section id="my-favorite-scale-right-now" class="slide level2">
 <h2>My favorite scale (right now)</h2>
@@ -1432,12 +1371,12 @@ Haley Daarstad
 <span id="cb22-2"><a></a>  <span class="fu">scale_fill_viridis_d</span>(<span class="at">option =</span> <span class="st">"magma"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 </div>
-<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-52-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"><p><code>scale_fill_viridis_d</code> for <em>discrete</em> variables, <code>scale_fill_viridis_d</code> for continuous</p>
+<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-49-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"><p><code>scale_fill_viridis_d</code> for <em>discrete</em> variables, <code>scale_fill_viridis_d</code> for continuous</p>
 </section>
 <section id="many-other-themes" class="slide level2">
 <h2>Many other themes</h2>
 
-<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-53-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"><p><code>theme_spongeBob()</code> from <code>tvthemes</code> package, many more online</p>
+<img data-src="lec-2_files/figure-revealjs/unnamed-chunk-50-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"><p><code>theme_spongeBob()</code> from <code>tvthemes</code> package, many more online</p>
 
 
 </section></section>

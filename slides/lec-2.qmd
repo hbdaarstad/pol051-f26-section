@@ -102,33 +102,11 @@ Graphs have an internal logic, or **grammar** that connects data to visuals
 
 ## Mapping data to aesthetics
 
-```{r}
-df = tribble(~Data, ~Aesthetic, ~Geometry, 
-             "GDP per capita", "Position(x-axis)", "Point", 
-             "Life expectancy", "Position (y-axis)", "Point", 
-             "Continent", "Color", "Point", 
-             "Population", "Size", "Point")
-knitr::kable(df)
-```
-
 1.  Take the **data**,
 
 2.  map it onto an **aesthetic**,
 
 3.  and visualize it with a **geometry**
-
-## In R
-
-```{r}
-df = tribble(~`Data`, ~`aes()`, ~`geom_`, 
-             "gdpPercap", "x", "geom_point()", 
-             "lifeExp", "y", "geom_point()", 
-             "continent", "color", "geom_point()", 
-             "pop", "size", "geom_point()")
-knitr::kable(df)
-```
-
-Use the variable names *exactly* as they appear in the data, map them onto the *exact* function names in R
 
 ## `ggplot()`: our first function 😢
 
@@ -150,6 +128,10 @@ ggplot(data = gap_07)
 ```{r,echo=TRUE}
 ggplot(data = gap_07, aes(x = gdpPercap, y = lifeExp)) 
 ```
+
+::: callout-important
+Use the variable names *exactly* as they appear in the data, map them onto the *exact* function names in R
+:::
 
 ## add geometries and layers using `+`
 
@@ -315,16 +297,6 @@ ggplot(gap_07, aes(x = continent, y = pop)) +
 
 Plot is uninformative because continent is *discrete* (i.e., a category)
 
-## 🇺🇸 The presidents 🇺🇸
-
-```{r, echo = TRUE, eval = FALSE}
-
-elections_historic %>% 
-  select(year, winner, win_party, ec_pct, popular_pct, two_term) %>% 
-  slice_head(n = 4) %>% 
-  knitr::kable(caption = "Sample of presidential elections", digits = 2)
-```
-
 ## 🇺🇸 🚨 The presidents Your turn 🚨🇺🇸
 
 1.  Make a plot of presidential election results using the `elections_historic` dataset
@@ -333,11 +305,16 @@ elections_historic %>%
 
 3.  map the winner's party to the `color` aesthetic, whether or not president served two terms to `shape`, and add labels to each point (use `winner_label`)
 
+    -   Use `geom_text()` to add text labels, make sure to put a `label =` in the `aes()` to tell how to label it
+
 ```{r}
 #| echo: true
 #| eval: false
 
+install.packages("tidyverse")
 install.packages("socviz")
+
+library(tidyverse)
 library(socviz)
 
 ?elections_historic
@@ -362,8 +339,6 @@ ggplot(elections_historic, aes(x = popular_pct, y = ec_pct,
 ```
 
 What's going on here?
-
-## 
 
 ## Graph 2: the time series
 
@@ -433,6 +408,8 @@ countdown::countdown(minutes = 5L)
 ## 🚨 Your turn: 💸Recession💸 Answer 🚨
 
 ```{r}
+#| echo: true
+#| eval: true
 
 ?economics
 
@@ -557,7 +534,7 @@ organdata |>
 
 ## 🚨 Your turn: organs 🫁🧠 🚨
 
-Using the `organdata` dataset:
+Using the `organdata` dataset in the package `socviz`:
 
 1.  Make a histogram of country's organ donation rate (`donors`)
 
