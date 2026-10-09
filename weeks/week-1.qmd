@@ -12,11 +12,11 @@ Sections start Oct. 2.
 
 ## Prepare
 
-📖 Read the [syllabus](/course-syllabus.html)
+📖 Read the [syllabus](../course-syllabus.html)
 
 ## Discussion Materials
 
-🖥️ [Lecture 1 - Meet + greet; Welcome to POL 051](slides/lec-1.html)
+🖥️ [Lecture 1 - Meet + greet; Welcome to POL 051](../slides/lec-1.html)
 
 ## Recommended Readings
 

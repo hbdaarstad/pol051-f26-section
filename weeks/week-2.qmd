@@ -6,7 +6,7 @@ editor: visual
 
 ## Discussion Materials
 
-🖥️ [Lecture 2: Data Visualization](slides/lec-2.html)
+🖥️ [Lecture 2: Data Visualization](../slides/lec-2.html)
 
 ## Recommended Readings
 
