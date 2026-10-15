@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.6.42">
 
   <meta name="author" content="Haley Daarstad">
-  <meta name="dcterms.date" content="2026-10-08">
+  <meta name="dcterms.date" content="2026-10-15">
   <title>POL 051 A04, A05, &amp; A06 - Fall 2026 – Data wrangling I</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -216,33 +216,350 @@ Haley Daarstad
     </div>
 </div>
 
-  <p class="date">October 8, 2026</p>
+  <p class="date">October 15, 2026</p>
 </section>
+<section>
 <section id="plan-for-today" class="title-slide slide level1 center" data-background-color="#dc354a">
 <h1>Plan for today</h1>
+<p>Review Data Visualization</p>
+<div class="fragment">
 <p>Wrangling and pipes</p>
+</div>
 <div class="fragment">
 <p>Subsetting data</p>
 </div>
+</section>
+<section id="graph-4-the-barplot" class="slide level2">
+<h2>Graph 4: the barplot</h2>
+
+<img data-src="lec-3_files/figure-revealjs/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"><div class="fragment">
+<p>Barplots place a <em>category</em> (place, country, person, etc) on one axis and a <em>quantity</em> (amount, average, median, etc.) on another</p>
+</div>
 <div class="fragment">
-<p>The (tricky!) programming objects</p>
+<p>Useful for making <strong>comparisons</strong>, highlighting <strong>differences</strong></p>
+<p>Why would there be differences across TV consumption?</p>
 </div>
 </section>
+<section id="the-grammar-of-barplots" class="slide level2">
+<h2>The grammar of barplots</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table class="caption-top">
+<caption>The data</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">marital</th>
+<th style="text-align: right;">tv</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">No answer</td>
+<td style="text-align: right;">2.56</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Never married</td>
+<td style="text-align: right;">3.11</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Separated</td>
+<td style="text-align: right;">3.55</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Divorced</td>
+<td style="text-align: right;">3.09</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Widowed</td>
+<td style="text-align: right;">3.91</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table class="caption-top">
+<caption>Mapping the data</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Data</th>
+<th style="text-align: left;">Aesthetic</th>
+<th style="text-align: left;">Geometry</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">tv</td>
+<td style="text-align: left;">x</td>
+<td style="text-align: left;">geom_col()</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">marital</td>
+<td style="text-align: left;">y</td>
+<td style="text-align: left;">geom_col()</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div></div>
+<p><br></p>
+<div class="fragment">
+<p>You could switch the x and y mapping around, but I think categories look better on the y-axis</p>
+</div>
+</section>
+<section id="the-barplot" class="slide level2">
+<h2>The barplot</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">ggplot</span>(tv, <span class="fu">aes</span>(<span class="at">y =</span> marital, <span class="at">x =</span> tv)) <span class="sc">+</span> </span>
+<span id="cb1-2"><a></a>  <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
+</div>
+<img data-src="lec-3_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
+<section id="graph-5-the-boxplot" class="slide level2">
+<h2>Graph 5: the boxplot</h2>
+
+<img data-src="lec-3_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"><div class="fragment">
+<p>Boxplots compare <strong>distributions</strong> of <em>continuous</em> variables across groups</p>
+<p>they show us <em>more</em> than the barplot which only gives us a quantity for each group</p>
+</div>
+</section>
+<section id="compare-distributions-the-boxplot" class="slide level2">
+<h2>Compare distributions: the boxplot</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>Boxplots contain a lot of info 🥵:</p>
+<ul>
+<li class="fragment">bold line is the <strong>median</strong> observation</li>
+<li class="fragment">box is the <strong>middle</strong> 50% of observations</li>
+<li class="fragment">thin lines show you min and max value, <em>except…</em></li>
+<li class="fragment">the dots, which are <strong>outlier</strong> observations</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="lec-3_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div></div>
+<p>interpret</p>
+</section>
+<section id="the-grammar-of-boxplots" class="slide level2">
+<h2>The grammar of boxplots</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table class="caption-top">
+<caption>The data</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">continent</th>
+<th style="text-align: right;">lifeExp</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Asia</td>
+<td style="text-align: right;">43.83</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Europe</td>
+<td style="text-align: right;">76.42</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Africa</td>
+<td style="text-align: right;">72.30</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Africa</td>
+<td style="text-align: right;">42.73</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Americas</td>
+<td style="text-align: right;">75.32</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table class="caption-top">
+<caption>Mapping the data</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Data</th>
+<th style="text-align: left;">Aesthetic</th>
+<th style="text-align: left;">Geometry</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">contient</td>
+<td style="text-align: left;">y</td>
+<td style="text-align: left;">geom_boxplot()</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">lifeExp</td>
+<td style="text-align: left;">x</td>
+<td style="text-align: left;">geom_boxplot()</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div></div>
+<p><br></p>
+<div class="fragment">
+<p>You could switch the x and y mapping around, but I think categories look better on the y-axis</p>
+</div>
+</section>
+<section id="the-five-ish-graphs" class="slide level2">
+<h2>The five(-ish) graphs</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table class="table table-striped table-hover caption-top" data-quarto-postprocess="true" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Graph</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">aes()</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">geom_</th>
+<th style="text-align: left;" data-quarto-table-cell-role="th">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Scatterplot</td>
+<td style="text-align: left;">x = cause, y = effect</td>
+<td style="text-align: left;">point()</td>
+<td style="text-align: left;">Relationships</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Time series</td>
+<td style="text-align: left;">x = date, y = variable</td>
+<td style="text-align: left;">line()</td>
+<td style="text-align: left;">Trends</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Histogram</td>
+<td style="text-align: left;">x = cont. variable</td>
+<td style="text-align: left;">histogram()</td>
+<td style="text-align: left;">Distributions</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Barplot</td>
+<td style="text-align: left;">y = category, x = quantity</td>
+<td style="text-align: left;">col()</td>
+<td style="text-align: left;">Compare amounts</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Boxplot</td>
+<td style="text-align: left;">y = category, x = cont. variable</td>
+<td style="text-align: left;">boxplot()</td>
+<td style="text-align: left;">Compare distributions</td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+</div>
+<div class="fragment">
+<p>Know how and when to use which!</p>
+</div>
+</section></section>
 <section>
-<section id="the-new-starting-point" class="title-slide slide level1 center" data-background-color="#dc354a">
-<h1>The new starting point</h1>
-<div class="fragment">
-<p>Before, I <em>wrangled</em> data and you plotted the finished product</p>
+<section id="making-better-graphs" class="title-slide slide level1 center" data-background-color="#dc354a">
+<h1>Making better graphs</h1>
+<ul>
+<li class="fragment"><p>We’ve barely scratched the surface; there’s many more aesthetics, geometries, and layers in <code>ggplot()</code></p></li>
+<li class="fragment"><p>Here are some of my favorite ones</p></li>
+<li class="fragment"><p>And some ideas for making graphs better</p></li>
+</ul>
+</section>
+<section id="showing-movement-using-panels" class="slide level2">
+<h2>Showing “movement” using panels</h2>
+
+<img data-src="lec-3_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"><div class="fragment">
+<p>We can use <strong>panels</strong> to show <em>movement</em> of a variable across time, space, etc.</p>
+<p>What is this graph showing us?</p>
 </div>
-<div class="fragment">
-<p>First step of all your code was <code>ggplot()</code></p>
+</section>
+<section id="using-facet_wrap" class="slide level2">
+<h2>Using facet_wrap</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="fu">ggplot</span>(gapminder, <span class="fu">aes</span>(<span class="at">x =</span> lifeExp)) <span class="sc">+</span> <span class="fu">geom_histogram</span>() <span class="sc">+</span> </span>
+<span id="cb2-2"><a></a>  <span class="fu">facet_wrap</span>(<span class="fu">vars</span>(year)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
 </div>
-<div class="fragment">
-<p>Now, <strong>you</strong> will wrangle the data</p>
+<img data-src="lec-3_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"><p>Make sure the facetting variable is wrapped in <code>vars()</code>!</p>
+</section>
+<section id="make-aesthetics-static" class="slide level2">
+<h2>Make aesthetics static</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">ggplot</span>(gap_07, <span class="fu">aes</span>(<span class="at">x =</span> gdpPercap, <span class="at">y =</span> lifeExp)) <span class="sc">+</span> </span>
+<span id="cb3-2"><a></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">4</span>, <span class="at">color =</span> <span class="st">"orange"</span>, <span class="at">shape =</span> <span class="dv">2</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
 </div>
-<div class="fragment">
-<p>First step is now <em>the data object</em></p>
+<img data-src="lec-3_files/figure-revealjs/unnamed-chunk-12-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"><p>Take your aesthetics out of <code>aes()</code> and into <code>geom()</code> to make them <em>static</em></p>
+</section>
+<section id="use-different-color-and-fill-scales" class="slide level2">
+<h2>Use different color and fill scales</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">ggplot</span>(gapminder, <span class="fu">aes</span>(<span class="at">x =</span> lifeExp, <span class="at">fill =</span> continent)) <span class="sc">+</span> <span class="fu">geom_histogram</span>() <span class="sc">+</span> </span>
+<span id="cb4-2"><a></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Blues"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="lec-3_files/figure-revealjs/unnamed-chunk-13-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"><p><code>scale_fill_brewer()</code> for <code>fill</code>, <code>scale_color_brewer</code> for <code>color</code></p>
+</section>
+<section id="my-favorite-scale-right-now" class="slide level2">
+<h2>My favorite scale (right now)</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">ggplot</span>(gapminder, <span class="fu">aes</span>(<span class="at">x =</span> lifeExp, <span class="at">fill =</span> continent)) <span class="sc">+</span> <span class="fu">geom_histogram</span>() <span class="sc">+</span> </span>
+<span id="cb5-2"><a></a>  <span class="fu">scale_fill_viridis_d</span>(<span class="at">option =</span> <span class="st">"magma"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+
+</div>
+<img data-src="lec-3_files/figure-revealjs/unnamed-chunk-14-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"><p><code>scale_fill_viridis_d</code> for <em>discrete</em> variables, <code>scale_fill_viridis_d</code> for continuous</p>
+</section>
+<section id="many-other-themes" class="slide level2">
+<h2>Many other themes</h2>
+
+<img data-src="lec-3_files/figure-revealjs/unnamed-chunk-15-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"><p><code>theme_spongeBob()</code> from <code>tvthemes</code> package, many more online</p>
+</section></section>
+<section>
+<section id="review" class="title-slide slide level1 center" data-background-color="#dc354a">
+<h1>Review</h1>
+<div>
+<ul>
+<li class="fragment"><p>Scatterplots?</p>
+<p><span class="fragment"><code>geom_point()</code>: two continuous variables (x and y)</span></p></li>
+<li class="fragment"><p>Time series?</p>
+<p><span class="fragment"><code>geom_line()</code>: one time/date variable (x) + one continuous variable (y)</span></p></li>
+<li class="fragment"><p>Histograms?</p>
+<p><span class="fragment"><code>geom_histogram()</code>: one continuous variable (x)</span></p></li>
+<li class="fragment"><p>Barplots?</p>
+<p><span class="fragment"><code>geom_col()</code>: one categorical variable (x) + one continuous variable (y, already summarized)</span></p></li>
+<li class="fragment"><p>Boxplots?</p>
+<p><span class="fragment"><code>geom_boxplot()</code>: one continuous variable (y), often split by one categorical variable (x)</span></p></li>
+</ul>
 </div>
 </section>
 <section id="what-is-data-wrangling" class="slide level2">
@@ -259,11 +576,11 @@ Haley Daarstad
 <section id="pipes-connecting-data-to-functions" class="slide level2">
 <h2>Pipes: connecting data to functions</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>directors_profit <span class="ot">=</span> movies <span class="sc">|&gt;</span> </span>
-<span id="cb1-2"><a></a>  <span class="co"># only look at horror movies</span></span>
-<span id="cb1-3"><a></a>  <span class="fu">filter</span>(genre1 <span class="sc">==</span> <span class="st">"Horror"</span> <span class="sc">|</span> genre2 <span class="sc">==</span> <span class="st">"Horror"</span> <span class="sc">|</span> genre3 <span class="sc">==</span> <span class="st">"Horror"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb1-4"><a></a>  <span class="co"># calculate profit</span></span>
-<span id="cb1-5"><a></a>  <span class="fu">mutate</span>(<span class="at">profit =</span> gross <span class="sc">-</span> budget)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>directors_profit <span class="ot">=</span> movies <span class="sc">|&gt;</span> </span>
+<span id="cb6-2"><a></a>  <span class="co"># only look at horror movies</span></span>
+<span id="cb6-3"><a></a>  <span class="fu">filter</span>(genre1 <span class="sc">==</span> <span class="st">"Horror"</span> <span class="sc">|</span> genre2 <span class="sc">==</span> <span class="st">"Horror"</span> <span class="sc">|</span> genre3 <span class="sc">==</span> <span class="st">"Horror"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb6-4"><a></a>  <span class="co"># calculate profit</span></span>
+<span id="cb6-5"><a></a>  <span class="fu">mutate</span>(<span class="at">profit =</span> gross <span class="sc">-</span> budget)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br></p>
 <p>You’ve seen these before…</p>
@@ -290,16 +607,16 @@ Haley Daarstad
 <div class="fragment">
 <p>With pipes: 😍</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>penguins <span class="sc">%&gt;%</span> </span>
-<span id="cb2-2"><a></a>  <span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">"Adelie"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-3"><a></a>  <span class="fu">mutate</span>(<span class="at">body_mass_kg =</span> body_mass_g <span class="sc">/</span> <span class="dv">1000</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-4"><a></a>  <span class="fu">select</span>(body_mass_kg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>penguins <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a></a>  <span class="fu">filter</span>(species <span class="sc">==</span> <span class="st">"Adelie"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-3"><a></a>  <span class="fu">mutate</span>(<span class="at">body_mass_kg =</span> body_mass_g <span class="sc">/</span> <span class="dv">1000</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-4"><a></a>  <span class="fu">select</span>(body_mass_kg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
 <p>Without pipes: 🤢</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">select</span>(<span class="fu">mutate</span>(<span class="fu">filter</span>(penguins, species <span class="sc">==</span> <span class="st">"Adelie"</span>), <span class="at">body_mass_kg =</span> body_mass_g <span class="sc">/</span> <span class="dv">1000</span>), body_mass_kg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">select</span>(<span class="fu">mutate</span>(<span class="fu">filter</span>(penguins, species <span class="sc">==</span> <span class="st">"Adelie"</span>), <span class="at">body_mass_kg =</span> body_mass_g <span class="sc">/</span> <span class="dv">1000</span>), body_mass_kg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
@@ -310,11 +627,11 @@ Haley Daarstad
 <section id="making-sense-of-pipes-and-then" class="slide level2">
 <h2>Making sense of pipes: “and then…”</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>directors_profit <span class="ot">=</span> movies <span class="sc">%&gt;%</span> </span>
-<span id="cb4-2"><a></a>  <span class="co"># only look at horror movies</span></span>
-<span id="cb4-3"><a></a>  <span class="fu">filter</span>(genre1 <span class="sc">==</span> <span class="st">"Horror"</span> <span class="sc">|</span> genre2 <span class="sc">==</span> <span class="st">"Horror"</span> <span class="sc">|</span> genre3 <span class="sc">==</span> <span class="st">"Horror"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb4-4"><a></a>  <span class="co"># calculate profit</span></span>
-<span id="cb4-5"><a></a>  <span class="fu">mutate</span>(<span class="at">profit =</span> gross <span class="sc">-</span> budget)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>directors_profit <span class="ot">=</span> movies <span class="sc">%&gt;%</span> </span>
+<span id="cb9-2"><a></a>  <span class="co"># only look at horror movies</span></span>
+<span id="cb9-3"><a></a>  <span class="fu">filter</span>(genre1 <span class="sc">==</span> <span class="st">"Horror"</span> <span class="sc">|</span> genre2 <span class="sc">==</span> <span class="st">"Horror"</span> <span class="sc">|</span> genre3 <span class="sc">==</span> <span class="st">"Horror"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb9-4"><a></a>  <span class="co"># calculate profit</span></span>
+<span id="cb9-5"><a></a>  <span class="fu">mutate</span>(<span class="at">profit =</span> gross <span class="sc">-</span> budget)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <p><br></p>
@@ -349,8 +666,8 @@ Haley Daarstad
 </div>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>baby_subset <span class="ot">&lt;-</span> babynames <span class="sc">%&gt;%</span></span>
-<span id="cb5-2"><a></a>  <span class="fu">filter</span>(name <span class="sc">==</span> <span class="st">"Angel"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>baby_subset <span class="ot">&lt;-</span> babynames <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a></a>  <span class="fu">filter</span>(name <span class="sc">==</span> <span class="st">"Angel"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Subset <code>babynames</code> to only babies named <code>Angel</code></p>
 </div>
@@ -372,184 +689,14 @@ Haley Daarstad
 <p>Useful to deal with common problems: outliers, missing data, strange responses</p>
 </div>
 </section>
-<section id="the-earned-income-tax-credit-eitc" class="slide level2">
-<h2>The Earned Income Tax Credit (EITC)</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p>Third largest welfare program in the US</p>
-<p>Only people who meet certain <strong>criteria</strong> receive it</p>
-<p><strong>Effects</strong> of program and its <strong>design</strong> are hotly debated</p>
-</div><div class="column" style="width:50%;">
-<p><img data-src="img/eitc.png"></p>
-</div></div>
-<aside class="notes">
-<p>What does this graph tell us about the criteria?</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="identifying-beneficiaries" class="slide level2">
-<h2>Identifying beneficiaries</h2>
-<p>Imagine you are the IRS, and have data on all 360+ million Americans:</p>
-<div class="fragment">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<table class="caption-top" data-quarto-postprocess="true">
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">Sex</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">Race</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Age</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Income</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">Marital</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Children</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Male</td>
-<td style="text-align: left;">White</td>
-<td style="text-align: right;">67</td>
-<td style="text-align: right;">17643</td>
-<td style="text-align: left;">Married</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Female</td>
-<td style="text-align: left;">White</td>
-<td style="text-align: right;">39</td>
-<td style="text-align: right;">24689</td>
-<td style="text-align: left;">Not married</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Female</td>
-<td style="text-align: left;">White</td>
-<td style="text-align: right;">76</td>
-<td style="text-align: right;">121239</td>
-<td style="text-align: left;">Not married</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Female</td>
-<td style="text-align: left;">White</td>
-<td style="text-align: right;">54</td>
-<td style="text-align: right;">41001</td>
-<td style="text-align: left;">Married</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Male</td>
-<td style="text-align: left;">White</td>
-<td style="text-align: right;">72</td>
-<td style="text-align: right;">92432</td>
-<td style="text-align: left;">Not married</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Female</td>
-<td style="text-align: left;">White</td>
-<td style="text-align: right;">77</td>
-<td style="text-align: right;">64430</td>
-<td style="text-align: left;">Not married</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Female</td>
-<td style="text-align: left;">White</td>
-<td style="text-align: right;">78</td>
-<td style="text-align: right;">580</td>
-<td style="text-align: left;">Not married</td>
-<td style="text-align: right;">1</td>
-</tr>
-</tbody>
-</table>
-
-
-</div>
-</div>
-</div>
-<div class="fragment">
-<p>How could use use these variables to <strong>identify</strong> what benefits they should receive?</p>
-</div>
-</section>
-<section id="identifying-beneficiaries-1" class="slide level2">
-<h2>Identifying beneficiaries</h2>
-<p>Say we wanted to identify people in the flat part of the <span class="blue">blue line</span></p>
-<div class="columns">
-<div class="column" style="width:50%;">
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<table class="caption-top" data-quarto-postprocess="true">
-<thead>
-<tr class="header">
-<th style="text-align: right;" data-quarto-table-cell-role="th">Income</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">Marital</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">Children</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;">17642.88</td>
-<td style="text-align: left;">Married</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">24688.98</td>
-<td style="text-align: left;">Not married</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">121239.34</td>
-<td style="text-align: left;">Not married</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">41001.08</td>
-<td style="text-align: left;">Married</td>
-<td style="text-align: right;">0</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">92431.88</td>
-<td style="text-align: left;">Not married</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="even">
-<td style="text-align: right;">64430.12</td>
-<td style="text-align: left;">Not married</td>
-<td style="text-align: right;">1</td>
-</tr>
-<tr class="odd">
-<td style="text-align: right;">580.02</td>
-<td style="text-align: left;">Not married</td>
-<td style="text-align: right;">1</td>
-</tr>
-</tbody>
-</table>
-
-
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<p><img data-src="img/eitc.png"></p>
-</div></div>
-</section>
 <section id="using-filter" class="slide level2">
 <h2>Using <code>filter()</code></h2>
 <p>To use <code>filter()</code>, we need to tell R which <strong>observations</strong> we want to include (or exclude) using <em>rules</em></p>
 <div class="fragment">
 <p><br></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>gap_africa <span class="ot">=</span> gapminder <span class="sc">|&gt;</span> </span>
-<span id="cb6-2"><a></a>  <span class="fu">filter</span>(region <span class="sc">==</span> <span class="st">"Africa"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>gap_africa <span class="ot">=</span> gapminder <span class="sc">|&gt;</span> </span>
+<span id="cb11-2"><a></a>  <span class="fu">filter</span>(region <span class="sc">==</span> <span class="st">"Africa"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Rule: return all observations from <code>gapminder</code> where the <code>region</code> variable <strong>is equal to</strong> “Africa”</p>
 </div>
@@ -691,7 +838,7 @@ Haley Daarstad
 <section id="apples" class="slide level2">
 <h2>Apples</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>apples</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>apples</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 4
   name         color pounds sweet
@@ -719,8 +866,8 @@ Haley Daarstad
 <section id="green-apples" class="slide level2">
 <h2>Green apples</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>apples <span class="sc">|&gt;</span> </span>
-<span id="cb9-2"><a></a>  <span class="fu">filter</span>(color <span class="sc">==</span> <span class="st">"green"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>apples <span class="sc">|&gt;</span> </span>
+<span id="cb14-2"><a></a>  <span class="fu">filter</span>(color <span class="sc">==</span> <span class="st">"green"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 4
   name      color pounds sweet
@@ -739,9 +886,9 @@ Haley Daarstad
 <section id="green-and-unsweet-apples" class="slide level2">
 <h2>Green and unsweet apples</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>apples <span class="sc">|&gt;</span> </span>
-<span id="cb11-2"><a></a>  <span class="fu">filter</span>(color <span class="sc">==</span> <span class="st">"green"</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb11-3"><a></a>  <span class="fu">filter</span>(sweet <span class="sc">==</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>apples <span class="sc">|&gt;</span> </span>
+<span id="cb16-2"><a></a>  <span class="fu">filter</span>(color <span class="sc">==</span> <span class="st">"green"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb16-3"><a></a>  <span class="fu">filter</span>(sweet <span class="sc">==</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 4
   name      color pounds sweet
@@ -754,8 +901,8 @@ Haley Daarstad
 <section id="apples-that-arent-green" class="slide level2">
 <h2>Apples that aren’t green</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>apples <span class="sc">|&gt;</span> </span>
-<span id="cb13-2"><a></a>  <span class="fu">filter</span>(color <span class="sc">!=</span> <span class="st">"green"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>apples <span class="sc">|&gt;</span> </span>
+<span id="cb18-2"><a></a>  <span class="fu">filter</span>(color <span class="sc">!=</span> <span class="st">"green"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 2 × 4
   name         color pounds sweet
@@ -769,8 +916,8 @@ Haley Daarstad
 <section id="at-least-4-pounds-but-less-than-6" class="slide level2">
 <h2>At least 4 pounds but less than 6</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>apples <span class="sc">|&gt;</span> </span>
-<span id="cb15-2"><a></a>  <span class="fu">filter</span>(pounds <span class="sc">&gt;=</span> <span class="dv">4</span>, pounds <span class="sc">&lt;</span> <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>apples <span class="sc">|&gt;</span> </span>
+<span id="cb20-2"><a></a>  <span class="fu">filter</span>(pounds <span class="sc">&gt;=</span> <span class="dv">4</span>, pounds <span class="sc">&lt;</span> <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 4
   name  color pounds sweet
@@ -782,9 +929,9 @@ Haley Daarstad
 <div class="fragment">
 <p>I could also split this up over multiple <code>filter</code> calls</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>apples <span class="sc">|&gt;</span> </span>
-<span id="cb17-2"><a></a>  <span class="fu">filter</span>(pounds <span class="sc">&gt;=</span> <span class="dv">4</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb17-3"><a></a>  <span class="fu">filter</span>(pounds <span class="sc">&lt;</span> <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>apples <span class="sc">|&gt;</span> </span>
+<span id="cb22-2"><a></a>  <span class="fu">filter</span>(pounds <span class="sc">&gt;=</span> <span class="dv">4</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb22-3"><a></a>  <span class="fu">filter</span>(pounds <span class="sc">&lt;</span> <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 4
   name  color pounds sweet
@@ -800,8 +947,8 @@ Haley Daarstad
 <div class="fragment">
 <p>Apples that are red OR green</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>apples <span class="sc">|&gt;</span> </span>
-<span id="cb19-2"><a></a>  <span class="fu">filter</span>(color <span class="sc">==</span> <span class="st">"red"</span> <span class="sc">|</span> color <span class="sc">==</span> <span class="st">"green"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>apples <span class="sc">|&gt;</span> </span>
+<span id="cb24-2"><a></a>  <span class="fu">filter</span>(color <span class="sc">==</span> <span class="st">"red"</span> <span class="sc">|</span> color <span class="sc">==</span> <span class="st">"green"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 4
   name         color pounds sweet
@@ -838,8 +985,8 @@ Haley Daarstad
 </div>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>apples <span class="sc">|&gt;</span> </span>
-<span id="cb21-2"><a></a>  <span class="fu">filter</span>(color <span class="sc">==</span> <span class="st">"red"</span> <span class="sc">&amp;</span> sweet <span class="sc">==</span> <span class="cn">TRUE</span> <span class="sc">|</span> color <span class="sc">==</span> <span class="st">"green"</span> <span class="sc">&amp;</span> sweet <span class="sc">==</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>apples <span class="sc">|&gt;</span> </span>
+<span id="cb26-2"><a></a>  <span class="fu">filter</span>(color <span class="sc">==</span> <span class="st">"red"</span> <span class="sc">&amp;</span> sweet <span class="sc">==</span> <span class="cn">TRUE</span> <span class="sc">|</span> color <span class="sc">==</span> <span class="st">"green"</span> <span class="sc">&amp;</span> sweet <span class="sc">==</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
@@ -852,8 +999,8 @@ Haley Daarstad
 <div class="fragment">
 <p>Say I wanted to look at just South American countries, normally:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>gapminder <span class="sc">|&gt;</span> </span>
-<span id="cb22-2"><a></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"Argentina"</span> <span class="sc">|</span> country <span class="sc">==</span> <span class="st">"Brazil"</span> <span class="sc">|</span> country <span class="sc">==</span> <span class="st">"Chile"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>gapminder <span class="sc">|&gt;</span> </span>
+<span id="cb27-2"><a></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"Argentina"</span> <span class="sc">|</span> country <span class="sc">==</span> <span class="st">"Brazil"</span> <span class="sc">|</span> country <span class="sc">==</span> <span class="st">"Chile"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Brutally repetitive</p>
 </div>
@@ -862,9 +1009,9 @@ Haley Daarstad
 <h2>%in%</h2>
 <p>Make a list of countries and return observations that match any of them</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>keep <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Argentina"</span>, <span class="st">"Brazil"</span>, <span class="st">"Chile"</span>)</span>
-<span id="cb23-2"><a></a></span>
-<span id="cb23-3"><a></a>gapminder <span class="sc">|&gt;</span> <span class="fu">filter</span>(country <span class="sc">%in%</span> keep)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>keep <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"Argentina"</span>, <span class="st">"Brazil"</span>, <span class="st">"Chile"</span>)</span>
+<span id="cb28-2"><a></a></span>
+<span id="cb28-3"><a></a>gapminder <span class="sc">|&gt;</span> <span class="fu">filter</span>(country <span class="sc">%in%</span> keep)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -888,13 +1035,13 @@ Haley Daarstad
 <li class="fragment">A Vietnamese Emperor who, in his first year in office, was 11 years old. Famously depraved.</li>
 </ol>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a><span class="fu">install.packages</span>(<span class="st">"remotes"</span>)</span>
-<span id="cb24-2"><a></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"hail2thief/juanr"</span>)</span>
-<span id="cb24-3"><a></a><span class="fu">library</span>(juanr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="fu">install.packages</span>(<span class="st">"remotes"</span>)</span>
+<span id="cb29-2"><a></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"hail2thief/juanr"</span>)</span>
+<span id="cb29-3"><a></a><span class="fu">library</span>(juanr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_9a0fd8c5" minutes="10" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_76c015b7" minutes="10" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 <div class="callout callout-note callout-titled callout-style-default">
@@ -914,12 +1061,12 @@ Haley Daarstad
 <section id="world-leaders" class="slide level2">
 <h2>👑 World leaders 👑</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a><span class="fu">library</span>(juanr)</span>
-<span id="cb25-2"><a></a></span>
-<span id="cb25-3"><a></a>?leader</span>
-<span id="cb25-4"><a></a></span>
-<span id="cb25-5"><a></a>leader <span class="sc">|&gt;</span> </span>
-<span id="cb25-6"><a></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"VNM"</span> <span class="sc">&amp;</span> yr_office <span class="sc">&lt;=</span> <span class="dv">1</span> <span class="sc">&amp;</span> age <span class="sc">==</span> <span class="dv">11</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="fu">library</span>(juanr)</span>
+<span id="cb30-2"><a></a></span>
+<span id="cb30-3"><a></a>?leader</span>
+<span id="cb30-4"><a></a></span>
+<span id="cb30-5"><a></a>leader <span class="sc">|&gt;</span> </span>
+<span id="cb30-6"><a></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"VNM"</span> <span class="sc">&amp;</span> yr_office <span class="sc">&lt;=</span> <span class="dv">1</span> <span class="sc">&amp;</span> age <span class="sc">==</span> <span class="dv">11</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 16
   country gwcode leader    gender  year yr_office   age edu   mil_service combat
@@ -927,340 +1074,6 @@ Haley Daarstad
 1 VNM        815 Thanh Th… M       1889         1    11 Seco…           0      0
 # ℹ 6 more variables: rebel &lt;dbl&gt;, yrs_exp &lt;dbl&gt;, phys_health &lt;dbl&gt;,
 #   mental_health &lt;dbl&gt;, will_force &lt;dbl&gt;, will_force_sd &lt;dbl&gt;</code></pre>
-</div>
-</div>
-</section></section>
-<section>
-<section id="objects" class="title-slide slide level1 center" data-background-color="#dc354a">
-<h1>Objects</h1>
-
-</section>
-<section id="objects-and-pipes" class="slide level2">
-<h2>Objects and Pipes</h2>
-<p>Step 1-2: the data, the pipe, the wrangling functions</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>apples <span class="sc">|&gt;</span> </span>
-<span id="cb27-2"><a></a>  <span class="fu">filter</span>(sweet <span class="sc">==</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><br></p>
-<div class="fragment">
-<p>Step 3: store the subsetted data as a new <strong>object</strong> for later use</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>green_apples <span class="ot">=</span> apples <span class="sc">|&gt;</span></span>
-<span id="cb28-2"><a></a>  <span class="fu">filter</span>(sweet <span class="sc">==</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</section>
-<section id="reminder-on-objects" class="slide level2">
-<h2>Reminder on Objects</h2>
-<p>In programming, <strong>objects</strong> can be used to store all sorts of stuff for later use</p>
-<div class="fragment">
-<p>data, functions, values</p>
-</div>
-<div class="fragment">
-<p>We create objects using <code>=</code> or <code>&lt;-</code></p>
-</div>
-<div class="fragment">
-<p>Like this:</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>new_object <span class="ot">=</span> stuff <span class="sc">|&gt;</span> <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">1999</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-<div class="fragment">
-<p>Or like this:</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>new_object <span class="ot">&lt;-</span> stuff <span class="sc">|&gt;</span> <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">1999</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</section>
-<section id="naming-objects" class="slide level2">
-<h2>Naming objects</h2>
-<blockquote>
-<p><em>There are only two hard things in Computer Science: cache invalidation and naming things.</em> – Phil Karlton</p>
-</blockquote>
-<div class="fragment">
-<p>Recommend: keep it short, easy to type, informative, and use <code>_</code> to separate words</p>
-</div>
-<div class="fragment">
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a></a><span class="co"># Good</span></span>
-<span id="cb31-2"><a></a>gap_africa <span class="ot">=</span> gapminder <span class="sc">|&gt;</span> </span>
-<span id="cb31-3"><a></a>  <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">"Africa"</span>)</span>
-<span id="cb31-4"><a></a></span>
-<span id="cb31-5"><a></a><span class="co"># Bad</span></span>
-<span id="cb31-6"><a></a>Countries_In_Africa_That_I_Want_To_Look_Up <span class="ot">=</span> gapminder <span class="sc">|&gt;</span> </span>
-<span id="cb31-7"><a></a>  <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">"Africa"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-<div class="fragment">
-<p>I use the excellent <a href="https://style.tidyverse.org/syntax.html">Tidyverse syntax guide</a> in my work</p>
-</div>
-</section>
-<section id="reminder-no-object-no-save" class="slide level2">
-<h2>Reminder: no object, no save</h2>
-<p>Without objects, your work washes away, like tears in the rain</p>
-<div class="fragment">
-<div class="columns">
-<div class="column" style="width:50%;">
-<p>Here, we store our data wrangling</p>
-<div class="fragment">
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>green_apples <span class="ot">=</span> apples <span class="sc">|&gt;</span></span>
-<span id="cb32-2"><a></a>  <span class="fu">filter</span>(sweet <span class="sc">==</span> <span class="cn">FALSE</span>)</span>
-<span id="cb32-3"><a></a></span>
-<span id="cb32-4"><a></a>green_apples</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 4
-  name         color pounds sweet
-  &lt;chr&gt;        &lt;chr&gt;  &lt;dbl&gt; &lt;lgl&gt;
-1 Macintosh    green      8 FALSE
-2 Granny Smith red        3 FALSE</code></pre>
-</div>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<p>Here we didn’t store</p>
-<div class="fragment">
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>apples <span class="sc">|&gt;</span></span>
-<span id="cb34-2"><a></a>  <span class="fu">filter</span>(sweet <span class="sc">==</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 4
-  name         color pounds sweet
-  &lt;chr&gt;        &lt;chr&gt;  &lt;dbl&gt; &lt;lgl&gt;
-1 Macintosh    green      8 FALSE
-2 Granny Smith red        3 FALSE</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a>apples</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 4
-  name         color pounds sweet
-  &lt;chr&gt;        &lt;chr&gt;  &lt;dbl&gt; &lt;lgl&gt;
-1 Fuji         red        2 TRUE 
-2 Gala         green      4 TRUE 
-3 Macintosh    green      8 FALSE
-4 Granny Smith red        3 FALSE</code></pre>
-</div>
-</div>
-</div>
-</div></div>
-</div>
-<div class="fragment">
-<p>Notice the original <code>apples</code> remains unchanged!</p>
-</div>
-</section>
-<section id="the-formula" class="slide level2">
-<h2>The formula</h2>
-<p><em>Wrangle</em> the data until you’re satisfied with the output:</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>apples <span class="sc">|&gt;</span> </span>
-<span id="cb38-2"><a></a>  <span class="fu">filter</span>(sweet <span class="sc">==</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="fragment">
-<p>Store the output as a new object:</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a>sour_apples <span class="ot">=</span> apples <span class="sc">|&gt;</span> </span>
-<span id="cb39-2"><a></a>  <span class="fu">filter</span>(sweet <span class="sc">==</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-<div class="fragment">
-<p>Use the new object (e.g., plotting):</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a><span class="fu">ggplot</span>(sour_apples, <span class="fu">aes</span>(<span class="at">x =</span> name, <span class="at">y =</span> pounds)) <span class="sc">+</span> <span class="fu">geom_col</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-</section>
-<section id="challenge-the-unusual-american-voter" class="slide level2">
-<h2>Challenge: 🗳️ The (unusual) American voter 🗳️</h2>
-<p>There’s a Twitter bot that randomly tweet profiles of real voters from the Cooperative Election Study:</p>
-
-<img data-src="img/american-voter-bot.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"></section>
-<section id="challenge-the-unusual-american-voter-1" class="slide level2">
-<h2>Challenge: 🗳️ The (unusual) American voter 🗳️</h2>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<table class="caption-top" style="width:100%;">
-<caption>A small sample of Americans</caption>
-<colgroup>
-<col style="width: 5%">
-<col style="width: 2%">
-<col style="width: 1%">
-<col style="width: 8%">
-<col style="width: 2%">
-<col style="width: 7%">
-<col style="width: 7%">
-<col style="width: 9%">
-<col style="width: 12%">
-<col style="width: 3%">
-<col style="width: 5%">
-<col style="width: 3%">
-<col style="width: 4%">
-<col style="width: 3%">
-<col style="width: 3%">
-<col style="width: 3%">
-<col style="width: 3%">
-<col style="width: 3%">
-<col style="width: 7%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">state</th>
-<th style="text-align: left;">sex</th>
-<th style="text-align: right;">age</th>
-<th style="text-align: left;">educ</th>
-<th style="text-align: left;">race</th>
-<th style="text-align: left;">pid7</th>
-<th style="text-align: left;">ideo5</th>
-<th style="text-align: left;">religion</th>
-<th style="text-align: left;">votechoice</th>
-<th style="text-align: left;">hispanic</th>
-<th style="text-align: left;">know_governor</th>
-<th style="text-align: left;">conceal</th>
-<th style="text-align: left;">prochoice</th>
-<th style="text-align: left;">cleanair</th>
-<th style="text-align: left;">wall</th>
-<th style="text-align: left;">mandmin</th>
-<th style="text-align: left;">aca</th>
-<th style="text-align: left;">minwage</th>
-<th style="text-align: left;">newsint</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Washington</td>
-<td style="text-align: left;">Male</td>
-<td style="text-align: right;">66</td>
-<td style="text-align: left;">4-year</td>
-<td style="text-align: left;">White</td>
-<td style="text-align: left;">Strong Republican</td>
-<td style="text-align: left;">Very conservative</td>
-<td style="text-align: left;">Protestant</td>
-<td style="text-align: left;">Donald J. Trump (Republican)</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: left;">Democrat</td>
-<td style="text-align: left;">Support</td>
-<td style="text-align: left;">Oppose</td>
-<td style="text-align: left;">Oppose</td>
-<td style="text-align: left;">Support</td>
-<td style="text-align: left;">Oppose</td>
-<td style="text-align: left;">Support</td>
-<td style="text-align: left;">Oppose</td>
-<td style="text-align: left;">Most of the time</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Pennsylvania</td>
-<td style="text-align: left;">Male</td>
-<td style="text-align: right;">68</td>
-<td style="text-align: left;">High school graduate</td>
-<td style="text-align: left;">Black</td>
-<td style="text-align: left;">Independent</td>
-<td style="text-align: left;">Liberal</td>
-<td style="text-align: left;">Nothing in particular</td>
-<td style="text-align: left;">Joe Biden (Democrat)</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: left;">Democrat</td>
-<td style="text-align: left;">Support</td>
-<td style="text-align: left;">Oppose</td>
-<td style="text-align: left;">Support</td>
-<td style="text-align: left;">Support</td>
-<td style="text-align: left;">Oppose</td>
-<td style="text-align: left;">Support</td>
-<td style="text-align: left;">Oppose</td>
-<td style="text-align: left;">Only now and then</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Arizona</td>
-<td style="text-align: left;">Female</td>
-<td style="text-align: right;">70</td>
-<td style="text-align: left;">2-year</td>
-<td style="text-align: left;">White</td>
-<td style="text-align: left;">Strong Republican</td>
-<td style="text-align: left;">Very conservative</td>
-<td style="text-align: left;">Protestant</td>
-<td style="text-align: left;">Donald J. Trump (Republican)</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: left;">Republican</td>
-<td style="text-align: left;">Oppose</td>
-<td style="text-align: left;">Oppose</td>
-<td style="text-align: left;">Support</td>
-<td style="text-align: left;">Support</td>
-<td style="text-align: left;">Oppose</td>
-<td style="text-align: left;">Support</td>
-<td style="text-align: left;">Oppose</td>
-<td style="text-align: left;">Some of the time</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Arizona</td>
-<td style="text-align: left;">Male</td>
-<td style="text-align: right;">57</td>
-<td style="text-align: left;">High school graduate</td>
-<td style="text-align: left;">White</td>
-<td style="text-align: left;">Lean Republican</td>
-<td style="text-align: left;">Very conservative</td>
-<td style="text-align: left;">Protestant</td>
-<td style="text-align: left;">Donald J. Trump (Republican)</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: left;">Republican</td>
-<td style="text-align: left;">Support</td>
-<td style="text-align: left;">Oppose</td>
-<td style="text-align: left;">Oppose</td>
-<td style="text-align: left;">Support</td>
-<td style="text-align: left;">Support</td>
-<td style="text-align: left;">Support</td>
-<td style="text-align: left;">Favor</td>
-<td style="text-align: left;">Most of the time</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Connecticut</td>
-<td style="text-align: left;">Male</td>
-<td style="text-align: right;">21</td>
-<td style="text-align: left;">Some college</td>
-<td style="text-align: left;">White</td>
-<td style="text-align: left;">Strong Republican</td>
-<td style="text-align: left;">Conservative</td>
-<td style="text-align: left;">Nothing in particular</td>
-<td style="text-align: left;">NA</td>
-<td style="text-align: left;">No</td>
-<td style="text-align: left;">Democrat</td>
-<td style="text-align: left;">Support</td>
-<td style="text-align: left;">Support</td>
-<td style="text-align: left;">Oppose</td>
-<td style="text-align: left;">Support</td>
-<td style="text-align: left;">Support</td>
-<td style="text-align: left;">Support</td>
-<td style="text-align: left;">Oppose</td>
-<td style="text-align: left;">Most of the time</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</section>
-<section id="the-unusual-american-voter" class="slide level2">
-<h2>🗳️ The (unusual) American voter 🗳️</h2>
-<p>In your teams, using <code>bot</code>:</p>
-<ol type="1">
-<li class="fragment"><p>Identify the most <strong>unusual</strong> subgroup of voters you can think of</p></li>
-<li class="fragment"><p>Constraint: need <em>at least</em> five voters in your subgroup</p></li>
-<li class="fragment"><p>Store your unusual subgroup as an object</p></li>
-<li class="fragment"><p>One member tells the class what was your subgroup of voters.</p></li>
-</ol>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Note</strong></p>
-</div>
-<div class="callout-content">
-<p>Remember you can use <code>?bot</code> to look at the codebook</p>
-</div>
-</div>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_03c84b84" minutes="10" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 

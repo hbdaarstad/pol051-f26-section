@@ -4,27 +4,21 @@ subtitle: "Modeling + Causality I"
 editor: visual
 ---
 
-## Prepare
+## Discussion Materials
 
-📖 Read [CH.5 in ModernDive](https://moderndive.com/v2/regression.html)
+🖥️ [Lecture 3 - Data Viz Cont. + Data Wrangling Pt. 1](../slides/lec-3.html)
 
-📖 Read [Introduction in Causal Inference: The Mixtape](https://mixtape.scunning.com/)^[1](https://quantpol.juanftellez.com/content/07-content.html#fn1)^
+## Recommended Readings
 
-## Lectures
+### Data Visualization
 
-🖥️ [Lecture 7 - Modeling I](/slides/lec-7.html)
+📖 Read [Data Visualization by ModernDrive](https://moderndive.com/v2/02-visualization.html)
 
-🖥️ [Lecture 8 - Modeling II](/slides/lec-8.html)
+📖 Read [Data Visualization \| R for Data Science](https://r4ds.hadley.nz/data-visualize.html)
 
-🖥️ [Lecture 9 - Causality I](/slides/lec-9.html)
+### Data Wrangling
 
-## Participation
-
-📋 [AE 3 - Causality](/ae/files/ae-3-causality.qmd){download="ae-3-causality.qmd"}
-
-## Lab
-
-⌨️ [Lab 3 - Modeling I + II](/labs/lab-3.qmd){download="lab-3.qmd"}
+📖 Read [Data Wrangling by ModernDrive](https://moderndive.com/v2/03-wrangling.html)
 
 <br><br>
 

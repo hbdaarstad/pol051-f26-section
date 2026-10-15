@@ -95,7 +95,7 @@
     "href": "weeks/week-3.html",
     "title": "Week 3",
     "section": "",
-    "text": "📖 Read CH.5 in ModernDive\n📖 Read Introduction in Causal Inference: The Mixtape1"
+    "text": "🖥️ Lecture 3 - Data Viz Cont. + Data Wrangling Pt. 1"
   },
   {
     "objectID": "weeks/week-3.html#prepare",
@@ -2324,7 +2324,7 @@
     "href": "index.html",
     "title": "POL 051: The Scientific Study of Politics",
     "section": "",
-    "text": "This page contains an outline of the topics and materials for the Fall 2026 discussion sections (A04, A05, A06). Note that this schedule will be updated as the quarter progresses, with all changes documented here.\n\n\n\n\n\n\n\n\nTA\nLecture\nDiscussion/Lab\n\n\n\n\nHaley Daarstad569 Kerr Hallhbdaarstad@ucdavis.eduOffice Hours: Tue 12:00 - 3:00 PM\nTuesday & Thursday3:10 pm - 4:30 pmWellman Hall 2\nFridayA04: 9:00 am - 9:50 amA05: 10:00 am - 10:50 amA06: 11:00 am - 11:50 amKerr Hall 451\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\nReadings\nSlides\n\n\n\n\n0\nFri, Sep 25\nNo Section\n\n\n\n\n1\nFri, Oct 2\nIntroduction to R\n📖\n🖥️\n\n\n2\nFri, Oct 9\nData Visualization\n📖\n🖥️\n\n\n3\nFri, Oct 16\nData Wrangling\n\n\n\n\n4\nFri, Oct 23\nRelationships\n\n\n\n\n5\nFri, Oct 30\nModeling\n\n\n\n\n6\nFri, Nov 6\nCausality\n\n\n\n\n7\nFri, Nov 13\nUncertainty & Hypothesis Testing\n\n\n\n\n8\nFri, Nov 20\nPrediction & Natural Experiments\n\n\n\n\n9\nFri, Nov 27\nNo section - Thanksgiving holiday\n\n\n\n\n10\nFri, Dec 4\nReview & Wrap-up",
+    "text": "This page contains an outline of the topics and materials for the Fall 2026 discussion sections (A04, A05, A06). Note that this schedule will be updated as the quarter progresses, with all changes documented here.\n\n\n\n\n\n\n\n\nTA\nLecture\nDiscussion/Lab\n\n\n\n\nHaley Daarstad569 Kerr Hallhbdaarstad@ucdavis.eduOffice Hours: Tue 12:00 - 3:00 PM\nTuesday & Thursday3:10 pm - 4:30 pmWellman Hall 2\nFridayA04: 9:00 am - 9:50 amA05: 10:00 am - 10:50 amA06: 11:00 am - 11:50 amKerr Hall 451\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\nReadings\nSlides\n\n\n\n\n0\nFri, Sep 25\nNo Section\n\n\n\n\n1\nFri, Oct 2\nIntroduction to R\n📖\n🖥️\n\n\n2\nFri, Oct 9\nData Visualization\n📖\n🖥️\n\n\n3\nFri, Oct 16\nData Wrangling\n📖\n🖥️\n\n\n4\nFri, Oct 23\nRelationships\n\n\n\n\n5\nFri, Oct 30\nModeling\n\n\n\n\n6\nFri, Nov 6\nCausality\n\n\n\n\n7\nFri, Nov 13\nUncertainty & Hypothesis Testing\n\n\n\n\n8\nFri, Nov 20\nPrediction & Natural Experiments\n\n\n\n\n9\nFri, Nov 27\nNo section - Thanksgiving holiday\n\n\n\n\n10\nFri, Dec 4\nReview & Wrap-up",
     "crumbs": [
       "Course information",
       "Schedule"
@@ -5135,5 +5135,110 @@
     "title": "Week 6",
     "section": "Perform",
     "text": "Perform\nNo lab"
+  },
+  {
+    "objectID": "slides/lec-3.html#graph-4-the-barplot",
+    "href": "slides/lec-3.html#graph-4-the-barplot",
+    "title": "Data wrangling I",
+    "section": "Graph 4: the barplot",
+    "text": "Graph 4: the barplot\n\n\nBarplots place a category (place, country, person, etc) on one axis and a quantity (amount, average, median, etc.) on another\n\n\nUseful for making comparisons, highlighting differences\nWhy would there be differences across TV consumption?"
+  },
+  {
+    "objectID": "slides/lec-3.html#the-grammar-of-barplots",
+    "href": "slides/lec-3.html#the-grammar-of-barplots",
+    "title": "Data wrangling I",
+    "section": "The grammar of barplots",
+    "text": "The grammar of barplots\n\n\n\n\n\n\nThe data\n\n\nmarital\ntv\n\n\n\n\nNo answer\n2.56\n\n\nNever married\n3.11\n\n\nSeparated\n3.55\n\n\nDivorced\n3.09\n\n\nWidowed\n3.91\n\n\n\n\n\n\n\n\n\n\n\nMapping the data\n\n\nData\nAesthetic\nGeometry\n\n\n\n\ntv\nx\ngeom_col()\n\n\nmarital\ny\ngeom_col()\n\n\n\n\n\n\n\n\n\nYou could switch the x and y mapping around, but I think categories look better on the y-axis"
+  },
+  {
+    "objectID": "slides/lec-3.html#the-barplot",
+    "href": "slides/lec-3.html#the-barplot",
+    "title": "Data wrangling I",
+    "section": "The barplot",
+    "text": "The barplot\n\nggplot(tv, aes(y = marital, x = tv)) + \n  geom_col()"
+  },
+  {
+    "objectID": "slides/lec-3.html#graph-5-the-boxplot",
+    "href": "slides/lec-3.html#graph-5-the-boxplot",
+    "title": "Data wrangling I",
+    "section": "Graph 5: the boxplot",
+    "text": "Graph 5: the boxplot\n\n\nBoxplots compare distributions of continuous variables across groups\nthey show us more than the barplot which only gives us a quantity for each group"
+  },
+  {
+    "objectID": "slides/lec-3.html#compare-distributions-the-boxplot",
+    "href": "slides/lec-3.html#compare-distributions-the-boxplot",
+    "title": "Data wrangling I",
+    "section": "Compare distributions: the boxplot",
+    "text": "Compare distributions: the boxplot\n\n\nBoxplots contain a lot of info 🥵:\n\nbold line is the median observation\nbox is the middle 50% of observations\nthin lines show you min and max value, except…\nthe dots, which are outlier observations\n\n\n\n\n\n\n\n\n\n\n\n\ninterpret"
+  },
+  {
+    "objectID": "slides/lec-3.html#the-grammar-of-boxplots",
+    "href": "slides/lec-3.html#the-grammar-of-boxplots",
+    "title": "Data wrangling I",
+    "section": "The grammar of boxplots",
+    "text": "The grammar of boxplots\n\n\n\n\n\n\nThe data\n\n\ncontinent\nlifeExp\n\n\n\n\nAsia\n43.83\n\n\nEurope\n76.42\n\n\nAfrica\n72.30\n\n\nAfrica\n42.73\n\n\nAmericas\n75.32\n\n\n\n\n\n\n\n\n\n\n\nMapping the data\n\n\nData\nAesthetic\nGeometry\n\n\n\n\ncontient\ny\ngeom_boxplot()\n\n\nlifeExp\nx\ngeom_boxplot()\n\n\n\n\n\n\n\n\n\nYou could switch the x and y mapping around, but I think categories look better on the y-axis"
+  },
+  {
+    "objectID": "slides/lec-3.html#the-five-ish-graphs",
+    "href": "slides/lec-3.html#the-five-ish-graphs",
+    "title": "Data wrangling I",
+    "section": "The five(-ish) graphs",
+    "text": "The five(-ish) graphs\n\n\n\n\n\nGraph\naes()\ngeom_\nPurpose\n\n\n\n\nScatterplot\nx = cause, y = effect\npoint()\nRelationships\n\n\nTime series\nx = date, y = variable\nline()\nTrends\n\n\nHistogram\nx = cont. variable\nhistogram()\nDistributions\n\n\nBarplot\ny = category, x = quantity\ncol()\nCompare amounts\n\n\nBoxplot\ny = category, x = cont. variable\nboxplot()\nCompare distributions\n\n\n\n\n\n\n\n\nKnow how and when to use which!"
+  },
+  {
+    "objectID": "slides/lec-3.html#showing-movement-using-panels",
+    "href": "slides/lec-3.html#showing-movement-using-panels",
+    "title": "Data wrangling I",
+    "section": "Showing “movement” using panels",
+    "text": "Showing “movement” using panels\n\n\nWe can use panels to show movement of a variable across time, space, etc.\nWhat is this graph showing us?"
+  },
+  {
+    "objectID": "slides/lec-3.html#using-facet_wrap",
+    "href": "slides/lec-3.html#using-facet_wrap",
+    "title": "Data wrangling I",
+    "section": "Using facet_wrap",
+    "text": "Using facet_wrap\n\nggplot(gapminder, aes(x = lifeExp)) + geom_histogram() + \n  facet_wrap(vars(year)) \n\n\nMake sure the facetting variable is wrapped in vars()!"
+  },
+  {
+    "objectID": "slides/lec-3.html#make-aesthetics-static",
+    "href": "slides/lec-3.html#make-aesthetics-static",
+    "title": "Data wrangling I",
+    "section": "Make aesthetics static",
+    "text": "Make aesthetics static\n\nggplot(gap_07, aes(x = gdpPercap, y = lifeExp)) + \n  geom_point(size = 4, color = \"orange\", shape = 2) \n\n\nTake your aesthetics out of aes() and into geom() to make them static"
+  },
+  {
+    "objectID": "slides/lec-3.html#use-different-color-and-fill-scales",
+    "href": "slides/lec-3.html#use-different-color-and-fill-scales",
+    "title": "Data wrangling I",
+    "section": "Use different color and fill scales",
+    "text": "Use different color and fill scales\n\nggplot(gapminder, aes(x = lifeExp, fill = continent)) + geom_histogram() + \n  scale_fill_brewer(palette = \"Blues\") \n\n\nscale_fill_brewer() for fill, scale_color_brewer for color"
+  },
+  {
+    "objectID": "slides/lec-3.html#my-favorite-scale-right-now",
+    "href": "slides/lec-3.html#my-favorite-scale-right-now",
+    "title": "Data wrangling I",
+    "section": "My favorite scale (right now)",
+    "text": "My favorite scale (right now)\n\nggplot(gapminder, aes(x = lifeExp, fill = continent)) + geom_histogram() + \n  scale_fill_viridis_d(option = \"magma\") \n\n\nscale_fill_viridis_d for discrete variables, scale_fill_viridis_d for continuous"
+  },
+  {
+    "objectID": "slides/lec-3.html#many-other-themes",
+    "href": "slides/lec-3.html#many-other-themes",
+    "title": "Data wrangling I",
+    "section": "Many other themes",
+    "text": "Many other themes\n\ntheme_spongeBob() from tvthemes package, many more online"
+  },
+  {
+    "objectID": "weeks/week-3.html#discussion-materials",
+    "href": "weeks/week-3.html#discussion-materials",
+    "title": "Week 3",
+    "section": "",
+    "text": "🖥️ Lecture 3 - Data Viz Cont. + Data Wrangling Pt. 1"
+  },
+  {
+    "objectID": "weeks/week-3.html#recommended-readings",
+    "href": "weeks/week-3.html#recommended-readings",
+    "title": "Week 3",
+    "section": "Recommended Readings",
+    "text": "Recommended Readings\n\nData Visualization\n📖 Read Data Visualization by ModernDrive\n📖 Read Data Visualization | R for Data Science\n\n\nData Wrangling\n📖 Read Data Wrangling by ModernDrive\n\n\nBack to course schedule ⏎"
   }
 ]

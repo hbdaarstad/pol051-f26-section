@@ -42,11 +42,19 @@ library(socviz)
 
 # source
 source(here::here("slides/R/funcs.R"))
+# subset data to focus on 2007
+gap_07 = 
+  gapminder %>% 
+  filter(year == 2007)
 
 
 ```
 
 # Plan for today {.center background-color="#dc354a"}
+
+Review Data Visualization
+
+. . .
 
 Wrangling and pipes
 
@@ -54,27 +62,256 @@ Wrangling and pipes
 
 Subsetting data
 
-. . .
+## Graph 4: the barplot
 
-The (tricky!) programming objects
+```{r,out.width="80%"}
+tv = gss_cat %>% 
+  group_by(marital) %>% 
+  summarise(tv = mean(tvhours, na.rm = TRUE)) 
 
-# The new starting point {background-color="#dc354a"}
-
-. . .
-
-Before, I *wrangled* data and you plotted the finished product
-
-. . .
-
-First step of all your code was `ggplot()`
-
-. . .
-
-Now, **you** will wrangle the data
+ggplot(tv, aes(y = fct_reorder(marital, tv), x = tv)) + 
+  geom_col(color = "white", fill = blue) + 
+  labs(y = "Average hours of tv watched per day", 
+       x = NULL, title = "TV and marriage in the USA")
+```
 
 . . .
 
-First step is now *the data object*
+Barplots place a *category* (place, country, person, etc) on one axis and a *quantity* (amount, average, median, etc.) on another
+
+. . .
+
+Useful for making **comparisons**, highlighting **differences**
+
+Why would there be differences across TV consumption?
+
+## The grammar of barplots
+
+::::::: columns
+:::: {.column width="50%"}
+::: fragment
+```{r}
+tv |> 
+  slice_head(n = 5) |> 
+  kable(digits = 2, caption = "The data")
+```
+:::
+::::
+
+:::: {.column width="50%"}
+::: fragment
+```{r}
+df = tribble(~Data, ~Aesthetic, ~Geometry, 
+             "tv", "x", "geom_col()",
+             "marital", "y", "geom_col()")
+knitr::kable(df, caption = "Mapping the data")
+```
+:::
+::::
+:::::::
+
+<br>
+
+. . .
+
+You could switch the x and y mapping around, but I think categories look better on the y-axis
+
+## The barplot
+
+```{r, echo = TRUE}
+ggplot(tv, aes(y = marital, x = tv)) + 
+  geom_col()
+```
+
+## Graph 5: the boxplot
+
+```{r, out.width="80%"}
+gapminder %>% 
+  ggplot(aes(y = continent, 
+             x = lifeExp, color = continent)) + 
+  geom_boxplot() +
+  labs(y = "Life expectancy", 
+       x = NULL, 
+       title = "Distribution of life expectancy across continents") + 
+  theme(legend.position = "none")
+```
+
+. . .
+
+Boxplots compare **distributions** of *continuous* variables across groups
+
+they show us *more* than the barplot which only gives us a quantity for each group
+
+## Compare distributions: the boxplot
+
+::::: columns
+::: {.column width="50%"}
+Boxplots contain a lot of info 🥵:
+
+-   bold line is the **median** observation
+-   box is the **middle** 50% of observations
+-   thin lines show you min and max value, *except...*
+-   the dots, which are **outlier** observations
+:::
+
+::: {.column width="50%"}
+```{r}
+gapminder %>% 
+  ggplot(aes(y = continent, 
+             x = lifeExp, color = continent)) + 
+  geom_boxplot() +
+  labs(y = "Life expectancy", 
+       x = NULL, 
+       title = "Distribution of life expectancy across continents") + 
+  theme(legend.position = "none")
+```
+:::
+:::::
+
+interpret
+
+## The grammar of boxplots
+
+::::::: columns
+:::: {.column width="50%"}
+::: fragment
+```{r}
+gap_07 |> 
+  select(continent, lifeExp) |> 
+  slice_head(n = 5) |> 
+  kable(digits = 2, caption = "The data")
+```
+:::
+::::
+
+:::: {.column width="50%"}
+::: fragment
+```{r}
+df = tribble(~Data, ~Aesthetic, ~Geometry, 
+             "contient", "y", "geom_boxplot()",
+             "lifeExp", "x", "geom_boxplot()")
+knitr::kable(df, caption = "Mapping the data")
+```
+:::
+::::
+:::::::
+
+<br>
+
+. . .
+
+You could switch the x and y mapping around, but I think categories look better on the y-axis
+
+## The five(-ish) graphs
+
+```{r}
+tribble(~Graph, ~`aes()`, ~`geom_`, ~Purpose,
+        "Scatterplot", "x = cause, y = effect", "point()", "Relationships",
+        "Time series", "x = date, y = variable", "line()", "Trends",
+        "Histogram", "x = cont. variable", "histogram()", "Distributions",
+        "Barplot", "y = category, x = quantity", "col()", "Compare amounts", 
+        "Boxplot", "y = category, x = cont. variable", "boxplot()", "Compare distributions") %>% 
+  kbl() |> 
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+. . .
+
+Know how and when to use which!
+
+# Making better graphs {background-color="#dc354a"}
+
+-   We've barely scratched the surface; there's many more aesthetics, geometries, and layers in `ggplot()`
+
+-   Here are some of my favorite ones
+
+-   And some ideas for making graphs better
+
+## Showing "movement" using panels
+
+```{r, out.width="80%"}
+ggplot(gapminder, aes(x = lifeExp)) + 
+  geom_histogram() + 
+  facet_wrap(vars(year)) + 
+  labs(title = "Distribution of life expectancy over time")
+```
+
+. . .
+
+We can use **panels** to show *movement* of a variable across time, space, etc.
+
+What is this graph showing us?
+
+## Using facet_wrap
+
+```{r, echo = TRUE, out.width="60%"}
+ggplot(gapminder, aes(x = lifeExp)) + geom_histogram() + 
+  facet_wrap(vars(year)) 
+```
+
+Make sure the facetting variable is wrapped in `vars()`!
+
+## Make aesthetics static
+
+```{r,echo = TRUE, out.width="60%"}
+ggplot(gap_07, aes(x = gdpPercap, y = lifeExp)) + 
+  geom_point(size = 4, color = "orange", shape = 2) 
+```
+
+Take your aesthetics out of `aes()` and into `geom()` to make them *static*
+
+## Use different color and fill scales
+
+```{r, echo = TRUE, out.width="60%"}
+ggplot(gapminder, aes(x = lifeExp, fill = continent)) + geom_histogram() + 
+  scale_fill_brewer(palette = "Blues") 
+```
+
+`scale_fill_brewer()` for `fill`, `scale_color_brewer` for `color`
+
+## My favorite scale (right now)
+
+```{r, echo = TRUE, out.width="60%"}
+ggplot(gapminder, aes(x = lifeExp, fill = continent)) + geom_histogram() + 
+  scale_fill_viridis_d(option = "magma") 
+```
+
+`scale_fill_viridis_d` for *discrete* variables, `scale_fill_viridis_d` for continuous
+
+## Many other themes
+
+```{r,out.width="80%"}
+library(tvthemes)
+ggplot(gapminder, aes(x = lifeExp, fill = continent)) + 
+  geom_histogram() + theme_spongeBob() + labs(title = "So ugly") + 
+  scale_fill_spongeBob()
+```
+
+`theme_spongeBob()` from `tvthemes` package, many more online
+
+# Review {background-color="#dc354a"}
+
+::: incremental
+-   Scatterplots?
+
+    [`geom_point()`: two continuous variables (x and y)]{.fragment}
+
+-   Time series?
+
+    [`geom_line()`: one time/date variable (x) + one continuous variable (y)]{.fragment}
+
+-   Histograms?
+
+    [`geom_histogram()`: one continuous variable (x)]{.fragment}
+
+-   Barplots?
+
+    [`geom_col()`: one categorical variable (x) + one continuous variable (y, already summarized)]{.fragment}
+
+-   Boxplots?
+
+    [`geom_boxplot()`: one continuous variable (y), often split by one categorical variable (x)]{.fragment}
+:::
 
 ## What is data-wrangling?
 
@@ -206,63 +443,6 @@ Sometimes we want to focus on a specific **subset** of data: the South, Latin Am
 . . .
 
 Useful to deal with common problems: outliers, missing data, strange responses
-
-## The Earned Income Tax Credit (EITC)
-
-::::: columns
-::: {.column width="50%"}
-Third largest welfare program in the US
-
-Only people who meet certain **criteria** receive it
-
-**Effects** of program and its **design** are hotly debated
-:::
-
-::: {.column width="50%"}
-![](img/eitc.png)
-:::
-:::::
-
-::: notes
-What does this graph tell us about the criteria?
-:::
-
-## Identifying beneficiaries
-
-Imagine you are the IRS, and have data on all 360+ million Americans:
-
-. . .
-
-```{r}
-library(wakefield)
-fake = r_data_frame(n = 7, sex, race, age, income, marital, children) |> 
-  mutate(Marital = ifelse(Marital != "Married", "Not married", "Married"))
-
-fake |> 
-  kbl(digits = 0)
-```
-
-. . .
-
-How could use use these variables to **identify** what benefits they should receive?
-
-## Identifying beneficiaries
-
-Say we wanted to identify people in the flat part of the [blue line]{.blue}
-
-::::: columns
-::: {.column width="50%"}
-```{r}
-fake |> 
-  select(Income, Marital, Children) |> 
-  kbl()
-```
-:::
-
-::: {.column width="50%"}
-![](img/eitc.png)
-:::
-:::::
 
 ## Using `filter()`
 
@@ -507,178 +687,4 @@ library(juanr)
 leader |> 
   filter(country == "VNM" & yr_office <= 1 & age == 11)
 
-```
-
-# Objects {background-color="#dc354a"}
-
-## Objects and Pipes
-
-Step 1-2: the data, the pipe, the wrangling functions
-
-```{r, echo = TRUE, eval = FALSE}
-apples |> 
-  filter(sweet == FALSE)
-```
-
-<br>
-
-. . .
-
-Step 3: store the subsetted data as a new **object** for later use
-
-```{r, echo = TRUE, eval = FALSE}
-green_apples = apples |>
-  filter(sweet == FALSE)
-```
-
-## Reminder on Objects
-
-In programming, **objects** can be used to store all sorts of stuff for later use
-
-. . .
-
-data, functions, values
-
-. . .
-
-We create objects using `=` or `<-`
-
-. . .
-
-Like this:
-
-```{r, echo = TRUE, eval = FALSE}
-new_object = stuff |> filter(year == 1999)
-```
-
-. . .
-
-Or like this:
-
-```{r, echo = TRUE, eval = FALSE}
-new_object <- stuff |> filter(year == 1999)
-```
-
-## Naming objects
-
-> *There are only two hard things in Computer Science: cache invalidation and naming things.* -- Phil Karlton
-
-. . .
-
-Recommend: keep it short, easy to type, informative, and use `_` to separate words
-
-. . .
-
-```{r, echo = TRUE, eval = FALSE}
-# Good
-gap_africa = gapminder |> 
-  filter(continent == "Africa")
-
-# Bad
-Countries_In_Africa_That_I_Want_To_Look_Up = gapminder |> 
-  filter(continent == "Africa")
-```
-
-. . .
-
-I use the excellent [Tidyverse syntax guide](https://style.tidyverse.org/syntax.html) in my work
-
-## Reminder: no object, no save
-
-Without objects, your work washes away, like tears in the rain
-
-. . .
-
-::::::: columns
-:::: {.column width="50%"}
-Here, we store our data wrangling
-
-::: fragment
-```{r, echo = TRUE}
-green_apples = apples |>
-  filter(sweet == FALSE)
-
-green_apples
-```
-:::
-::::
-
-:::: {.column width="50%"}
-Here we didn't store
-
-::: fragment
-```{r, echo = TRUE}
-apples |>
-  filter(sweet == FALSE)
-
-apples
-```
-:::
-::::
-:::::::
-
-. . .
-
-Notice the original `apples` remains unchanged!
-
-## The formula
-
-*Wrangle* the data until you're satisfied with the output:
-
-```{r, echo = TRUE, eval = FALSE}
-apples |> 
-  filter(sweet == FALSE)
-```
-
-. . .
-
-Store the output as a new object:
-
-```{r, echo = TRUE, eval = FALSE}
-sour_apples = apples |> 
-  filter(sweet == FALSE)
-```
-
-. . .
-
-Use the new object (e.g., plotting):
-
-```{r, echo = TRUE, eval = FALSE}
-ggplot(sour_apples, aes(x = name, y = pounds)) + geom_col()
-```
-
-## Challenge: 🗳️ The (unusual) American voter 🗳️
-
-There's a Twitter bot that randomly tweet profiles of real voters from the Cooperative Election Study:
-
-```{r, out.width="60%"}
-knitr::include_graphics("img/american-voter-bot.png")
-```
-
-## Challenge: 🗳️ The (unusual) American voter 🗳️
-
-```{r}
-juanr::bot |> 
-  sample_n(5) |> 
-  knitr::kable(caption = "A small sample of Americans")
-```
-
-## 🗳️ The (unusual) American voter 🗳️
-
-In your teams, using `bot`:
-
-1.  Identify the most **unusual** subgroup of voters you can think of
-
-2.  Constraint: need *at least* five voters in your subgroup
-
-3.  Store your unusual subgroup as an object
-
-4.  One member tells the class what was your subgroup of voters.
-
-::: callout-note
-Remember you can use `?bot` to look at the codebook
-:::
-
-```{r}
-countdown::countdown(minutes = 10L)
 ```
