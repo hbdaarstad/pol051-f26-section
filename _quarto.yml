@@ -6,7 +6,6 @@ project:
     - "!files/**"
     - "!ae/files/**"
     - "!labs/**"
-    - "!supplemental/data-vis.qmd"
     - "!supplemental/data-wrangling.qmd"
     - "!supplemental/data-gen.qmd"
     - "!supplemental/models.qmd"
