@@ -95,35 +95,33 @@
     "href": "weeks/week-3.html",
     "title": "Week 3",
     "section": "",
-    "text": "🖥️ Lecture 3 - Data Viz Cont. + Data Wrangling Pt. 1"
+    "text": "🖥️ Lecture 3 - Data Viz Cont. + Data Wrangling Pt. 1",
+    "crumbs": [
+      "Weekly materials",
+      "Week 3"
+    ]
   },
   {
-    "objectID": "weeks/week-3.html#prepare",
-    "href": "weeks/week-3.html#prepare",
+    "objectID": "weeks/week-3.html#discussion-materials",
+    "href": "weeks/week-3.html#discussion-materials",
     "title": "Week 3",
     "section": "",
-    "text": "📖 Read CH.5 in ModernDive\n📖 Read Introduction in Causal Inference: The Mixtape1"
+    "text": "🖥️ Lecture 3 - Data Viz Cont. + Data Wrangling Pt. 1",
+    "crumbs": [
+      "Weekly materials",
+      "Week 3"
+    ]
   },
   {
-    "objectID": "weeks/week-3.html#lectures",
-    "href": "weeks/week-3.html#lectures",
+    "objectID": "weeks/week-3.html#recommended-readings",
+    "href": "weeks/week-3.html#recommended-readings",
     "title": "Week 3",
-    "section": "Lectures",
-    "text": "Lectures\n🖥️ Lecture 7 - Modeling I\n🖥️ Lecture 8 - Modeling II\n🖥️ Lecture 9 - Causality I"
-  },
-  {
-    "objectID": "weeks/week-3.html#participation",
-    "href": "weeks/week-3.html#participation",
-    "title": "Week 3",
-    "section": "Participation",
-    "text": "Participation\n📋 AE 3 - Causality"
-  },
-  {
-    "objectID": "weeks/week-3.html#lab",
-    "href": "weeks/week-3.html#lab",
-    "title": "Week 3",
-    "section": "Lab",
-    "text": "Lab\n⌨️ Lab 3 - Modeling I + II\n\n\nBack to course schedule ⏎"
+    "section": "Recommended Readings",
+    "text": "Recommended Readings\n\nData Visualization\n📖 Read Data Visualization by ModernDrive\n📖 Read Data Visualization | R for Data Science\n\n\nData Wrangling\n📖 Read Data Wrangling by ModernDrive\n\n\nBack to course schedule ⏎",
+    "crumbs": [
+      "Weekly materials",
+      "Week 3"
+    ]
   },
   {
     "objectID": "weeks/week-10.html",
@@ -168,7 +166,7 @@
     "text": "Not yet complete, will add soon. Check back later!",
     "crumbs": [
       "Weekly materials",
-      "Week 3"
+      "Week 4"
     ]
   },
   {
@@ -179,7 +177,7 @@
     "text": "This page is not available yet. Check back later!",
     "crumbs": [
       "Code Examples",
-      "Data Visualization (ggplot2)"
+      "Data Wrangling (ggplot2)"
     ]
   },
   {
@@ -3774,6 +3772,97 @@
     "text": "Keep thinking about uncertainty\n\n\n\n\n\n\n\n\n\n\n\n\nWhere is the uncertainty?\n\n\n\n\n\n\n\n\n\n\n\n\n95% CI between Biden and Trump overlap"
   },
   {
+    "objectID": "slides/lec-3.html#graph-4-the-barplot",
+    "href": "slides/lec-3.html#graph-4-the-barplot",
+    "title": "Data wrangling I",
+    "section": "Graph 4: the barplot",
+    "text": "Graph 4: the barplot\n\n\nBarplots place a category (place, country, person, etc) on one axis and a quantity (amount, average, median, etc.) on another\n\n\nUseful for making comparisons, highlighting differences\nWhy would there be differences across TV consumption?"
+  },
+  {
+    "objectID": "slides/lec-3.html#the-grammar-of-barplots",
+    "href": "slides/lec-3.html#the-grammar-of-barplots",
+    "title": "Data wrangling I",
+    "section": "The grammar of barplots",
+    "text": "The grammar of barplots\n\n\n\n\n\n\nThe data\n\n\nmarital\ntv\n\n\n\n\nNo answer\n2.56\n\n\nNever married\n3.11\n\n\nSeparated\n3.55\n\n\nDivorced\n3.09\n\n\nWidowed\n3.91\n\n\n\n\n\n\n\n\n\n\n\nMapping the data\n\n\nData\nAesthetic\nGeometry\n\n\n\n\ntv\nx\ngeom_col()\n\n\nmarital\ny\ngeom_col()\n\n\n\n\n\n\n\n\n\nYou could switch the x and y mapping around, but I think categories look better on the y-axis"
+  },
+  {
+    "objectID": "slides/lec-3.html#the-barplot",
+    "href": "slides/lec-3.html#the-barplot",
+    "title": "Data wrangling I",
+    "section": "The barplot",
+    "text": "The barplot\n\nggplot(tv, aes(y = marital, x = tv)) + \n  geom_col()"
+  },
+  {
+    "objectID": "slides/lec-3.html#graph-5-the-boxplot",
+    "href": "slides/lec-3.html#graph-5-the-boxplot",
+    "title": "Data wrangling I",
+    "section": "Graph 5: the boxplot",
+    "text": "Graph 5: the boxplot\n\n\nBoxplots compare distributions of continuous variables across groups\nthey show us more than the barplot which only gives us a quantity for each group"
+  },
+  {
+    "objectID": "slides/lec-3.html#compare-distributions-the-boxplot",
+    "href": "slides/lec-3.html#compare-distributions-the-boxplot",
+    "title": "Data wrangling I",
+    "section": "Compare distributions: the boxplot",
+    "text": "Compare distributions: the boxplot\n\n\nBoxplots contain a lot of info 🥵:\n\nbold line is the median observation\nbox is the middle 50% of observations\nthin lines show you min and max value, except…\nthe dots, which are outlier observations\n\n\n\n\n\n\n\n\n\n\n\n\ninterpret"
+  },
+  {
+    "objectID": "slides/lec-3.html#the-grammar-of-boxplots",
+    "href": "slides/lec-3.html#the-grammar-of-boxplots",
+    "title": "Data wrangling I",
+    "section": "The grammar of boxplots",
+    "text": "The grammar of boxplots\n\n\n\n\n\n\nThe data\n\n\ncontinent\nlifeExp\n\n\n\n\nAsia\n43.83\n\n\nEurope\n76.42\n\n\nAfrica\n72.30\n\n\nAfrica\n42.73\n\n\nAmericas\n75.32\n\n\n\n\n\n\n\n\n\n\n\nMapping the data\n\n\nData\nAesthetic\nGeometry\n\n\n\n\ncontient\ny\ngeom_boxplot()\n\n\nlifeExp\nx\ngeom_boxplot()\n\n\n\n\n\n\n\n\n\nYou could switch the x and y mapping around, but I think categories look better on the y-axis"
+  },
+  {
+    "objectID": "slides/lec-3.html#the-five-ish-graphs",
+    "href": "slides/lec-3.html#the-five-ish-graphs",
+    "title": "Data wrangling I",
+    "section": "The five(-ish) graphs",
+    "text": "The five(-ish) graphs\n\n\n\n\n\nGraph\naes()\ngeom_\nPurpose\n\n\n\n\nScatterplot\nx = cause, y = effect\npoint()\nRelationships\n\n\nTime series\nx = date, y = variable\nline()\nTrends\n\n\nHistogram\nx = cont. variable\nhistogram()\nDistributions\n\n\nBarplot\ny = category, x = quantity\ncol()\nCompare amounts\n\n\nBoxplot\ny = category, x = cont. variable\nboxplot()\nCompare distributions\n\n\n\n\n\n\n\n\nKnow how and when to use which!"
+  },
+  {
+    "objectID": "slides/lec-3.html#showing-movement-using-panels",
+    "href": "slides/lec-3.html#showing-movement-using-panels",
+    "title": "Data wrangling I",
+    "section": "Showing “movement” using panels",
+    "text": "Showing “movement” using panels\n\n\nWe can use panels to show movement of a variable across time, space, etc.\nWhat is this graph showing us?"
+  },
+  {
+    "objectID": "slides/lec-3.html#using-facet_wrap",
+    "href": "slides/lec-3.html#using-facet_wrap",
+    "title": "Data wrangling I",
+    "section": "Using facet_wrap",
+    "text": "Using facet_wrap\n\nggplot(gapminder, aes(x = lifeExp)) + geom_histogram() + \n  facet_wrap(vars(year)) \n\n\nMake sure the facetting variable is wrapped in vars()!"
+  },
+  {
+    "objectID": "slides/lec-3.html#make-aesthetics-static",
+    "href": "slides/lec-3.html#make-aesthetics-static",
+    "title": "Data wrangling I",
+    "section": "Make aesthetics static",
+    "text": "Make aesthetics static\n\nggplot(gap_07, aes(x = gdpPercap, y = lifeExp)) + \n  geom_point(size = 4, color = \"orange\", shape = 2) \n\n\nTake your aesthetics out of aes() and into geom() to make them static"
+  },
+  {
+    "objectID": "slides/lec-3.html#use-different-color-and-fill-scales",
+    "href": "slides/lec-3.html#use-different-color-and-fill-scales",
+    "title": "Data wrangling I",
+    "section": "Use different color and fill scales",
+    "text": "Use different color and fill scales\n\nggplot(gapminder, aes(x = lifeExp, fill = continent)) + geom_histogram() + \n  scale_fill_brewer(palette = \"Blues\") \n\n\nscale_fill_brewer() for fill, scale_color_brewer for color"
+  },
+  {
+    "objectID": "slides/lec-3.html#my-favorite-scale-right-now",
+    "href": "slides/lec-3.html#my-favorite-scale-right-now",
+    "title": "Data wrangling I",
+    "section": "My favorite scale (right now)",
+    "text": "My favorite scale (right now)\n\nggplot(gapminder, aes(x = lifeExp, fill = continent)) + geom_histogram() + \n  scale_fill_viridis_d(option = \"magma\") \n\n\nscale_fill_viridis_d for discrete variables, scale_fill_viridis_d for continuous"
+  },
+  {
+    "objectID": "slides/lec-3.html#many-other-themes",
+    "href": "slides/lec-3.html#many-other-themes",
+    "title": "Data wrangling I",
+    "section": "Many other themes",
+    "text": "Many other themes\n\ntheme_spongeBob() from tvthemes package, many more online"
+  },
+  {
     "objectID": "slides/lec-3.html#what-is-data-wrangling",
     "href": "slides/lec-3.html#what-is-data-wrangling",
     "title": "Data wrangling I",
@@ -3821,27 +3910,6 @@
     "title": "Data wrangling I",
     "section": "Why filter?",
     "text": "Why filter?\n\nLots of real-world applications: finding flights, addresses, IDs, etc.\n\n\nSometimes we want to focus on a specific subset of data: the South, Latin America, etc.\n\n\nUseful to deal with common problems: outliers, missing data, strange responses"
-  },
-  {
-    "objectID": "slides/lec-3.html#the-earned-income-tax-credit-eitc",
-    "href": "slides/lec-3.html#the-earned-income-tax-credit-eitc",
-    "title": "Data wrangling I",
-    "section": "The Earned Income Tax Credit (EITC)",
-    "text": "The Earned Income Tax Credit (EITC)\n\n\nThird largest welfare program in the US\nOnly people who meet certain criteria receive it\nEffects of program and its design are hotly debated\n\n\n\n\nWhat does this graph tell us about the criteria?"
-  },
-  {
-    "objectID": "slides/lec-3.html#identifying-beneficiaries",
-    "href": "slides/lec-3.html#identifying-beneficiaries",
-    "title": "Data wrangling I",
-    "section": "Identifying beneficiaries",
-    "text": "Identifying beneficiaries\nImagine you are the IRS, and have data on all 360+ million Americans:\n\n\n\n\n\n\nSex\nRace\nAge\nIncome\nMarital\nChildren\n\n\n\n\nMale\nWhite\n67\n17643\nMarried\n1\n\n\nFemale\nWhite\n39\n24689\nNot married\n1\n\n\nFemale\nWhite\n76\n121239\nNot married\n1\n\n\nFemale\nWhite\n54\n41001\nMarried\n0\n\n\nMale\nWhite\n72\n92432\nNot married\n1\n\n\nFemale\nWhite\n77\n64430\nNot married\n1\n\n\nFemale\nWhite\n78\n580\nNot married\n1\n\n\n\n\n\n\n\n\n\nHow could use use these variables to identify what benefits they should receive?"
-  },
-  {
-    "objectID": "slides/lec-3.html#identifying-beneficiaries-1",
-    "href": "slides/lec-3.html#identifying-beneficiaries-1",
-    "title": "Data wrangling I",
-    "section": "Identifying beneficiaries",
-    "text": "Identifying beneficiaries\nSay we wanted to identify people in the flat part of the blue line\n\n\n\n\n\n\n\nIncome\nMarital\nChildren\n\n\n\n\n17642.88\nMarried\n1\n\n\n24688.98\nNot married\n1\n\n\n121239.34\nNot married\n1\n\n\n41001.08\nMarried\n0\n\n\n92431.88\nNot married\n1\n\n\n64430.12\nNot married\n1\n\n\n580.02\nNot married\n1"
   },
   {
     "objectID": "slides/lec-3.html#using-filter",
@@ -3947,62 +4015,6 @@
     "title": "Data wrangling I",
     "section": "👑 World leaders 👑",
     "text": "👑 World leaders 👑\n\nlibrary(juanr)\n\n?leader\n\nleader |&gt; \n  filter(country == \"VNM\" & yr_office &lt;= 1 & age == 11)\n\n# A tibble: 1 × 16\n  country gwcode leader    gender  year yr_office   age edu   mil_service combat\n  &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;  &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;       &lt;dbl&gt;  &lt;dbl&gt;\n1 VNM        815 Thanh Th… M       1889         1    11 Seco…           0      0\n# ℹ 6 more variables: rebel &lt;dbl&gt;, yrs_exp &lt;dbl&gt;, phys_health &lt;dbl&gt;,\n#   mental_health &lt;dbl&gt;, will_force &lt;dbl&gt;, will_force_sd &lt;dbl&gt;"
-  },
-  {
-    "objectID": "slides/lec-3.html#objects-and-pipes",
-    "href": "slides/lec-3.html#objects-and-pipes",
-    "title": "Data wrangling I",
-    "section": "Objects and Pipes",
-    "text": "Objects and Pipes\nStep 1-2: the data, the pipe, the wrangling functions\n\napples |&gt; \n  filter(sweet == FALSE)\n\n\n\nStep 3: store the subsetted data as a new object for later use\n\ngreen_apples = apples |&gt;\n  filter(sweet == FALSE)"
-  },
-  {
-    "objectID": "slides/lec-3.html#reminder-on-objects",
-    "href": "slides/lec-3.html#reminder-on-objects",
-    "title": "Data wrangling I",
-    "section": "Reminder on Objects",
-    "text": "Reminder on Objects\nIn programming, objects can be used to store all sorts of stuff for later use\n\ndata, functions, values\n\n\nWe create objects using = or &lt;-\n\n\nLike this:\n\nnew_object = stuff |&gt; filter(year == 1999)\n\n\n\nOr like this:\n\nnew_object &lt;- stuff |&gt; filter(year == 1999)"
-  },
-  {
-    "objectID": "slides/lec-3.html#naming-objects",
-    "href": "slides/lec-3.html#naming-objects",
-    "title": "Data wrangling I",
-    "section": "Naming objects",
-    "text": "Naming objects\n\nThere are only two hard things in Computer Science: cache invalidation and naming things. – Phil Karlton\n\n\nRecommend: keep it short, easy to type, informative, and use _ to separate words\n\n\n\n# Good\ngap_africa = gapminder |&gt; \n  filter(continent == \"Africa\")\n\n# Bad\nCountries_In_Africa_That_I_Want_To_Look_Up = gapminder |&gt; \n  filter(continent == \"Africa\")\n\n\n\nI use the excellent Tidyverse syntax guide in my work"
-  },
-  {
-    "objectID": "slides/lec-3.html#reminder-no-object-no-save",
-    "href": "slides/lec-3.html#reminder-no-object-no-save",
-    "title": "Data wrangling I",
-    "section": "Reminder: no object, no save",
-    "text": "Reminder: no object, no save\nWithout objects, your work washes away, like tears in the rain\n\n\n\nHere, we store our data wrangling\n\n\ngreen_apples = apples |&gt;\n  filter(sweet == FALSE)\n\ngreen_apples\n\n# A tibble: 2 × 4\n  name         color pounds sweet\n  &lt;chr&gt;        &lt;chr&gt;  &lt;dbl&gt; &lt;lgl&gt;\n1 Macintosh    green      8 FALSE\n2 Granny Smith red        3 FALSE\n\n\n\n\nHere we didn’t store\n\n\napples |&gt;\n  filter(sweet == FALSE)\n\n# A tibble: 2 × 4\n  name         color pounds sweet\n  &lt;chr&gt;        &lt;chr&gt;  &lt;dbl&gt; &lt;lgl&gt;\n1 Macintosh    green      8 FALSE\n2 Granny Smith red        3 FALSE\n\napples\n\n# A tibble: 4 × 4\n  name         color pounds sweet\n  &lt;chr&gt;        &lt;chr&gt;  &lt;dbl&gt; &lt;lgl&gt;\n1 Fuji         red        2 TRUE \n2 Gala         green      4 TRUE \n3 Macintosh    green      8 FALSE\n4 Granny Smith red        3 FALSE\n\n\n\n\n\n\nNotice the original apples remains unchanged!"
-  },
-  {
-    "objectID": "slides/lec-3.html#the-formula",
-    "href": "slides/lec-3.html#the-formula",
-    "title": "Data wrangling I",
-    "section": "The formula",
-    "text": "The formula\nWrangle the data until you’re satisfied with the output:\n\napples |&gt; \n  filter(sweet == FALSE)\n\n\nStore the output as a new object:\n\nsour_apples = apples |&gt; \n  filter(sweet == FALSE)\n\n\n\nUse the new object (e.g., plotting):\n\nggplot(sour_apples, aes(x = name, y = pounds)) + geom_col()"
-  },
-  {
-    "objectID": "slides/lec-3.html#challenge-the-unusual-american-voter",
-    "href": "slides/lec-3.html#challenge-the-unusual-american-voter",
-    "title": "Data wrangling I",
-    "section": "Challenge: 🗳️ The (unusual) American voter 🗳️",
-    "text": "Challenge: 🗳️ The (unusual) American voter 🗳️\nThere’s a Twitter bot that randomly tweet profiles of real voters from the Cooperative Election Study:"
-  },
-  {
-    "objectID": "slides/lec-3.html#challenge-the-unusual-american-voter-1",
-    "href": "slides/lec-3.html#challenge-the-unusual-american-voter-1",
-    "title": "Data wrangling I",
-    "section": "Challenge: 🗳️ The (unusual) American voter 🗳️",
-    "text": "Challenge: 🗳️ The (unusual) American voter 🗳️\n\n\n\nA small sample of Americans\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nstate\nsex\nage\neduc\nrace\npid7\nideo5\nreligion\nvotechoice\nhispanic\nknow_governor\nconceal\nprochoice\ncleanair\nwall\nmandmin\naca\nminwage\nnewsint\n\n\n\n\nWashington\nMale\n66\n4-year\nWhite\nStrong Republican\nVery conservative\nProtestant\nDonald J. Trump (Republican)\nNo\nDemocrat\nSupport\nOppose\nOppose\nSupport\nOppose\nSupport\nOppose\nMost of the time\n\n\nPennsylvania\nMale\n68\nHigh school graduate\nBlack\nIndependent\nLiberal\nNothing in particular\nJoe Biden (Democrat)\nNo\nDemocrat\nSupport\nOppose\nSupport\nSupport\nOppose\nSupport\nOppose\nOnly now and then\n\n\nArizona\nFemale\n70\n2-year\nWhite\nStrong Republican\nVery conservative\nProtestant\nDonald J. Trump (Republican)\nNo\nRepublican\nOppose\nOppose\nSupport\nSupport\nOppose\nSupport\nOppose\nSome of the time\n\n\nArizona\nMale\n57\nHigh school graduate\nWhite\nLean Republican\nVery conservative\nProtestant\nDonald J. Trump (Republican)\nNo\nRepublican\nSupport\nOppose\nOppose\nSupport\nSupport\nSupport\nFavor\nMost of the time\n\n\nConnecticut\nMale\n21\nSome college\nWhite\nStrong Republican\nConservative\nNothing in particular\nNA\nNo\nDemocrat\nSupport\nSupport\nOppose\nSupport\nSupport\nSupport\nOppose\nMost of the time"
-  },
-  {
-    "objectID": "slides/lec-3.html#the-unusual-american-voter",
-    "href": "slides/lec-3.html#the-unusual-american-voter",
-    "title": "Data wrangling I",
-    "section": "🗳️ The (unusual) American voter 🗳️",
-    "text": "🗳️ The (unusual) American voter 🗳️\nIn your teams, using bot:\n\nIdentify the most unusual subgroup of voters you can think of\nConstraint: need at least five voters in your subgroup\nStore your unusual subgroup as an object\nOne member tells the class what was your subgroup of voters.\n\n\n\n\n\n\n\nNote\n\n\nRemember you can use ?bot to look at the codebook"
   },
   {
     "objectID": "slides/lec-5.html#data-objects-variables-1",
@@ -5135,110 +5147,5 @@
     "title": "Week 6",
     "section": "Perform",
     "text": "Perform\nNo lab"
-  },
-  {
-    "objectID": "slides/lec-3.html#graph-4-the-barplot",
-    "href": "slides/lec-3.html#graph-4-the-barplot",
-    "title": "Data wrangling I",
-    "section": "Graph 4: the barplot",
-    "text": "Graph 4: the barplot\n\n\nBarplots place a category (place, country, person, etc) on one axis and a quantity (amount, average, median, etc.) on another\n\n\nUseful for making comparisons, highlighting differences\nWhy would there be differences across TV consumption?"
-  },
-  {
-    "objectID": "slides/lec-3.html#the-grammar-of-barplots",
-    "href": "slides/lec-3.html#the-grammar-of-barplots",
-    "title": "Data wrangling I",
-    "section": "The grammar of barplots",
-    "text": "The grammar of barplots\n\n\n\n\n\n\nThe data\n\n\nmarital\ntv\n\n\n\n\nNo answer\n2.56\n\n\nNever married\n3.11\n\n\nSeparated\n3.55\n\n\nDivorced\n3.09\n\n\nWidowed\n3.91\n\n\n\n\n\n\n\n\n\n\n\nMapping the data\n\n\nData\nAesthetic\nGeometry\n\n\n\n\ntv\nx\ngeom_col()\n\n\nmarital\ny\ngeom_col()\n\n\n\n\n\n\n\n\n\nYou could switch the x and y mapping around, but I think categories look better on the y-axis"
-  },
-  {
-    "objectID": "slides/lec-3.html#the-barplot",
-    "href": "slides/lec-3.html#the-barplot",
-    "title": "Data wrangling I",
-    "section": "The barplot",
-    "text": "The barplot\n\nggplot(tv, aes(y = marital, x = tv)) + \n  geom_col()"
-  },
-  {
-    "objectID": "slides/lec-3.html#graph-5-the-boxplot",
-    "href": "slides/lec-3.html#graph-5-the-boxplot",
-    "title": "Data wrangling I",
-    "section": "Graph 5: the boxplot",
-    "text": "Graph 5: the boxplot\n\n\nBoxplots compare distributions of continuous variables across groups\nthey show us more than the barplot which only gives us a quantity for each group"
-  },
-  {
-    "objectID": "slides/lec-3.html#compare-distributions-the-boxplot",
-    "href": "slides/lec-3.html#compare-distributions-the-boxplot",
-    "title": "Data wrangling I",
-    "section": "Compare distributions: the boxplot",
-    "text": "Compare distributions: the boxplot\n\n\nBoxplots contain a lot of info 🥵:\n\nbold line is the median observation\nbox is the middle 50% of observations\nthin lines show you min and max value, except…\nthe dots, which are outlier observations\n\n\n\n\n\n\n\n\n\n\n\n\ninterpret"
-  },
-  {
-    "objectID": "slides/lec-3.html#the-grammar-of-boxplots",
-    "href": "slides/lec-3.html#the-grammar-of-boxplots",
-    "title": "Data wrangling I",
-    "section": "The grammar of boxplots",
-    "text": "The grammar of boxplots\n\n\n\n\n\n\nThe data\n\n\ncontinent\nlifeExp\n\n\n\n\nAsia\n43.83\n\n\nEurope\n76.42\n\n\nAfrica\n72.30\n\n\nAfrica\n42.73\n\n\nAmericas\n75.32\n\n\n\n\n\n\n\n\n\n\n\nMapping the data\n\n\nData\nAesthetic\nGeometry\n\n\n\n\ncontient\ny\ngeom_boxplot()\n\n\nlifeExp\nx\ngeom_boxplot()\n\n\n\n\n\n\n\n\n\nYou could switch the x and y mapping around, but I think categories look better on the y-axis"
-  },
-  {
-    "objectID": "slides/lec-3.html#the-five-ish-graphs",
-    "href": "slides/lec-3.html#the-five-ish-graphs",
-    "title": "Data wrangling I",
-    "section": "The five(-ish) graphs",
-    "text": "The five(-ish) graphs\n\n\n\n\n\nGraph\naes()\ngeom_\nPurpose\n\n\n\n\nScatterplot\nx = cause, y = effect\npoint()\nRelationships\n\n\nTime series\nx = date, y = variable\nline()\nTrends\n\n\nHistogram\nx = cont. variable\nhistogram()\nDistributions\n\n\nBarplot\ny = category, x = quantity\ncol()\nCompare amounts\n\n\nBoxplot\ny = category, x = cont. variable\nboxplot()\nCompare distributions\n\n\n\n\n\n\n\n\nKnow how and when to use which!"
-  },
-  {
-    "objectID": "slides/lec-3.html#showing-movement-using-panels",
-    "href": "slides/lec-3.html#showing-movement-using-panels",
-    "title": "Data wrangling I",
-    "section": "Showing “movement” using panels",
-    "text": "Showing “movement” using panels\n\n\nWe can use panels to show movement of a variable across time, space, etc.\nWhat is this graph showing us?"
-  },
-  {
-    "objectID": "slides/lec-3.html#using-facet_wrap",
-    "href": "slides/lec-3.html#using-facet_wrap",
-    "title": "Data wrangling I",
-    "section": "Using facet_wrap",
-    "text": "Using facet_wrap\n\nggplot(gapminder, aes(x = lifeExp)) + geom_histogram() + \n  facet_wrap(vars(year)) \n\n\nMake sure the facetting variable is wrapped in vars()!"
-  },
-  {
-    "objectID": "slides/lec-3.html#make-aesthetics-static",
-    "href": "slides/lec-3.html#make-aesthetics-static",
-    "title": "Data wrangling I",
-    "section": "Make aesthetics static",
-    "text": "Make aesthetics static\n\nggplot(gap_07, aes(x = gdpPercap, y = lifeExp)) + \n  geom_point(size = 4, color = \"orange\", shape = 2) \n\n\nTake your aesthetics out of aes() and into geom() to make them static"
-  },
-  {
-    "objectID": "slides/lec-3.html#use-different-color-and-fill-scales",
-    "href": "slides/lec-3.html#use-different-color-and-fill-scales",
-    "title": "Data wrangling I",
-    "section": "Use different color and fill scales",
-    "text": "Use different color and fill scales\n\nggplot(gapminder, aes(x = lifeExp, fill = continent)) + geom_histogram() + \n  scale_fill_brewer(palette = \"Blues\") \n\n\nscale_fill_brewer() for fill, scale_color_brewer for color"
-  },
-  {
-    "objectID": "slides/lec-3.html#my-favorite-scale-right-now",
-    "href": "slides/lec-3.html#my-favorite-scale-right-now",
-    "title": "Data wrangling I",
-    "section": "My favorite scale (right now)",
-    "text": "My favorite scale (right now)\n\nggplot(gapminder, aes(x = lifeExp, fill = continent)) + geom_histogram() + \n  scale_fill_viridis_d(option = \"magma\") \n\n\nscale_fill_viridis_d for discrete variables, scale_fill_viridis_d for continuous"
-  },
-  {
-    "objectID": "slides/lec-3.html#many-other-themes",
-    "href": "slides/lec-3.html#many-other-themes",
-    "title": "Data wrangling I",
-    "section": "Many other themes",
-    "text": "Many other themes\n\ntheme_spongeBob() from tvthemes package, many more online"
-  },
-  {
-    "objectID": "weeks/week-3.html#discussion-materials",
-    "href": "weeks/week-3.html#discussion-materials",
-    "title": "Week 3",
-    "section": "",
-    "text": "🖥️ Lecture 3 - Data Viz Cont. + Data Wrangling Pt. 1"
-  },
-  {
-    "objectID": "weeks/week-3.html#recommended-readings",
-    "href": "weeks/week-3.html#recommended-readings",
-    "title": "Week 3",
-    "section": "Recommended Readings",
-    "text": "Recommended Readings\n\nData Visualization\n📖 Read Data Visualization by ModernDrive\n📖 Read Data Visualization | R for Data Science\n\n\nData Wrangling\n📖 Read Data Wrangling by ModernDrive\n\n\nBack to course schedule ⏎"
   }
 ]
