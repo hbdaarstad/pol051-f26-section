@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.6.42">
 
   <meta name="author" content="Haley Daarstad">
-  <meta name="dcterms.date" content="2026-10-15">
+  <meta name="dcterms.date" content="2026-10-16">
   <title>POL 051 A04, A05, &amp; A06 - Fall 2026 – Data wrangling I</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -191,8 +191,6 @@
   </style>
   <script src="../site_libs/kePrint-0.0.1/kePrint.js"></script>
   <link href="../site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
-  <link href="../site_libs/countdown-0.6.0/countdown.css" rel="stylesheet">
-  <script src="../site_libs/countdown-0.6.0/countdown.js"></script>
 <meta property="og:title" content="Data wrangling I – POL 051 A04, A05, &amp; A06 - Fall 2026">
 <meta property="og:description" content="POL51">
 <meta property="og:site_name" content="POL 051 A04, A05, &amp; A06 - Fall 2026">
@@ -216,7 +214,7 @@ Haley Daarstad
     </div>
 </div>
 
-  <p class="date">October 15, 2026</p>
+  <p class="date">October 16, 2026</p>
 </section>
 <section>
 <section id="plan-for-today" class="title-slide slide level1 center" data-background-color="#dc354a">
@@ -1027,23 +1025,32 @@ Haley Daarstad
 </div>
 </div>
 </section>
-<section id="your-turn-world-leaders" class="slide level2">
-<h2>Your turn: 👑 World leaders 👑</h2>
-<p>Open an r script and download two new packages: <code>remotes</code> and <code>juanr</code>.</p>
-<p>Next Using the <code>leader</code> dataset, identify:</p>
+<section id="world-leaders-example" class="slide level2">
+<h2>👑 World leaders Example 👑</h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="fu">library</span>(juanr)</span>
+<span id="cb29-2"><a></a></span>
+<span id="cb29-3"><a></a>?leader</span>
+<span id="cb29-4"><a></a></span>
+<span id="cb29-5"><a></a>leader <span class="sc">|&gt;</span> </span>
+<span id="cb29-6"><a></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"VNM"</span> <span class="sc">&amp;</span> yr_office <span class="sc">&lt;=</span> <span class="dv">1</span> <span class="sc">&amp;</span> age <span class="sc">==</span> <span class="dv">11</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 16
+  country gwcode leader    gender  year yr_office   age edu   mil_service combat
+  &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;  &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;       &lt;dbl&gt;  &lt;dbl&gt;
+1 VNM        815 Thanh Th… M       1889         1    11 Seco…           0      0
+# ℹ 6 more variables: rebel &lt;dbl&gt;, yrs_exp &lt;dbl&gt;, phys_health &lt;dbl&gt;,
+#   mental_health &lt;dbl&gt;, will_force &lt;dbl&gt;, will_force_sd &lt;dbl&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="cars-practice" class="slide level2">
+<h2>👑 Cars Practice 👑</h2>
+<p>Open an r script, open the code book to find the variable names, and filter to find the car model.</p>
+<p>Next Using the <code>mtcars</code> dataset, identify:</p>
 <ol type="1">
-<li class="fragment">A Vietnamese Emperor who, in his first year in office, was 11 years old. Famously depraved.</li>
+<li class="fragment">A manual car, with 6 cylinders and the miles per gallon is less than 20.</li>
 </ol>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="fu">install.packages</span>(<span class="st">"remotes"</span>)</span>
-<span id="cb29-2"><a></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"hail2thief/juanr"</span>)</span>
-<span id="cb29-3"><a></a><span class="fu">library</span>(juanr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_76c015b7" minutes="10" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
-</div>
-</div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -1053,27 +1060,17 @@ Haley Daarstad
 <p><strong>Note</strong></p>
 </div>
 <div class="callout-content">
-<p>You can use <code>?leader</code> to see the codebook. The acronym for Vietnam is “VNM”</p>
+<p><code>?mtcars</code> to see the codebook.</p>
 </div>
 </div>
 </div>
 </section>
-<section id="world-leaders" class="slide level2">
-<h2>👑 World leaders 👑</h2>
+<section id="cars-practice-answer" class="slide level2">
+<h2>👑 Cars Practice Answer 👑</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a><span class="fu">library</span>(juanr)</span>
-<span id="cb30-2"><a></a></span>
-<span id="cb30-3"><a></a>?leader</span>
-<span id="cb30-4"><a></a></span>
-<span id="cb30-5"><a></a>leader <span class="sc">|&gt;</span> </span>
-<span id="cb30-6"><a></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"VNM"</span> <span class="sc">&amp;</span> yr_office <span class="sc">&lt;=</span> <span class="dv">1</span> <span class="sc">&amp;</span> age <span class="sc">==</span> <span class="dv">11</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 1 × 16
-  country gwcode leader    gender  year yr_office   age edu   mil_service combat
-  &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;  &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;       &lt;dbl&gt;  &lt;dbl&gt;
-1 VNM        815 Thanh Th… M       1889         1    11 Seco…           0      0
-# ℹ 6 more variables: rebel &lt;dbl&gt;, yrs_exp &lt;dbl&gt;, phys_health &lt;dbl&gt;,
-#   mental_health &lt;dbl&gt;, will_force &lt;dbl&gt;, will_force_sd &lt;dbl&gt;</code></pre>
+<pre><code>              mpg cyl disp  hp drat   wt qsec vs am gear carb
+Ferrari Dino 19.7   6  145 175 3.62 2.77 15.5  0  1    5    6</code></pre>
 </div>
 </div>
 

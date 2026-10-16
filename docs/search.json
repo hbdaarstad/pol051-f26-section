@@ -1406,18 +1406,25 @@
     "text": "%in%\nMake a list of countries and return observations that match any of them\n\nkeep = c(\"Argentina\", \"Brazil\", \"Chile\")\n\ngapminder |&gt; filter(country %in% keep)\n\n\n\n\n\n\n\nNote\n\n\nTo make a “list” of items (a vector), use c()"
   },
   {
-    "objectID": "slides/lec-3.html#your-turn-world-leaders",
-    "href": "slides/lec-3.html#your-turn-world-leaders",
+    "objectID": "slides/lec-3.html#world-leaders-example",
+    "href": "slides/lec-3.html#world-leaders-example",
     "title": "Data wrangling I",
-    "section": "Your turn: 👑 World leaders 👑",
-    "text": "Your turn: 👑 World leaders 👑\nOpen an r script and download two new packages: remotes and juanr.\nNext Using the leader dataset, identify:\n\nA Vietnamese Emperor who, in his first year in office, was 11 years old. Famously depraved.\n\n\ninstall.packages(\"remotes\")\nremotes::install_github(\"hail2thief/juanr\")\nlibrary(juanr)\n\n\n\n\n\n\n\n\n\n\n\n\nNote\n\n\nYou can use ?leader to see the codebook. The acronym for Vietnam is “VNM”"
+    "section": "👑 World leaders Example 👑",
+    "text": "👑 World leaders Example 👑\n\nlibrary(juanr)\n\n?leader\n\nleader |&gt; \n  filter(country == \"VNM\" & yr_office &lt;= 1 & age == 11)\n\n# A tibble: 1 × 16\n  country gwcode leader    gender  year yr_office   age edu   mil_service combat\n  &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;  &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;       &lt;dbl&gt;  &lt;dbl&gt;\n1 VNM        815 Thanh Th… M       1889         1    11 Seco…           0      0\n# ℹ 6 more variables: rebel &lt;dbl&gt;, yrs_exp &lt;dbl&gt;, phys_health &lt;dbl&gt;,\n#   mental_health &lt;dbl&gt;, will_force &lt;dbl&gt;, will_force_sd &lt;dbl&gt;"
   },
   {
-    "objectID": "slides/lec-3.html#world-leaders",
-    "href": "slides/lec-3.html#world-leaders",
+    "objectID": "slides/lec-3.html#cars-practice",
+    "href": "slides/lec-3.html#cars-practice",
     "title": "Data wrangling I",
-    "section": "👑 World leaders 👑",
-    "text": "👑 World leaders 👑\n\nlibrary(juanr)\n\n?leader\n\nleader |&gt; \n  filter(country == \"VNM\" & yr_office &lt;= 1 & age == 11)\n\n# A tibble: 1 × 16\n  country gwcode leader    gender  year yr_office   age edu   mil_service combat\n  &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;  &lt;dbl&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;       &lt;dbl&gt;  &lt;dbl&gt;\n1 VNM        815 Thanh Th… M       1889         1    11 Seco…           0      0\n# ℹ 6 more variables: rebel &lt;dbl&gt;, yrs_exp &lt;dbl&gt;, phys_health &lt;dbl&gt;,\n#   mental_health &lt;dbl&gt;, will_force &lt;dbl&gt;, will_force_sd &lt;dbl&gt;"
+    "section": "👑 Cars Practice 👑",
+    "text": "👑 Cars Practice 👑\nOpen an r script, open the code book to find the variable names, and filter to find the car model.\nNext Using the mtcars dataset, identify:\n\nA manual car, with 6 cylinders and the miles per gallon is less than 20.\n\n\n\n\n\n\n\nNote\n\n\n?mtcars to see the codebook."
+  },
+  {
+    "objectID": "slides/lec-3.html#cars-practice-answer",
+    "href": "slides/lec-3.html#cars-practice-answer",
+    "title": "Data wrangling I",
+    "section": "👑 Cars Practice Answer 👑",
+    "text": "👑 Cars Practice Answer 👑\n\n\n              mpg cyl disp  hp drat   wt qsec vs am gear carb\nFerrari Dino 19.7   6  145 175 3.62 2.77 15.5  0  1    5    6"
   },
   {
     "objectID": "slides/lec-15.html#a-brief-unfair-history-of-social-science-research",

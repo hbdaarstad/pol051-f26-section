@@ -648,43 +648,41 @@ gapminder |> filter(country %in% keep)
 To make a "list" of items (a **vector**), use `c()`
 :::
 
-## Your turn: 👑 World leaders 👑
-
-Open an r script and download two new packages: `remotes` and `juanr`.
-
-Next Using the `leader` dataset, identify:
-
-1.  A Vietnamese Emperor who, in his first year in office, was 11 years old. Famously depraved.
+## 👑 World leaders Example 👑
 
 ```{r}
 #| echo: true
-#| eval: false
-
-install.packages("remotes")
-remotes::install_github("hail2thief/juanr")
-library(juanr)
-
-```
-
-```{r}
-
-countdown::countdown(minutes = 10L)
-```
-
-::: callout-note
-You can use `?leader` to see the codebook. The acronym for Vietnam is "VNM"
-:::
-
-## 👑 World leaders 👑
-
-```{r}
-#| echo: true
-
 library(juanr)
 
 ?leader
 
 leader |> 
   filter(country == "VNM" & yr_office <= 1 & age == 11)
+
+```
+
+## 👑 Cars Practice 👑
+
+Open an r script, open the code book to find the variable names, and filter to find the car model.
+
+Next Using the `mtcars` dataset, identify:
+
+1.  A manual car, with 6 cylinders and the miles per gallon is less than 20.
+
+::: callout-note
+`?mtcars` to see the codebook.
+:::
+
+## 👑 Cars Practice Answer 👑
+
+```{r}
+
+library(tidyverse)
+
+?mtcars
+
+mtcars |>
+  filter(am == 1, cyl == 6, mpg < 20)
+
 
 ```
