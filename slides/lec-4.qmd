@@ -43,178 +43,11 @@ library(juanr)
 
 # source
 source(here::here("slides/R/funcs.R"))
+# subset data to focus on 2007
+gap_07 = 
+  gapminder %>% 
+  filter(year == 2007)
 
-
-```
-
-# Plan for today {.center background-color="#dc354a"}
-
-. . .
-
-Making amends + objects review
-
-. . .
-
-Mutating new variables
-
-. . .
-
-Creating categories
-
-# Weekly check-in {.center background-color="#dc354a"}
-
-So far, you:
-
-. . .
-
-somehow do not know how to make every graph from scratch based solely off memory
-
-. . .
-
-are confused about errors you are seeing for the first time in a computer program you've never used before
-
-. . .
-
-are unable to re-type all the code I am presenting on slides into your notes at what would be a rate on par with a professional court stenographer
-
-# Weekly check-in {.center background-color="#dc354a"}
-
-You are *confused* and *unsure* of yourselves
-
-. . .
-
-But you are doing **well**
-
-. . .
-
-You've only been coding for a single week
-
-. . .
-
-You just need to know how to piece together answers from notes + slides
-
-. . .
-
-You will **slowly** get better at coding, and dealing with errors (be patient!)
-
-# Back to objects {.center background-color="#dc354a"}
-
-## Using objects
-
-```{r, echo = TRUE}
-ggplot(gapminder, aes(x = gdpPercap, y = lifeExp)) + geom_point()
-```
-
-. . .
-
-What if I wanted to make this same plot, but only looking at **Asian** countries?
-
-## Subset to Asia
-
-I can use `filter()` to subset the data to Asia, store it as a new object `gap_asia`, and use that new object to make a plot
-
-```{r, echo = TRUE}
-gap_asia = gapminder |> filter(continent == "Asia")
-
-ggplot(gap_asia, aes(x = gdpPercap, y = lifeExp)) + geom_point()
-```
-
-## Using the new object
-
-Notice how I need to **use the new object**
-
-the original `gapminder` does not have what I want
-
-::::::: columns
-:::: {.column width="50%"}
-::: fragment
-```{r, echo = TRUE}
-ggplot(gap_asia, aes(x = gdpPercap, 
-                       y = lifeExp)) + 
-  geom_point()
-```
-:::
-::::
-
-:::: {.column width="50%"}
-::: fragment
-```{r, echo = TRUE}
-ggplot(gapminder, aes(x = gdpPercap, 
-                      y = lifeExp)) + 
-  geom_point()
-```
-:::
-::::
-:::::::
-
-## filter() and variables types
-
-Filtering requires knowing the **type** of variable you are working with
-
-. . .
-
-Numerical variables do not use quotes
-
-```{r, echo = TRUE, eval = FALSE}
-gapminder |> filter(year > 2000)
-```
-
-. . .
-
-Categorical variables use quotes, and spelling must be *exact*
-
-✅
-
-```{r, echo = TRUE, eval = FALSE}
-gapminder |> filter(continent == "Asia")
-```
-
-. . .
-
-❌
-
-```{r, echo = TRUE, eval = FALSE}
-gapminder |> filter(continent == "asia")
-```
-
-. . .
-
-`TRUE/FALSE` variables are all-caps, no quotes
-
-```{r, echo = TRUE, eval = FALSE}
-gapminder |> filter(is_asia == TRUE)
-```
-
-## What values does a variable take on?
-
-To figure out what **values** a variable can take on, you can use `distinct()`
-
-. . .
-
-```{r, echo = TRUE}
-bot |> 
-  distinct(religion)
-```
-
-# Next on data wrangling... {.center background-color="#dc354a"}
-
-So far, you:
-
-. . .
-
-You know to save/store new things into an object
-
-. . .
-
-You know how to filter the data to see only certain values for certain variables
-
-. . .
-
-What if we need a new variable?
-
-## Homicides in 2019
-
-```{r}
 df = read_rds(here("slides/data", "murder_wiki_2019.rds"))
 
 murder_set = df |> 
@@ -224,72 +57,85 @@ murder_set |>
   head() |> 
   kable(digits = 0) |> 
   kable_styling(bootstrap_options = "striped")
+
+
 ```
 
-## Most violent cities in America?
+# Plan for today {.center background-color="#dc354a"}
 
-```{r}
-df |> 
-  slice_max(order_by = murder_total, n = 10) |> 
-  ggplot(aes(y = reorder(paste0(city, ", ", state), murder_total), 
-             x = murder_total)) + 
-  geom_col(color = "white", fill = red) + 
-  labs(x = "Murder and nonnegligent manslaughter", y = NULL)
-```
-
-## Fewer deaths in towns with less people
-
-```{r}
-df |> 
-  ggplot(aes(x = log(population), y = murder_total)) + 
-  geom_point(size = 2, color = blue) + 
-  labs(x = "Population (logged)", y = "Murder and nonnegligent manslaughter")
-```
-
-## Normalizing variables {.center}
-
-To compare across cities we need to **take into account** differences in population
+Objects
 
 . . .
 
-We want to know how many murders have taken place (or drug overdoses, or crimes, or COVID cases, or...) per person in the city (**per capita**)
+mutate()
 
 . . .
 
-This is called **normalizing** a variable; *changing* it so that we can make units more *comparable*
-
-## Murder **rate**
-
-In math terms this is just dividing the number of murders by population:
-
-$Murders_{capita} = \frac{Murders}{Population}$ = "how many murders per person"
+summarize()
 
 . . .
+
+Homework and midterm questions
+
+# Objects {background-color="#dc354a"}
+
+## Objects and Pipes
+
+Step 1-2: the data, the pipe, the wrangling functions
+
+```{r, echo = TRUE, eval = FALSE}
+apples |> 
+  filter(sweet == FALSE)
+```
 
 <br>
 
-Since this fraction is *tiny*, the convention is to multiply by a number that makes sense
-
 . . .
 
-for the population of a city, say 100,000 people
+Step 3: store the subsetted data as a new **object** for later use
 
-. . .
-
-$Murders_{per 100k} = \frac{Murders}{Population} \times 100,000$ = "how many murders per 100,000 people"
-
-## Comparing murder *rates*
-
-If we look at murder **rates**, the picture changes:
-
-```{r}
-df |> 
-  slice_max(order_by = murder_rate, n = 10) |> 
-  ggplot(aes(y = reorder(paste0(city, ", ", state), murder_rate), 
-             x = murder_rate)) + 
-  geom_col(color = "white", fill = red) + 
-  labs(x = "Murder and nonnegligent manslaughter rate per 100,000", y = NULL)
+```{r, echo = TRUE, eval = FALSE}
+green_apples = apples |>
+  filter(sweet == FALSE)
 ```
+
+## Reminder on Objects
+
+In programming, **objects** can be used to store all sorts of stuff for later use
+
+. . .
+
+data, functions, values
+
+. . .
+
+We create objects using `=` or `<-`
+
+. . .
+
+Like this:
+
+```{r, echo = TRUE, eval = FALSE}
+new_object = stuff |> filter(year == 1999)
+```
+
+. . .
+
+Or like this:
+
+```{r, echo = TRUE, eval = FALSE}
+new_object <- stuff |> filter(year == 1999)
+```
+
+## Naming objects
+
+> *There are only two hard things in Computer Science: cache invalidation and naming things.* -- Phil Karlton
+
+. . .
+
+Recommend: keep it short, easy to type, informative, and use `_` to separate words
+
+. . .
 
 # Making new variables with `mutate()`
 
@@ -397,61 +243,6 @@ gapminder
 
 This is bad, since we lose the original `gapminder` data
 
-## 🚨 Your turn 🌡️ Climate change 🌡️ 🚨
-
-```{r}
-climate %>% 
-  sample_n(5) %>%
-  select(country, year, population, co2) |> 
-  kbl(caption = "Sample from climate dataset", digits = 2)
-```
-
-## 🚨 Your turn 🌡️ Climate change 🌡️ 🚨
-
-Using `climate`, make the following two plots looking **only** at Germany, USA, China, India:
-
-1.  A grouped time-series of `co2` emissions over time (separate country by color)
-
-2.  A grouped time-series of `co2` emissions **per capita** over time (separate country by color)
-
-3.  Who's to "blame" for climate change? And where should we focus environmental efforts?
-
-::: callout-tip
-1.  The climate data set is in the package `juanr`
-2.  Use `geom_line()` for the time series graph
-3.  Reminder to load/attach your packages using `library()`
-:::
-
-```{r}
-countdown::countdown(minutes = 10L)
-```
-
-## 🚨 🌡️ Climate change Pt. 1 🌡️ 🚨 {.smaller}
-
-```{r}
-#| echo: true
-
-library(juanr)
-
-climate_cap <- climate |>
-  filter(country  %in% c("Germany", "United States", "China", "India")) |>
-  mutate(co2_capita = co2/population)
-
-ggplot(climate_cap, aes(x=year, y = co2, color = country)) + geom_line()
-
-```
-
-## 🚨 🌡️ Climate change Pt. 2 🌡️ 🚨
-
-```{r}
-#| echo: true
-
-library(juanr)
-
-ggplot(climate_cap, aes(x=year, y = co2_capita, color = country)) + geom_line()
-
-```
-
 # Creating categories
 
 ## Creating categories with `case_when()`
@@ -515,89 +306,300 @@ small_elections |>
                              per_dem_2020 > per_gop_2020 ~ "Democrats"))
 ```
 
-::: notes
-How would I add condition for tie?
+# Summarizing data in R {background-color="#dc354a"}
+
+## Summary statistics with `summarize()`
+
+We can use `summarize()` to **calculate** things like the mean, median, etc.
+
+```{r, out.width="50%"}
+knitr::include_graphics("img/summarize.png")
+```
+
+. . .
+
+Summarizing **condenses** data into statistics
+
+## Using `summarize()`
+
+Say I want to know the average life expectancy in the world in 2007:
+
+. . .
+
+```{r, echo = TRUE}
+gapminder %>% 
+  filter(year == 2007)
+```
+
+## Using `summarize()`
+
+```{r, echo = TRUE}
+gapminder %>% 
+  filter(year == 2007) %>% 
+  summarize()
+```
+
+## Using `summarize()`
+
+```{r, echo = TRUE}
+gapminder %>% 
+  filter(year == 2007) %>% 
+  summarize(avg_life = mean(lifeExp))
+```
+
+Notice how the data has been *summarized*: only one row
+
+. . .
+
+Notice that I've *named* the summary statistic `avg_life`
+
+## Using `summarize()`
+
+What if I also wanted to know the **median** life expectancy?
+
+. . .
+
+```{r, echo = TRUE}
+gapminder %>% 
+  filter(year == 2007) %>% 
+  summarize(avg_life = mean(lifeExp), 
+            med_life = median(lifeExp)) 
+```
+
+Notice! how similar this looks to `mutate()`
+
+## Using `summarize()`
+
+What if I also wanted to know the **min** and **max** life expectancy?
+
+. . .
+
+```{r, echo = TRUE}
+gapminder %>% 
+  filter(year == 2007) %>% 
+  summarize(avg_life = mean(lifeExp), 
+            med_life = median(lifeExp), 
+            min_life = min(lifeExp), 
+            max_life = max(lifeExp))
+```
+
+## Using `summarize()`
+
+What if I also wanted to know the **standard deviation** of life expectancy?
+
+. . .
+
+```{r, echo = TRUE}
+gapminder %>% 
+  filter(year == 2007) %>% 
+  summarize(avg_life = mean(lifeExp), 
+            med_life = median(lifeExp), 
+            min_life = min(lifeExp), 
+            max_life = max(lifeExp), 
+            sd_life = sd(lifeExp))
+```
+
+## Using `summarize()`
+
+```{r, echo = TRUE, eval = FALSE}
+gapminder %>% 
+  filter(year == 2007) %>% 
+  summarize(avg_life = mean(lifeExp), 
+            med_life = median(lifeExp), 
+            min_life = min(lifeExp), 
+            max_life = max(lifeExp), 
+            sd_life = sd(lifeExp)) 
+```
+
+. . .
+
+`summarize()` is like `mutate()` in that you are creating *new variables*
+
+. . .
+
+So note that you have to *name* the new variables!
+
+## We can use summary functions in filter
+
+which country had the lowest life expectancy in 2007?
+
+. . .
+
+```{r, echo = TRUE}
+gapminder %>% 
+  filter(year == 2007) %>% 
+  filter(lifeExp == min(lifeExp))
+```
+
+## We can use summary functions in filter
+
+which countries had above average GPD but below average health?
+
+. . .
+
+```{r, echo = TRUE}
+gapminder %>% 
+  filter(year == 2007) %>% 
+  filter(gdpPercap > mean(gdpPercap), lifeExp < mean(lifeExp))
+```
+
+## Woe unto us: missing data
+
+. . .
+
+In life, sometimes data is **missing**
+
+. . .
+
+respondent doesn't answer a question, no one knows Afghanistan's GDP in 1943, etc.
+
+. . .
+
+R represents missing data as **NA**
+
+. . .
+
+```{r}
+pokemon %>% 
+  filter(is.na(height_m)) %>% 
+  select(name, type1, type2, height_m, weight_kg) %>% 
+  sample_n(6) %>% 
+  knitr::kable()
+```
+
+## Summarizing with missing data
+
+If you try to *summarize* data that has missing values, R will return `NA`:
+
+. . .
+
+```{r, echo = TRUE}
+pokemon %>% 
+  summarise(average_height = mean(height_m))
+```
+
+. . .
+
+::: callout-note
+Any math operation with `NA` will return `NA` (.e.g, 3 + `NA` = `NA`)
 :::
 
-## OK but by how much?
-
-Our categories can be more complex, for instance the **win margin**
+## What to do?
 
 . . .
 
-Step 1: calculate the win **margin**
-
-```{r, echo = TRUE}
-small_elections |> 
-  mutate(margin = per_gop_2020 - per_dem_2020)
-```
-
-## OK but by how much?
-
-Step 2: add the categories
-
-```{r, echo = TRUE}
-small_elections |> 
-  mutate(margin = per_gop_2020 - per_dem_2020) |> 
-  mutate(who_won = case_when(margin > 0 & margin < .1 ~ "R < 10"))
-```
-
-## OK but by how much?
-
-Step 3: keep adding categories
-
-```{r, echo = TRUE}
-small_elections |> 
-  mutate(margin = per_gop_2020 - per_dem_2020) |> 
-  mutate(who_won = case_when(margin > 0 & margin < .1 ~ "R < 10",
-                             margin >= .1 & margin < .2 ~ "R + 10"))
-```
+There are whole classes on what to do with missing data (impute, simulate, model, etc.)
 
 . . .
 
-And so on...
+In this class we will tell R to ignore missing observations
 
-## 🚨 Your turn 🚨
+. . .
 
-Using the `elections` dataset:
+We can do this by adding the `na.rm = TRUE` argument to summary
 
-1.  Create a variable that tells you what happened in the 2016 election in each county. The variable should incorporate four possibilities:
+```{r, echo = TRUE}
+pokemon %>% 
+  summarise(average_height = mean(height_m, na.rm = TRUE)) 
+```
 
-    1)  DEMS won in 2012 and in 2016 ("blue")
+## Remember...
 
-    2)  REPS won in 2012 and in 2016 ("red")
+. . .
 
-    3)  the county flipped from blue to red ("blue to red")
+If you're trying to calculate a summary statistic and keep getting `NA`...
 
-    4)  the county flipped from red to blue ("red to blue")
+. . .
 
-2.  Make a boxplot that compares household income (x-axis) across this variable (y-axis)
+99.99999% of the time you need to add `na.rm = TRUE` to your function!
+
+. . .
+
+```{r, echo = TRUE, eval = TRUE}
+pokemon %>% 
+  summarise(average_height = mean(height_m, na.rm = TRUE)) 
+```
+
+## 🚨 Your turn: 🦁 Animals 🦁 🚨
+
+Using the `msleep` dataset in `tidyverse`:
+
+1.  Subset the data to `carni` animals (column name is `vore`) only, make a new variable for the difference in the `sleep_total` and `sleep_rem` as a percent called `rem_perc`.
+
+2.  What is the the average percent of `rem_sleep` grouped by the `order`.
+
+3.  Using a bar plot, plot the different percentages of rem sleep by order.
 
 ::: callout-tip
-1.  The elections data set is in the package `juanr`
-2.  Use `geom_boxplot()` for a boxplot graph
+1.  Remember to attach your libraries using `library()`
+
+2.  To group by a variable(s) use the function `group_by()`
+
+    `data |>`
+
+    `group_by(variable_name) |>`
+
+    `mutate() or summarize()`
 :::
 
 ```{r}
-countdown::countdown(minutes = 15L)
+countdown::countdown(minutes = 6.5L)
 ```
 
-## 🚨 Elections 🚨
+## 🚨  🦁 Animals Answer 🦁  🚨 {.smaller}
 
 ```{r}
 #| echo: true
+#| output-location: column
 
-elections_cat <- elections |>
+library(tidyverse)
+
+dat <- msleep |>
+  filter(vore == "carni") |>
   mutate(
-   won = case_when(
-      per_dem_2012 >  per_gop_2012 & per_dem_2016 >  per_gop_2016 ~ "blue",
-      per_dem_2012 >  per_gop_2012 & per_dem_2016 >  per_gop_2016 ~ "red",
-      per_dem_2012 <  per_gop_2016 & per_dem_2016 >  per_gop_2016 ~ "red to blue",
-      per_dem_2012 >  per_gop_2016 & per_dem_2016 <  per_gop_2016 ~ "blue to red"
-    ) 
+    rem_perc = sleep_rem/sleep_total * 100
   )
 
-# ggplot(data= elections_cat, aes(x = hh_income, y = won)) + geom_boxplot() 
+dat_2 <- dat |>
+  group_by(order) |>
+  summarize(mean = mean(rem_perc, na.rm = TRUE)
+  )
 
+ggplot(dat_2, aes(y = order, x = mean)) +
+  geom_col(fill = "skyblue") +
+  labs(title = "Average Perct. of REM Sleep for Carnivores by Animal Order",
+       x = "Average Perct. of REM Sleep",
+       y = "Animal Order")
 
 ```
+
+## 🚨 🦁 Animals Adv. Answer 🦁 🚨 {.smaller}
+
+```{r}
+#| echo: true
+#| output-location: column
+library(tidyverse)
+
+dat <- msleep |>
+  filter(vore == "carni") |>
+  mutate(
+    rem_perc = sleep_rem/sleep_total * 100
+  ) |>
+  group_by(order) |>
+  summarize(mean = mean(rem_perc, na.rm = TRUE)
+  ) |>
+  filter(!is.na(mean)) 
+
+savannah_apex <- c("#D4A373", "#E9D8A6", "#BB3E03", "#94D2BD", "#0A9396")
+
+ggplot(dat, aes(x = mean, y = reorder(order, mean), fill=order)) +
+  geom_col() +
+  scale_fill_manual(values = savannah_apex,
+                    name = "Animal Order") +
+  labs(title = "Average Perct. of REM Sleep for Carnivores by Animal Order",
+       x = "Average Perct. of REM Sleep",
+       y = "Animal Order")
+
+```
+
+## 

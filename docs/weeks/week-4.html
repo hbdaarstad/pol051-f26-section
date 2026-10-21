@@ -29,6 +29,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
+<link href="../weeks/coming-soon-weeks.html" rel="next">
+<link href="../weeks/week-3.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -70,7 +72,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 <meta property="og:title" content="Week 4 – POL 051 A04, A05, &amp; A06 - Fall 2026">
-<meta property="og:description" content="Causality II, DAGs, and Uncertainty">
+<meta property="og:description" content="Data Wrangling II">
 <meta property="og:site_name" content="POL 051 A04, A05, &amp; A06 - Fall 2026">
 </head>
 
@@ -83,7 +85,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Week 4</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../weeks/week-1.html">Weekly materials</a></li><li class="breadcrumb-item"><a href="../weeks/week-4.html">Week 4</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -205,13 +207,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
  <span class="menu-text">Weekly materials</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../weeks/week-1.html" class="sidebar-item-text sidebar-link">
@@ -232,7 +234,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../weeks/coming-soon-weeks.html" class="sidebar-item-text sidebar-link">
+  <a href="../weeks/week-4.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Week 4</span></a>
   </div>
 </li>
@@ -297,7 +299,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../supplemental/coming-soon-code.html" class="sidebar-item-text sidebar-link">
+  <a href="../supplemental/data-wrangling.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Wrangling (ggplot2)</span></a>
   </div>
 </li>
@@ -331,20 +333,24 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#prepare" id="toc-prepare" class="nav-link active" data-scroll-target="#prepare">Prepare</a></li>
-  <li><a href="#lectures" id="toc-lectures" class="nav-link" data-scroll-target="#lectures">Lectures</a></li>
-  <li><a href="#participation" id="toc-participation" class="nav-link" data-scroll-target="#participation">Participation</a></li>
-  <li><a href="#lab" id="toc-lab" class="nav-link" data-scroll-target="#lab">Lab</a></li>
+  <li><a href="#prepare" id="toc-prepare" class="nav-link active" data-scroll-target="#prepare">Prepare</a>
+  <ul class="collapse">
+  <li><a href="#data-wrangling" id="toc-data-wrangling" class="nav-link" data-scroll-target="#data-wrangling">Data Wrangling</a></li>
+  </ul></li>
+  <li><a href="#lectures" id="toc-lectures" class="nav-link" data-scroll-target="#lectures">Lectures</a>
+  <ul class="collapse">
+  <li><a href="#more-on-data-wrangling-functions" id="toc-more-on-data-wrangling-functions" class="nav-link" data-scroll-target="#more-on-data-wrangling-functions">More on Data Wrangling Functions</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://haleydaarstad.com/pol051-f26-section/edit/main/weeks/week-4.qmd" class="toc-action"><i class="bi bi-git"></i>Edit this page</a></li><li><a href="https://haleydaarstad.com/pol051-f26-section/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../weeks/week-1.html">Weekly materials</a></li><li class="breadcrumb-item"><a href="../weeks/week-4.html">Week 4</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Week 4</h1>
-<p class="subtitle lead">Causality II, DAGs, and Uncertainty</p>
+<p class="subtitle lead">Data Wrangling II</p>
 </div>
 
 
@@ -372,34 +378,51 @@ Important
 </div>
 <div class="callout-body-container callout-body">
 <ul>
-<li>Project Draft Due Fri. July 17</li>
+<li>Project #1 is projected to be due Nov.&nbsp;5</li>
+<li>Midterm is coming up, I will make a study guide ASAP</li>
 </ul>
 </div>
 </div>
 <section id="prepare" class="level2">
 <h2 class="anchored" data-anchor-id="prepare">Prepare</h2>
-<p>📖 Read <a href="https://moderndive.com/v2/sampling.html">Chapter 7 in ModernDive</a></p>
-<p>📖 Read <a href="https://mixtape.scunning.com/">Directed Acyclical Graphs in Causal Inference: The Mixtape</a><sup><a href="https://quantpol.juanftellez.com/content/08-content.html#fn2">2</a></sup></p>
+<section id="data-wrangling" class="level3">
+<h3 class="anchored" data-anchor-id="data-wrangling">Data Wrangling</h3>
+<p>📖 Read <a href="https://moderndive.com/v2/03-wrangling.html">Data Wrangling by ModernDrive</a></p>
+</section>
 </section>
 <section id="lectures" class="level2">
 <h2 class="anchored" data-anchor-id="lectures">Lectures</h2>
-<p>🖥️ <a href="../slides/lec-10.html">Lecture 10 - Causality II</a></p>
-<p>🖥️ <a href="../slides/lec-11.html">Lecture 11 - DAGs</a></p>
-<p>🖥️ <a href="../slides/lec-12.html">Lecture 12 - Uncertainty</a></p>
-</section>
-<section id="participation" class="level2">
-<h2 class="anchored" data-anchor-id="participation">Participation</h2>
-<p>📋 Draw a DAG for your Group Project</p>
-</section>
-<section id="lab" class="level2">
-<h2 class="anchored" data-anchor-id="lab">Lab</h2>
-<p>⌨️ <a href="../labs/lab-4.qmd" download="lab-4.qmd">Lab 4 - Causality + DAGs</a></p>
+<p>🖥️ <a href="../slides/lec-4.html">Lecture 4 - Data Wrangling II</a></p>
+<section id="more-on-data-wrangling-functions" class="level3">
+<h3 class="anchored" data-anchor-id="more-on-data-wrangling-functions">More on Data Wrangling Functions</h3>
+<p>objects</p>
+<ul>
+<li><a href="https://intro2r.com/objects-in-r.html" class="uri">https://intro2r.com/objects-in-r.html</a></li>
+</ul>
+<p><code>mutate()</code></p>
+<ul>
+<li><a href="https://nustat.github.io/intro-stat-ds/3-wrangling.html#mutate" class="uri">https://nustat.github.io/intro-stat-ds/3-wrangling.html#mutate</a></li>
+</ul>
+<p><code>summarize()</code></p>
+<ul>
+<li><a href="https://nustat.github.io/intro-stat-ds/3-wrangling.html#summarize" class="uri">https://nustat.github.io/intro-stat-ds/3-wrangling.html#summarize</a></li>
+</ul>
+<p><code>group_by()</code></p>
+<ul>
+<li><a href="https://nustat.github.io/intro-stat-ds/3-wrangling.html#groupby" class="uri">https://nustat.github.io/intro-stat-ds/3-wrangling.html#groupby</a></li>
+</ul>
+<p><code>case_when()</code></p>
+<ul>
+<li><p><a href="https://www.rdocumentation.org/packages/dplyr/versions/1.0.10/topics/case_when" class="uri">https://www.rdocumentation.org/packages/dplyr/versions/1.0.10/topics/case_when</a></p></li>
+<li><p><a href="https://r-statistics.co/dplyr-case-when.html" class="uri">https://r-statistics.co/dplyr-case-when.html</a></p></li>
+</ul>
 <p><br><br></p>
 <div style="font-size: 0.875em;">
 <p>Back to <a href=".." title="Course schedule">course schedule</a> ⏎</p>
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -964,6 +987,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../weeks/week-3.html" class="pagination-link" aria-label="Week 3">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Week 3</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../weeks/coming-soon-weeks.html" class="pagination-link" aria-label="Week 5">
+        <span class="nav-page-text">Week 5</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

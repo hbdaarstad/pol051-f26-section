@@ -1,34 +1,47 @@
 ---
 title: "Week 4"
-subtitle: "Causality II, DAGs, and Uncertainty"
+subtitle: "Data Wrangling II"
 editor: visual
 ---
 
 ::: callout-important
--   Project Draft Due Fri. July 17
+-   Project #1 is projected to be due Nov. 5
+-   Midterm is coming up, I will make a study guide ASAP
 :::
 
 ## Prepare
 
-📖 Read [Chapter 7 in ModernDive](https://moderndive.com/v2/sampling.html)
+### Data Wrangling
 
-📖 Read [Directed Acyclical Graphs in Causal Inference: The Mixtape](https://mixtape.scunning.com/)^[2](https://quantpol.juanftellez.com/content/08-content.html#fn2)^
+📖 Read [Data Wrangling by ModernDrive](https://moderndive.com/v2/03-wrangling.html)
 
 ## Lectures
 
-🖥️ [Lecture 10 - Causality II](/slides/lec-10.html)
+🖥️ [Lecture 4 - Data Wrangling II](../slides/lec-4.html)
 
-🖥️ [Lecture 11 - DAGs](/slides/lec-11.html)
+### More on Data Wrangling Functions 
 
-🖥️ [Lecture 12 - Uncertainty](/slides/lec-12.html)
+objects
 
-## Participation
+-   <https://intro2r.com/objects-in-r.html>
 
-📋 Draw a DAG for your Group Project
+`mutate()`
 
-## Lab
+-   <https://nustat.github.io/intro-stat-ds/3-wrangling.html#mutate>
 
-⌨️ [Lab 4 - Causality + DAGs](/labs/lab-4.qmd){download="lab-4.qmd"}
+`summarize()`
+
+-   <https://nustat.github.io/intro-stat-ds/3-wrangling.html#summarize>
+
+`group_by()`
+
+-   <https://nustat.github.io/intro-stat-ds/3-wrangling.html#groupby>
+
+`case_when()`
+
+-   <https://www.rdocumentation.org/packages/dplyr/versions/1.0.10/topics/case_when>
+
+-   <https://r-statistics.co/dplyr-case-when.html>
 
 <br><br>
 

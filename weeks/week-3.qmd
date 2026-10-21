@@ -1,6 +1,6 @@
 ---
 title: "Week 3"
-subtitle: "Modeling + Causality I"
+subtitle: "Data Visuzalization II + Data Wrangling I"
 editor: visual
 ---
 
@@ -19,6 +19,20 @@ editor: visual
 ### Data Wrangling
 
 📖 Read [Data Wrangling by ModernDrive](https://moderndive.com/v2/03-wrangling.html)
+
+### More on Data Wrangling Functions 
+
+Descriptive Statistics (e.g. `mean()`)
+
+-   <https://r-statistics.co/R-Cheat-Sheet.html>
+
+`Filter()`
+
+-   <https://nustat.github.io/intro-stat-ds/3-wrangling.html#filter>
+
+pipes `%>%` or `|>`
+
+-   <https://nustat.github.io/intro-stat-ds/3-wrangling.html#piping>
 
 <br><br>
 

@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.6.42">
 
   <meta name="author" content="Haley Daarstad">
-  <meta name="dcterms.date" content="2026-10-16">
+  <meta name="dcterms.date" content="2026-10-21">
   <title>POL 051 A04, A05, &amp; A06 - Fall 2026 – Data wrangling II</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -216,280 +216,74 @@ Haley Daarstad
     </div>
 </div>
 
-  <p class="date">October 16, 2026</p>
+  <p class="date">October 21, 2026</p>
 </section>
 <section id="plan-for-today" class="title-slide slide level1 center" data-background-color="#dc354a">
 <h1>Plan for today</h1>
+<p>Objects</p>
 <div class="fragment">
-<p>Making amends + objects review</p>
+<p>mutate()</p>
 </div>
 <div class="fragment">
-<p>Mutating new variables</p>
+<p>summarize()</p>
 </div>
 <div class="fragment">
-<p>Creating categories</p>
-</div>
-</section>
-
-<section id="weekly-check-in" class="title-slide slide level1 center" data-background-color="#dc354a">
-<h1>Weekly check-in</h1>
-<p>So far, you:</p>
-<div class="fragment">
-<p>somehow do not know how to make every graph from scratch based solely off memory</p>
-</div>
-<div class="fragment">
-<p>are confused about errors you are seeing for the first time in a computer program you’ve never used before</p>
-</div>
-<div class="fragment">
-<p>are unable to re-type all the code I am presenting on slides into your notes at what would be a rate on par with a professional court stenographer</p>
-</div>
-</section>
-
-<section id="weekly-check-in-1" class="title-slide slide level1 center" data-background-color="#dc354a">
-<h1>Weekly check-in</h1>
-<p>You are <em>confused</em> and <em>unsure</em> of yourselves</p>
-<div class="fragment">
-<p>But you are doing <strong>well</strong></p>
-</div>
-<div class="fragment">
-<p>You’ve only been coding for a single week</p>
-</div>
-<div class="fragment">
-<p>You just need to know how to piece together answers from notes + slides</p>
-</div>
-<div class="fragment">
-<p>You will <strong>slowly</strong> get better at coding, and dealing with errors (be patient!)</p>
+<p>Homework and midterm questions</p>
 </div>
 </section>
 
 <section>
-<section id="back-to-objects" class="title-slide slide level1 center" data-background-color="#dc354a">
-<h1>Back to objects</h1>
+<section id="objects" class="title-slide slide level1 center" data-background-color="#dc354a">
+<h1>Objects</h1>
 
 </section>
-<section id="using-objects" class="slide level2">
-<h2>Using objects</h2>
+<section id="objects-and-pipes" class="slide level2">
+<h2>Objects and Pipes</h2>
+<p>Step 1-2: the data, the pipe, the wrangling functions</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">ggplot</span>(gapminder, <span class="fu">aes</span>(<span class="at">x =</span> gdpPercap, <span class="at">y =</span> lifeExp)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>apples <span class="sc">|&gt;</span> </span>
+<span id="cb1-2"><a></a>  <span class="fu">filter</span>(sweet <span class="sc">==</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<img data-src="lec-4_files/figure-revealjs/unnamed-chunk-1-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"><div class="fragment">
-<p>What if I wanted to make this same plot, but only looking at <strong>Asian</strong> countries?</p>
-</div>
-</section>
-<section id="subset-to-asia" class="slide level2">
-<h2>Subset to Asia</h2>
-<p>I can use <code>filter()</code> to subset the data to Asia, store it as a new object <code>gap_asia</code>, and use that new object to make a plot</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>gap_asia <span class="ot">=</span> gapminder <span class="sc">|&gt;</span> <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">"Asia"</span>)</span>
-<span id="cb2-2"><a></a></span>
-<span id="cb2-3"><a></a><span class="fu">ggplot</span>(gap_asia, <span class="fu">aes</span>(<span class="at">x =</span> gdpPercap, <span class="at">y =</span> lifeExp)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="lec-4_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
-<section id="using-the-new-object" class="slide level2">
-<h2>Using the new object</h2>
-<p>Notice how I need to <strong>use the new object</strong></p>
-<p>the original <code>gapminder</code> does not have what I want</p>
-<div class="columns">
-<div class="column" style="width:50%;">
+<p><br></p>
 <div class="fragment">
+<p>Step 3: store the subsetted data as a new <strong>object</strong> for later use</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">ggplot</span>(gap_asia, <span class="fu">aes</span>(<span class="at">x =</span> gdpPercap, </span>
-<span id="cb3-2"><a></a>                       <span class="at">y =</span> lifeExp)) <span class="sc">+</span> </span>
-<span id="cb3-3"><a></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="lec-4_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div><div class="column" style="width:50%;">
-<div class="fragment">
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">ggplot</span>(gapminder, <span class="fu">aes</span>(<span class="at">x =</span> gdpPercap, </span>
-<span id="cb4-2"><a></a>                      <span class="at">y =</span> lifeExp)) <span class="sc">+</span> </span>
-<span id="cb4-3"><a></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="lec-4_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-</div>
-</div></div>
-</section>
-<section id="filter-and-variables-types" class="slide level2">
-<h2>filter() and variables types</h2>
-<p>Filtering requires knowing the <strong>type</strong> of variable you are working with</p>
-<div class="fragment">
-<p>Numerical variables do not use quotes</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>gapminder <span class="sc">|&gt;</span> <span class="fu">filter</span>(year <span class="sc">&gt;</span> <span class="dv">2000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-<div class="fragment">
-<p>Categorical variables use quotes, and spelling must be <em>exact</em></p>
-<p>✅</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>gapminder <span class="sc">|&gt;</span> <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">"Asia"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-<div class="fragment">
-<p>❌</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>gapminder <span class="sc">|&gt;</span> <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">"asia"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</div>
-<div class="fragment">
-<p><code>TRUE/FALSE</code> variables are all-caps, no quotes</p>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>gapminder <span class="sc">|&gt;</span> <span class="fu">filter</span>(is_asia <span class="sc">==</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>green_apples <span class="ot">=</span> apples <span class="sc">|&gt;</span></span>
+<span id="cb2-2"><a></a>  <span class="fu">filter</span>(sweet <span class="sc">==</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </section>
-<section id="what-values-does-a-variable-take-on" class="slide level2">
-<h2>What values does a variable take on?</h2>
-<p>To figure out what <strong>values</strong> a variable can take on, you can use <code>distinct()</code></p>
+<section id="reminder-on-objects" class="slide level2">
+<h2>Reminder on Objects</h2>
+<p>In programming, <strong>objects</strong> can be used to store all sorts of stuff for later use</p>
 <div class="fragment">
+<p>data, functions, values</p>
+</div>
+<div class="fragment">
+<p>We create objects using <code>=</code> or <code>&lt;-</code></p>
+</div>
+<div class="fragment">
+<p>Like this:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>bot <span class="sc">|&gt;</span> </span>
-<span id="cb9-2"><a></a>  <span class="fu">distinct</span>(religion)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 13 × 1
-   religion                 
-   &lt;fct&gt;                    
- 1 Roman Catholic           
- 2 Protestant               
- 3 Jewish                   
- 4 Nothing in particular    
- 5 Agnostic                 
- 6 Atheist                  
- 7 Something else           
- 8 Mormon                   
- 9 Hindu                    
-10 Muslim                   
-11 Eastern or Greek Orthodox
-12 Buddhist                 
-13 &lt;NA&gt;                     </code></pre>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>new_object <span class="ot">=</span> stuff <span class="sc">|&gt;</span> <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">1999</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
+<div class="fragment">
+<p>Or like this:</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>new_object <span class="ot">&lt;-</span> stuff <span class="sc">|&gt;</span> <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">1999</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="naming-objects" class="slide level2">
+<h2>Naming objects</h2>
+<blockquote>
+<p><em>There are only two hard things in Computer Science: cache invalidation and naming things.</em> – Phil Karlton</p>
+</blockquote>
+<div class="fragment">
+<p>Recommend: keep it short, easy to type, informative, and use <code>_</code> to separate words</p>
 </div>
 </section></section>
-<section>
-<section id="next-on-data-wrangling" class="title-slide slide level1 center" data-background-color="#dc354a">
-<h1>Next on data wrangling…</h1>
-<p>So far, you:</p>
-<div class="fragment">
-<p>You know to save/store new things into an object</p>
-</div>
-<div class="fragment">
-<p>You know how to filter the data to see only certain values for certain variables</p>
-</div>
-<div class="fragment">
-<p>What if we need a new variable?</p>
-</div>
-</section>
-<section id="homicides-in-2019" class="slide level2">
-<h2>Homicides in 2019</h2>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<table class="table table-striped caption-top" data-quarto-postprocess="true" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">state</th>
-<th style="text-align: left;" data-quarto-table-cell-role="th">city</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">population</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">murder_total</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Alabama</td>
-<td style="text-align: left;">Mobile</td>
-<td style="text-align: right;">248431</td>
-<td style="text-align: right;">50</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Alaska</td>
-<td style="text-align: left;">Anchorage</td>
-<td style="text-align: right;">296188</td>
-<td style="text-align: right;">27</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Arizona</td>
-<td style="text-align: left;">Chandler</td>
-<td style="text-align: right;">249355</td>
-<td style="text-align: right;">5</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Arizona</td>
-<td style="text-align: left;">Gilbert</td>
-<td style="text-align: right;">242090</td>
-<td style="text-align: right;">5</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Arizona</td>
-<td style="text-align: left;">Glendale</td>
-<td style="text-align: right;">249273</td>
-<td style="text-align: right;">12</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Arizona</td>
-<td style="text-align: left;">Mesa</td>
-<td style="text-align: right;">492268</td>
-<td style="text-align: right;">23</td>
-</tr>
-</tbody>
-</table>
-
-
-</div>
-</div>
-</section>
-<section id="most-violent-cities-in-america" class="slide level2">
-<h2>Most violent cities in America?</h2>
-
-<img data-src="lec-4_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
-<section id="fewer-deaths-in-towns-with-less-people" class="slide level2">
-<h2>Fewer deaths in towns with less people</h2>
-
-<img data-src="lec-4_files/figure-revealjs/unnamed-chunk-12-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
-<section id="normalizing-variables" class="slide level2 center">
-<h2>Normalizing variables</h2>
-<p>To compare across cities we need to <strong>take into account</strong> differences in population</p>
-<div class="fragment">
-<p>We want to know how many murders have taken place (or drug overdoses, or crimes, or COVID cases, or…) per person in the city (<strong>per capita</strong>)</p>
-</div>
-<div class="fragment">
-<p>This is called <strong>normalizing</strong> a variable; <em>changing</em> it so that we can make units more <em>comparable</em></p>
-</div>
-</section>
-<section id="murder-rate" class="slide level2">
-<h2>Murder <strong>rate</strong></h2>
-<p>In math terms this is just dividing the number of murders by population:</p>
-<p><span class="math inline">\(Murders_{capita} = \frac{Murders}{Population}\)</span> = “how many murders per person”</p>
-<div class="fragment">
-<p><br></p>
-<p>Since this fraction is <em>tiny</em>, the convention is to multiply by a number that makes sense</p>
-</div>
-<div class="fragment">
-<p>for the population of a city, say 100,000 people</p>
-</div>
-<div class="fragment">
-<p><span class="math inline">\(Murders_{per 100k} = \frac{Murders}{Population} \times 100,000\)</span> = “how many murders per 100,000 people”</p>
-</div>
-</section>
-<section id="comparing-murder-rates" class="slide level2">
-<h2>Comparing murder <em>rates</em></h2>
-<p>If we look at murder <strong>rates</strong>, the picture changes:</p>
-
-<img data-src="lec-4_files/figure-revealjs/unnamed-chunk-13-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section></section>
 <section>
 <section id="making-new-variables-with-mutate" class="title-slide slide level1 center">
 <h1>Making new variables with <code>mutate()</code></h1>
@@ -499,7 +293,7 @@ Haley Daarstad
 <section id="using-mutate" class="slide level2">
 <h2>Using mutate</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>murder_set</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>murder_set</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 100 × 4
    state      city       population murder_total
@@ -521,8 +315,8 @@ Haley Daarstad
 <section id="using-mutate-1" class="slide level2">
 <h2>Using mutate</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>murder_set <span class="sc">|&gt;</span> </span>
-<span id="cb13-2"><a></a>  <span class="fu">mutate</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>murder_set <span class="sc">|&gt;</span> </span>
+<span id="cb7-2"><a></a>  <span class="fu">mutate</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 100 × 4
    state      city       population murder_total
@@ -544,8 +338,8 @@ Haley Daarstad
 <section id="using-mutate-2" class="slide level2">
 <h2>Using mutate</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>murder_set <span class="sc">|&gt;</span> </span>
-<span id="cb15-2"><a></a>  <span class="fu">mutate</span>(<span class="at">murder_capita =</span> murder_total <span class="sc">/</span> population)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>murder_set <span class="sc">|&gt;</span> </span>
+<span id="cb9-2"><a></a>  <span class="fu">mutate</span>(<span class="at">murder_capita =</span> murder_total <span class="sc">/</span> population)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 100 × 5
    state      city       population murder_total murder_capita
@@ -568,9 +362,9 @@ Haley Daarstad
 <section id="using-mutate-3" class="slide level2">
 <h2>Using mutate</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>murder_set <span class="sc">|&gt;</span> </span>
-<span id="cb17-2"><a></a>  <span class="fu">mutate</span>(<span class="at">murder_capita =</span> murder_total <span class="sc">/</span> population, </span>
-<span id="cb17-3"><a></a>         <span class="at">murder_rate =</span> murder_capita <span class="sc">*</span> <span class="dv">100000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>murder_set <span class="sc">|&gt;</span> </span>
+<span id="cb11-2"><a></a>  <span class="fu">mutate</span>(<span class="at">murder_capita =</span> murder_total <span class="sc">/</span> population, </span>
+<span id="cb11-3"><a></a>         <span class="at">murder_rate =</span> murder_capita <span class="sc">*</span> <span class="dv">100000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 100 × 6
    state      city       population murder_total murder_capita murder_rate
@@ -594,13 +388,13 @@ Haley Daarstad
 <h2>Forgetting to store</h2>
 <p>If you don’t store your changes, they will melt away, like tears in the rain</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>murder_set <span class="sc">|&gt;</span> </span>
-<span id="cb19-2"><a></a>  <span class="fu">mutate</span>(<span class="at">murder_capita =</span> murder_total <span class="sc">/</span> population, </span>
-<span id="cb19-3"><a></a>         <span class="at">murder_rate =</span> murder_capita <span class="sc">*</span> <span class="dv">100000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>murder_set <span class="sc">|&gt;</span> </span>
+<span id="cb13-2"><a></a>  <span class="fu">mutate</span>(<span class="at">murder_capita =</span> murder_total <span class="sc">/</span> population, </span>
+<span id="cb13-3"><a></a>         <span class="at">murder_rate =</span> murder_capita <span class="sc">*</span> <span class="dv">100000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>murder_set</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>murder_set</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 100 × 4
    state      city       population murder_total
@@ -625,23 +419,23 @@ Haley Daarstad
 <div class="fragment">
 <p>You can make a new object:</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>murder_rates <span class="ot">=</span> murder_set <span class="sc">|&gt;</span></span>
-<span id="cb22-2"><a></a>  <span class="fu">mutate</span>(<span class="at">murder_capita =</span> murder_total <span class="sc">/</span> population, </span>
-<span id="cb22-3"><a></a>         <span class="at">murder_rate =</span> murder_capita <span class="sc">*</span> <span class="dv">100000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>murder_rates <span class="ot">=</span> murder_set <span class="sc">|&gt;</span></span>
+<span id="cb16-2"><a></a>  <span class="fu">mutate</span>(<span class="at">murder_capita =</span> murder_total <span class="sc">/</span> population, </span>
+<span id="cb16-3"><a></a>         <span class="at">murder_rate =</span> murder_capita <span class="sc">*</span> <span class="dv">100000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
 <p>Or overwrite the old one</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>murder_set <span class="ot">=</span> murder_set <span class="sc">|&gt;</span></span>
-<span id="cb23-2"><a></a>  <span class="fu">mutate</span>(<span class="at">murder_capita =</span> murder_total <span class="sc">/</span> population, </span>
-<span id="cb23-3"><a></a>         <span class="at">murder_rate =</span> murder_capita <span class="sc">*</span> <span class="dv">100000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>murder_set <span class="ot">=</span> murder_set <span class="sc">|&gt;</span></span>
+<span id="cb17-2"><a></a>  <span class="fu">mutate</span>(<span class="at">murder_capita =</span> murder_total <span class="sc">/</span> population, </span>
+<span id="cb17-3"><a></a>         <span class="at">murder_rate =</span> murder_capita <span class="sc">*</span> <span class="dv">100000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 <div class="fragment">
 <p>In general, overwriting when you are <strong>adding</strong> stuff to your data (<code>mutate</code>) is fine</p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>murder_set</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>murder_set</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 100 × 6
    state      city       population murder_total murder_capita murder_rate
@@ -669,9 +463,9 @@ Haley Daarstad
 </div>
 <div class="fragment">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>gapminder <span class="ot">=</span> gapminder <span class="sc">|&gt;</span> </span>
-<span id="cb26-2"><a></a>  <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">"Africa"</span>)</span>
-<span id="cb26-3"><a></a>gapminder</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a>gapminder <span class="ot">=</span> gapminder <span class="sc">|&gt;</span> </span>
+<span id="cb20-2"><a></a>  <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">"Africa"</span>)</span>
+<span id="cb20-3"><a></a>gapminder</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 624 × 6
    country continent  year lifeExp      pop gdpPercap
@@ -693,112 +487,7 @@ Haley Daarstad
 <div class="fragment">
 <p>This is bad, since we lose the original <code>gapminder</code> data</p>
 </div>
-</section>
-<section id="your-turn-climate-change" class="slide level2">
-<h2>🚨 Your turn 🌡️ Climate change 🌡️ 🚨</h2>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<table class="caption-top" data-quarto-postprocess="true">
-<caption>Sample from climate dataset</caption>
-<thead>
-<tr class="header">
-<th style="text-align: left;" data-quarto-table-cell-role="th">country</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">year</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">population</th>
-<th style="text-align: right;" data-quarto-table-cell-role="th">co2</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;">Botswana</td>
-<td style="text-align: right;">1972</td>
-<td style="text-align: right;">667096</td>
-<td style="text-align: right;">0.02</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Belarus</td>
-<td style="text-align: right;">2016</td>
-<td style="text-align: right;">9445638</td>
-<td style="text-align: right;">59.85</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Martinique</td>
-<td style="text-align: right;">1972</td>
-<td style="text-align: right;">327301</td>
-<td style="text-align: right;">0.78</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Tajikistan</td>
-<td style="text-align: right;">1832</td>
-<td style="text-align: right;">520732</td>
-<td style="text-align: right;">0.00</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Bhutan</td>
-<td style="text-align: right;">1983</td>
-<td style="text-align: right;">439823</td>
-<td style="text-align: right;">0.03</td>
-</tr>
-</tbody>
-</table>
-
-
-</div>
-</div>
-</section>
-<section id="your-turn-climate-change-1" class="slide level2">
-<h2>🚨 Your turn 🌡️ Climate change 🌡️ 🚨</h2>
-<p>Using <code>climate</code>, make the following two plots looking <strong>only</strong> at Germany, USA, China, India:</p>
-<ol type="1">
-<li class="fragment"><p>A grouped time-series of <code>co2</code> emissions over time (separate country by color)</p></li>
-<li class="fragment"><p>A grouped time-series of <code>co2</code> emissions <strong>per capita</strong> over time (separate country by color)</p></li>
-<li class="fragment"><p>Who’s to “blame” for climate change? And where should we focus environmental efforts?</p></li>
-</ol>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Tip</strong></p>
-</div>
-<div class="callout-content">
-<ol type="1">
-<li class="fragment">The climate data set is in the package <code>juanr</code></li>
-<li class="fragment">Use <code>geom_line()</code> for the time series graph</li>
-<li class="fragment">Reminder to load/attach your packages using <code>library()</code></li>
-</ol>
-</div>
-</div>
-</div>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_8f4e9e13" minutes="10" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
-</div>
-</div>
-</section>
-<section id="climate-change-pt.-1" class="slide level2 smaller">
-<h2>🚨 🌡️ Climate change Pt. 1 🌡️ 🚨</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="fu">library</span>(juanr)</span>
-<span id="cb28-2"><a></a></span>
-<span id="cb28-3"><a></a>climate_cap <span class="ot">&lt;-</span> climate <span class="sc">|&gt;</span></span>
-<span id="cb28-4"><a></a>  <span class="fu">filter</span>(country  <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Germany"</span>, <span class="st">"United States"</span>, <span class="st">"China"</span>, <span class="st">"India"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb28-5"><a></a>  <span class="fu">mutate</span>(<span class="at">co2_capita =</span> co2<span class="sc">/</span>population)</span>
-<span id="cb28-6"><a></a></span>
-<span id="cb28-7"><a></a><span class="fu">ggplot</span>(climate_cap, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y =</span> co2, <span class="at">color =</span> country)) <span class="sc">+</span> <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="lec-4_files/figure-revealjs/unnamed-chunk-27-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section>
-<section id="climate-change-pt.-2" class="slide level2">
-<h2>🚨 🌡️ Climate change Pt. 2 🌡️ 🚨</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a><span class="fu">library</span>(juanr)</span>
-<span id="cb29-2"><a></a></span>
-<span id="cb29-3"><a></a><span class="fu">ggplot</span>(climate_cap, <span class="fu">aes</span>(<span class="at">x=</span>year, <span class="at">y =</span> co2_capita, <span class="at">color =</span> country)) <span class="sc">+</span> <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="lec-4_files/figure-revealjs/unnamed-chunk-28-1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"></section></section>
+</section></section>
 <section>
 <section id="creating-categories" class="title-slide slide level1 center">
 <h1>Creating categories</h1>
@@ -832,64 +521,64 @@ Haley Daarstad
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Guadalupe County</td>
-<td style="text-align: left;">TX</td>
-<td style="text-align: right;">0.61</td>
-<td style="text-align: right;">0.37</td>
+<td style="text-align: left;">Tipton County</td>
+<td style="text-align: left;">TN</td>
+<td style="text-align: right;">0.73</td>
+<td style="text-align: right;">0.25</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Marion County</td>
-<td style="text-align: left;">WV</td>
-<td style="text-align: right;">0.63</td>
-<td style="text-align: right;">0.35</td>
+<td style="text-align: left;">New Haven County</td>
+<td style="text-align: left;">CT</td>
+<td style="text-align: right;">0.41</td>
+<td style="text-align: right;">0.58</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Clarke County</td>
-<td style="text-align: left;">VA</td>
-<td style="text-align: right;">0.56</td>
-<td style="text-align: right;">0.42</td>
+<td style="text-align: left;">Pawnee County</td>
+<td style="text-align: left;">NE</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">0.23</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Montgomery County</td>
-<td style="text-align: left;">MS</td>
-<td style="text-align: right;">0.57</td>
-<td style="text-align: right;">0.42</td>
+<td style="text-align: left;">Franklin County</td>
+<td style="text-align: left;">AR</td>
+<td style="text-align: right;">0.80</td>
+<td style="text-align: right;">0.18</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Jackson County</td>
-<td style="text-align: left;">WI</td>
-<td style="text-align: right;">0.57</td>
-<td style="text-align: right;">0.42</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Evans County</td>
-<td style="text-align: left;">GA</td>
-<td style="text-align: right;">0.68</td>
-<td style="text-align: right;">0.31</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Coahoma County</td>
-<td style="text-align: left;">MS</td>
-<td style="text-align: right;">0.28</td>
-<td style="text-align: right;">0.71</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;">Utah County</td>
-<td style="text-align: left;">UT</td>
-<td style="text-align: right;">0.68</td>
-<td style="text-align: right;">0.27</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Alachua County</td>
-<td style="text-align: left;">FL</td>
-<td style="text-align: right;">0.36</td>
-<td style="text-align: right;">0.63</td>
-</tr>
-<tr class="even">
 <td style="text-align: left;">Dickinson County</td>
 <td style="text-align: left;">MI</td>
 <td style="text-align: right;">0.66</td>
 <td style="text-align: right;">0.33</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Freeborn County</td>
+<td style="text-align: left;">MN</td>
+<td style="text-align: right;">0.57</td>
+<td style="text-align: right;">0.41</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Hardin County</td>
+<td style="text-align: left;">OH</td>
+<td style="text-align: right;">0.75</td>
+<td style="text-align: right;">0.23</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Tuscola County</td>
+<td style="text-align: left;">MI</td>
+<td style="text-align: right;">0.69</td>
+<td style="text-align: right;">0.30</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Los Alamos County</td>
+<td style="text-align: left;">NM</td>
+<td style="text-align: right;">0.35</td>
+<td style="text-align: right;">0.61</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">San Francisco County</td>
+<td style="text-align: left;">CA</td>
+<td style="text-align: right;">0.13</td>
+<td style="text-align: right;">0.85</td>
 </tr>
 </tbody>
 </table>
@@ -902,7 +591,7 @@ Haley Daarstad
 <h2>Who won the county?</h2>
 <p>The general formula: <code>case_when(CONDITION ~ LABEL)</code></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>small_elections</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>small_elections</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3,152 × 4
    name            state per_gop_2020 per_dem_2020
@@ -925,8 +614,8 @@ Haley Daarstad
 <h2>Who won the county?</h2>
 <p>The general formula: <code>case_when(CONDITION ~ LABEL)</code></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>small_elections <span class="sc">|&gt;</span> </span>
-<span id="cb32-2"><a></a>  <span class="fu">mutate</span>(<span class="at">who_won =</span> <span class="fu">case_when</span>(per_gop_2020 <span class="sc">&gt;</span> per_dem_2020 <span class="sc">~</span> <span class="st">"Republicans"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>small_elections <span class="sc">|&gt;</span> </span>
+<span id="cb24-2"><a></a>  <span class="fu">mutate</span>(<span class="at">who_won =</span> <span class="fu">case_when</span>(per_gop_2020 <span class="sc">&gt;</span> per_dem_2020 <span class="sc">~</span> <span class="st">"Republicans"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3,152 × 5
    name            state per_gop_2020 per_dem_2020 who_won    
@@ -975,9 +664,9 @@ Haley Daarstad
 <h2>Who won the county?</h2>
 <p>The general formula: <code>case_when(CONDITION ~ LABEL)</code></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>small_elections <span class="sc">|&gt;</span> </span>
-<span id="cb34-2"><a></a>  <span class="fu">mutate</span>(<span class="at">who_won =</span> <span class="fu">case_when</span>(per_gop_2020 <span class="sc">&gt;</span> per_dem_2020 <span class="sc">~</span> <span class="st">"Republicans"</span>,</span>
-<span id="cb34-3"><a></a>                             per_dem_2020 <span class="sc">&gt;</span> per_gop_2020 <span class="sc">~</span> <span class="st">"Democrats"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>small_elections <span class="sc">|&gt;</span> </span>
+<span id="cb26-2"><a></a>  <span class="fu">mutate</span>(<span class="at">who_won =</span> <span class="fu">case_when</span>(per_gop_2020 <span class="sc">&gt;</span> per_dem_2020 <span class="sc">~</span> <span class="st">"Republicans"</span>,</span>
+<span id="cb26-3"><a></a>                             per_dem_2020 <span class="sc">&gt;</span> per_gop_2020 <span class="sc">~</span> <span class="st">"Democrats"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3,152 × 5
    name            state per_gop_2020 per_dem_2020 who_won    
@@ -995,113 +684,346 @@ Haley Daarstad
 # ℹ 3,142 more rows</code></pre>
 </div>
 </div>
-<aside class="notes">
-<p>How would I add condition for tie?</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
+</section></section>
+<section>
+<section id="summarizing-data-in-r" class="title-slide slide level1 center" data-background-color="#dc354a">
+<h1>Summarizing data in R</h1>
+
 </section>
-<section id="ok-but-by-how-much" class="slide level2">
-<h2>OK but by how much?</h2>
-<p>Our categories can be more complex, for instance the <strong>win margin</strong></p>
+<section id="summary-statistics-with-summarize" class="slide level2">
+<h2>Summary statistics with <code>summarize()</code></h2>
+<p>We can use <code>summarize()</code> to <strong>calculate</strong> things like the mean, median, etc.</p>
+
+<img data-src="img/summarize.png" class="quarto-figure quarto-figure-center r-stretch" style="width:50.0%"><div class="fragment">
+<p>Summarizing <strong>condenses</strong> data into statistics</p>
+</div>
+</section>
+<section id="using-summarize" class="slide level2">
+<h2>Using <code>summarize()</code></h2>
+<p>Say I want to know the average life expectancy in the world in 2007:</p>
 <div class="fragment">
-<p>Step 1: calculate the win <strong>margin</strong></p>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a>small_elections <span class="sc">|&gt;</span> </span>
-<span id="cb36-2"><a></a>  <span class="fu">mutate</span>(<span class="at">margin =</span> per_gop_2020 <span class="sc">-</span> per_dem_2020)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb28-2"><a></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3,152 × 5
-   name            state per_gop_2020 per_dem_2020  margin
-   &lt;chr&gt;           &lt;chr&gt;        &lt;dbl&gt;        &lt;dbl&gt;   &lt;dbl&gt;
- 1 Autauga County  AL           0.714       0.270   0.444 
- 2 Baldwin County  AL           0.762       0.224   0.538 
- 3 Barbour County  AL           0.535       0.458   0.0766
- 4 Bibb County     AL           0.784       0.207   0.577 
- 5 Blount County   AL           0.896       0.0957  0.800 
- 6 Bullock County  AL           0.248       0.747  -0.499 
- 7 Butler County   AL           0.575       0.418   0.157 
- 8 Calhoun County  AL           0.688       0.298   0.390 
- 9 Chambers County AL           0.573       0.416   0.156 
-10 Cherokee County AL           0.860       0.132   0.728 
-# ℹ 3,142 more rows</code></pre>
+<pre><code># A tibble: 52 × 6
+   country                  continent  year lifeExp      pop gdpPercap
+   &lt;fct&gt;                    &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
+ 1 Algeria                  Africa     2007    72.3 33333216     6223.
+ 2 Angola                   Africa     2007    42.7 12420476     4797.
+ 3 Benin                    Africa     2007    56.7  8078314     1441.
+ 4 Botswana                 Africa     2007    50.7  1639131    12570.
+ 5 Burkina Faso             Africa     2007    52.3 14326203     1217.
+ 6 Burundi                  Africa     2007    49.6  8390505      430.
+ 7 Cameroon                 Africa     2007    50.4 17696293     2042.
+ 8 Central African Republic Africa     2007    44.7  4369038      706.
+ 9 Chad                     Africa     2007    50.7 10238807     1704.
+10 Comoros                  Africa     2007    65.2   710960      986.
+# ℹ 42 more rows</code></pre>
 </div>
 </div>
 </div>
 </section>
-<section id="ok-but-by-how-much-1" class="slide level2">
-<h2>OK but by how much?</h2>
-<p>Step 2: add the categories</p>
+<section id="using-summarize-1" class="slide level2">
+<h2>Using <code>summarize()</code></h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>small_elections <span class="sc">|&gt;</span> </span>
-<span id="cb38-2"><a></a>  <span class="fu">mutate</span>(<span class="at">margin =</span> per_gop_2020 <span class="sc">-</span> per_dem_2020) <span class="sc">|&gt;</span> </span>
-<span id="cb38-3"><a></a>  <span class="fu">mutate</span>(<span class="at">who_won =</span> <span class="fu">case_when</span>(margin <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> margin <span class="sc">&lt;</span> .<span class="dv">1</span> <span class="sc">~</span> <span class="st">"R &lt; 10"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb30-2"><a></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb30-3"><a></a>  <span class="fu">summarize</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3,152 × 6
-   name            state per_gop_2020 per_dem_2020  margin who_won
-   &lt;chr&gt;           &lt;chr&gt;        &lt;dbl&gt;        &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;  
- 1 Autauga County  AL           0.714       0.270   0.444  &lt;NA&gt;   
- 2 Baldwin County  AL           0.762       0.224   0.538  &lt;NA&gt;   
- 3 Barbour County  AL           0.535       0.458   0.0766 R &lt; 10 
- 4 Bibb County     AL           0.784       0.207   0.577  &lt;NA&gt;   
- 5 Blount County   AL           0.896       0.0957  0.800  &lt;NA&gt;   
- 6 Bullock County  AL           0.248       0.747  -0.499  &lt;NA&gt;   
- 7 Butler County   AL           0.575       0.418   0.157  &lt;NA&gt;   
- 8 Calhoun County  AL           0.688       0.298   0.390  &lt;NA&gt;   
- 9 Chambers County AL           0.573       0.416   0.156  &lt;NA&gt;   
-10 Cherokee County AL           0.860       0.132   0.728  &lt;NA&gt;   
-# ℹ 3,142 more rows</code></pre>
+<pre><code># A tibble: 1 × 0</code></pre>
 </div>
 </div>
 </section>
-<section id="ok-but-by-how-much-2" class="slide level2">
-<h2>OK but by how much?</h2>
-<p>Step 3: keep adding categories</p>
+<section id="using-summarize-2" class="slide level2">
+<h2>Using <code>summarize()</code></h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>small_elections <span class="sc">|&gt;</span> </span>
-<span id="cb40-2"><a></a>  <span class="fu">mutate</span>(<span class="at">margin =</span> per_gop_2020 <span class="sc">-</span> per_dem_2020) <span class="sc">|&gt;</span> </span>
-<span id="cb40-3"><a></a>  <span class="fu">mutate</span>(<span class="at">who_won =</span> <span class="fu">case_when</span>(margin <span class="sc">&gt;</span> <span class="dv">0</span> <span class="sc">&amp;</span> margin <span class="sc">&lt;</span> .<span class="dv">1</span> <span class="sc">~</span> <span class="st">"R &lt; 10"</span>,</span>
-<span id="cb40-4"><a></a>                             margin <span class="sc">&gt;=</span> .<span class="dv">1</span> <span class="sc">&amp;</span> margin <span class="sc">&lt;</span> .<span class="dv">2</span> <span class="sc">~</span> <span class="st">"R + 10"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb32-2"><a></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb32-3"><a></a>  <span class="fu">summarize</span>(<span class="at">avg_life =</span> <span class="fu">mean</span>(lifeExp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3,152 × 6
-   name            state per_gop_2020 per_dem_2020  margin who_won
-   &lt;chr&gt;           &lt;chr&gt;        &lt;dbl&gt;        &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;  
- 1 Autauga County  AL           0.714       0.270   0.444  &lt;NA&gt;   
- 2 Baldwin County  AL           0.762       0.224   0.538  &lt;NA&gt;   
- 3 Barbour County  AL           0.535       0.458   0.0766 R &lt; 10 
- 4 Bibb County     AL           0.784       0.207   0.577  &lt;NA&gt;   
- 5 Blount County   AL           0.896       0.0957  0.800  &lt;NA&gt;   
- 6 Bullock County  AL           0.248       0.747  -0.499  &lt;NA&gt;   
- 7 Butler County   AL           0.575       0.418   0.157  R + 10 
- 8 Calhoun County  AL           0.688       0.298   0.390  &lt;NA&gt;   
- 9 Chambers County AL           0.573       0.416   0.156  R + 10 
-10 Cherokee County AL           0.860       0.132   0.728  &lt;NA&gt;   
-# ℹ 3,142 more rows</code></pre>
+<pre><code># A tibble: 1 × 1
+  avg_life
+     &lt;dbl&gt;
+1     54.8</code></pre>
+</div>
+</div>
+<p>Notice how the data has been <em>summarized</em>: only one row</p>
+<div class="fragment">
+<p>Notice that I’ve <em>named</em> the summary statistic <code>avg_life</code></p>
+</div>
+</section>
+<section id="using-summarize-3" class="slide level2">
+<h2>Using <code>summarize()</code></h2>
+<p>What if I also wanted to know the <strong>median</strong> life expectancy?</p>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb34-2"><a></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb34-3"><a></a>  <span class="fu">summarize</span>(<span class="at">avg_life =</span> <span class="fu">mean</span>(lifeExp), </span>
+<span id="cb34-4"><a></a>            <span class="at">med_life =</span> <span class="fu">median</span>(lifeExp)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 2
+  avg_life med_life
+     &lt;dbl&gt;    &lt;dbl&gt;
+1     54.8     52.9</code></pre>
+</div>
+</div>
+<p>Notice! how similar this looks to <code>mutate()</code></p>
+</div>
+</section>
+<section id="using-summarize-4" class="slide level2">
+<h2>Using <code>summarize()</code></h2>
+<p>What if I also wanted to know the <strong>min</strong> and <strong>max</strong> life expectancy?</p>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb36-2"><a></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb36-3"><a></a>  <span class="fu">summarize</span>(<span class="at">avg_life =</span> <span class="fu">mean</span>(lifeExp), </span>
+<span id="cb36-4"><a></a>            <span class="at">med_life =</span> <span class="fu">median</span>(lifeExp), </span>
+<span id="cb36-5"><a></a>            <span class="at">min_life =</span> <span class="fu">min</span>(lifeExp), </span>
+<span id="cb36-6"><a></a>            <span class="at">max_life =</span> <span class="fu">max</span>(lifeExp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 4
+  avg_life med_life min_life max_life
+     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+1     54.8     52.9     39.6     76.4</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="using-summarize-5" class="slide level2">
+<h2>Using <code>summarize()</code></h2>
+<p>What if I also wanted to know the <strong>standard deviation</strong> of life expectancy?</p>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb38-2"><a></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb38-3"><a></a>  <span class="fu">summarize</span>(<span class="at">avg_life =</span> <span class="fu">mean</span>(lifeExp), </span>
+<span id="cb38-4"><a></a>            <span class="at">med_life =</span> <span class="fu">median</span>(lifeExp), </span>
+<span id="cb38-5"><a></a>            <span class="at">min_life =</span> <span class="fu">min</span>(lifeExp), </span>
+<span id="cb38-6"><a></a>            <span class="at">max_life =</span> <span class="fu">max</span>(lifeExp), </span>
+<span id="cb38-7"><a></a>            <span class="at">sd_life =</span> <span class="fu">sd</span>(lifeExp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 5
+  avg_life med_life min_life max_life sd_life
+     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;
+1     54.8     52.9     39.6     76.4    9.63</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="using-summarize-6" class="slide level2">
+<h2>Using <code>summarize()</code></h2>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb40-2"><a></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb40-3"><a></a>  <span class="fu">summarize</span>(<span class="at">avg_life =</span> <span class="fu">mean</span>(lifeExp), </span>
+<span id="cb40-4"><a></a>            <span class="at">med_life =</span> <span class="fu">median</span>(lifeExp), </span>
+<span id="cb40-5"><a></a>            <span class="at">min_life =</span> <span class="fu">min</span>(lifeExp), </span>
+<span id="cb40-6"><a></a>            <span class="at">max_life =</span> <span class="fu">max</span>(lifeExp), </span>
+<span id="cb40-7"><a></a>            <span class="at">sd_life =</span> <span class="fu">sd</span>(lifeExp)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="fragment">
+<p><code>summarize()</code> is like <code>mutate()</code> in that you are creating <em>new variables</em></p>
+</div>
+<div class="fragment">
+<p>So note that you have to <em>name</em> the new variables!</p>
+</div>
+</section>
+<section id="we-can-use-summary-functions-in-filter" class="slide level2">
+<h2>We can use summary functions in filter</h2>
+<p>which country had the lowest life expectancy in 2007?</p>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb41-2"><a></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb41-3"><a></a>  <span class="fu">filter</span>(lifeExp <span class="sc">==</span> <span class="fu">min</span>(lifeExp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 6
+  country   continent  year lifeExp     pop gdpPercap
+  &lt;fct&gt;     &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;   &lt;int&gt;     &lt;dbl&gt;
+1 Swaziland Africa     2007    39.6 1133066     4513.</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="we-can-use-summary-functions-in-filter-1" class="slide level2">
+<h2>We can use summary functions in filter</h2>
+<p>which countries had above average GPD but below average health?</p>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb43-2"><a></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb43-3"><a></a>  <span class="fu">filter</span>(gdpPercap <span class="sc">&gt;</span> <span class="fu">mean</span>(gdpPercap), lifeExp <span class="sc">&lt;</span> <span class="fu">mean</span>(lifeExp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 6
+  country           continent  year lifeExp      pop gdpPercap
+  &lt;fct&gt;             &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;
+1 Angola            Africa     2007    42.7 12420476     4797.
+2 Botswana          Africa     2007    50.7  1639131    12570.
+3 Equatorial Guinea Africa     2007    51.6   551201    12154.
+4 Namibia           Africa     2007    52.9  2055080     4811.
+5 South Africa      Africa     2007    49.3 43997828     9270.
+6 Swaziland         Africa     2007    39.6  1133066     4513.</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="woe-unto-us-missing-data" class="slide level2">
+<h2>Woe unto us: missing data</h2>
+<div class="fragment">
+<p>In life, sometimes data is <strong>missing</strong></p>
+</div>
+<div class="fragment">
+<p>respondent doesn’t answer a question, no one knows Afghanistan’s GDP in 1943, etc.</p>
+</div>
+<div class="fragment">
+<p>R represents missing data as <strong>NA</strong></p>
+</div>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th style="text-align: left;">name</th>
+<th style="text-align: left;">type1</th>
+<th style="text-align: left;">type2</th>
+<th style="text-align: right;">height_m</th>
+<th style="text-align: right;">weight_kg</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Muk</td>
+<td style="text-align: left;">poison</td>
+<td style="text-align: left;">poison</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Lycanroc</td>
+<td style="text-align: left;">rock</td>
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Hoopa</td>
+<td style="text-align: left;">psychic</td>
+<td style="text-align: left;">ghost</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Golem</td>
+<td style="text-align: left;">rock</td>
+<td style="text-align: left;">ground</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Graveler</td>
+<td style="text-align: left;">rock</td>
+<td style="text-align: left;">ground</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Meowth</td>
+<td style="text-align: left;">normal</td>
+<td style="text-align: left;">dark</td>
+<td style="text-align: right;">NA</td>
+<td style="text-align: right;">NA</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+<section id="summarizing-with-missing-data" class="slide level2">
+<h2>Summarizing with missing data</h2>
+<p>If you try to <em>summarize</em> data that has missing values, R will return <code>NA</code>:</p>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a>pokemon <span class="sc">%&gt;%</span> </span>
+<span id="cb45-2"><a></a>  <span class="fu">summarise</span>(<span class="at">average_height =</span> <span class="fu">mean</span>(height_m))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  average_height
+           &lt;dbl&gt;
+1             NA</code></pre>
+</div>
 </div>
 </div>
 <div class="fragment">
-<p>And so on…</p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Any math operation with <code>NA</code> will return <code>NA</code> (.e.g, 3 + <code>NA</code> = <code>NA</code>)</p>
+</div>
+</div>
+</div>
 </div>
 </section>
-<section id="your-turn" class="slide level2">
-<h2>🚨 Your turn 🚨</h2>
-<p>Using the <code>elections</code> dataset:</p>
+<section id="what-to-do" class="slide level2">
+<h2>What to do?</h2>
+<div class="fragment">
+<p>There are whole classes on what to do with missing data (impute, simulate, model, etc.)</p>
+</div>
+<div class="fragment">
+<p>In this class we will tell R to ignore missing observations</p>
+</div>
+<div class="fragment">
+<p>We can do this by adding the <code>na.rm = TRUE</code> argument to summary</p>
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a>pokemon <span class="sc">%&gt;%</span> </span>
+<span id="cb47-2"><a></a>  <span class="fu">summarise</span>(<span class="at">average_height =</span> <span class="fu">mean</span>(height_m, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  average_height
+           &lt;dbl&gt;
+1           1.16</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="remember" class="slide level2">
+<h2>Remember…</h2>
+<div class="fragment">
+<p>If you’re trying to calculate a summary statistic and keep getting <code>NA</code>…</p>
+</div>
+<div class="fragment">
+<p>99.99999% of the time you need to add <code>na.rm = TRUE</code> to your function!</p>
+</div>
+<div class="fragment">
+<div class="cell" data-layout-align="center">
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a></a>pokemon <span class="sc">%&gt;%</span> </span>
+<span id="cb49-2"><a></a>  <span class="fu">summarise</span>(<span class="at">average_height =</span> <span class="fu">mean</span>(height_m, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 1
+  average_height
+           &lt;dbl&gt;
+1           1.16</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="your-turn-animals" class="slide level2">
+<h2>🚨 Your turn: 🦁 Animals 🦁 🚨</h2>
+<p>Using the <code>msleep</code> dataset in <code>tidyverse</code>:</p>
 <ol type="1">
-<li class="fragment"><p>Create a variable that tells you what happened in the 2016 election in each county. The variable should incorporate four possibilities:</p>
-<ol type="1">
-<li class="fragment"><p>DEMS won in 2012 and in 2016 (“blue”)</p></li>
-<li class="fragment"><p>REPS won in 2012 and in 2016 (“red”)</p></li>
-<li class="fragment"><p>the county flipped from blue to red (“blue to red”)</p></li>
-<li class="fragment"><p>the county flipped from red to blue (“red to blue”)</p></li>
-</ol></li>
-<li class="fragment"><p>Make a boxplot that compares household income (x-axis) across this variable (y-axis)</p></li>
+<li class="fragment"><p>Subset the data to <code>carni</code> animals (column name is <code>vore</code>) only, make a new variable for the difference in the <code>sleep_total</code> and <code>sleep_rem</code> as a percent called <code>rem_perc</code>.</p></li>
+<li class="fragment"><p>What is the the average percent of <code>rem_sleep</code> grouped by the <code>order</code>.</p></li>
+<li class="fragment"><p>Using a bar plot, plot the different percentages of rem sleep by order.</p></li>
 </ol>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -1113,33 +1035,90 @@ Haley Daarstad
 </div>
 <div class="callout-content">
 <ol type="1">
-<li class="fragment">The elections data set is in the package <code>juanr</code></li>
-<li class="fragment">Use <code>geom_boxplot()</code> for a boxplot graph</li>
+<li class="fragment"><p>Remember to attach your libraries using <code>library()</code></p></li>
+<li class="fragment"><p>To group by a variable(s) use the function <code>group_by()</code></p>
+<p><code>data |&gt;</code></p>
+<p><code>group_by(variable_name) |&gt;</code></p>
+<p><code>mutate() or summarize()</code></p></li>
 </ol>
 </div>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_7e3f5460" minutes="15" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_605291b0" minutes="6" seconds="30" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
-<section id="elections" class="slide level2">
-<h2>🚨 Elections 🚨</h2>
-<div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a>elections_cat <span class="ot">&lt;-</span> elections <span class="sc">|&gt;</span></span>
-<span id="cb42-2"><a></a>  <span class="fu">mutate</span>(</span>
-<span id="cb42-3"><a></a>   <span class="at">won =</span> <span class="fu">case_when</span>(</span>
-<span id="cb42-4"><a></a>      per_dem_2012 <span class="sc">&gt;</span>  per_gop_2012 <span class="sc">&amp;</span> per_dem_2016 <span class="sc">&gt;</span>  per_gop_2016 <span class="sc">~</span> <span class="st">"blue"</span>,</span>
-<span id="cb42-5"><a></a>      per_dem_2012 <span class="sc">&gt;</span>  per_gop_2012 <span class="sc">&amp;</span> per_dem_2016 <span class="sc">&gt;</span>  per_gop_2016 <span class="sc">~</span> <span class="st">"red"</span>,</span>
-<span id="cb42-6"><a></a>      per_dem_2012 <span class="sc">&lt;</span>  per_gop_2016 <span class="sc">&amp;</span> per_dem_2016 <span class="sc">&gt;</span>  per_gop_2016 <span class="sc">~</span> <span class="st">"red to blue"</span>,</span>
-<span id="cb42-7"><a></a>      per_dem_2012 <span class="sc">&gt;</span>  per_gop_2016 <span class="sc">&amp;</span> per_dem_2016 <span class="sc">&lt;</span>  per_gop_2016 <span class="sc">~</span> <span class="st">"blue to red"</span></span>
-<span id="cb42-8"><a></a>    ) </span>
-<span id="cb42-9"><a></a>  )</span>
-<span id="cb42-10"><a></a></span>
-<span id="cb42-11"><a></a><span class="co"># ggplot(data= elections_cat, aes(x = hh_income, y = won)) + geom_boxplot() </span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="animals-answer" class="slide level2 smaller">
+<h2>🚨 🦁 Animals Answer 🦁 🚨</h2>
+<div class="cell columns column-output-location" data-layout-align="center">
+<div class="column">
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb51-2"><a></a></span>
+<span id="cb51-3"><a></a>dat <span class="ot">&lt;-</span> msleep <span class="sc">|&gt;</span></span>
+<span id="cb51-4"><a></a>  <span class="fu">filter</span>(vore <span class="sc">==</span> <span class="st">"carni"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb51-5"><a></a>  <span class="fu">mutate</span>(</span>
+<span id="cb51-6"><a></a>    <span class="at">rem_perc =</span> sleep_rem<span class="sc">/</span>sleep_total <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb51-7"><a></a>  )</span>
+<span id="cb51-8"><a></a></span>
+<span id="cb51-9"><a></a>dat_2 <span class="ot">&lt;-</span> dat <span class="sc">|&gt;</span></span>
+<span id="cb51-10"><a></a>  <span class="fu">group_by</span>(order) <span class="sc">|&gt;</span></span>
+<span id="cb51-11"><a></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(rem_perc, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb51-12"><a></a>  )</span>
+<span id="cb51-13"><a></a></span>
+<span id="cb51-14"><a></a><span class="fu">ggplot</span>(dat_2, <span class="fu">aes</span>(<span class="at">y =</span> order, <span class="at">x =</span> mean)) <span class="sc">+</span></span>
+<span id="cb51-15"><a></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"skyblue"</span>) <span class="sc">+</span></span>
+<span id="cb51-16"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Average Perct. of REM Sleep for Carnivores by Animal Order"</span>,</span>
+<span id="cb51-17"><a></a>       <span class="at">x =</span> <span class="st">"Average Perct. of REM Sleep"</span>,</span>
+<span id="cb51-18"><a></a>       <span class="at">y =</span> <span class="st">"Animal Order"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="lec-4_files/figure-revealjs/unnamed-chunk-35-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
 </div>
+</div>
+</div></div>
+</section>
+<section id="animals-adv.-answer" class="slide level2 smaller">
+<h2>🚨 🦁 Animals Adv. Answer 🦁 🚨</h2>
+<div class="cell columns column-output-location" data-layout-align="center">
+<div class="column">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb52-2"><a></a></span>
+<span id="cb52-3"><a></a>dat <span class="ot">&lt;-</span> msleep <span class="sc">|&gt;</span></span>
+<span id="cb52-4"><a></a>  <span class="fu">filter</span>(vore <span class="sc">==</span> <span class="st">"carni"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb52-5"><a></a>  <span class="fu">mutate</span>(</span>
+<span id="cb52-6"><a></a>    <span class="at">rem_perc =</span> sleep_rem<span class="sc">/</span>sleep_total <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb52-7"><a></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb52-8"><a></a>  <span class="fu">group_by</span>(order) <span class="sc">|&gt;</span></span>
+<span id="cb52-9"><a></a>  <span class="fu">summarize</span>(<span class="at">mean =</span> <span class="fu">mean</span>(rem_perc, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb52-10"><a></a>  ) <span class="sc">|&gt;</span></span>
+<span id="cb52-11"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(mean)) </span>
+<span id="cb52-12"><a></a></span>
+<span id="cb52-13"><a></a>savannah_apex <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#D4A373"</span>, <span class="st">"#E9D8A6"</span>, <span class="st">"#BB3E03"</span>, <span class="st">"#94D2BD"</span>, <span class="st">"#0A9396"</span>)</span>
+<span id="cb52-14"><a></a></span>
+<span id="cb52-15"><a></a><span class="fu">ggplot</span>(dat, <span class="fu">aes</span>(<span class="at">x =</span> mean, <span class="at">y =</span> <span class="fu">reorder</span>(order, mean), <span class="at">fill=</span>order)) <span class="sc">+</span></span>
+<span id="cb52-16"><a></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
+<span id="cb52-17"><a></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> savannah_apex,</span>
+<span id="cb52-18"><a></a>                    <span class="at">name =</span> <span class="st">"Animal Order"</span>) <span class="sc">+</span></span>
+<span id="cb52-19"><a></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Average Perct. of REM Sleep for Carnivores by Animal Order"</span>,</span>
+<span id="cb52-20"><a></a>       <span class="at">x =</span> <span class="st">"Average Perct. of REM Sleep"</span>,</span>
+<span id="cb52-21"><a></a>       <span class="at">y =</span> <span class="st">"Animal Order"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="lec-4_files/figure-revealjs/unnamed-chunk-36-1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div></div>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
 
 
 </section></section>

@@ -6,7 +6,6 @@ project:
     - "!files/**"
     - "!ae/files/**"
     - "!labs/**"
-    - "!supplemental/data-wrangling.qmd"
     - "!supplemental/data-gen.qmd"
     - "!supplemental/models.qmd"
     - "!supplemental/hypothesis-tests.qmd"
@@ -84,7 +83,7 @@ website:
             text: "Week 2"
           - href: weeks/week-3.qmd
             text: "Week 3"
-          - href: weeks/coming-soon-weeks.qmd
+          - href: weeks/week-4.qmd
             text: "Week 4"
           - href: weeks/coming-soon-weeks.qmd
             text: "Week 5"
@@ -104,7 +103,7 @@ website:
             text: R Basics
           - href: supplemental/data-vis.qmd
             text: Data Visualization (ggplot2)
-          - href: supplemental/coming-soon-code.qmd
+          - href: supplemental/data-wrangling.qmd
             text: Data Wrangling (ggplot2)
           - href: supplemental/coming-soon-code.qmd
             text: Correlation

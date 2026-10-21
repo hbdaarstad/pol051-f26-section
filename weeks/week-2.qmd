@@ -1,6 +1,6 @@
 ---
 title: "Week 2"
-subtitle: "Data Visualizations"
+subtitle: "Data Visualizations I"
 editor: visual
 ---
 
