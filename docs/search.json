@@ -74,21 +74,44 @@
     "href": "weeks/week-5.html",
     "title": "Week 5",
     "section": "",
-    "text": "Important\n\n\n\n\nPeer Review Due - Wed. July 22"
+    "text": "Important\n\n\n\n\nProject #1 is due Nov. 10",
+    "crumbs": [
+      "Weekly materials",
+      "Week 5"
+    ]
   },
   {
-    "objectID": "weeks/week-5.html#discussion-materials",
-    "href": "weeks/week-5.html#discussion-materials",
+    "objectID": "weeks/week-5.html#prepare",
+    "href": "weeks/week-5.html#prepare",
     "title": "Week 5",
-    "section": "Discussion Materials",
-    "text": "Discussion Materials\n🖥️ Lecture 13 - Hypothesis testing"
+    "section": "Prepare",
+    "text": "Prepare\n\nData Visualization\n📖 Read the box plot section of Data Visualization by ModernDive\n\n\nHypothesis Testing\n📖 Read Hypothesis Testing by ModernDive",
+    "crumbs": [
+      "Weekly materials",
+      "Week 5"
+    ]
   },
   {
-    "objectID": "weeks/week-5.html#recommended-readings",
-    "href": "weeks/week-5.html#recommended-readings",
+    "objectID": "weeks/week-5.html#lectures",
+    "href": "weeks/week-5.html#lectures",
     "title": "Week 5",
-    "section": "Recommended Readings",
-    "text": "Recommended Readings\n📖 Read CH.6 in ModernDive, but ignore the stuff on interactions\n📖 Read Chapter 9 in ModernDive\n\n\nBack to course schedule ⏎"
+    "section": "Lectures",
+    "text": "Lectures\n🖥️ Lecture 5 - Project 1 Practice",
+    "crumbs": [
+      "Weekly materials",
+      "Week 5"
+    ]
+  },
+  {
+    "objectID": "weeks/week-5.html#handout",
+    "href": "weeks/week-5.html#handout",
+    "title": "Week 5",
+    "section": "Handout",
+    "text": "Handout\n📝 Download the Project 1 Practice handout (.qmd)\nOpen it in RStudio or Posit Cloud and fill in each code chunk. The answers are in the lecture slides.\n\nMore on This Week’s Functions\ngeom_boxplot()\n\nhttps://ggplot2.tidyverse.org/reference/geom_boxplot.html\n\npivot_wider() and pivot_longer()\n\nhttps://r4ds.hadley.nz/data-tidy.html\n\npatchwork\n\nhttps://patchwork.data-imaginist.com/articles/patchwork.html\n\nscale_x_date()\n\nhttps://ggplot2.tidyverse.org/reference/scale_date.html\n\ncase_when()\n\nhttps://www.rdocumentation.org/packages/dplyr/versions/1.0.10/topics/case_when\n\nt.test()\n\nhttps://moderndive.com/v2/09-hypothesis-testing.html\n\n\n\nBack to course schedule ⏎",
+    "crumbs": [
+      "Weekly materials",
+      "Week 5"
+    ]
   },
   {
     "objectID": "weeks/week-3.html",
@@ -166,7 +189,7 @@
     "text": "Not yet complete, will add soon. Check back later!",
     "crumbs": [
       "Weekly materials",
-      "Week 5"
+      "Week 6"
     ]
   },
   {
@@ -2432,7 +2455,7 @@
     "href": "index.html",
     "title": "POL 051: The Scientific Study of Politics",
     "section": "",
-    "text": "This page contains an outline of the topics and materials for the Fall 2026 discussion sections (A04, A05, A06). Note that this schedule will be updated as the quarter progresses, with all changes documented here.\n\n\n\n\n\n\n\n\nTA\nLecture\nDiscussion/Lab\n\n\n\n\nHaley Daarstad569 Kerr Hallhbdaarstad@ucdavis.eduOffice Hours: Tue 12:00 - 3:00 PM\nTuesday & Thursday3:10 pm - 4:30 pmWellman Hall 2\nFridayA04: 9:00 am - 9:50 amA05: 10:00 am - 10:50 amA06: 11:00 am - 11:50 amKerr Hall 451\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\nReadings\nSlides\n\n\n\n\n0\nFri, Sep 25\nNo Section\n\n\n\n\n1\nFri, Oct 2\nIntroduction to R\n📖\n🖥️\n\n\n2\nFri, Oct 9\nData Visualization\n📖\n🖥️\n\n\n3\nFri, Oct 16\nData Wrangling I\n📖\n🖥️\n\n\n4\nFri, Oct 23\nData Wrangling II\n📖\n🖥️\n\n\n5\nFri, Oct 30\nRelationships\n\n\n\n\n6\nFri, Nov 6\nModeling and Causality\n\n\n\n\n7\nFri, Nov 13\nUncertainty & Hypothesis Testing\n\n\n\n\n8\nFri, Nov 20\nPrediction & Natural Experiments\n\n\n\n\n9\nFri, Nov 27\nNo section - Thanksgiving holiday\n\n\n\n\n10\nFri, Dec 4\nReview & Wrap-up",
+    "text": "This page contains an outline of the topics and materials for the Fall 2026 discussion sections (A04, A05, A06). Note that this schedule will be updated as the quarter progresses, with all changes documented here.\n\n\n\n\n\n\n\n\nTA\nLecture\nDiscussion/Lab\n\n\n\n\nHaley Daarstad569 Kerr Hallhbdaarstad@ucdavis.eduOffice Hours: Tue 12:00 - 3:00 PM\nTuesday & Thursday3:10 pm - 4:30 pmWellman Hall 2\nFridayA04: 9:00 am - 9:50 amA05: 10:00 am - 10:50 amA06: 11:00 am - 11:50 amKerr Hall 451\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\nReadings\nSlides\n\n\n\n\n0\nFri, Sep 25\nNo Section\n\n\n\n\n1\nFri, Oct 2\nIntroduction to R\n📖\n🖥️\n\n\n2\nFri, Oct 9\nData Visualization\n📖\n🖥️\n\n\n3\nFri, Oct 16\nData Wrangling I\n📖\n🖥️\n\n\n4\nFri, Oct 23\nData Wrangling II\n📖\n🖥️\n\n\n5\nFri, Oct 30\nProject 1 Practice\n📖\n🖥️\n\n\n6\nFri, Nov 6\nModeling and Causality\n\n\n\n\n7\nFri, Nov 13\nUncertainty & Hypothesis Testing\n\n\n\n\n8\nFri, Nov 20\nPrediction & Natural Experiments\n\n\n\n\n9\nFri, Nov 27\nNo section - Thanksgiving holiday\n\n\n\n\n10\nFri, Dec 4\nReview & Wrap-up",
     "crumbs": [
       "Course information",
       "Schedule"
@@ -3392,172 +3415,25 @@
     "text": "💥 Your Turn: Make a DAG 💥\n\nOn one piece of paper, draw a DAG for your team’s project as a group\n\nIdentify the treatment and control\nidentify possible confounders\n\nAlso note which type: fork, collidier, and pipe.\n\n\nMake sure to put your names! This is your AE for the week."
   },
   {
-    "objectID": "slides/lec-13.html#bootstrap-works-for-regression-too",
-    "href": "slides/lec-13.html#bootstrap-works-for-regression-too",
+    "objectID": "slides/lec-13.html#one-tailed-v.-two-tailed",
+    "href": "slides/lec-13.html#one-tailed-v.-two-tailed",
     "title": "Hypothesis Testing",
-    "section": "Bootstrap works for regression, too",
-    "text": "Bootstrap works for regression, too\nSay we wanted to know the relationship between number of kids and age:\n\n\n\n\n\nNumber of kids\n\n\n\n(Intercept)0.153    \n\n(0.086)   \n\nage0.035 ***\n\n(0.002)   \n\nnobs2849        \n\n*** p &lt; 0.001; ** p &lt; 0.01; * p &lt; 0.05."
+    "section": "One tailed v. Two-tailed",
+    "text": "One tailed v. Two-tailed\n\nIf you expect Group 1 to have higher values than Group 2\n\nt.test(group1, group2, alternative = \"greater\")\n\nIf you expect Group 1 to have lower values than Group 2\n\nt.test(group1, group2, alternative = \"less\")\n\nIf you’re testing for any difference without specifying a direction\n\nt.test(group1, group2, alternative = \"two.sided\")"
   },
   {
-    "objectID": "slides/lec-13.html#bootstrap-regression",
-    "href": "slides/lec-13.html#bootstrap-regression",
+    "objectID": "slides/lec-13.html#titanic-example",
+    "href": "slides/lec-13.html#titanic-example",
     "title": "Hypothesis Testing",
-    "section": "Bootstrap regression",
-    "text": "Bootstrap regression\nWe can simulate uncertainty in our estimate by bootstrapping\n\n\n\n\n\n\nBootstrap\nCoefficient\nEstimate\n\n\n\n\n1\nage\n0.0367\n\n\n2\nage\n0.0327\n\n\n3\nage\n0.0316\n\n\n4\nage\n0.0345\n\n\n5\nage\n0.0360\n\n\n6\nage\n0.0365\n\n\n7\nage\n0.0337\n\n\n8\nage\n0.0350\n\n\n9\nage\n0.0354\n\n\n10\nage\n0.0301"
+    "section": "Titanic Example",
+    "text": "Titanic Example\nIs there a significant difference in survival if you are a women passanger on the titanic? Are you more likely to survive\nWhat is our H1?\n\nThere is no significant difference in survival if a women compared to a man.\n\nWhat is our H0?\n\nThere is significant difference in survival if a women compared to a man."
   },
   {
-    "objectID": "slides/lec-13.html#regression-uncertainty",
-    "href": "slides/lec-13.html#regression-uncertainty",
+    "objectID": "slides/lec-13.html#titanic-code-example",
+    "href": "slides/lec-13.html#titanic-code-example",
     "title": "Hypothesis Testing",
-    "section": "Regression uncertainty",
-    "text": "Regression uncertainty\nHow much might our estimate of lm(childs ~ age) vary? Look at the standard error\n\n\n\n\n\nmeanstandard_error\n\n\n\n0.03460.00172\n\n\n\n\n\nYou might report it is .0345, +/- 2 standard errors"
-  },
-  {
-    "objectID": "slides/lec-13.html#connecting-the-dots",
-    "href": "slides/lec-13.html#connecting-the-dots",
-    "title": "Hypothesis Testing",
-    "section": "Connecting the dots",
-    "text": "Connecting the dots\nNotice! This is what the (NUMBERS) mean in the regression table; they are the standard error of the coefficient estimate\n\n\n\n\nboot_lm_kids %&gt;% \n  summarise(mean = mean(estimate), \n            standard_error = sd(estimate))\n\n\n\n\nmeanstandard_error\n\n\n\n0.03460.00172\n\n\n\n\n\n\n\n\n\n\n\nNumber of kids\n\n\n\n(Intercept)0.153    \n\n(0.086)   \n\nage0.035 ***\n\n(0.002)   \n\nnobs2849        \n\n*** p &lt; 0.001; ** p &lt; 0.01; * p &lt; 0.05."
-  },
-  {
-    "objectID": "slides/lec-13.html#regression-uncertainty-1",
-    "href": "slides/lec-13.html#regression-uncertainty-1",
-    "title": "Hypothesis Testing",
-    "section": "Regression uncertainty",
-    "text": "Regression uncertainty\nWe can also look at the 95% confidence interval – we are 95% “confident” the effect of age on the number of children a person has is between .032 and .038"
-  },
-  {
-    "objectID": "slides/lec-13.html#uncertainty-in-r",
-    "href": "slides/lec-13.html#uncertainty-in-r",
-    "title": "Hypothesis Testing",
-    "section": "Uncertainty in R",
-    "text": "Uncertainty in R\nlm() will estimate the standard error of regression estimates for us using the statistical theory approach, but the results are similar to boostrapping\n\n\nmod = lm(obama ~ sex, data = gss_sm)\ntidy(mod)\n\n\n\n\ntermestimatestd.errorstatisticp.value\n\n\n\n(Intercept)0.576 0.017732.6 5.84e-182\n\nsexFemale0.08710.02343.720.000206"
-  },
-  {
-    "objectID": "slides/lec-13.html#uncertainty-in-r-1",
-    "href": "slides/lec-13.html#uncertainty-in-r-1",
-    "title": "Hypothesis Testing",
-    "section": "Uncertainty in R",
-    "text": "Uncertainty in R\nWe can also ask tidy for the 95% CI:\n\ntidy(mod, conf.int = TRUE)\n\n\n\n\ntermestimatestd.errorstatisticp.valueconf.lowconf.high\n\n\n\n(Intercept)0.576 0.017732.6 5.84e-1820.541 0.611\n\nsexFemale0.08710.02343.720.000206 0.04120.133\n\n\n\n\n\nconf.low and conf.high are the lower and upper bound of the 95% CI"
-  },
-  {
-    "objectID": "slides/lec-13.html#three-scenarios",
-    "href": "slides/lec-13.html#three-scenarios",
-    "title": "Hypothesis Testing",
-    "section": "Three scenarios",
-    "text": "Three scenarios\nThree scenarios for the results: same effect size, different 95% CIs"
-  },
-  {
-    "objectID": "slides/lec-13.html#how-much-should-we-worry",
-    "href": "slides/lec-13.html#how-much-should-we-worry",
-    "title": "Hypothesis Testing",
-    "section": "How much should we worry?",
-    "text": "How much should we worry?\n\n\n\nSmall range: great! Effect is precise; ads are worth it!\nBig range: OK-ish! Effect could be tiny, or huge; are the ads worth it? At least we know they help (positive)\nCrosses zero: awful! Ads could work (+), they could do nothing (0), or they could be counterproductive (-)"
-  },
-  {
-    "objectID": "slides/lec-13.html#crossing-zero-the-worst-scenario",
-    "href": "slides/lec-13.html#crossing-zero-the-worst-scenario",
-    "title": "Hypothesis Testing",
-    "section": "Crossing zero: the worst scenario",
-    "text": "Crossing zero: the worst scenario\nWhen the 95% CI crosses zero we are so uncertain we are unsure whether effect is positive, zero, or negative\n\nResearchers worry so much about this that it is conventional to report whether the 95% CI of an effect estimate crosses zero\n\n\nWhen a 95% CI for an estimate doesn’t cross zero, we say that the estimate is statistically significant\n\n\nIf the 95% CI crosses zero, the estimate is not statistically significant"
-  },
-  {
-    "objectID": "slides/lec-13.html#statistical-significance-1",
-    "href": "slides/lec-13.html#statistical-significance-1",
-    "title": "Hypothesis Testing",
-    "section": "Statistical significance",
-    "text": "Statistical significance"
-  },
-  {
-    "objectID": "slides/lec-13.html#hypothesis-testing",
-    "href": "slides/lec-13.html#hypothesis-testing",
-    "title": "Hypothesis Testing",
-    "section": "Hypothesis testing",
-    "text": "Hypothesis testing\n\n\n\nStatistical significance is at the center of hypothesis testing\nResearcher wants to decide between two possibilities:\n\nnull hypothesis (\\(H_0\\)): the ad has no effect on turnout\nalternative hypothesis (\\(H_a\\)): the ad has some effect on turnout\n\nA statistically significant estimate rejects the null\nRemember this is all about sampling uncertainty, not causality!"
-  },
-  {
-    "objectID": "slides/lec-13.html#arbitrary",
-    "href": "slides/lec-13.html#arbitrary",
-    "title": "Hypothesis Testing",
-    "section": "Arbitrary?",
-    "text": "Arbitrary?\n\nYou could have an estimate with a 95% CI that barely escapes crossing zero, and call that statistically significant\nAnd another estimate with a 95% CI that barely crosses zero, and call that not statistically significant\nThat’s pretty arbitrary!\nAnd it all hinges on the size of the confidence interval\nif we made a 98% CI, or a 95.1% CI, we might conclude different things are and aren’t significant\nThe 95% CI is a convention; where does it come from?"
-  },
-  {
-    "objectID": "slides/lec-13.html#the-arbitrary-nature-of-significance-testing",
-    "href": "slides/lec-13.html#the-arbitrary-nature-of-significance-testing",
-    "title": "Hypothesis Testing",
-    "section": "The arbitrary nature of “significance testing”",
-    "text": "The arbitrary nature of “significance testing”\nFisher (1925), who came up with it, says:\n\nIt is convenient to take this point [95% CI] as a limit in judging whether [an effect] is to be considered significant or not. (Fisher 1925)\n\n\nBut that other options are plausible:\n\nIf one in twenty [95% CI] does not seem high enough odds, we may, if we prefer it, draw the line at one in fifty [98% CI]… or one in a hundred [99% CI]…Personally, the writer prefers…[95% CI] (Fisher 1926)\n\n\n95% = one in twenty"
-  },
-  {
-    "objectID": "slides/lec-13.html#the-significance-testing-controversy",
-    "href": "slides/lec-13.html#the-significance-testing-controversy",
-    "title": "Hypothesis Testing",
-    "section": "The significance testing controversy",
-    "text": "The significance testing controversy\n\n\n\nSo arbitrary; why make this binary distinction?\nSometimes we have to make the call:\n\nwhen is a baby’s temperature so high that you should give them medicine?\n100.4 is a useful (arbitrary) threshold for action\n\nThis is a huge topic of debate in social science, other proposals we can’t cover:\n\nredefining how we think about probability\nfocusing on estimate sizes\nfocusing on likely range of estimates"
-  },
-  {
-    "objectID": "slides/lec-13.html#statistical-significance-in-r",
-    "href": "slides/lec-13.html#statistical-significance-in-r",
-    "title": "Hypothesis Testing",
-    "section": "Statistical significance in R",
-    "text": "Statistical significance in R\n\n\n\nThe stars (*) in regression output tell you whether an estimate’s confidence interval crosses zero and at what level of confidence\nThis is done with the p-value (which we don’t cover), the mirror image of the confidence interval\n\n\n\n\n\n\n\nNumber of kids\n\n\n\n(Intercept)0.153    \n\n(0.086)   \n\nage0.035 ***\n\n(0.002)   \n\nnobs2849        \n\n*** p &lt; 0.001; ** p &lt; 0.01; * p &lt; 0.05."
-  },
-  {
-    "objectID": "slides/lec-13.html#reading-the-stars",
-    "href": "slides/lec-13.html#reading-the-stars",
-    "title": "Hypothesis Testing",
-    "section": "Reading the stars",
-    "text": "Reading the stars\n\n(*) p &lt; .05 = the 95% confidence interval does not cross zero\n(**) p &lt; .01 = the 99% confidence interval does not cross zero\n(***) p &lt; .001 = the 99.9% confidence interval does not cross zero\n\n\n\n\n\n\nNumber of kids\n\n\n\n(Intercept)0.153    \n\n(0.086)   \n\nage0.035 ***\n\n(0.002)   \n\nnobs2849        \n\n*** p &lt; 0.001; ** p &lt; 0.01; * p &lt; 0.05."
-  },
-  {
-    "objectID": "slides/lec-13.html#another-way",
-    "href": "slides/lec-13.html#another-way",
-    "title": "Hypothesis Testing",
-    "section": "Another way…",
-    "text": "Another way…\nThe estimate is statistically significant at the…\n\n(*) p &lt; .05 = the 95% confidence level\n(**) p &lt; .01 = the 99% confidence level\n(***) p &lt; .001 = the 99.9% confidence level\n\n\n\n\n\n\nNumber of kids\n\n\n\n(Intercept)0.153    \n\n(0.086)   \n\nage0.035 ***\n\n(0.002)   \n\nnobs2849        \n\n*** p &lt; 0.001; ** p &lt; 0.01; * p &lt; 0.05."
-  },
-  {
-    "objectID": "slides/lec-13.html#how-much-data-do-i-need-to-estimate-x-1",
-    "href": "slides/lec-13.html#how-much-data-do-i-need-to-estimate-x-1",
-    "title": "Hypothesis Testing",
-    "section": "How much data do I need to estimate X?",
-    "text": "How much data do I need to estimate X?\nYou need less data to estimate larger effects"
-  },
-  {
-    "objectID": "slides/lec-13.html#how-good-is-my-sample",
-    "href": "slides/lec-13.html#how-good-is-my-sample",
-    "title": "Hypothesis Testing",
-    "section": "How good is my sample?",
-    "text": "How good is my sample?\nYou can see how big (small) of an effect you can estimate given your data"
-  },
-  {
-    "objectID": "slides/lec-13.html#statistical-significance-and-causalitly",
-    "href": "slides/lec-13.html#statistical-significance-and-causalitly",
-    "title": "Hypothesis Testing",
-    "section": "Statistical significance and causalitly",
-    "text": "Statistical significance and causalitly\n\nWhen we control for a confounder, our treatment estimate can change a lot\n\n\nIn this case, shrinks closer to zero, but not perfectly; is there still “an effect”?\n\n\n\n\n\nNaive modelModel with controls\n\n\n\n(Intercept)10708.3    -39456.6 ***\n\n(6210.7)   (5223.1)   \n\nbathrooms250326.5 ***-5164.6    \n\n(2759.5)   (3519.5)   \n\nsqft_living      283.9 ***\n\n      (3.0)   \n\nnobs21613      21613      \n\n*** p &lt; 0.001; ** p &lt; 0.01; * p &lt; 0.05."
-  },
-  {
-    "objectID": "slides/lec-13.html#statistical-significance-and-causalitly-1",
-    "href": "slides/lec-13.html#statistical-significance-and-causalitly-1",
-    "title": "Hypothesis Testing",
-    "section": "Statistical significance and causalitly",
-    "text": "Statistical significance and causalitly\nOne (controversial) approach is to notice that the effect has shrunk closer to zero, so much so that it is no longer statistically significant\n\n\n\n\n\nNaive modelModel with controls\n\n\n\n(Intercept)10708.3    -39456.6 ***\n\n(6210.7)   (5223.1)   \n\nbathrooms250326.5 ***-5164.6    \n\n(2759.5)   (3519.5)   \n\nsqft_living      283.9 ***\n\n      (3.0)   \n\nnobs21613      21613      \n\n*** p &lt; 0.001; ** p &lt; 0.01; * p &lt; 0.05.\n\n\n\n\n\n\ncontrolling for the size of the house, there is no longer a statistically significant effect on price"
-  },
-  {
-    "objectID": "slides/lec-13.html#from-the-homework",
-    "href": "slides/lec-13.html#from-the-homework",
-    "title": "Hypothesis Testing",
-    "section": "From the homework",
-    "text": "From the homework\n\n\n\nIn the naive model, the effect of children on affairs is positive and statistically significant\nBut once we control for the right confounds, the effect of children on affairs is negative and not statistically significant\nThis is one way (the correct) controls can help us make better inferences\n\n\n\n\n\n\n\nNaive modelControls model\n\n\n\n(Intercept)0.912 ***0.562 *  \n\n(0.251)   (0.264)   \n\nchildrenyes0.760 *  -0.033    \n\n(0.297)   (0.358)   \n\nyearsmarried        0.112 ***\n\n        (0.029)   \n\nnobs601        601        \n\n*** p &lt; 0.001; ** p &lt; 0.01; * p &lt; 0.05."
-  },
-  {
-    "objectID": "slides/lec-13.html#pulling-it-all-together",
-    "href": "slides/lec-13.html#pulling-it-all-together",
-    "title": "Hypothesis Testing",
-    "section": "Pulling it all together",
-    "text": "Pulling it all together"
+    "section": "Titanic Code Example",
+    "text": "Titanic Code Example"
   },
   {
     "objectID": "slides/lec-15.html#a-brief-unfair-history-of-social-science-research",
@@ -4134,319 +4010,151 @@
     "text": "👑 Cars Practice Answer 👑\n\n\n              mpg cyl disp  hp drat   wt qsec vs am gear carb\nFerrari Dino 19.7   6  145 175 3.62 2.77 15.5  0  1    5    6"
   },
   {
-    "objectID": "slides/lec-5.html#data-objects-variables-1",
-    "href": "slides/lec-5.html#data-objects-variables-1",
-    "title": "Relationships I",
-    "section": "Data, objects, variables",
-    "text": "Data, objects, variables\n\ntrade is a data object that contains variables like imports\n\ntrade\n\n# A tibble: 11,493 × 10\n   country          year imports exports     gdp    pop land_borders sea_borders\n   &lt;chr&gt;           &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;\n 1 United States …  1946    5000    9775 2.48e12 1.38e8            2           1\n 2 United States …  1947    5824   15369 2.43e12 1.40e8            2           1\n 3 United States …  1948    7710   12470 2.49e12 1.43e8            2           1\n 4 United States …  1949    7160   11920 2.47e12 1.47e8            2           1\n 5 United States …  1950    9140   10220 2.56e12 1.49e8            2           1\n 6 United States …  1951   11400   14920 2.73e12 1.51e8            2           1\n 7 United States …  1952   11220   14950 2.82e12 1.53e8            2           1\n 8 United States …  1953   11460   15330 2.99e12 1.56e8            2           1\n 9 United States …  1954   10670   14690 3.00e12 1.59e8            2           1\n10 United States …  1955   11850   15410 3.10e12 1.62e8            2           1\n# ℹ 11,483 more rows\n# ℹ 2 more variables: min_cap_dist &lt;dbl&gt;, sum_igos &lt;dbl&gt;\n\n\n\n\ntrade_2010 and trade are both objects, year is a variable\n\ntrade_2010 = trade |&gt; \n  filter(year == 2010)"
+    "objectID": "slides/lec-5.html#nhl-player-stats-202324",
+    "href": "slides/lec-5.html#nhl-player-stats-202324",
+    "title": "Project 1 Practice",
+    "section": "NHL player stats, 2023–24",
+    "text": "NHL player stats, 2023–24\nOne row per player per team, regular season only\n\nhockey = read_csv(\"https://raw.githubusercontent.com/hbdaarstad/NHL-22-24-Season-Data/main/hockey_stats.csv\") |&gt;\n  filter(!is.na(position), position != \"G\")\n\nhockey |&gt;\n  select(player, team, position, goals, assists, points)\n\n# A tibble: 916 × 6\n   player           team  position goals assists points\n   &lt;chr&gt;            &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;\n 1 Nikita Kucherov  TBL   R           44     100    144\n 2 Nathan MacKinnon COL   C           51      89    140\n 3 Connor McDavid   EDM   C           32     100    132\n 4 Artemi Panarin   NYR   L           49      71    120\n 5 David Pastrnak   BOS   R           47      63    110\n 6 Auston Matthews  TOR   C           69      38    107\n 7 Leon Draisaitl   EDM   C           41      65    106\n 8 Mikko Rantanen   COL   R           42      62    104\n 9 J.T. Miller      VAN   C           37      66    103\n10 William Nylander TOR   R           40      58     98\n# ℹ 906 more rows\n\n\n\n\n\n\n\n\nNote\n\n\nPositions: C = center, L = left wing, R = right wing, D = defense. We drop goalies (G)."
   },
   {
-    "objectID": "slides/lec-5.html#data-objects-variables-2",
-    "href": "slides/lec-5.html#data-objects-variables-2",
-    "title": "Relationships I",
-    "section": "Data, objects, variables",
-    "text": "Data, objects, variables\nConfusing! imports_gdp is an object that contains a variable that’s also named imports_gdp\n\nimports_gdp = \n  trade |&gt; \n  mutate(imports_gdp = imports / gdp)\n\n\n\nThis is why we need to pick good variable names!"
+    "objectID": "slides/lec-5.html#google-trends-montreal-canadiens",
+    "href": "slides/lec-5.html#google-trends-montreal-canadiens",
+    "title": "Project 1 Practice",
+    "section": "Google Trends: Montreal Canadiens",
+    "text": "Google Trends: Montreal Canadiens\nMonthly U.S. search interest, 2004 to 2026\n\ngoogle_trends = read_csv(\"https://raw.githubusercontent.com/hbdaarstad/NHL-22-24-Season-Data/main/google_trends.csv\") |&gt;\n  select(month, montreal_canadiens)\n\ngoogle_trends\n\n# A tibble: 274 × 2\n   month      montreal_canadiens\n   &lt;date&gt;                  &lt;dbl&gt;\n 1 2004-01-01                 10\n 2 2004-02-01                 10\n 3 2004-03-01                 10\n 4 2004-04-01                 18\n 5 2004-05-01                  8\n 6 2004-06-01                  7\n 7 2004-07-01                  8\n 8 2004-08-01                  7\n 9 2004-09-01                  7\n10 2004-10-01                  5\n# ℹ 264 more rows\n\n\n\n\n\n\n\n\nNote\n\n\nGoogle Trends scores each month 0–100, where 100 = the busiest month in the whole period. It is not a count of searches."
   },
   {
-    "objectID": "slides/lec-5.html#a-common-mistake",
-    "href": "slides/lec-5.html#a-common-mistake",
-    "title": "Relationships I",
-    "section": "A common mistake",
-    "text": "A common mistake\nSay we wanted to multiply GDP per capita by population and plot the result:\n\ngap_gdp = gapminder |&gt; \n  mutate(gdp = gdpPercap * pop)\n\n\n❌\n\nggplot(gapminder, aes(x = year, y = gap_gdp)) + geom_point()\n\nMistake: using the original gapminder data, treating gap_gdp as a variable\n\n\n✅\n\nggplot(gap_gdp, aes(x = year, y = gdp)) + geom_point()\n\nCorrect: use the new data object, which contains the newly created variable gdp"
+    "objectID": "slides/lec-5.html#team-goals-by-position",
+    "href": "slides/lec-5.html#team-goals-by-position",
+    "title": "Project 1 Practice",
+    "section": "Team goals by position",
+    "text": "Team goals by position\nThis one is made for you: each team’s total goals by position, plus a Total column\n\nhockey_goals &lt;- hockey |&gt;\n  group_by(team, position) |&gt;\n  summarise(goals = sum(goals, na.rm = TRUE), .groups = \"drop\") |&gt;\n  pivot_wider(names_from = position, values_from = goals, values_fill = 0) |&gt;\n  mutate(Total = rowSums(across(-team)))\n\nhockey_goals\n\n# A tibble: 32 × 6\n   team      C     D     L     R Total\n   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1 ANA      80    19    25    75   199\n 2 ARI      95    32    71    51   249\n 3 BOS     121    31    59    47   258\n 4 BUF      68    41    64    71   244\n 5 CAR     125    49    63    39   276\n 6 CBJ      82    39    48    62   231\n 7 CGY     157    52    38     5   252\n 8 CHI     107    19    31    19   176\n 9 COL      95    61    57    85   298\n10 DAL     168    36    72    12   288\n# ℹ 22 more rows"
   },
   {
-    "objectID": "slides/lec-5.html#summarizing-data-1",
-    "href": "slides/lec-5.html#summarizing-data-1",
-    "title": "Relationships I",
-    "section": "Summarizing data",
-    "text": "Summarizing data\n\nOften, with data, we want to compare things\n\n\nAre democracies more peaceful than autocracies?\n\n\nDoes early-voting increase turnout?\n\n\nTo do this, we often rely on statistical summaries of our data:\n\n\nMeans, medians, minimums, maximums, variances"
+    "objectID": "slides/lec-5.html#playoff-teams",
+    "href": "slides/lec-5.html#playoff-teams",
+    "title": "Project 1 Practice",
+    "section": "Playoff teams",
+    "text": "Playoff teams\nAlso made for you: the 16 teams that made the 2024 Stanley Cup playoffs\n\nplayoffs_2024 &lt;- c(\"FLA\", \"BOS\", \"TOR\", \"TBL\", \"NYR\", \"WSH\", \"CAR\", \"NYI\",\n                   \"DAL\", \"VGK\", \"COL\", \"WPG\", \"VAN\", \"NSH\", \"EDM\", \"LAK\")"
   },
   {
-    "objectID": "slides/lec-5.html#summary-stats",
-    "href": "slides/lec-5.html#summary-stats",
-    "title": "Relationships I",
-    "section": "Summary stats",
-    "text": "Summary stats\n\nThe mean: 3, 4, 8 \\(\\rightarrow\\) \\(\\frac{(3 + 4 + 8)}{3} = 5\\)\n\n\nThe median: 3, 4, 8 \\(\\rightarrow\\) 4\n\n\nThe minimum: 3, 4, 8 \\(\\rightarrow\\) 3\n\n\nThe maximum: 3, 4, 8 \\(\\rightarrow\\) 8"
+    "objectID": "slides/lec-5.html#your-turn-goals-box-plot",
+    "href": "slides/lec-5.html#your-turn-goals-box-plot",
+    "title": "Project 1 Practice",
+    "section": "🚨 Your turn: 🏒 Goals Box Plot 🏒 🚨",
+    "text": "🚨 Your turn: 🏒 Goals Box Plot 🏒 🚨\nUsing the hockey dataset:\n\nBuild a box plot of the number of goals scored by all NHL players in the 2023–24 regular season.\nColor the outliers and change their shape.\nAdd a point for the mean number of goals.\nAdd a title, subtitle, and axis labels.\n\n\n\n\n\n\n\nTip\n\n\n\nUse aes(x = \"\", y = goals) to get a single box\nOutliers are set inside geom_boxplot() with outlier.color =, outlier.shape =, outlier.size =\nTo add the mean: stat_summary(fun = mean, geom = \"point\")"
   },
   {
-    "objectID": "slides/lec-5.html#example-an-experiment",
-    "href": "slides/lec-5.html#example-an-experiment",
-    "title": "Relationships I",
-    "section": "Example: an experiment",
-    "text": "Example: an experiment\nSome counties let people vote early; others don’t\n\nDo counties with early provisions have higher turnout?"
+    "objectID": "slides/lec-5.html#goals-box-plot-answer",
+    "href": "slides/lec-5.html#goals-box-plot-answer",
+    "title": "Project 1 Practice",
+    "section": "🚨 🏒 Goals Box Plot Answer 🏒 🚨",
+    "text": "🚨 🏒 Goals Box Plot Answer 🏒 🚨\n\n\nggplot(data = hockey, aes(x = \"\", y = goals)) +\n  geom_boxplot(\n    alpha = 0.7,                       # transparency of the box fill\n    outlier.color = \"cornflowerblue\",  # color of outlier points\n    outlier.shape = 8,                 # outlier symbol is a star\n    outlier.size = 1                   # outlier size\n  ) +\n  stat_summary(fun = mean, geom = \"point\",\n               shape = 20, size = 4, color = \"coral\") +\n  labs(title = \"Distribution of Regular Season Goals by Player\",\n       subtitle = \"NHL 2023–24\",\n       x = \"\",\n       y = \"Goals Scored\") +\n  theme_minimal() +\n  theme(legend.position = \"none\")\n\n\n\n\n\n\n\n\n\n\nThe mean sits above the median: a few big scorers pull the mean up (right-skewed)"
   },
   {
-    "objectID": "slides/lec-5.html#the-data",
-    "href": "slides/lec-5.html#the-data",
-    "title": "Relationships I",
-    "section": "The data",
-    "text": "The data\n\n\n\n\n\nVote early?\nTurnout (%)\n\n\n\n\nYes\n54.7\n\n\nYes\n56.7\n\n\nNo\n37.3\n\n\nNo\n44.1\n\n\nNo\n40.6\n\n\nNo\n38.6\n\n\nYes\n46.7\n\n\nNo\n35.4\n\n\nYes\n51.8\n\n\nYes\n50.1"
+    "objectID": "slides/lec-5.html#your-turn-goals-by-position",
+    "href": "slides/lec-5.html#your-turn-goals-by-position",
+    "title": "Project 1 Practice",
+    "section": "🚨 Your turn: 🏒 Goals by Position 🏒 🚨",
+    "text": "🚨 Your turn: 🏒 Goals by Position 🏒 🚨\nUsing the hockey dataset:\n\nBuild a box plot of goals with one box for each position.\nWhich position scores the most goals? Which scores the least?\n\n\n\n\n\n\n\nTip\n\n\nPut the grouping variable on the x-axis: aes(x = position, y = goals)"
   },
   {
-    "objectID": "slides/lec-5.html#quantifying-higher",
-    "href": "slides/lec-5.html#quantifying-higher",
-    "title": "Relationships I",
-    "section": "Quantifying “higher”",
-    "text": "Quantifying “higher”\nWe can compare the averages of counties that do have early voting against those that don’t:\n\n\n\n\n\n\nVote early?\nAverage turnout\n\n\n\n\nNo\n40.1\n\n\nYes\n50.2\n\n\n\n\n\n\n\nCounties with early voting have, on average, 10 percentage points higher turnout"
+    "objectID": "slides/lec-5.html#goals-by-position-answer",
+    "href": "slides/lec-5.html#goals-by-position-answer",
+    "title": "Project 1 Practice",
+    "section": "🚨 🏒 Goals by Position Answer 🏒 🚨",
+    "text": "🚨 🏒 Goals by Position Answer 🏒 🚨\n\n\nggplot(data = hockey, aes(x = position, y = goals)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(title = \"Regular Season Goals by Position\",\n       subtitle = \"NHL 2023–24\",\n       x = \"Position\",\n       y = \"Goals Scored\") +\n  theme_minimal()"
   },
   {
-    "objectID": "slides/lec-5.html#mean-vs.-median",
-    "href": "slides/lec-5.html#mean-vs.-median",
-    "title": "Relationships I",
-    "section": "Mean vs. median",
-    "text": "Mean vs. median\nWe almost always compare averages, but medians are helpful in some cases:\n\n\n\n\n\n\n\n\n\n\n\nWhat’s happening here?"
+    "objectID": "slides/lec-5.html#your-turn-team-goals-by-position",
+    "href": "slides/lec-5.html#your-turn-team-goals-by-position",
+    "title": "Project 1 Practice",
+    "section": "🚨 Your turn: 🏒 Team Goals by Position 🏒 🚨",
+    "text": "🚨 Your turn: 🏒 Team Goals by Position 🏒 🚨\nWhat percent of each team’s goals comes from each position?\nUsing hockey_goals:\n\nMake a new object called hockey_boxplot with the percent of goals from each position: rw_percent, lw_percent, c_percent, d_percent.\nMake a box plot for each position and combine them with patchwork.\n\n\n\n\n\n\n\nTip\n\n\n\nPercent = the position’s goals divided by Total, times 100. Use mutate()\nCombine plots with + and set the layout with plot_layout(ncol = 4)"
   },
   {
-    "objectID": "slides/lec-5.html#one-more-stat-variation",
-    "href": "slides/lec-5.html#one-more-stat-variation",
-    "title": "Relationships I",
-    "section": "One more stat: variation",
-    "text": "One more stat: variation\n\nAnother way to compare data is by how much a variable varies\n\n\nSome distributions are very narrow, others are very wide\n\n\nNarrow = observations are similar; wide = observations are not similar"
+    "objectID": "slides/lec-5.html#team-goals-by-position-answer",
+    "href": "slides/lec-5.html#team-goals-by-position-answer",
+    "title": "Project 1 Practice",
+    "section": "🚨 🏒 Team Goals by Position Answer 🏒 🚨",
+    "text": "🚨 🏒 Team Goals by Position Answer 🏒 🚨\nStep 1: the percentages\n\nhockey_boxplot &lt;- hockey_goals |&gt;\n  mutate(\n    rw_percent = R / Total * 100,\n    lw_percent = L / Total * 100,\n    c_percent  = C / Total * 100,\n    d_percent  = D / Total * 100\n  )\n\nhockey_boxplot\n\n# A tibble: 32 × 10\n   team      C     D     L     R Total rw_percent lw_percent c_percent d_percent\n   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;\n 1 ANA      80    19    25    75   199      37.7        12.6      40.2      9.55\n 2 ARI      95    32    71    51   249      20.5        28.5      38.2     12.9 \n 3 BOS     121    31    59    47   258      18.2        22.9      46.9     12.0 \n 4 BUF      68    41    64    71   244      29.1        26.2      27.9     16.8 \n 5 CAR     125    49    63    39   276      14.1        22.8      45.3     17.8 \n 6 CBJ      82    39    48    62   231      26.8        20.8      35.5     16.9 \n 7 CGY     157    52    38     5   252       1.98       15.1      62.3     20.6 \n 8 CHI     107    19    31    19   176      10.8        17.6      60.8     10.8 \n 9 COL      95    61    57    85   298      28.5        19.1      31.9     20.5 \n10 DAL     168    36    72    12   288       4.17       25        58.3     12.5 \n# ℹ 22 more rows"
   },
   {
-    "objectID": "slides/lec-5.html#measuring-variation-the-standard-deviation",
-    "href": "slides/lec-5.html#measuring-variation-the-standard-deviation",
-    "title": "Relationships I",
-    "section": "Measuring variation: the standard deviation",
-    "text": "Measuring variation: the standard deviation\nThe formula:\n\\[ s = \\sqrt{\\frac{1}{N-1} \\sum_{i=1}^N (x_i - \\overline{x})^2}\\]\n\nAll the movement is here, the sum of the differences between each observation \\(x_i\\) and the average observation \\(\\overline{x}\\)\n\\[\\sum_{i=1}^N (x_i - \\overline{x})^2\\]"
+    "objectID": "slides/lec-5.html#team-goals-by-position-answer-1",
+    "href": "slides/lec-5.html#team-goals-by-position-answer-1",
+    "title": "Project 1 Practice",
+    "section": "🚨 🏒 Team Goals by Position Answer 🏒 🚨",
+    "text": "🚨 🏒 Team Goals by Position Answer 🏒 🚨\nStep 2: plot\n\n\nrw &lt;- ggplot(hockey_boxplot, aes(x = \"\", y = rw_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Right Wing\", y = \"% of Team Goals\")\n\nlw &lt;- ggplot(hockey_boxplot, aes(x = \"\", y = lw_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Left Wing\", y = NULL)\n\ncen &lt;- ggplot(hockey_boxplot, aes(x = \"\", y = c_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Center\", y = NULL)\n\nd &lt;- ggplot(hockey_boxplot, aes(x = \"\", y = d_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Defense\", y = NULL)\n\nrw + lw + cen + d +\n  plot_layout(ncol = 4) +\n  plot_annotation(\n    title = \"Boxplots of the Percentage of Goals Scored\",\n    subtitle = \"by Position Across all NHL Teams\",\n    caption = \"NHL Regular Season 2023–24\"\n  ) & scale_y_continuous(limits = c(0, 100))"
   },
   {
-    "objectID": "slides/lec-5.html#variance-intuition",
-    "href": "slides/lec-5.html#variance-intuition",
-    "title": "Relationships I",
-    "section": "Variance intuition",
-    "text": "Variance intuition\n\n\n\n\n\n\nWide distribution\n\n\nage\n\\(\\overline{age}\\)\n\\(\\ age - \\overline{age}\\)\n\\(\\ (age - \\overline{age})^2 \\)\n\n\n\n\n87\n55.3\n31.7\n1003.6\n\n\n41\n55.3\n-14.3\n205.1\n\n\n23\n55.3\n-32.3\n1044.6\n\n\n45\n55.3\n-10.3\n106.5\n\n\n58\n55.3\n2.7\n7.2\n\n\n\n\n\n\n\n\n\n\n\n\n\nNarrow distribution\n\n\nage\n\\(\\overline{age}\\)\n\\(\\ age - \\overline{age}\\)\n\\(\\ (age - \\overline{age})^2 \\)\n\n\n\n\n48\n49.9\n-1.9\n3.8\n\n\n48\n49.9\n-1.9\n3.8\n\n\n52\n49.9\n2.1\n4.2\n\n\n48\n49.9\n-1.9\n3.8\n\n\n50\n49.9\n0.1\n0.0\n\n\n\n\n\n\n\n\n\n\\[\\sum_{i=1}^N (age_i - \\overline{age})^2\\]\n\nThe farther observations are from the mean, the larger the standard deviation"
+    "objectID": "slides/lec-5.html#team-goals-by-position-adv.-answer",
+    "href": "slides/lec-5.html#team-goals-by-position-adv.-answer",
+    "title": "Project 1 Practice",
+    "section": "🚨 🏒 Team Goals by Position Adv. Answer 🏒 🚨",
+    "text": "🚨 🏒 Team Goals by Position Adv. Answer 🏒 🚨\nUse pivot_longer() so one ggplot() draws all four boxes\n\n\nhockey_boxplot |&gt;\n  pivot_longer(c(rw_percent, lw_percent, c_percent, d_percent),\n               names_to = \"position\", values_to = \"percent\") |&gt;\n  mutate(position = factor(position,\n    levels = c(\"rw_percent\", \"lw_percent\", \"c_percent\", \"d_percent\"),\n    labels = c(\"Right Wing\", \"Left Wing\", \"Center\", \"Defense\"))) |&gt;\n  ggplot(aes(x = position, y = percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  scale_y_continuous(limits = c(0, 100)) +\n  labs(x = \"Position\", y = \"% of Team Goals\",\n       title = \"Boxplots of the Percentage of Goals Scored\",\n       subtitle = \"by Position Across all NHL Teams\",\n       caption = \"NHL Regular Season 2023–24\") +\n  theme_minimal()"
   },
   {
-    "objectID": "slides/lec-5.html#measuring-variation",
-    "href": "slides/lec-5.html#measuring-variation",
-    "title": "Relationships I",
-    "section": "Measuring variation",
-    "text": "Measuring variation\nSame average (~$50,000), different standard deviations\n\n\nWhat could we measure with sd? Can we use standard deviation to measure equality?"
+    "objectID": "slides/lec-5.html#your-turn-canadiens-searches",
+    "href": "slides/lec-5.html#your-turn-canadiens-searches",
+    "title": "Project 1 Practice",
+    "section": "🚨 Your turn: 🏒 Canadiens Searches 🏒 🚨",
+    "text": "🚨 Your turn: 🏒 Canadiens Searches 🏒 🚨\nUsing the google_trends dataset:\n\nMake a time series plot of the Google search score for the Montreal Canadiens (montreal_canadiens) by month, 2004 to 2026.\nLabel the x-axis every 2 years.\nAdd a trend line and a dashed line at the average score.\nAdd a title, subtitle, axis labels, and a caption.\n\n\n\n\n\n\n\nTip\n\n\n\nConnect the points with geom_line()\nscale_x_date(date_breaks = \"2 years\", date_labels = \"%Y\")\nTrend line: geom_smooth(method = lm, se = FALSE). Average: geom_hline(yintercept = mean(...), linetype = 2)"
   },
   {
-    "objectID": "slides/lec-5.html#summary-statistics-with-summarize",
-    "href": "slides/lec-5.html#summary-statistics-with-summarize",
-    "title": "Relationships I",
-    "section": "Summary statistics with summarize()",
-    "text": "Summary statistics with summarize()\nWe can use summarize() to calculate things like the mean, median, etc.\n\n\nSummarizing condenses data into statistics"
+    "objectID": "slides/lec-5.html#canadiens-searches-answer",
+    "href": "slides/lec-5.html#canadiens-searches-answer",
+    "title": "Project 1 Practice",
+    "section": "🚨 🏒 Canadiens Searches Answer 🏒 🚨",
+    "text": "🚨 🏒 Canadiens Searches Answer 🏒 🚨\n\n\nggplot(google_trends, aes(x = month, y = montreal_canadiens)) +\n  geom_line(color = \"coral2\") +\n  geom_smooth(method = lm, se = FALSE,\n              color = \"grey40\", linewidth = .5) +\n  geom_hline(yintercept = mean(google_trends$montreal_canadiens, na.rm = TRUE),\n             linetype = 2) +\n  scale_x_date(date_breaks = \"2 years\", date_labels = \"%Y\") +\n  labs(title = \"U.S. Google searches for the Montreal Canadiens spike each spring\",\n       subtitle = \"Monthly Google Trends interest, January 2004 to October 2026\",\n       y = \"Search interest (0–100)\", x = \"Month\",\n       caption = \"Source: Google Trends\") +\n  theme_classic() +\n  theme(\n    axis.text.y = element_text(size = 11),\n    axis.text.x = element_text(angle = 45, hjust = 1, size = 9),\n    plot.caption = element_text(hjust = 1, size = 9),\n    plot.title = element_text(size = 14))\n\n\n\n\n\n\n\n\n\n\nThe biggest spikes are playoff runs: May 2010, May 2014, June 2021 (Stanley Cup Final), May 2026"
   },
   {
-    "objectID": "slides/lec-5.html#using-summarize",
-    "href": "slides/lec-5.html#using-summarize",
-    "title": "Relationships I",
-    "section": "Using summarize()",
-    "text": "Using summarize()\nSay I want to know the average life expectancy in the world in 2007:\n\n\ngapminder %&gt;% \n  filter(year == 2007)\n\n# A tibble: 142 × 6\n   country     continent  year lifeExp       pop gdpPercap\n   &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;     &lt;int&gt;     &lt;dbl&gt;\n 1 Afghanistan Asia       2007    43.8  31889923      975.\n 2 Albania     Europe     2007    76.4   3600523     5937.\n 3 Algeria     Africa     2007    72.3  33333216     6223.\n 4 Angola      Africa     2007    42.7  12420476     4797.\n 5 Argentina   Americas   2007    75.3  40301927    12779.\n 6 Australia   Oceania    2007    81.2  20434176    34435.\n 7 Austria     Europe     2007    79.8   8199783    36126.\n 8 Bahrain     Asia       2007    75.6    708573    29796.\n 9 Bangladesh  Asia       2007    64.1 150448339     1391.\n10 Belgium     Europe     2007    79.4  10392226    33693.\n# ℹ 132 more rows"
+    "objectID": "slides/lec-5.html#your-turn-playoff-teams",
+    "href": "slides/lec-5.html#your-turn-playoff-teams",
+    "title": "Project 1 Practice",
+    "section": "🚨 Your turn: 🏒 Playoff Teams 🏒 🚨",
+    "text": "🚨 Your turn: 🏒 Playoff Teams 🏒 🚨\nUsing hockey_boxplot and the playoffs_2024 list:\n\nMake a new variable called playoffs that is \"Clinched\" if the team made the playoffs and \"Eliminated\" if it did not.\nStore it as a new object called hockey_newvar.\n\n\n\n\n\n\n\nTip\n\n\n\ncase_when() goes inside mutate()\n%in% checks whether a value is in a list: team %in% playoffs_2024\nThere is no !%in%. For “not in”, use !(team %in% playoffs_2024)"
   },
   {
-    "objectID": "slides/lec-5.html#using-summarize-1",
-    "href": "slides/lec-5.html#using-summarize-1",
-    "title": "Relationships I",
-    "section": "Using summarize()",
-    "text": "Using summarize()\n\ngapminder %&gt;% \n  filter(year == 2007) %&gt;% \n  summarize()\n\n# A tibble: 1 × 0"
+    "objectID": "slides/lec-5.html#playoff-teams-answer",
+    "href": "slides/lec-5.html#playoff-teams-answer",
+    "title": "Project 1 Practice",
+    "section": "🚨 🏒 Playoff Teams Answer 🏒 🚨",
+    "text": "🚨 🏒 Playoff Teams Answer 🏒 🚨\n\nhockey_newvar &lt;- hockey_boxplot |&gt;\n  mutate(playoffs = case_when(\n    team %in% playoffs_2024 ~ \"Clinched\",\n    !(team %in% playoffs_2024) ~ \"Eliminated\"\n  ))\n\nhockey_newvar |&gt;\n  select(team, Total, playoffs)\n\n# A tibble: 32 × 3\n   team  Total playoffs  \n   &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;     \n 1 ANA     199 Eliminated\n 2 ARI     249 Eliminated\n 3 BOS     258 Clinched  \n 4 BUF     244 Eliminated\n 5 CAR     276 Clinched  \n 6 CBJ     231 Eliminated\n 7 CGY     252 Eliminated\n 8 CHI     176 Eliminated\n 9 COL     298 Clinched  \n10 DAL     288 Clinched  \n# ℹ 22 more rows\n\n\n\n\n\n\n\n\nTip\n\n\nYou can also write the last line as TRUE ~ \"Eliminated\". TRUE ~ means “everything else.”"
   },
   {
-    "objectID": "slides/lec-5.html#using-summarize-2",
-    "href": "slides/lec-5.html#using-summarize-2",
-    "title": "Relationships I",
-    "section": "Using summarize()",
-    "text": "Using summarize()\n\ngapminder %&gt;% \n  filter(year == 2007) %&gt;% \n  summarize(avg_life = mean(lifeExp))\n\n# A tibble: 1 × 1\n  avg_life\n     &lt;dbl&gt;\n1     67.0\n\n\nNotice how the data has been summarized: only one row\n\nNotice that I’ve named the summary statistic avg_life"
+    "objectID": "slides/lec-5.html#your-turn-graphing-the-new-variable",
+    "href": "slides/lec-5.html#your-turn-graphing-the-new-variable",
+    "title": "Project 1 Practice",
+    "section": "🚨 Your turn: 🏒 Graphing the New Variable 🏒 🚨",
+    "text": "🚨 Your turn: 🏒 Graphing the New Variable 🏒 🚨\n\nKeep only the teams that clinched the playoffs.\nBuild box plots of the percent of goals by position for those teams, like before.\n\n\n\n\n\n\n\nTip\n\n\n\nUse filter(playoffs == \"Clinched\")\nYou can copy your box plot code from earlier: just change the data!"
   },
   {
-    "objectID": "slides/lec-5.html#using-summarize-3",
-    "href": "slides/lec-5.html#using-summarize-3",
-    "title": "Relationships I",
-    "section": "Using summarize()",
-    "text": "Using summarize()\nWhat if I also wanted to know the median life expectancy?\n\n\ngapminder %&gt;% \n  filter(year == 2007) %&gt;% \n  summarize(avg_life = mean(lifeExp), \n            med_life = median(lifeExp)) \n\n# A tibble: 1 × 2\n  avg_life med_life\n     &lt;dbl&gt;    &lt;dbl&gt;\n1     67.0     71.9\n\n\nNotice! how similar this looks to mutate()"
+    "objectID": "slides/lec-5.html#graphing-the-new-variable-answer",
+    "href": "slides/lec-5.html#graphing-the-new-variable-answer",
+    "title": "Project 1 Practice",
+    "section": "🚨 🏒 Graphing the New Variable Answer 🏒 🚨",
+    "text": "🚨 🏒 Graphing the New Variable Answer 🏒 🚨\n\n\nhockey_clinched &lt;- hockey_newvar |&gt;\n  filter(playoffs == \"Clinched\")\n\nrw &lt;- ggplot(hockey_clinched, aes(x = \"\", y = rw_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Right Wing\", y = \"% of Team Goals\")\n\nlw &lt;- ggplot(hockey_clinched, aes(x = \"\", y = lw_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Left Wing\", y = NULL)\n\ncen &lt;- ggplot(hockey_clinched, aes(x = \"\", y = c_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Center\", y = NULL)\n\nd &lt;- ggplot(hockey_clinched, aes(x = \"\", y = d_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Defense\", y = NULL)\n\nrw + lw + cen + d +\n  plot_layout(ncol = 4) +\n  plot_annotation(\n    title = \"Boxplots of the Percentage of Goals Scored\",\n    subtitle = \"by Position across NHL Teams who Clinched the Playoffs\",\n    caption = \"NHL Regular Season 2023–24\"\n  ) & scale_y_continuous(limits = c(0, 100))"
   },
   {
-    "objectID": "slides/lec-5.html#using-summarize-4",
-    "href": "slides/lec-5.html#using-summarize-4",
-    "title": "Relationships I",
-    "section": "Using summarize()",
-    "text": "Using summarize()\nWhat if I also wanted to know the min and max life expectancy?\n\n\ngapminder %&gt;% \n  filter(year == 2007) %&gt;% \n  summarize(avg_life = mean(lifeExp), \n            med_life = median(lifeExp), \n            min_life = min(lifeExp), \n            max_life = max(lifeExp))\n\n# A tibble: 1 × 4\n  avg_life med_life min_life max_life\n     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;\n1     67.0     71.9     39.6     82.6"
+    "objectID": "slides/lec-5.html#graphing-the-new-variable-adv.-answer",
+    "href": "slides/lec-5.html#graphing-the-new-variable-adv.-answer",
+    "title": "Project 1 Practice",
+    "section": "🚨 🏒 Graphing the New Variable Adv. Answer 🏒 🚨",
+    "text": "🚨 🏒 Graphing the New Variable Adv. Answer 🏒 🚨\nCompare clinched and eliminated teams in one plot\n\n\nrink_colors &lt;- c(\"Clinched\" = \"#0A9396\", \"Eliminated\" = \"#BB3E03\")\n\nhockey_newvar |&gt;\n  pivot_longer(c(rw_percent, lw_percent, c_percent, d_percent),\n               names_to = \"position\", values_to = \"percent\") |&gt;\n  mutate(position = factor(position,\n    levels = c(\"rw_percent\", \"lw_percent\", \"c_percent\", \"d_percent\"),\n    labels = c(\"Right Wing\", \"Left Wing\", \"Center\", \"Defense\"))) |&gt;\n  ggplot(aes(x = position, y = percent, fill = playoffs)) +\n  geom_boxplot(alpha = 0.7) +\n  scale_fill_manual(values = rink_colors, name = \"Playoffs\") +\n  scale_y_continuous(limits = c(0, 100)) +\n  labs(x = \"Position\", y = \"% of Team Goals\",\n       title = \"Percentage of Goals Scored by Position\",\n       subtitle = \"Playoff vs. non-playoff teams\",\n       caption = \"NHL Regular Season 2023–24\") +\n  theme_minimal()"
   },
   {
-    "objectID": "slides/lec-5.html#using-summarize-5",
-    "href": "slides/lec-5.html#using-summarize-5",
-    "title": "Relationships I",
-    "section": "Using summarize()",
-    "text": "Using summarize()\nWhat if I also wanted to know the standard deviation of life expectancy?\n\n\ngapminder %&gt;% \n  filter(year == 2007) %&gt;% \n  summarize(avg_life = mean(lifeExp), \n            med_life = median(lifeExp), \n            min_life = min(lifeExp), \n            max_life = max(lifeExp), \n            sd_life = sd(lifeExp))\n\n# A tibble: 1 × 5\n  avg_life med_life min_life max_life sd_life\n     &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;\n1     67.0     71.9     39.6     82.6    12.1"
+    "objectID": "slides/lec-5.html#your-turn-t-test",
+    "href": "slides/lec-5.html#your-turn-t-test",
+    "title": "Project 1 Practice",
+    "section": "🚨 Your turn: 🏒 t-test 🏒 🚨",
+    "text": "🚨 Your turn: 🏒 t-test 🏒 🚨\nUsing hockey_newvar:\n\nTest whether teams that made the playoffs scored more total goals (Total) than teams that did not.\nMake a new variable offense_perct: the percent of goals from forwards (right wing + left wing + center).\nTest whether playoff teams get a different percent of their goals from defense (d_percent).\nWhich differences are statistically significant?\n\n\n\n\n\n\n\nTip\n\n\n\nThe formula is t.test(OUTCOME ~ GROUP, data = DATA)\nA difference is statistically significant if the p-value is less than 0.05"
   },
   {
-    "objectID": "slides/lec-5.html#using-summarize-6",
-    "href": "slides/lec-5.html#using-summarize-6",
-    "title": "Relationships I",
-    "section": "Using summarize()",
-    "text": "Using summarize()\n\ngapminder %&gt;% \n  filter(year == 2007) %&gt;% \n  summarize(avg_life = mean(lifeExp), \n            med_life = median(lifeExp), \n            min_life = min(lifeExp), \n            max_life = max(lifeExp), \n            sd_life = sd(lifeExp)) \n\n\nsummarize() is like mutate() in that you are creating new variables\n\n\nSo note that you have to name the new variables!"
-  },
-  {
-    "objectID": "slides/lec-5.html#we-can-use-summary-functions-in-filter",
-    "href": "slides/lec-5.html#we-can-use-summary-functions-in-filter",
-    "title": "Relationships I",
-    "section": "We can use summary functions in filter",
-    "text": "We can use summary functions in filter\nwhich country had the lowest life expectancy in 2007?\n\n\ngapminder %&gt;% \n  filter(year == 2007) %&gt;% \n  filter(lifeExp == min(lifeExp))\n\n# A tibble: 1 × 6\n  country   continent  year lifeExp     pop gdpPercap\n  &lt;fct&gt;     &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;   &lt;int&gt;     &lt;dbl&gt;\n1 Swaziland Africa     2007    39.6 1133066     4513."
-  },
-  {
-    "objectID": "slides/lec-5.html#we-can-use-summary-functions-in-filter-1",
-    "href": "slides/lec-5.html#we-can-use-summary-functions-in-filter-1",
-    "title": "Relationships I",
-    "section": "We can use summary functions in filter",
-    "text": "We can use summary functions in filter\nwhich countries had above average GPD but below average health?\n\n\ngapminder %&gt;% \n  filter(year == 2007) %&gt;% \n  filter(gdpPercap &gt; mean(gdpPercap), lifeExp &lt; mean(lifeExp))\n\n# A tibble: 3 × 6\n  country           continent  year lifeExp     pop gdpPercap\n  &lt;fct&gt;             &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;   &lt;int&gt;     &lt;dbl&gt;\n1 Botswana          Africa     2007    50.7 1639131    12570.\n2 Equatorial Guinea Africa     2007    51.6  551201    12154.\n3 Gabon             Africa     2007    56.7 1454867    13206."
-  },
-  {
-    "objectID": "slides/lec-5.html#woe-unto-us-missing-data",
-    "href": "slides/lec-5.html#woe-unto-us-missing-data",
-    "title": "Relationships I",
-    "section": "Woe unto us: missing data",
-    "text": "Woe unto us: missing data\n\nIn life, sometimes data is missing\n\n\nrespondent doesn’t answer a question, no one knows Afghanistan’s GDP in 1943, etc.\n\n\nR represents missing data as NA\n\n\n\n\n\n\n\nname\ntype1\ntype2\nheight_m\nweight_kg\n\n\n\n\nLycanroc\nrock\nNA\nNA\nNA\n\n\nVulpix\nfire\nice\nNA\nNA\n\n\nMuk\npoison\npoison\nNA\nNA\n\n\nPersian\nnormal\ndark\nNA\nNA\n\n\nMarowak\nground\nfire\nNA\nNA\n\n\nGraveler\nrock\nground\nNA\nNA"
-  },
-  {
-    "objectID": "slides/lec-5.html#summarizing-with-missing-data",
-    "href": "slides/lec-5.html#summarizing-with-missing-data",
-    "title": "Relationships I",
-    "section": "Summarizing with missing data",
-    "text": "Summarizing with missing data\nIf you try to summarize data that has missing values, R will return NA:\n\n\npokemon %&gt;% \n  summarise(average_height = mean(height_m))\n\n# A tibble: 1 × 1\n  average_height\n           &lt;dbl&gt;\n1             NA\n\n\n\n\n\n\n\n\n\n\nNote\n\n\nAny math operation with NA will return NA (.e.g, 3 + NA = NA)"
-  },
-  {
-    "objectID": "slides/lec-5.html#what-to-do",
-    "href": "slides/lec-5.html#what-to-do",
-    "title": "Relationships I",
-    "section": "What to do?",
-    "text": "What to do?\n\nThere are whole classes on what to do with missing data (impute, simulate, model, etc.)\n\n\nIn this class we will tell R to ignore missing observations\n\n\nWe can do this by adding the na.rm = TRUE argument to summary\n\npokemon %&gt;% \n  summarise(average_height = mean(height_m, na.rm = TRUE)) \n\n# A tibble: 1 × 1\n  average_height\n           &lt;dbl&gt;\n1           1.16"
-  },
-  {
-    "objectID": "slides/lec-5.html#remember",
-    "href": "slides/lec-5.html#remember",
-    "title": "Relationships I",
-    "section": "Remember…",
-    "text": "Remember…\n\nIf you’re trying to calculate a summary statistic and keep getting NA…\n\n\n99.99999% of the time you need to add na.rm = TRUE to your function!\n\n\n\npokemon %&gt;% \n  summarise(average_height = mean(height_m, na.rm = TRUE)) \n\n# A tibble: 1 × 1\n  average_height\n           &lt;dbl&gt;\n1           1.16"
-  },
-  {
-    "objectID": "slides/lec-5.html#your-turn-trade",
-    "href": "slides/lec-5.html#your-turn-trade",
-    "title": "Relationships I",
-    "section": "🚨 Your turn: 🚢 trade 🚢 🚨",
-    "text": "🚨 Your turn: 🚢 trade 🚢 🚨\nDataset from juanr on international trade:\n\n\n\nTrade patterns around the world\n\n\n\n\n\n\n\n\n\n\n\n\n\n\ncountry\nyear\nimports\nexports\ngdp\npop\nland_borders\nsea_borders\nmin_cap_dist\nsum_igos\n\n\n\n\nUnited States of America\n1946\n5000\n9775\n2.479307e+12\n138170640\n2\n1\n0\n44\n\n\nUnited States of America\n1947\n5824\n15369\n2.430213e+12\n139838676\n2\n1\n0\n47\n\n\nUnited States of America\n1948\n7710\n12470\n2.494227e+12\n143378709\n2\n1\n0\n52\n\n\nUnited States of America\n1949\n7160\n11920\n2.466941e+12\n146714635\n2\n1\n0\n57\n\n\nUnited States of America\n1950\n9140\n10220\n2.562489e+12\n149230105\n2\n1\n0\n59\n\n\nUnited States of America\n1951\n11400\n14920\n2.729119e+12\n150880698\n2\n1\n0\n60"
-  },
-  {
-    "objectID": "slides/lec-5.html#your-turn-trade-1",
-    "href": "slides/lec-5.html#your-turn-trade-1",
-    "title": "Relationships I",
-    "section": "🚨 Your turn: 🚢 trade 🚢 🚨",
-    "text": "🚨 Your turn: 🚢 trade 🚢 🚨\nUsing the trade dataset:\n\nHow has Inter-Governmental Organizations (IGOs) membership expanded over time? Calculate the median number of IGOs that countries belonged to in 1960. Repeat for 2010. About how much has IGO membership grown in 50 years?\nWhat is having a sea border worth? Look only at countries that have at least one sea border in the year 2010. What is the average value of exports among these countries? Do the same for countries with no sea borders. About how much more do countries with sea borders export than countries without?\nWhat was the country with the most exports in 1960? What about in 2012?\n\n\n\n\n\n\n\nTip\n\n\n\nRemember to attach your libraries using library()\nTrade is in the juanr package and these functions are found in the tidyverse package, also run the library(dyplr) after these two (this will already be installed)\n?trade to look at the variables and distinct() to look at a variables values"
-  },
-  {
-    "objectID": "slides/lec-5.html#trade-q1",
-    "href": "slides/lec-5.html#trade-q1",
-    "title": "Relationships I",
-    "section": "🚨 🚢 trade Q1 🚢 🚨",
-    "text": "🚨 🚢 trade Q1 🚢 🚨\n\nlibrary(juanr)\nlibrary(tidyverse)\nlibrary(dplyr)\n\ntrade_1960 &lt;- trade |&gt;\n  filter(year == 1960) |&gt;\n  summarise(\n   median_igos = median(sum_igos, na.rm = TRUE)\n  )\n\ntrade_2010 &lt;- trade |&gt;\n  filter(year == 2010) |&gt;\n  summarise(\n   median_igos = median(sum_igos, na.rm = TRUE)\n  )\n\ntrade_1960 \n\n# A tibble: 1 × 1\n  median_igos\n        &lt;dbl&gt;\n1          33\n\ntrade_2010\n\n# A tibble: 1 × 1\n  median_igos\n        &lt;dbl&gt;\n1          66"
-  },
-  {
-    "objectID": "slides/lec-5.html#trade-q2",
-    "href": "slides/lec-5.html#trade-q2",
-    "title": "Relationships I",
-    "section": "🚨 🚢 trade Q2 🚢 🚨",
-    "text": "🚨 🚢 trade Q2 🚢 🚨\n\ntrade_seaborders &lt;- trade |&gt;\n  filter(sea_borders &gt;= 1 & year == 2010) |&gt;\n  summarise(\n   avg_exports = mean(exports, na.rm = TRUE)\n  )\n\ntrade_no_seaborders &lt;- trade |&gt;\n  filter(sea_borders == 0 & year == 2010) |&gt;\n  summarise(\n   avg_exports = mean(exports, na.rm = TRUE)\n  )\n\ntrade_seaborders\n\n# A tibble: 1 × 1\n  avg_exports\n        &lt;dbl&gt;\n1     105389.\n\ntrade_no_seaborders\n\n# A tibble: 1 × 1\n  avg_exports\n        &lt;dbl&gt;\n1      31408."
-  },
-  {
-    "objectID": "slides/lec-5.html#trade-q3",
-    "href": "slides/lec-5.html#trade-q3",
-    "title": "Relationships I",
-    "section": "🚨 🚢 trade Q3 🚢 🚨",
-    "text": "🚨 🚢 trade Q3 🚢 🚨\n\n## Option 1\ntrade_exp1960 &lt;- trade |&gt;\n  filter(year == 1960) |&gt;\n  filter(exports == max(exports, na.rm=TRUE))\n\ntrade_exp2012 &lt;- trade |&gt;\n  filter(year == 2012) |&gt;\n  filter(exports == max(exports, na.rm=TRUE))\n\ntrade_exp1960\n\n# A tibble: 1 × 10\n  country           year imports exports     gdp    pop land_borders sea_borders\n  &lt;chr&gt;            &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;\n1 United States o…  1960  16171.   20536 3.60e12 1.76e8            2           2\n# ℹ 2 more variables: min_cap_dist &lt;dbl&gt;, sum_igos &lt;dbl&gt;\n\ntrade_exp2012 \n\n# A tibble: 1 × 10\n  country  year  imports  exports     gdp         pop land_borders sea_borders\n  &lt;chr&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;\n1 China    2012 2331123. 2494240. 1.79e13 1310926531.           14           4\n# ℹ 2 more variables: min_cap_dist &lt;dbl&gt;, sum_igos &lt;dbl&gt;\n\n## Option 2\ntrade_exp1960 &lt;- trade |&gt;\n  filter(year == 1960) |&gt;\n  arrange(desc(exports))\n\ntrade_exp2012 &lt;- trade |&gt;\n  filter(year == 2012) |&gt;\n  arrange(desc(exports))\n\ntrade_exp1960[1,]\n\n# A tibble: 1 × 10\n  country           year imports exports     gdp    pop land_borders sea_borders\n  &lt;chr&gt;            &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;\n1 United States o…  1960  16171.   20536 3.60e12 1.76e8            2           2\n# ℹ 2 more variables: min_cap_dist &lt;dbl&gt;, sum_igos &lt;dbl&gt;\n\ntrade_exp2012[1,]\n\n# A tibble: 1 × 10\n  country  year  imports  exports     gdp         pop land_borders sea_borders\n  &lt;chr&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt;\n1 China    2012 2331123. 2494240. 1.79e13 1310926531.           14           4\n# ℹ 2 more variables: min_cap_dist &lt;dbl&gt;, sum_igos &lt;dbl&gt;"
-  },
-  {
-    "objectID": "slides/lec-5.html#relationships",
-    "href": "slides/lec-5.html#relationships",
-    "title": "Relationships I",
-    "section": "Relationships",
-    "text": "Relationships\n\nsummarize() lets us calculate statistics for the whole dataset\n\n\nBut what if we want to do this for different groups within the data?\n\n\nThis is at the heart of making comparisons"
-  },
-  {
-    "objectID": "slides/lec-5.html#variation-in-trade-over-time-the-brutal-way",
-    "href": "slides/lec-5.html#variation-in-trade-over-time-the-brutal-way",
-    "title": "Relationships I",
-    "section": "Variation in trade over time: the brutal way",
-    "text": "Variation in trade over time: the brutal way\nHow much do country imports vary for each country over time?\n\nTedious: filter() to calculate standard deviation of imports for each country\n\n\nStarting with China\n\ntrade %&gt;% \n  filter(country == \"China\") %&gt;%  \n  summarise(var_trade = sd(imports, na.rm = TRUE)) \n\n# A tibble: 1 × 1\n  var_trade\n      &lt;dbl&gt;\n1   659178."
-  },
-  {
-    "objectID": "slides/lec-5.html#variation-in-trade-over-time-the-brutal-way-1",
-    "href": "slides/lec-5.html#variation-in-trade-over-time-the-brutal-way-1",
-    "title": "Relationships I",
-    "section": "Variation in trade over time: the brutal way",
-    "text": "Variation in trade over time: the brutal way\nI could go on to another country:\n\ntrade %&gt;% \n  filter(country == \"Algeria\") %&gt;%  \n  summarise(var_trade = sd(imports, na.rm = TRUE)) \n\n# A tibble: 1 × 1\n  var_trade\n      &lt;dbl&gt;\n1    14819."
-  },
-  {
-    "objectID": "slides/lec-5.html#variation-in-trade-over-time-the-brutal-way-2",
-    "href": "slides/lec-5.html#variation-in-trade-over-time-the-brutal-way-2",
-    "title": "Relationships I",
-    "section": "Variation in trade over time: the brutal way",
-    "text": "Variation in trade over time: the brutal way\nAnd so on for all countries… but this is brutally tedious\n\ntrade %&gt;% \n  filter(country == \"Nepal\") %&gt;%  \n  summarise(var_trade = sd(imports, na.rm = TRUE)) \n\n# A tibble: 1 × 1\n  var_trade\n      &lt;dbl&gt;\n1     2096."
-  },
-  {
-    "objectID": "slides/lec-5.html#using-group_by",
-    "href": "slides/lec-5.html#using-group_by",
-    "title": "Relationships I",
-    "section": "Using group_by()",
-    "text": "Using group_by()\nWe can use group_by() in combination with summarize() to calculate some stat by another variable in the data:\n\n\ntrade %&gt;% \n  group_by(country) %&gt;%  \n  summarise(var_trade = sd(imports, na.rm = TRUE)) \n\n# A tibble: 202 × 2\n   country           var_trade\n   &lt;chr&gt;                 &lt;dbl&gt;\n 1 Afghanistan           2485.\n 2 Albania               1754.\n 3 Algeria              14819.\n 4 Andorra                 NA \n 5 Angola                7584.\n 6 Antigua & Barbuda       NA \n 7 Argentina            19530.\n 8 Armenia               1575.\n 9 Australia            72784.\n10 Austria              58474.\n# ℹ 192 more rows"
-  },
-  {
-    "objectID": "slides/lec-5.html#using-group_by-1",
-    "href": "slides/lec-5.html#using-group_by-1",
-    "title": "Relationships I",
-    "section": "Using group_by()",
-    "text": "Using group_by()\nLike with anything else, we can store our results as a new object:\n\nvar_time = trade %&gt;% \n  group_by(country) %&gt;% \n  summarise(var_trade = sd(imports, na.rm = TRUE))\n\nvar_time\n\n# A tibble: 202 × 2\n   country           var_trade\n   &lt;chr&gt;                 &lt;dbl&gt;\n 1 Afghanistan           2485.\n 2 Albania               1754.\n 3 Algeria              14819.\n 4 Andorra                 NA \n 5 Angola                7584.\n 6 Antigua & Barbuda       NA \n 7 Argentina            19530.\n 8 Armenia               1575.\n 9 Australia            72784.\n10 Austria              58474.\n# ℹ 192 more rows"
-  },
-  {
-    "objectID": "slides/lec-5.html#variation-in-trade-over-time",
-    "href": "slides/lec-5.html#variation-in-trade-over-time",
-    "title": "Relationships I",
-    "section": "Variation in trade over time",
-    "text": "Variation in trade over time\nAnd use our object to make plots:\n\n\nWhat does this graph tell us?"
-  },
-  {
-    "objectID": "slides/lec-5.html#using-group_by-2",
-    "href": "slides/lec-5.html#using-group_by-2",
-    "title": "Relationships I",
-    "section": "Using group_by()",
-    "text": "Using group_by()\nWe can even group_by() multiple variables 🤯\n\nAverage life expectancy per time:\n\n\n\ngapminder %&gt;%\n  group_by(year) %&gt;% \n  summarise(avg_life = mean(lifeExp))\n\n# A tibble: 12 × 2\n    year avg_life\n   &lt;int&gt;    &lt;dbl&gt;\n 1  1952     49.1\n 2  1957     51.5\n 3  1962     53.6\n 4  1967     55.7\n 5  1972     57.6\n 6  1977     59.6\n 7  1982     61.5\n 8  1987     63.2\n 9  1992     64.2\n10  1997     65.0\n11  2002     65.7\n12  2007     67.0"
-  },
-  {
-    "objectID": "slides/lec-5.html#using-group_by-3",
-    "href": "slides/lec-5.html#using-group_by-3",
-    "title": "Relationships I",
-    "section": "Using group_by()",
-    "text": "Using group_by()\nWe can even group_by() multiple variables 🤯\n\nAverage life expectancy per year and continent:\n\n\n\ngapminder %&gt;%\n  group_by(year, continent) %&gt;% \n  summarise(avg_life = mean(lifeExp))\n\n# A tibble: 60 × 3\n# Groups:   year [12]\n    year continent avg_life\n   &lt;int&gt; &lt;fct&gt;        &lt;dbl&gt;\n 1  1952 Africa        39.1\n 2  1952 Americas      53.3\n 3  1952 Asia          46.3\n 4  1952 Europe        64.4\n 5  1952 Oceania       69.3\n 6  1957 Africa        41.3\n 7  1957 Americas      56.0\n 8  1957 Asia          49.3\n 9  1957 Europe        66.7\n10  1957 Oceania       70.3\n# ℹ 50 more rows"
-  },
-  {
-    "objectID": "slides/lec-5.html#using-group_by-4",
-    "href": "slides/lec-5.html#using-group_by-4",
-    "title": "Relationships I",
-    "section": "Using group_by()",
-    "text": "Using group_by()\nStore as object:\n\nlife_continent_year = gapminder %&gt;% \n  group_by(year, continent) %&gt;%\n  summarise(avg_life = mean(lifeExp))"
-  },
-  {
-    "objectID": "slides/lec-5.html#make-the-plot",
-    "href": "slides/lec-5.html#make-the-plot",
-    "title": "Relationships I",
-    "section": "Make the plot",
-    "text": "Make the plot\n\nggplot(life_continent_year, aes(x = year, y = avg_life, color = continent)) + \n  geom_line(size = 2, alpha = .8) + labs(x = \"Year\", y = \"Average life expectancy\")"
-  },
-  {
-    "objectID": "slides/lec-5.html#your-turn-ugly-prejudice",
-    "href": "slides/lec-5.html#your-turn-ugly-prejudice",
-    "title": "Relationships I",
-    "section": "🚨 Your turn: 🌡️ ugly prejudice 🌡️ 🚨",
-    "text": "🚨 Your turn: 🌡️ ugly prejudice 🌡️ 🚨\n\nResearchers use feeling thermometers to measure how people feel about different groups\n\n\n🌡 goes from zero (strong dislike) to 100 (strong like), with 50 as the neutral point\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nbirth_year\nsex\nrace\nparty_id\neduc\nft_black\nft_white\nft_hisp\nft_asian\nft_muslim\nft_jew\nft_christ\nft_fem\nft_immig\nft_gays\nft_unions\nft_police\nft_altright\nft_evang\nft_dem\nft_rep\n\n\n\n\n1931\nFemale\nWhite\nDemocrat\n4-year\n51\n50\n79\n50\n50\n50\n50\n99\n95\n50\n80\n76\n1\n50\n88\n21\n\n\n1952\nFemale\nWhite\nRepublican\n2-year\n98\n90\n95\n100\n61\n100\n98\n65\n96\n82\n62\n95\n50\n96\n86\n96\n\n\n1931\nMale\nWhite\nIndependent\nHigh school graduate\n87\n90\n91\n88\n49\n25\n50\n74\n77\n77\n100\n78\n0\n2\n91\n20\n\n\n1952\nMale\nWhite\nRepublican\n4-year\n90\n85\n90\n96\n80\n91\n94\n25\n91\n71\n20\n94\n50\n70\n22\n83\n\n\n1939\nFemale\nWhite\nDemocrat\n2-year\n100\n50\n100\n100\n100\n100\n28\n100\n100\n100\n100\n28\nNA\nNA\n99\nNA\n\n\n1959\nFemale\nBlack\nDemocrat\nPost-grad\n98\n70\n99\n100\n100\n100\n100\n73\n100\n54\n80\n24\n4\n53\n53\n4"
-  },
-  {
-    "objectID": "slides/lec-5.html#your-turn-ugly-prejudice-1",
-    "href": "slides/lec-5.html#your-turn-ugly-prejudice-1",
-    "title": "Relationships I",
-    "section": "🚨 Your turn: 🌡️ ugly prejudice 🌡️ 🚨",
-    "text": "🚨 Your turn: 🌡️ ugly prejudice 🌡️ 🚨\nUsing the therm dataset:\n\nCalculate average 🌡 towards two groups of your choosing, broken down by one respondent characteristic. Make sense of the finding.\nCalculate average 🌡 towards two groups of your choosing, broken down by two (🤯🤯🤯) respondent characteristics. Make sense of the finding.\nTell the class what you found.\n\n\n\n\n\n\n\nTip\n\n\n\n?therm to look at the the variables and distinct() to look at a variables values"
+    "objectID": "slides/lec-5.html#t-test-answer",
+    "href": "slides/lec-5.html#t-test-answer",
+    "title": "Project 1 Practice",
+    "section": "🚨 🏒 t-test Answer 🏒 🚨",
+    "text": "🚨 🏒 t-test Answer 🏒 🚨\n\n\nt.test(Total ~ playoffs, data = hockey_newvar)\n\n\n\n    Welch Two Sample t-test\n\ndata:  Total by playoffs\nt = 4.044, df = 28.598, p-value = 0.0003621\nalternative hypothesis: true difference in means between group Clinched and group Eliminated is not equal to 0\n95 percent confidence interval:\n 18.02924 54.97076\nsample estimates:\n  mean in group Clinched mean in group Eliminated \n                268.9375                 232.4375 \n\nhockey_ttest &lt;- hockey_newvar |&gt;\n  mutate(offense_perct = rw_percent + lw_percent + c_percent)\n\nt.test(d_percent ~ playoffs, data = hockey_ttest)\n\n\n    Welch Two Sample t-test\n\ndata:  d_percent by playoffs\nt = -1.4916, df = 29.895, p-value = 0.1463\nalternative hypothesis: true difference in means between group Clinched and group Eliminated is not equal to 0\n95 percent confidence interval:\n -4.2476960  0.6621946\nsample estimates:\n  mean in group Clinched mean in group Eliminated \n                13.41861                 15.21136 \n\n\n\nTotal goals: playoff teams scored about 269 goals vs. 232, p = 0.0004: significant\n\n\nDefense share: p = 0.15: not significant\n\n\n\n\n\n\n\n\nNote\n\n\noffense_perct and d_percent always add up to 100, so testing offense_perct gives the same p-value"
   },
   {
     "objectID": "slides/lec-7.html#patterns-in-the-data",
@@ -5350,327 +5058,5 @@
     "title": "Week 6",
     "section": "Perform",
     "text": "Perform\nNo lab"
-  },
-  {
-    "objectID": "slides/lec-5.html#nhl-player-stats-202324",
-    "href": "slides/lec-5.html#nhl-player-stats-202324",
-    "title": "Project 1 Practice",
-    "section": "NHL player stats, 2023–24",
-    "text": "NHL player stats, 2023–24\nOne row per player per team, regular season only\n\nhockey = read_csv(\"https://raw.githubusercontent.com/hbdaarstad/NHL-22-24-Season-Data/main/hockey_stats.csv\") |&gt;\n  filter(!is.na(position), position != \"G\")\n\nhockey |&gt;\n  select(player, team, position, goals, assists, points)\n\n# A tibble: 916 × 6\n   player           team  position goals assists points\n   &lt;chr&gt;            &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;\n 1 Nikita Kucherov  TBL   R           44     100    144\n 2 Nathan MacKinnon COL   C           51      89    140\n 3 Connor McDavid   EDM   C           32     100    132\n 4 Artemi Panarin   NYR   L           49      71    120\n 5 David Pastrnak   BOS   R           47      63    110\n 6 Auston Matthews  TOR   C           69      38    107\n 7 Leon Draisaitl   EDM   C           41      65    106\n 8 Mikko Rantanen   COL   R           42      62    104\n 9 J.T. Miller      VAN   C           37      66    103\n10 William Nylander TOR   R           40      58     98\n# ℹ 906 more rows\n\n\n\n\n\n\n\n\nNote\n\n\nPositions: C = center, L = left wing, R = right wing, D = defense. We drop goalies (G)."
-  },
-  {
-    "objectID": "slides/lec-5.html#google-trends-montreal-canadiens",
-    "href": "slides/lec-5.html#google-trends-montreal-canadiens",
-    "title": "Project 1 Practice",
-    "section": "Google Trends: Montreal Canadiens",
-    "text": "Google Trends: Montreal Canadiens\nMonthly U.S. search interest, 2004 to 2026\n\ngoogle_trends = read_csv(\"https://raw.githubusercontent.com/hbdaarstad/NHL-22-24-Season-Data/main/google_trends.csv\") |&gt;\n  select(month, montreal_canadiens)\n\ngoogle_trends\n\n# A tibble: 274 × 2\n   month      montreal_canadiens\n   &lt;date&gt;                  &lt;dbl&gt;\n 1 2004-01-01                 10\n 2 2004-02-01                 10\n 3 2004-03-01                 10\n 4 2004-04-01                 18\n 5 2004-05-01                  8\n 6 2004-06-01                  7\n 7 2004-07-01                  8\n 8 2004-08-01                  7\n 9 2004-09-01                  7\n10 2004-10-01                  5\n# ℹ 264 more rows\n\n\n\n\n\n\n\n\nNote\n\n\nGoogle Trends scores each month 0–100, where 100 = the busiest month in the whole period. It is not a count of searches."
-  },
-  {
-    "objectID": "slides/lec-5.html#what-is-a-box-plot",
-    "href": "slides/lec-5.html#what-is-a-box-plot",
-    "title": "Box plots, time series, and t-tests",
-    "section": "What is a box plot?",
-    "text": "What is a box plot?\nA box plot shows the distribution of one numeric variable\n\nThe line in the middle of the box is the median\n\n\nThe box covers the middle 50% of the data (25th to 75th percentile)\n\n\nThe whiskers stretch to the most extreme values that are not unusual\n\n\nThe dots past the whiskers are outliers"
-  },
-  {
-    "objectID": "slides/lec-5.html#building-a-box-plot",
-    "href": "slides/lec-5.html#building-a-box-plot",
-    "title": "Box plots, time series, and t-tests",
-    "section": "Building a box plot",
-    "text": "Building a box plot\nHow many goals did NHL skaters score in 2023–24?\n\nggplot(data = hockey, aes(x = \"\", y = goals)) +\n  geom_boxplot()\n\n\n\nx = “” gives a single box with no category"
-  },
-  {
-    "objectID": "slides/lec-5.html#building-a-box-plot-1",
-    "href": "slides/lec-5.html#building-a-box-plot-1",
-    "title": "Box plots, time series, and t-tests",
-    "section": "Building a box plot",
-    "text": "Building a box plot\nHighlight the outliers\n\nggplot(data = hockey, aes(x = \"\", y = goals)) +\n  geom_boxplot(\n    alpha = 0.7,                       # transparency of the box fill\n    outlier.color = \"cornflowerblue\",  # color of outlier points\n    outlier.shape = 8,                 # outlier symbol is a star\n    outlier.size = 1                   # outlier size\n  )"
-  },
-  {
-    "objectID": "slides/lec-5.html#building-a-box-plot-2",
-    "href": "slides/lec-5.html#building-a-box-plot-2",
-    "title": "Box plots, time series, and t-tests",
-    "section": "Building a box plot",
-    "text": "Building a box plot\nAdd the mean with stat_summary()\n\nggplot(data = hockey, aes(x = \"\", y = goals)) +\n  geom_boxplot(alpha = 0.7, outlier.color = \"cornflowerblue\",\n               outlier.shape = 8, outlier.size = 1) +\n  stat_summary(fun = mean, geom = \"point\", shape = 20, size = 4, color = \"coral\")\n\n\n\n\n\n\n\n\nNote\n\n\nThe mean (coral dot) sits above the median (line). A few big scorers pull the mean up: the data is right-skewed."
-  },
-  {
-    "objectID": "slides/lec-5.html#building-a-box-plot-3",
-    "href": "slides/lec-5.html#building-a-box-plot-3",
-    "title": "Box plots, time series, and t-tests",
-    "section": "Building a box plot",
-    "text": "Building a box plot\nFinish with labels and a theme\n\n\nggplot(data = hockey, aes(x = \"\", y = goals)) +\n  geom_boxplot(\n    alpha = 0.7,\n    outlier.color = \"cornflowerblue\",\n    outlier.shape = 8,\n    outlier.size = 1\n  ) +\n  stat_summary(fun = mean, geom = \"point\",\n               shape = 20, size = 4, color = \"coral\") +\n  labs(title = \"Distribution of Regular Season Goals by Player\",\n       subtitle = \"NHL 2023–24\",\n       x = \"\",\n       y = \"Goals Scored\") +\n  theme_minimal() +\n  theme(legend.position = \"none\")"
-  },
-  {
-    "objectID": "slides/lec-5.html#one-box-per-group",
-    "href": "slides/lec-5.html#one-box-per-group",
-    "title": "Box plots, time series, and t-tests",
-    "section": "One box per group",
-    "text": "One box per group\nPut the grouping variable on the x-axis\n\nggplot(data = hockey, aes(x = position, y = goals)) +\n  geom_boxplot()\n\n\n\nForwards (C, L, R) score a lot more than defense (D)"
-  },
-  {
-    "objectID": "slides/lec-5.html#what-share-of-a-teams-goals-comes-from-each-position",
-    "href": "slides/lec-5.html#what-share-of-a-teams-goals-comes-from-each-position",
-    "title": "Box plots, time series, and t-tests",
-    "section": "What share of a team’s goals comes from each position?",
-    "text": "What share of a team’s goals comes from each position?\nStep 1: add up goals by team and position with group_by() and summarize()\n\nhockey |&gt;\n  group_by(team, position) |&gt;\n  summarize(goals = sum(goals, na.rm = TRUE), .groups = \"drop\")\n\n# A tibble: 128 × 3\n   team  position goals\n   &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt;\n 1 ANA   C           80\n 2 ANA   D           19\n 3 ANA   L           25\n 4 ANA   R           75\n 5 ARI   C           95\n 6 ARI   D           32\n 7 ARI   L           71\n 8 ARI   R           51\n 9 BOS   C          121\n10 BOS   D           31\n# ℹ 118 more rows"
-  },
-  {
-    "objectID": "slides/lec-5.html#what-share-of-a-teams-goals-comes-from-each-position-1",
-    "href": "slides/lec-5.html#what-share-of-a-teams-goals-comes-from-each-position-1",
-    "title": "Box plots, time series, and t-tests",
-    "section": "What share of a team’s goals comes from each position?",
-    "text": "What share of a team’s goals comes from each position?\nStep 2: pivot_wider() so each position gets its own column\n\nhockey_goals = hockey |&gt;\n  group_by(team, position) |&gt;\n  summarize(goals = sum(goals, na.rm = TRUE), .groups = \"drop\") |&gt;\n  pivot_wider(names_from = position, values_from = goals, values_fill = 0) |&gt;\n  mutate(Total = rowSums(across(-team)))\n\nhockey_goals\n\n# A tibble: 32 × 6\n   team      C     D     L     R Total\n   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1 ANA      80    19    25    75   199\n 2 ARI      95    32    71    51   249\n 3 BOS     121    31    59    47   258\n 4 BUF      68    41    64    71   244\n 5 CAR     125    49    63    39   276\n 6 CBJ      82    39    48    62   231\n 7 CGY     157    52    38     5   252\n 8 CHI     107    19    31    19   176\n 9 COL      95    61    57    85   298\n10 DAL     168    36    72    12   288\n# ℹ 22 more rows\n\n\n\n\n\n\n\n\nNote\n\n\nacross(-team) means “every column except team,” so rowSums() adds up C, D, L and R"
-  },
-  {
-    "objectID": "slides/lec-5.html#what-share-of-a-teams-goals-comes-from-each-position-2",
-    "href": "slides/lec-5.html#what-share-of-a-teams-goals-comes-from-each-position-2",
-    "title": "Box plots, time series, and t-tests",
-    "section": "What share of a team’s goals comes from each position?",
-    "text": "What share of a team’s goals comes from each position?\nStep 3: mutate() the percentages\n\nhockey_boxplot = hockey_goals |&gt;\n  mutate(\n    rw_percent = R / Total * 100,\n    lw_percent = L / Total * 100,\n    c_percent  = C / Total * 100,\n    d_percent  = D / Total * 100\n  )\n\nhockey_boxplot |&gt;\n  select(team, Total, rw_percent, lw_percent, c_percent, d_percent)\n\n# A tibble: 32 × 6\n   team  Total rw_percent lw_percent c_percent d_percent\n   &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;\n 1 ANA     199      37.7        12.6      40.2      9.55\n 2 ARI     249      20.5        28.5      38.2     12.9 \n 3 BOS     258      18.2        22.9      46.9     12.0 \n 4 BUF     244      29.1        26.2      27.9     16.8 \n 5 CAR     276      14.1        22.8      45.3     17.8 \n 6 CBJ     231      26.8        20.8      35.5     16.9 \n 7 CGY     252       1.98       15.1      62.3     20.6 \n 8 CHI     176      10.8        17.6      60.8     10.8 \n 9 COL     298      28.5        19.1      31.9     20.5 \n10 DAL     288       4.17       25        58.3     12.5 \n# ℹ 22 more rows"
-  },
-  {
-    "objectID": "slides/lec-5.html#what-share-of-a-teams-goals-comes-from-each-position-3",
-    "href": "slides/lec-5.html#what-share-of-a-teams-goals-comes-from-each-position-3",
-    "title": "Box plots, time series, and t-tests",
-    "section": "What share of a team’s goals comes from each position?",
-    "text": "What share of a team’s goals comes from each position?\nStep 4: one plot per position, combined with patchwork\n\n\nrw = ggplot(hockey_boxplot, aes(x = \"\", y = rw_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Right Wing\", y = \"% of Team Goals\")\n\nlw = ggplot(hockey_boxplot, aes(x = \"\", y = lw_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Left Wing\", y = NULL)\n\ncen = ggplot(hockey_boxplot, aes(x = \"\", y = c_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Center\", y = NULL)\n\nd = ggplot(hockey_boxplot, aes(x = \"\", y = d_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Defense\", y = NULL)\n\nrw + lw + cen + d +\n  plot_layout(ncol = 4) +\n  plot_annotation(\n    title = \"Percentage of Goals Scored by Position\",\n    subtitle = \"Across all NHL teams\",\n    caption = \"NHL Regular Season 2023–24\"\n  ) & scale_y_continuous(limits = c(0, 100))"
-  },
-  {
-    "objectID": "slides/lec-5.html#a-shortcut-pivot_longer",
-    "href": "slides/lec-5.html#a-shortcut-pivot_longer",
-    "title": "Box plots, time series, and t-tests",
-    "section": "A shortcut: pivot_longer()",
-    "text": "A shortcut: pivot_longer()\nMake the data long, then one ggplot() draws all four boxes\n\n\nhockey_boxplot |&gt;\n  pivot_longer(c(rw_percent, lw_percent, c_percent, d_percent),\n               names_to = \"position\", values_to = \"percent\") |&gt;\n  mutate(position = factor(position,\n    levels = c(\"rw_percent\", \"lw_percent\", \"c_percent\", \"d_percent\"),\n    labels = c(\"Right Wing\", \"Left Wing\", \"Center\", \"Defense\"))) |&gt;\n  ggplot(aes(x = position, y = percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  scale_y_continuous(limits = c(0, 100)) +\n  labs(x = \"Position\", y = \"% of Team Goals\",\n       title = \"Percentage of Goals Scored by Position\",\n       subtitle = \"Across all NHL teams\",\n       caption = \"NHL Regular Season 2023–24\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\nfactor() with levels and labels sets the order and the names of the boxes"
-  },
-  {
-    "objectID": "slides/lec-5.html#time-series-1",
-    "href": "slides/lec-5.html#time-series-1",
-    "title": "Box plots, time series, and t-tests",
-    "section": "Time series",
-    "text": "Time series\nA time series shows how a variable changes over time\n\nTime goes on the x-axis, and we connect the points with geom_line()\n\n\n\nggplot(google_trends, aes(x = month, y = montreal_canadiens)) +\n  geom_line(color = \"coral2\")"
-  },
-  {
-    "objectID": "slides/lec-5.html#time-series-2",
-    "href": "slides/lec-5.html#time-series-2",
-    "title": "Box plots, time series, and t-tests",
-    "section": "Time series",
-    "text": "Time series\nControl the date labels with scale_x_date()\n\nggplot(google_trends, aes(x = month, y = montreal_canadiens)) +\n  geom_line(color = \"coral2\") +\n  scale_x_date(date_breaks = \"2 years\", date_labels = \"%Y\")\n\n\n\n\n\n\n\n\nNote\n\n\n%Y = 4-digit year, %b = short month name, %d = day"
-  },
-  {
-    "objectID": "slides/lec-5.html#time-series-3",
-    "href": "slides/lec-5.html#time-series-3",
-    "title": "Box plots, time series, and t-tests",
-    "section": "Time series",
-    "text": "Time series\nAdd a trend line and the average\n\nggplot(google_trends, aes(x = month, y = montreal_canadiens)) +\n  geom_line(color = \"coral2\") +\n  scale_x_date(date_breaks = \"2 years\", date_labels = \"%Y\") +\n  geom_smooth(method = lm, se = FALSE, color = \"grey40\", linewidth = .5) +\n  geom_hline(yintercept = mean(google_trends$montreal_canadiens, na.rm = TRUE), linetype = 2)"
-  },
-  {
-    "objectID": "slides/lec-5.html#time-series-4",
-    "href": "slides/lec-5.html#time-series-4",
-    "title": "Box plots, time series, and t-tests",
-    "section": "Time series",
-    "text": "Time series\nFinish with labels and a theme\n\n\nggplot(google_trends, aes(x = month, y = montreal_canadiens)) +\n  geom_line(color = \"coral2\") +\n  geom_smooth(method = lm, se = FALSE,\n              color = \"grey40\", linewidth = .5) +\n  geom_hline(yintercept = mean(google_trends$montreal_canadiens, na.rm = TRUE),\n             linetype = 2) +\n  scale_x_date(date_breaks = \"2 years\", date_labels = \"%Y\") +\n  labs(title = \"U.S. Google searches for the Montreal Canadiens spike each spring\",\n       subtitle = \"Monthly Google Trends interest, January 2004 to October 2026\",\n       y = \"Search interest (0–100)\", x = \"Month\",\n       caption = \"Source: Google Trends\") +\n  theme_classic() +\n  theme(\n    axis.text.y = element_text(size = 11),\n    axis.text.x = element_text(angle = 45, hjust = 1, size = 9),\n    plot.caption = element_text(hjust = 1, size = 9),\n    plot.title = element_text(size = 14))\n\n\n\n\n\n\n\n\n\n\nThe biggest spikes are playoff runs: May 2010, May 2014, June 2021 (Stanley Cup Final), May 2026"
-  },
-  {
-    "objectID": "slides/lec-5.html#who-made-the-playoffs",
-    "href": "slides/lec-5.html#who-made-the-playoffs",
-    "title": "Box plots, time series, and t-tests",
-    "section": "Who made the playoffs?",
-    "text": "Who made the playoffs?\nRemember: objects can store values, not just data\n\n\nplayoffs_2024 = c(\"FLA\", \"BOS\", \"TOR\", \"TBL\", \"NYR\", \"WSH\", \"CAR\", \"NYI\",\n                  \"DAL\", \"VGK\", \"COL\", \"WPG\", \"VAN\", \"NSH\", \"EDM\", \"LAK\")\n\n\n\n%in% checks whether a value is in a list\n\n\n\n\"EDM\" %in% playoffs_2024\n\n[1] TRUE\n\n\"SJS\" %in% playoffs_2024\n\n[1] FALSE"
-  },
-  {
-    "objectID": "slides/lec-5.html#who-made-the-playoffs-1",
-    "href": "slides/lec-5.html#who-made-the-playoffs-1",
-    "title": "Box plots, time series, and t-tests",
-    "section": "Who made the playoffs?",
-    "text": "Who made the playoffs?\nThe general formula: case_when(CONDITION ~ LABEL)\n\nhockey_boxplot |&gt;\n  mutate(playoffs = case_when(team %in% playoffs_2024 ~ \"Clinched\")) |&gt;\n  select(team, Total, playoffs)\n\n# A tibble: 32 × 3\n   team  Total playoffs\n   &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;   \n 1 ANA     199 &lt;NA&gt;    \n 2 ARI     249 &lt;NA&gt;    \n 3 BOS     258 Clinched\n 4 BUF     244 &lt;NA&gt;    \n 5 CAR     276 Clinched\n 6 CBJ     231 &lt;NA&gt;    \n 7 CGY     252 &lt;NA&gt;    \n 8 CHI     176 &lt;NA&gt;    \n 9 COL     298 Clinched\n10 DAL     288 Clinched\n# ℹ 22 more rows\n\n\n\npoint out the NA"
-  },
-  {
-    "objectID": "slides/lec-5.html#who-made-the-playoffs-2",
-    "href": "slides/lec-5.html#who-made-the-playoffs-2",
-    "title": "Box plots, time series, and t-tests",
-    "section": "Who made the playoffs?",
-    "text": "Who made the playoffs?\nThe general formula: case_when(CONDITION ~ LABEL)\n\nhockey_boxplot |&gt;\n  mutate(playoffs = case_when(team %in% playoffs_2024 ~ \"Clinched\",\n                              !(team %in% playoffs_2024) ~ \"Eliminated\")) |&gt;\n  select(team, Total, playoffs)\n\n# A tibble: 32 × 3\n   team  Total playoffs  \n   &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;     \n 1 ANA     199 Eliminated\n 2 ARI     249 Eliminated\n 3 BOS     258 Clinched  \n 4 BUF     244 Eliminated\n 5 CAR     276 Clinched  \n 6 CBJ     231 Eliminated\n 7 CGY     252 Eliminated\n 8 CHI     176 Eliminated\n 9 COL     298 Clinched  \n10 DAL     288 Clinched  \n# ℹ 22 more rows\n\n\n\n\n\n\n\n\nNote\n\n\nThere is no !%in% in R. To say “not in”, put ! in front of the whole test: !(team %in% playoffs_2024)"
-  },
-  {
-    "objectID": "slides/lec-5.html#dont-forget-to-store-it",
-    "href": "slides/lec-5.html#dont-forget-to-store-it",
-    "title": "Box plots, time series, and t-tests",
-    "section": "Don’t forget to store it!",
-    "text": "Don’t forget to store it!\n\nhockey_newvar = hockey_boxplot |&gt;\n  mutate(playoffs = case_when(team %in% playoffs_2024 ~ \"Clinched\",\n                              TRUE ~ \"Eliminated\"))\n\n\n\n\n\n\n\n\nTip\n\n\nTRUE ~ means “everything else”: any team that didn’t match the line above it"
-  },
-  {
-    "objectID": "slides/lec-5.html#graphing-the-new-variable",
-    "href": "slides/lec-5.html#graphing-the-new-variable",
-    "title": "Box plots, time series, and t-tests",
-    "section": "Graphing the new variable",
-    "text": "Graphing the new variable\nKeep the playoff teams with filter(), then plot\n\n\nhockey_clinched = hockey_newvar |&gt;\n  filter(playoffs == \"Clinched\")\n\nrw = ggplot(hockey_clinched, aes(x = \"\", y = rw_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Right Wing\", y = \"% of Team Goals\")\n\nlw = ggplot(hockey_clinched, aes(x = \"\", y = lw_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Left Wing\", y = NULL)\n\ncen = ggplot(hockey_clinched, aes(x = \"\", y = c_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Center\", y = NULL)\n\nd = ggplot(hockey_clinched, aes(x = \"\", y = d_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Defense\", y = NULL)\n\nrw + lw + cen + d +\n  plot_layout(ncol = 4) +\n  plot_annotation(\n    title = \"Percentage of Goals Scored by Position\",\n    subtitle = \"NHL teams that clinched the playoffs\",\n    caption = \"NHL Regular Season 2023–24\"\n  ) & scale_y_continuous(limits = c(0, 100))"
-  },
-  {
-    "objectID": "slides/lec-5.html#what-is-a-t-test",
-    "href": "slides/lec-5.html#what-is-a-t-test",
-    "title": "Box plots, time series, and t-tests",
-    "section": "What is a t-test?",
-    "text": "What is a t-test?\nA t-test compares the means of two groups\n\nIs the difference bigger than we would expect from chance alone?\n\n\nThe p-value answers that question\n\n\nIf p &lt; 0.05, we call the difference statistically significant"
-  },
-  {
-    "objectID": "slides/lec-5.html#using-t.test",
-    "href": "slides/lec-5.html#using-t.test",
-    "title": "Box plots, time series, and t-tests",
-    "section": "Using t.test()",
-    "text": "Using t.test()\nThe general formula: t.test(OUTCOME ~ GROUP, data = DATA)\n\nDo playoff teams score more goals?\n\n\n\nt.test(Total ~ playoffs, data = hockey_newvar)\n\n\n    Welch Two Sample t-test\n\ndata:  Total by playoffs\nt = 4.044, df = 28.598, p-value = 0.0003621\nalternative hypothesis: true difference in means between group Clinched and group Eliminated is not equal to 0\n95 percent confidence interval:\n 18.02924 54.97076\nsample estimates:\n  mean in group Clinched mean in group Eliminated \n                268.9375                 232.4375"
-  },
-  {
-    "objectID": "slides/lec-5.html#reading-the-output",
-    "href": "slides/lec-5.html#reading-the-output",
-    "title": "Box plots, time series, and t-tests",
-    "section": "Reading the output",
-    "text": "Reading the output\n\nt.test(Total ~ playoffs, data = hockey_newvar)\n\n\nSample estimates: playoff teams scored about 269 goals on average, and eliminated teams about 232\n\n\np-value = 0.0004, much smaller than 0.05\n\n\nSo playoff teams scored significantly more goals"
-  },
-  {
-    "objectID": "slides/lec-5.html#do-playoff-teams-rely-more-on-their-defense",
-    "href": "slides/lec-5.html#do-playoff-teams-rely-more-on-their-defense",
-    "title": "Box plots, time series, and t-tests",
-    "section": "Do playoff teams rely more on their defense?",
-    "text": "Do playoff teams rely more on their defense?\n\nhockey_ttest = hockey_newvar |&gt;\n  mutate(offense_perct = rw_percent + lw_percent + c_percent)\n\nt.test(d_percent ~ playoffs, data = hockey_ttest)\n\n\n    Welch Two Sample t-test\n\ndata:  d_percent by playoffs\nt = -1.4916, df = 29.895, p-value = 0.1463\nalternative hypothesis: true difference in means between group Clinched and group Eliminated is not equal to 0\n95 percent confidence interval:\n -4.2476960  0.6621946\nsample estimates:\n  mean in group Clinched mean in group Eliminated \n                13.41861                 15.21136 \n\n\n\np = 0.15, bigger than 0.05: no significant difference\n\n\n\n\n\n\nNote\n\n\noffense_perct and d_percent always add up to 100, so testing both gives the same answer twice"
-  },
-  {
-    "objectID": "slides/lec-5.html#your-turn-playoff-players",
-    "href": "slides/lec-5.html#your-turn-playoff-players",
-    "title": "Box plots, time series, and t-tests",
-    "section": "🚨 Your turn: 🏒 Playoff players 🏒 🚨",
-    "text": "🚨 Your turn: 🏒 Playoff players 🏒 🚨\nUsing the hockey dataset:\n\nMake a new variable called playoffs that says whether each player’s team clinched or was eliminated.\nMake a box plot of points for the two groups.\nUse a t-test to check whether players on playoff teams scored more points.\n\n\n\n\n\n\n\nTip\n\n\n\nUse case_when() inside mutate(), and %in% with the playoffs_2024 list\nThe t-test formula is t.test(OUTCOME ~ GROUP, data = DATA)"
-  },
-  {
-    "objectID": "slides/lec-5.html#playoff-players-answer",
-    "href": "slides/lec-5.html#playoff-players-answer",
-    "title": "Box plots, time series, and t-tests",
-    "section": "🚨 🏒 Playoff players Answer 🏒 🚨",
-    "text": "🚨 🏒 Playoff players Answer 🏒 🚨\n\n\nlibrary(tidyverse)\n\nhockey_players &lt;- hockey |&gt;\n  mutate(playoffs = case_when(\n    team %in% playoffs_2024 ~ \"Clinched\",\n    TRUE ~ \"Eliminated\"\n  ))\n\nggplot(hockey_players, aes(x = playoffs, y = points)) +\n  geom_boxplot() +\n  labs(title = \"Points by Player, Playoff vs. Non-Playoff Teams\",\n       x = \"Team Result\",\n       y = \"Points\")\n\n\n\n\n\n\n\n\nt.test(points ~ playoffs, data = hockey_players)\n\n\n    Welch Two Sample t-test\n\ndata:  points by playoffs\nt = 3.6968, df = 806.73, p-value = 0.0002331\nalternative hypothesis: true difference in means between group Clinched and group Eliminated is not equal to 0\n95 percent confidence interval:\n 2.752412 8.984429\nsample estimates:\n  mean in group Clinched mean in group Eliminated \n                26.57763                 20.70921"
-  },
-  {
-    "objectID": "slides/lec-5.html#playoff-players-adv.-answer",
-    "href": "slides/lec-5.html#playoff-players-adv.-answer",
-    "title": "Box plots, time series, and t-tests",
-    "section": "🚨 🏒 Playoff players Adv. Answer 🏒 🚨",
-    "text": "🚨 🏒 Playoff players Adv. Answer 🏒 🚨\n\n\nlibrary(tidyverse)\n\nhockey_players &lt;- hockey |&gt;\n  mutate(playoffs = case_when(\n    team %in% playoffs_2024 ~ \"Clinched\",\n    TRUE ~ \"Eliminated\"\n  ))\n\nrink_colors &lt;- c(\"Clinched\" = \"#0A9396\", \"Eliminated\" = \"#BB3E03\")\n\nggplot(hockey_players, aes(x = playoffs, y = points, fill = playoffs)) +\n  geom_boxplot(alpha = 0.7, outlier.shape = 8) +\n  stat_summary(fun = mean, geom = \"point\",\n               shape = 20, size = 4, color = \"black\") +\n  scale_fill_manual(values = rink_colors) +\n  labs(title = \"Points by Player, Playoff vs. Non-Playoff Teams\",\n       subtitle = \"Black dot = mean\",\n       x = \"Team Result\",\n       y = \"Points\",\n       caption = \"NHL Regular Season 2023–24\") +\n  theme_minimal() +\n  theme(legend.position = \"none\")\n\n\n\n\n\n\n\n\nt.test(points ~ playoffs, data = hockey_players)\n\n\n    Welch Two Sample t-test\n\ndata:  points by playoffs\nt = 3.6968, df = 806.73, p-value = 0.0002331\nalternative hypothesis: true difference in means between group Clinched and group Eliminated is not equal to 0\n95 percent confidence interval:\n 2.752412 8.984429\nsample estimates:\n  mean in group Clinched mean in group Eliminated \n                26.57763                 20.70921"
-  },
-  {
-    "objectID": "slides/lec-5.html#your-turn-goals-box-plot",
-    "href": "slides/lec-5.html#your-turn-goals-box-plot",
-    "title": "Project 1 Practice",
-    "section": "🚨 Your turn: 🏒 Goals Box Plot 🏒 🚨",
-    "text": "🚨 Your turn: 🏒 Goals Box Plot 🏒 🚨\nUsing the hockey dataset:\n\nBuild a box plot of the number of goals scored by all NHL players in the 2023–24 regular season.\nColor the outliers and change their shape.\nAdd a point for the mean number of goals.\nAdd a title, subtitle, and axis labels.\n\n\n\n\n\n\n\nTip\n\n\n\nUse aes(x = \"\", y = goals) to get a single box\nOutliers are set inside geom_boxplot() with outlier.color =, outlier.shape =, outlier.size =\nTo add the mean: stat_summary(fun = mean, geom = \"point\")"
-  },
-  {
-    "objectID": "slides/lec-5.html#goals-box-plot-answer",
-    "href": "slides/lec-5.html#goals-box-plot-answer",
-    "title": "Project 1 Practice",
-    "section": "🚨 🏒 Goals Box Plot Answer 🏒 🚨",
-    "text": "🚨 🏒 Goals Box Plot Answer 🏒 🚨\n\n\nggplot(data = hockey, aes(x = \"\", y = goals)) +\n  geom_boxplot(\n    alpha = 0.7,                       # transparency of the box fill\n    outlier.color = \"cornflowerblue\",  # color of outlier points\n    outlier.shape = 8,                 # outlier symbol is a star\n    outlier.size = 1                   # outlier size\n  ) +\n  stat_summary(fun = mean, geom = \"point\",\n               shape = 20, size = 4, color = \"coral\") +\n  labs(title = \"Distribution of Regular Season Goals by Player\",\n       subtitle = \"NHL 2023–24\",\n       x = \"\",\n       y = \"Goals Scored\") +\n  theme_minimal() +\n  theme(legend.position = \"none\")\n\n\n\n\n\n\n\n\n\n\nThe mean sits above the median: a few big scorers pull the mean up (right-skewed)"
-  },
-  {
-    "objectID": "slides/lec-5.html#your-turn-goals-by-position",
-    "href": "slides/lec-5.html#your-turn-goals-by-position",
-    "title": "Project 1 Practice",
-    "section": "🚨 Your turn: 🏒 Goals by Position 🏒 🚨",
-    "text": "🚨 Your turn: 🏒 Goals by Position 🏒 🚨\nUsing the hockey dataset:\n\nBuild a box plot of goals with one box for each position.\nWhich position scores the most goals? Which scores the least?\n\n\n\n\n\n\n\nTip\n\n\nPut the grouping variable on the x-axis: aes(x = position, y = goals)"
-  },
-  {
-    "objectID": "slides/lec-5.html#goals-by-position-answer",
-    "href": "slides/lec-5.html#goals-by-position-answer",
-    "title": "Project 1 Practice",
-    "section": "🚨 🏒 Goals by Position Answer 🏒 🚨",
-    "text": "🚨 🏒 Goals by Position Answer 🏒 🚨\n\n\nggplot(data = hockey, aes(x = position, y = goals)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(title = \"Regular Season Goals by Position\",\n       subtitle = \"NHL 2023–24\",\n       x = \"Position\",\n       y = \"Goals Scored\") +\n  theme_minimal()"
-  },
-  {
-    "objectID": "slides/lec-5.html#your-turn-team-goals-by-position",
-    "href": "slides/lec-5.html#your-turn-team-goals-by-position",
-    "title": "Project 1 Practice",
-    "section": "🚨 Your turn: 🏒 Team Goals by Position 🏒 🚨",
-    "text": "🚨 Your turn: 🏒 Team Goals by Position 🏒 🚨\nWhat percent of each team’s goals comes from each position?\n\nAdd up the goals for each team and position, then use pivot_wider() so each position is its own column. Call it hockey_goals.\nMake a Total column with each team’s total goals.\nMake a new object called hockey_boxplot with the percent of goals from each position: rw_percent, lw_percent, c_percent, d_percent.\nMake a box plot for each position and combine them with patchwork.\n\n\n\n\n\n\n\nTip\n\n\n\ngroup_by(team, position) |&gt; summarize(goals = sum(goals, na.rm = TRUE), .groups = \"drop\")\npivot_wider(names_from = position, values_from = goals, values_fill = 0)\nrowSums(across(-team)) adds up every column except team\nCombine plots with + and set the layout with plot_layout(ncol = 4)"
-  },
-  {
-    "objectID": "slides/lec-5.html#team-goals-by-position-answer",
-    "href": "slides/lec-5.html#team-goals-by-position-answer",
-    "title": "Project 1 Practice",
-    "section": "🚨 🏒 Team Goals by Position Answer 🏒 🚨",
-    "text": "🚨 🏒 Team Goals by Position Answer 🏒 🚨\nSteps 1–3: wrangle the data\n\nhockey_goals &lt;- hockey |&gt;\n  group_by(team, position) |&gt;\n  summarize(goals = sum(goals, na.rm = TRUE), .groups = \"drop\") |&gt;\n  pivot_wider(names_from = position, values_from = goals, values_fill = 0) |&gt;\n  mutate(Total = rowSums(across(-team)))\n\nhockey_boxplot &lt;- hockey_goals |&gt;\n  mutate(\n    rw_percent = R / Total * 100,\n    lw_percent = L / Total * 100,\n    c_percent  = C / Total * 100,\n    d_percent  = D / Total * 100\n  )\n\nhockey_boxplot\n\n# A tibble: 32 × 10\n   team      C     D     L     R Total rw_percent lw_percent c_percent d_percent\n   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;\n 1 ANA      80    19    25    75   199      37.7        12.6      40.2      9.55\n 2 ARI      95    32    71    51   249      20.5        28.5      38.2     12.9 \n 3 BOS     121    31    59    47   258      18.2        22.9      46.9     12.0 \n 4 BUF      68    41    64    71   244      29.1        26.2      27.9     16.8 \n 5 CAR     125    49    63    39   276      14.1        22.8      45.3     17.8 \n 6 CBJ      82    39    48    62   231      26.8        20.8      35.5     16.9 \n 7 CGY     157    52    38     5   252       1.98       15.1      62.3     20.6 \n 8 CHI     107    19    31    19   176      10.8        17.6      60.8     10.8 \n 9 COL      95    61    57    85   298      28.5        19.1      31.9     20.5 \n10 DAL     168    36    72    12   288       4.17       25        58.3     12.5 \n# ℹ 22 more rows"
-  },
-  {
-    "objectID": "slides/lec-5.html#team-goals-by-position-answer-1",
-    "href": "slides/lec-5.html#team-goals-by-position-answer-1",
-    "title": "Project 1 Practice",
-    "section": "🚨 🏒 Team Goals by Position Answer 🏒 🚨",
-    "text": "🚨 🏒 Team Goals by Position Answer 🏒 🚨\nStep 4: plot\n\n\nrw &lt;- ggplot(hockey_boxplot, aes(x = \"\", y = rw_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Right Wing\", y = \"% of Team Goals\")\n\nlw &lt;- ggplot(hockey_boxplot, aes(x = \"\", y = lw_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Left Wing\", y = NULL)\n\ncen &lt;- ggplot(hockey_boxplot, aes(x = \"\", y = c_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Center\", y = NULL)\n\nd &lt;- ggplot(hockey_boxplot, aes(x = \"\", y = d_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Defense\", y = NULL)\n\nrw + lw + cen + d +\n  plot_layout(ncol = 4) +\n  plot_annotation(\n    title = \"Boxplots of the Percentage of Goals Scored\",\n    subtitle = \"by Position Across all NHL Teams\",\n    caption = \"NHL Regular Season 2023–24\"\n  ) & scale_y_continuous(limits = c(0, 100))"
-  },
-  {
-    "objectID": "slides/lec-5.html#team-goals-by-position-adv.-answer",
-    "href": "slides/lec-5.html#team-goals-by-position-adv.-answer",
-    "title": "Project 1 Practice",
-    "section": "🚨 🏒 Team Goals by Position Adv. Answer 🏒 🚨",
-    "text": "🚨 🏒 Team Goals by Position Adv. Answer 🏒 🚨\nUse pivot_longer() so one ggplot() draws all four boxes\n\n\nhockey_boxplot |&gt;\n  pivot_longer(c(rw_percent, lw_percent, c_percent, d_percent),\n               names_to = \"position\", values_to = \"percent\") |&gt;\n  mutate(position = factor(position,\n    levels = c(\"rw_percent\", \"lw_percent\", \"c_percent\", \"d_percent\"),\n    labels = c(\"Right Wing\", \"Left Wing\", \"Center\", \"Defense\"))) |&gt;\n  ggplot(aes(x = position, y = percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  scale_y_continuous(limits = c(0, 100)) +\n  labs(x = \"Position\", y = \"% of Team Goals\",\n       title = \"Boxplots of the Percentage of Goals Scored\",\n       subtitle = \"by Position Across all NHL Teams\",\n       caption = \"NHL Regular Season 2023–24\") +\n  theme_minimal()"
-  },
-  {
-    "objectID": "slides/lec-5.html#your-turn-canadiens-searches",
-    "href": "slides/lec-5.html#your-turn-canadiens-searches",
-    "title": "Project 1 Practice",
-    "section": "🚨 Your turn: 🏒 Canadiens Searches 🏒 🚨",
-    "text": "🚨 Your turn: 🏒 Canadiens Searches 🏒 🚨\nUsing the google_trends dataset:\n\nMake a time series plot of the Google search score for the Montreal Canadiens (montreal_canadiens) by month, 2004 to 2026.\nLabel the x-axis every 2 years.\nAdd a trend line and a dashed line at the average score.\nAdd a title, subtitle, axis labels, and a caption.\n\n\n\n\n\n\n\nTip\n\n\n\nConnect the points with geom_line()\nscale_x_date(date_breaks = \"2 years\", date_labels = \"%Y\")\nTrend line: geom_smooth(method = lm, se = FALSE). Average: geom_hline(yintercept = mean(...), linetype = 2)"
-  },
-  {
-    "objectID": "slides/lec-5.html#canadiens-searches-answer",
-    "href": "slides/lec-5.html#canadiens-searches-answer",
-    "title": "Project 1 Practice",
-    "section": "🚨 🏒 Canadiens Searches Answer 🏒 🚨",
-    "text": "🚨 🏒 Canadiens Searches Answer 🏒 🚨\n\n\nggplot(google_trends, aes(x = month, y = montreal_canadiens)) +\n  geom_line(color = \"coral2\") +\n  geom_smooth(method = lm, se = FALSE,\n              color = \"grey40\", linewidth = .5) +\n  geom_hline(yintercept = mean(google_trends$montreal_canadiens, na.rm = TRUE),\n             linetype = 2) +\n  scale_x_date(date_breaks = \"2 years\", date_labels = \"%Y\") +\n  labs(title = \"U.S. Google searches for the Montreal Canadiens spike each spring\",\n       subtitle = \"Monthly Google Trends interest, January 2004 to October 2026\",\n       y = \"Search interest (0–100)\", x = \"Month\",\n       caption = \"Source: Google Trends\") +\n  theme_classic() +\n  theme(\n    axis.text.y = element_text(size = 11),\n    axis.text.x = element_text(angle = 45, hjust = 1, size = 9),\n    plot.caption = element_text(hjust = 1, size = 9),\n    plot.title = element_text(size = 14))\n\n\n\n\n\n\n\n\n\n\nThe biggest spikes are playoff runs: May 2010, May 2014, June 2021 (Stanley Cup Final), May 2026"
-  },
-  {
-    "objectID": "slides/lec-5.html#your-turn-playoff-teams",
-    "href": "slides/lec-5.html#your-turn-playoff-teams",
-    "title": "Project 1 Practice",
-    "section": "🚨 Your turn: 🏒 Playoff Teams 🏒 🚨",
-    "text": "🚨 Your turn: 🏒 Playoff Teams 🏒 🚨\nThese 16 teams made the 2024 Stanley Cup playoffs:\n\nplayoffs_2024 &lt;- c(\"FLA\", \"BOS\", \"TOR\", \"TBL\", \"NYR\", \"WSH\", \"CAR\", \"NYI\",\n                   \"DAL\", \"VGK\", \"COL\", \"WPG\", \"VAN\", \"NSH\", \"EDM\", \"LAK\")\n\n\nUsing hockey_boxplot, make a new variable called playoffs that is \"Clinched\" if the team made the playoffs and \"Eliminated\" if it did not.\nStore it as a new object called hockey_newvar.\n\n\n\n\n\n\n\nTip\n\n\n\ncase_when() goes inside mutate()\n%in% checks whether a value is in a list: team %in% playoffs_2024\nThere is no !%in%. For “not in”, use !(team %in% playoffs_2024)"
-  },
-  {
-    "objectID": "slides/lec-5.html#playoff-teams-answer",
-    "href": "slides/lec-5.html#playoff-teams-answer",
-    "title": "Project 1 Practice",
-    "section": "🚨 🏒 Playoff Teams Answer 🏒 🚨",
-    "text": "🚨 🏒 Playoff Teams Answer 🏒 🚨\n\nhockey_newvar &lt;- hockey_boxplot |&gt;\n  mutate(playoffs = case_when(\n    team %in% playoffs_2024 ~ \"Clinched\",\n    !(team %in% playoffs_2024) ~ \"Eliminated\"\n  ))\n\nhockey_newvar |&gt;\n  select(team, Total, playoffs)\n\n# A tibble: 32 × 3\n   team  Total playoffs  \n   &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;     \n 1 ANA     199 Eliminated\n 2 ARI     249 Eliminated\n 3 BOS     258 Clinched  \n 4 BUF     244 Eliminated\n 5 CAR     276 Clinched  \n 6 CBJ     231 Eliminated\n 7 CGY     252 Eliminated\n 8 CHI     176 Eliminated\n 9 COL     298 Clinched  \n10 DAL     288 Clinched  \n# ℹ 22 more rows\n\n\n\n\n\n\n\n\nTip\n\n\nYou can also write the last line as TRUE ~ \"Eliminated\". TRUE ~ means “everything else.”"
-  },
-  {
-    "objectID": "slides/lec-5.html#your-turn-graphing-the-new-variable",
-    "href": "slides/lec-5.html#your-turn-graphing-the-new-variable",
-    "title": "Project 1 Practice",
-    "section": "🚨 Your turn: 🏒 Graphing the New Variable 🏒 🚨",
-    "text": "🚨 Your turn: 🏒 Graphing the New Variable 🏒 🚨\n\nKeep only the teams that clinched the playoffs.\nBuild box plots of the percent of goals by position for those teams, like before.\n\n\n\n\n\n\n\nTip\n\n\n\nUse filter(playoffs == \"Clinched\")\nYou can copy your box plot code from earlier: just change the data!"
-  },
-  {
-    "objectID": "slides/lec-5.html#graphing-the-new-variable-answer",
-    "href": "slides/lec-5.html#graphing-the-new-variable-answer",
-    "title": "Project 1 Practice",
-    "section": "🚨 🏒 Graphing the New Variable Answer 🏒 🚨",
-    "text": "🚨 🏒 Graphing the New Variable Answer 🏒 🚨\n\n\nhockey_clinched &lt;- hockey_newvar |&gt;\n  filter(playoffs == \"Clinched\")\n\nrw &lt;- ggplot(hockey_clinched, aes(x = \"\", y = rw_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Right Wing\", y = \"% of Team Goals\")\n\nlw &lt;- ggplot(hockey_clinched, aes(x = \"\", y = lw_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Left Wing\", y = NULL)\n\ncen &lt;- ggplot(hockey_clinched, aes(x = \"\", y = c_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Center\", y = NULL)\n\nd &lt;- ggplot(hockey_clinched, aes(x = \"\", y = d_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Defense\", y = NULL)\n\nrw + lw + cen + d +\n  plot_layout(ncol = 4) +\n  plot_annotation(\n    title = \"Boxplots of the Percentage of Goals Scored\",\n    subtitle = \"by Position across NHL Teams who Clinched the Playoffs\",\n    caption = \"NHL Regular Season 2023–24\"\n  ) & scale_y_continuous(limits = c(0, 100))"
-  },
-  {
-    "objectID": "slides/lec-5.html#graphing-the-new-variable-adv.-answer",
-    "href": "slides/lec-5.html#graphing-the-new-variable-adv.-answer",
-    "title": "Project 1 Practice",
-    "section": "🚨 🏒 Graphing the New Variable Adv. Answer 🏒 🚨",
-    "text": "🚨 🏒 Graphing the New Variable Adv. Answer 🏒 🚨\nCompare clinched and eliminated teams in one plot\n\n\nrink_colors &lt;- c(\"Clinched\" = \"#0A9396\", \"Eliminated\" = \"#BB3E03\")\n\nhockey_newvar |&gt;\n  pivot_longer(c(rw_percent, lw_percent, c_percent, d_percent),\n               names_to = \"position\", values_to = \"percent\") |&gt;\n  mutate(position = factor(position,\n    levels = c(\"rw_percent\", \"lw_percent\", \"c_percent\", \"d_percent\"),\n    labels = c(\"Right Wing\", \"Left Wing\", \"Center\", \"Defense\"))) |&gt;\n  ggplot(aes(x = position, y = percent, fill = playoffs)) +\n  geom_boxplot(alpha = 0.7) +\n  scale_fill_manual(values = rink_colors, name = \"Playoffs\") +\n  scale_y_continuous(limits = c(0, 100)) +\n  labs(x = \"Position\", y = \"% of Team Goals\",\n       title = \"Percentage of Goals Scored by Position\",\n       subtitle = \"Playoff vs. non-playoff teams\",\n       caption = \"NHL Regular Season 2023–24\") +\n  theme_minimal()"
-  },
-  {
-    "objectID": "slides/lec-5.html#your-turn-t-test",
-    "href": "slides/lec-5.html#your-turn-t-test",
-    "title": "Project 1 Practice",
-    "section": "🚨 Your turn: 🏒 t-test 🏒 🚨",
-    "text": "🚨 Your turn: 🏒 t-test 🏒 🚨\nUsing hockey_newvar:\n\nTest whether teams that made the playoffs scored more total goals (Total) than teams that did not.\nMake a new variable offense_perct: the percent of goals from forwards (right wing + left wing + center).\nTest whether playoff teams get a different percent of their goals from defense (d_percent).\nWhich differences are statistically significant?\n\n\n\n\n\n\n\nTip\n\n\n\nThe formula is t.test(OUTCOME ~ GROUP, data = DATA)\nA difference is statistically significant if the p-value is less than 0.05"
-  },
-  {
-    "objectID": "slides/lec-5.html#t-test-answer",
-    "href": "slides/lec-5.html#t-test-answer",
-    "title": "Project 1 Practice",
-    "section": "🚨 🏒 t-test Answer 🏒 🚨",
-    "text": "🚨 🏒 t-test Answer 🏒 🚨\n\n\nt.test(Total ~ playoffs, data = hockey_newvar)\n\n\n\n    Welch Two Sample t-test\n\ndata:  Total by playoffs\nt = 4.044, df = 28.598, p-value = 0.0003621\nalternative hypothesis: true difference in means between group Clinched and group Eliminated is not equal to 0\n95 percent confidence interval:\n 18.02924 54.97076\nsample estimates:\n  mean in group Clinched mean in group Eliminated \n                268.9375                 232.4375 \n\nhockey_ttest &lt;- hockey_newvar |&gt;\n  mutate(offense_perct = rw_percent + lw_percent + c_percent)\n\nt.test(d_percent ~ playoffs, data = hockey_ttest)\n\n\n    Welch Two Sample t-test\n\ndata:  d_percent by playoffs\nt = -1.4916, df = 29.895, p-value = 0.1463\nalternative hypothesis: true difference in means between group Clinched and group Eliminated is not equal to 0\n95 percent confidence interval:\n -4.2476960  0.6621946\nsample estimates:\n  mean in group Clinched mean in group Eliminated \n                13.41861                 15.21136 \n\n\n\nTotal goals: playoff teams scored about 269 goals vs. 232, p = 0.0004: significant\n\n\nDefense share: p = 0.15: not significant\n\n\n\n\n\n\n\n\nNote\n\n\noffense_perct and d_percent always add up to 100, so testing offense_perct gives the same p-value"
   }
 ]

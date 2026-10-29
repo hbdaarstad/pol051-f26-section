@@ -536,4 +536,4 @@ t.test(d_percent ~ playoffs, data = hockey_ttest)
 `offense_perct` and `d_percent` always add up to 100, so testing `offense_perct` gives the same p-value
 :::
 
-##
+## 

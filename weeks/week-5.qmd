@@ -5,7 +5,7 @@ editor: visual
 ---
 
 ::: callout-important
--   Project #1 is due Nov. 11
+-   Project #1 is due Nov. 10
 :::
 
 ## Prepare
