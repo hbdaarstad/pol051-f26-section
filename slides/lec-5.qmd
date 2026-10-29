@@ -80,7 +80,7 @@ t-tests
 
 One row per player per team, regular season only
 
-```{r, echo = TRUE}
+```{r, echo = FALSE}
 hockey = read_csv("https://raw.githubusercontent.com/hbdaarstad/NHL-22-24-Season-Data/main/hockey_stats.csv") |>
   filter(!is.na(position), position != "G")
 
@@ -96,7 +96,7 @@ Positions: `C` = center, `L` = left wing, `R` = right wing, `D` = defense. We dr
 
 Monthly U.S. search interest, 2004 to 2026
 
-```{r, echo = TRUE}
+```{r, echo = FALSE}
 google_trends = read_csv("https://raw.githubusercontent.com/hbdaarstad/NHL-22-24-Season-Data/main/google_trends.csv") |>
   select(month, montreal_canadiens)
 
@@ -111,7 +111,7 @@ Google Trends scores each month 0–100, where 100 = the busiest month in the wh
 
 This one is made for you: each team's total goals by position, plus a `Total` column
 
-```{r, echo = TRUE}
+```{r, echo = FALSE}
 hockey_goals <- hockey |>
   group_by(team, position) |>
   summarise(goals = sum(goals, na.rm = TRUE), .groups = "drop") |>
@@ -162,7 +162,7 @@ countdown::countdown(minutes = 5L)
 #| echo: true
 #| output-location: column
 
-ggplot(data = hockey, aes(x = "", y = goals)) +
+ggplot(data = hockey, aes(y = "", x = goals)) +
   geom_boxplot(
     alpha = 0.7,                       # transparency of the box fill
     outlier.color = "cornflowerblue",  # color of outlier points
@@ -184,37 +184,6 @@ The mean sits above the median: a few big scorers pull the mean up (right-skewed
 :::
 
 # Multiple box plots {background-color="#dc354a"}
-
-## 🚨 Your turn: 🏒 Goals by Position 🏒 🚨
-
-Using the `hockey` dataset:
-
-1.  Build a box plot of `goals` with one box for each `position`.
-
-2.  Which position scores the most goals? Which scores the least?
-
-::: callout-tip
-Put the grouping variable on the x-axis: `aes(x = position, y = goals)`
-:::
-
-```{r}
-countdown::countdown(minutes = 3L)
-```
-
-## 🚨 🏒 Goals by Position Answer 🏒 🚨 {.smaller}
-
-```{r}
-#| echo: true
-#| output-location: column
-
-ggplot(data = hockey, aes(x = position, y = goals)) +
-  geom_boxplot(fill = "gray", color = "black") +
-  labs(title = "Regular Season Goals by Position",
-       subtitle = "NHL 2023–24",
-       x = "Position",
-       y = "Goals Scored") +
-  theme_minimal()
-```
 
 ## 🚨 Your turn: 🏒 Team Goals by Position 🏒 🚨
 
@@ -287,37 +256,13 @@ rw + lw + cen + d +
   ) & scale_y_continuous(limits = c(0, 100))
 ```
 
-## 🚨 🏒 Team Goals by Position Adv. Answer 🏒 🚨 {.smaller}
-
-Use `pivot_longer()` so **one** `ggplot()` draws all four boxes
-
-```{r}
-#| echo: true
-#| output-location: column
-
-hockey_boxplot |>
-  pivot_longer(c(rw_percent, lw_percent, c_percent, d_percent),
-               names_to = "position", values_to = "percent") |>
-  mutate(position = factor(position,
-    levels = c("rw_percent", "lw_percent", "c_percent", "d_percent"),
-    labels = c("Right Wing", "Left Wing", "Center", "Defense"))) |>
-  ggplot(aes(x = position, y = percent)) +
-  geom_boxplot(fill = "gray", color = "black") +
-  scale_y_continuous(limits = c(0, 100)) +
-  labs(x = "Position", y = "% of Team Goals",
-       title = "Boxplots of the Percentage of Goals Scored",
-       subtitle = "by Position Across all NHL Teams",
-       caption = "NHL Regular Season 2023–24") +
-  theme_minimal()
-```
-
 # Time series {background-color="#dc354a"}
 
-## 🚨 Your turn: 🏒 Canadiens Searches 🏒 🚨
+## 🚨 Your turn: 🏒 Canadians Searches 🏒 🚨
 
 Using the `google_trends` dataset:
 
-1.  Make a time series plot of the Google search score for the Montreal Canadiens (`montreal_canadiens`) by `month`, 2004 to 2026.
+1.  Make a time series plot of the Google search score for the Montreal Canadians (`montreal_canadiens`) by `month`, 2004 to 2026.
 
 2.  Label the x-axis every 2 years.
 
@@ -337,7 +282,7 @@ Using the `google_trends` dataset:
 countdown::countdown(minutes = 6.5L)
 ```
 
-## 🚨 🏒 Canadiens Searches Answer 🏒 🚨 {.smaller}
+## 🚨 🏒 Canadians Searches Answer 🏒 🚨 {.smaller}
 
 ```{r}
 #| echo: true
@@ -365,6 +310,34 @@ ggplot(google_trends, aes(x = month, y = montreal_canadiens)) +
 ::: notes
 The biggest spikes are playoff runs: May 2010, May 2014, June 2021 (Stanley Cup Final), May 2026
 :::
+
+### How do we add a line for the playoff runs? 🏒
+
+```{r, echo = TRUE}
+
+ggplot(google_trends, aes(x = month, y = montreal_canadiens)) +
+  geom_line(color = "coral2") +
+  geom_smooth(method = lm, se = FALSE,
+              color = "grey40", linewidth = .5) +
+  geom_hline(yintercept = mean(google_trends$montreal_canadiens, na.rm = TRUE),
+             linetype = 2) +
+  geom_vline(xintercept = as.Date(c("2010-05-01", "2014-05-01",
+                                    "2021-06-01", "2026-05-01")),
+             linetype = 2) +
+  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
+  labs(title = "U.S. Google searches for the Montreal Canadians spike each spring",
+       subtitle = "Monthly Google Trends interest, January 2004 to October 2026",
+       y = "Search interest (0–100)", x = "Month",
+       caption = "Source: Google Trends") +
+  theme_classic() +
+  theme(
+    axis.text.y = element_text(size = 11),
+    axis.text.x = element_text(angle = 45, hjust = 1, size = 9),
+    plot.caption = element_text(hjust = 1, size = 9),
+    plot.title = element_text(size = 14))
+
+
+```
 
 # Creating a new variable {background-color="#dc354a"}
 
@@ -399,8 +372,7 @@ hockey_newvar <- hockey_boxplot |>
     !(team %in% playoffs_2024) ~ "Eliminated"
   ))
 
-hockey_newvar |>
-  select(team, Total, playoffs)
+head(hockey_newvar)
 ```
 
 ::: callout-tip
@@ -508,11 +480,25 @@ Using `hockey_newvar`:
 countdown::countdown(minutes = 6.5L)
 ```
 
-## 🚨 🏒 t-test Answer 🏒 🚨 {.smaller}
+## 🚨 🏒 t-test Code Answer 🏒 🚨 {.smaller}
 
 ```{r}
 #| echo: true
-#| output-location: column
+#| eval: false
+
+t.test(Total ~ playoffs, data = hockey_newvar)
+
+hockey_ttest <- hockey_newvar |>
+  mutate(offense_perct = rw_percent + lw_percent + c_percent)
+
+t.test(d_percent ~ playoffs, data = hockey_ttest)
+```
+
+## 🚨 🏒 t-test Answer 🏒 🚨 {.smaller}
+
+```{r}
+#| echo: false
+#| output: column
 
 t.test(Total ~ playoffs, data = hockey_newvar)
 
@@ -535,5 +521,3 @@ t.test(d_percent ~ playoffs, data = hockey_ttest)
 ::: callout-note
 `offense_perct` and `d_percent` always add up to 100, so testing `offense_perct` gives the same p-value
 :::
-
-## 
