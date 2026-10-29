@@ -546,7 +546,7 @@ Using the `msleep` dataset in `tidyverse`:
 countdown::countdown(minutes = 6.5L)
 ```
 
-## 🚨  🦁 Animals Answer 🦁  🚨 {.smaller}
+## 🚨 🦁 Animals Answer 🦁 🚨 {.smaller}
 
 ```{r}
 #| echo: true

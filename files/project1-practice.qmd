@@ -1,0 +1,118 @@
+---
+title: "Project 1 Practice"
+subtitle: "POL 51 - Week 5 Handout"
+format: html
+editor: visual
+---
+
+Fill in each code chunk. Answers are in the [Week 5 slides](https://haleydaarstad.com/pol051-f26-section/slides/lec-5.html).
+
+```{r}
+#| message: false
+#| warning: false
+
+options(scipen = 999)  # turns off scientific notations like 1e+40
+
+rm(list=ls(all=TRUE))
+
+library(tidyverse)
+library(sjPlot)
+library(zoo)
+library(patchwork)
+library(scales)
+library(plotly)
+
+# NHL player stats, 2023-24 regular season (goalies and missing positions removed)
+hockey <- read_csv("https://raw.githubusercontent.com/hbdaarstad/NHL-22-24-Season-Data/main/hockey_stats.csv") |>
+  filter(!is.na(position), position != "G")
+
+# Google Trends: monthly U.S. search interest (0-100), 2004 to 2026
+google_trends <- read_csv("https://raw.githubusercontent.com/hbdaarstad/NHL-22-24-Season-Data/main/google_trends.csv")
+
+# Total goals for each team by position (C, D, L, R) plus a Total column
+hockey_goals <- hockey |>
+  group_by(team, position) |>
+  summarise(goals = sum(goals, na.rm = TRUE), .groups = "drop") |>
+  pivot_wider(names_from = position, values_from = goals, values_fill = 0) |>
+  mutate(Total = rowSums(across(-team)))
+
+# The 16 teams that made the 2024 Stanley Cup playoffs
+playoffs_2024 <- c("FLA", "BOS", "TOR", "TBL", "NYR", "WSH", "CAR", "NYI",
+                   "DAL", "VGK", "COL", "WPG", "VAN", "NSH", "EDM", "LAK")
+
+def.chunk.hook  <- knitr::knit_hooks$get("chunk")
+knitr::knit_hooks$set(chunk = function(x, options) {
+  x <- def.chunk.hook(x, options)
+  paste0("\n \\", "tiny","\n\n", x, "\n\n \\tiny")})
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+```
+
+## 1. Box Plot
+
+Build a box plot of the number of `goals` scored by all NHL players in the 2023–24 regular season.
+
+-   Color the outliers and change their shape.
+-   Add a point for the **mean** number of goals.
+-   Add a title, subtitle, and axis labels.
+
+```{r}
+
+```
+
+## 2. Multiple Box Plots
+
+Build a box plot of `goals` with one box for each `position`. Which position scores the most goals? Which scores the least?
+
+```{r}
+
+```
+
+## 3. Team Goals by Position
+
+What **percent** of each team's goals comes from each position? `hockey_goals` (made for you above) has each team's goals by position and a `Total` column.
+
+1.  Make a new object called `hockey_boxplot` with the percent of goals from each position: `rw_percent`, `lw_percent`, `c_percent`, `d_percent`.
+2.  Make a box plot for each position and combine them with `patchwork`.
+
+```{r}
+
+```
+
+## 4. Time Series
+
+Make a time series plot of the Google search score for the Montreal Canadiens (`montreal_canadiens`) by `month`, 2004 to 2026.
+
+-   Label the x-axis every 2 years.
+-   Add a trend line and a dashed line at the average score.
+-   Add a title, subtitle, axis labels, and a caption.
+
+```{r}
+
+```
+
+## 5. Creating a New Variable
+
+Using `hockey_boxplot` and the `playoffs_2024` list (made for you above), make a new variable called `playoffs` that is `"Clinched"` if the team made the playoffs and `"Eliminated"` if it did not. Store it as `hockey_newvar`.
+
+```{r}
+
+```
+
+## 6. Graphing the New Variable
+
+Keep only the teams that **clinched** the playoffs, then build box plots of the percent of goals by position for those teams.
+
+```{r}
+
+```
+
+## 7. t-test
+
+1.  Test whether teams that made the playoffs scored more **total goals** (`Total`) than teams that did not.
+2.  Make a new variable `offense_perct`: the percent of goals from forwards (right wing + left wing + center).
+3.  Test whether playoff teams get a different percent of their goals from **defense** (`d_percent`).
+4.  Which differences are statistically significant (p \< 0.05)?
+
+```{r}
+
+```

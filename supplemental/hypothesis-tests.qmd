@@ -16,8 +16,6 @@ library(moderndive)
 
 ```
 
-
-
 ```{r setup, include=FALSE}
 # set knit options
 knitr::opts_chunk$set(
@@ -36,7 +34,6 @@ knitr::opts_chunk$set(
 # source
 source(here::here("slides/R", "funcs.R"))
 ```
-
 
 ## Sampling in R
 
@@ -105,6 +102,7 @@ gss_sm %>%
 ## Sampling with and without replacement
 
 If we were sampling **4** of these delicious fruits:
+
 ```{r, echo = TRUE}
 fruits = c("Mango", "Pineapple", "Banana", "Blackberry")
 fruits
@@ -146,7 +144,6 @@ ggplot(boot_data, aes(x = avg)) +
            ymin = 0, ymax = Inf, 
            alpha = .5, fill = yellow)
 ```
-
 
 ## Bootstrapping Regression
 
@@ -192,8 +189,6 @@ tidy(mod, conf.int = TRUE)
 ```
 
 `conf.low` and `conf.high` are the lower and upper bound of the 95% CI
-
-
 
 ## Prediction (by hand)
 
@@ -273,7 +268,6 @@ And then get predictions for all these scenarios:
 ```{r, echo = TRUE}
 augment(weight_model, newdata = seq_weights)
 ```
-
 
 ## Multiple Regression
 

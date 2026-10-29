@@ -1,13 +1,12 @@
 ---
-title: "Relationships I"
+title: "Project 1 Practice"
 subtitle: "POL51"
 author: "Haley Daarstad"
 institute: "University of California, Davis"
 date: today
 date-format: long
 format:
-  revealjs: 
-    html-math-method: mathjax
+  revealjs:
     chalkboard: true
     slide-number: true
     height: 900
@@ -26,850 +25,515 @@ format:
 ```{r setup, include=FALSE}
 # set knit options
 knitr::opts_chunk$set(
-  fig.width=9, 
-  fig.height=5, 
+  fig.width=9,
+  fig.height=5,
   fig.retina=3,
   fig.align="center",
   out.width = "100%",
   cache = FALSE,
   echo = FALSE,
-  message = FALSE, 
+  message = FALSE,
   warning = FALSE
 )
 
+options(scipen = 999)  # turns off scientific notation like 1e+40
+
 # libraries
-library(gapminder)
-library(socviz)
-library(juanr)
+library(tidyverse)
+library(patchwork)
+library(scales)
 
 # source
 source(here::here("slides/R/funcs.R"))
 
+# data
+hockey = read_csv("https://raw.githubusercontent.com/hbdaarstad/NHL-22-24-Season-Data/main/hockey_stats.csv") |>
+  filter(!is.na(position), position != "G")
 
+google_trends = read_csv("https://raw.githubusercontent.com/hbdaarstad/NHL-22-24-Season-Data/main/google_trends.csv") |>
+  select(month, montreal_canadiens)
 ```
 
 # Plan for today {.center background-color="#dc354a"}
 
-. . .
-
-Data, objects, variables
+Box plots
 
 . . .
 
-Mean, median, variance
+Multiple box plots
 
 . . .
 
-Summarizing data
-
-# Data, objects, variables
+Time series
 
 . . .
 
-Objects are one of the most confusing parts of coding for new programmers
+Creating a new variable
 
 . . .
 
-An **object** is a "thing" that lives in R that we can use; think of the pantry metaphor!
+t-tests
 
-. . .
+# Our data {background-color="#dc354a"}
 
-In this class, 99.99% of objects are just **data**
+## NHL player stats, 2023–24
 
-. . .
-
-Data has **variables** which are represented as columns
-
-. . .
-
-Objects ➡️ Data ➡️ Variables
-
-## Data, objects, variables
-
-. . .
-
-`trade` is a data object that contains variables like **imports**
+One row per player per team, regular season only
 
 ```{r, echo = TRUE}
-trade
+hockey = read_csv("https://raw.githubusercontent.com/hbdaarstad/NHL-22-24-Season-Data/main/hockey_stats.csv") |>
+  filter(!is.na(position), position != "G")
+
+hockey |>
+  select(player, team, position, goals, assists, points)
 ```
 
-. . .
+::: callout-note
+Positions: `C` = center, `L` = left wing, `R` = right wing, `D` = defense. We drop goalies (`G`).
+:::
 
-`trade_2010` and `trade` are both objects, `year` is a variable
+## Google Trends: Montreal Canadiens
 
-```{r, echo = TRUE, eval = FALSE}
-trade_2010 = trade |> 
-  filter(year == 2010)
-```
-
-## Data, objects, variables
-
-Confusing! `imports_gdp` is an object that contains a variable that's also named `imports_gdp`
-
-```{r, echo = TRUE, eval = FALSE}
-imports_gdp = 
-  trade |> 
-  mutate(imports_gdp = imports / gdp)
-```
-
-. . .
-
-<br>
-
-This is why we need to pick good variable names!
-
-## A common mistake
-
-Say we wanted to multiply GDP per capita by population and plot the result:
+Monthly U.S. search interest, 2004 to 2026
 
 ```{r, echo = TRUE}
-gap_gdp = gapminder |> 
-  mutate(gdp = gdpPercap * pop)
+google_trends = read_csv("https://raw.githubusercontent.com/hbdaarstad/NHL-22-24-Season-Data/main/google_trends.csv") |>
+  select(month, montreal_canadiens)
+
+google_trends
 ```
 
-. . .
+::: callout-note
+Google Trends scores each month 0–100, where 100 = the busiest month in the whole period. It is **not** a count of searches.
+:::
 
-❌
+## Team goals by position
 
-```{r, echo = TRUE, eval = FALSE}
-ggplot(gapminder, aes(x = year, y = gap_gdp)) + geom_point()
+This one is made for you: each team's total goals by position, plus a `Total` column
+
+```{r, echo = TRUE}
+hockey_goals <- hockey |>
+  group_by(team, position) |>
+  summarise(goals = sum(goals, na.rm = TRUE), .groups = "drop") |>
+  pivot_wider(names_from = position, values_from = goals, values_fill = 0) |>
+  mutate(Total = rowSums(across(-team)))
+
+hockey_goals
 ```
 
-Mistake: using the original gapminder data, treating `gap_gdp` as a **variable**
+## Playoff teams
 
-. . .
+Also made for you: the 16 teams that made the 2024 Stanley Cup playoffs
 
-✅
-
-```{r, echo = TRUE, eval = FALSE}
-ggplot(gap_gdp, aes(x = year, y = gdp)) + geom_point()
+```{r, echo = TRUE}
+playoffs_2024 <- c("FLA", "BOS", "TOR", "TBL", "NYR", "WSH", "CAR", "NYI",
+                   "DAL", "VGK", "COL", "WPG", "VAN", "NSH", "EDM", "LAK")
 ```
 
-Correct: use the new data object, which contains the newly created variable `gdp`
+# Box plots {background-color="#dc354a"}
 
-# Summarizing data {background-color="#dc354a"}
+## 🚨 Your turn: 🏒 Goals Box Plot 🏒 🚨
 
-## Summarizing data
+Using the `hockey` dataset:
 
-. . .
+1.  Build a box plot of the number of `goals` scored by all NHL players in the 2023–24 regular season.
 
-Often, with data, we want to **compare** things
+2.  Color the outliers and change their shape.
 
-. . .
+3.  Add a point for the **mean** number of goals.
 
-Are democracies more peaceful than autocracies?
+4.  Add a title, subtitle, and axis labels.
 
-. . .
+::: callout-tip
+1.  Use `aes(x = "", y = goals)` to get a single box
 
-Does early-voting increase turnout?
+2.  Outliers are set inside `geom_boxplot()` with `outlier.color =`, `outlier.shape =`, `outlier.size =`
 
-. . .
-
-To do this, we often rely on **statistical summaries** of our data:
-
-. . .
-
-Means, medians, minimums, maximums, variances
-
-## Summary stats {.center}
-
-. . .
-
-The *mean*: 3, 4, 8 $\rightarrow$ $\frac{(3 + 4 + 8)}{3} = 5$
-
-. . .
-
-The *median*: 3, **4**, 8 $\rightarrow$ 4
-
-. . .
-
-The *minimum*: **3**, 4, 8 $\rightarrow$ 3
-
-. . .
-
-The *maximum*: 3, 4, **8** $\rightarrow$ 8
-
-## Example: an experiment
-
-Some counties let people vote **early**; others don't
-
-. . .
-
-Do counties with early provisions have **higher** turnout?
-
-## The data
+3.  To add the mean: `stat_summary(fun = mean, geom = "point")`
+:::
 
 ```{r}
-set.seed(1990)
-fake = tibble(`Vote early?` = sample(x = c("Yes", "No"), size = 3000, 
-                              replace = TRUE)) %>% 
-  mutate(`Turnout (%)` = rnorm(n = 3000, mean = 40 + 10*I(`Vote early?` == "Yes"), sd = 5))
-
-knitr::kable(head(fake, n = 10), align = "cc", digits = 1)
+countdown::countdown(minutes = 5L)
 ```
 
-## Quantifying "higher"
-
-We can compare the *averages* of counties that do have early voting against those that don't:
-
-. . .
+## 🚨 🏒 Goals Box Plot Answer 🏒 🚨 {.smaller}
 
 ```{r}
-fake %>% 
-  group_by(`Vote early?`) %>% 
-  summarise(`Average turnout` = mean(`Turnout (%)`)) %>% 
-  knitr::kable(digits = 1)
-```
+#| echo: true
+#| output-location: column
 
-. . .
-
-Counties with early voting have, **on average**, 10 percentage points higher turnout
-
-## Mean vs. median
-
-We almost always compare averages, but medians are helpful in some cases:
-
-. . .
-
-```{r, out.width="80%"}
-fake = tibble(income = rexp(n = 500, rate = .005)) %>% 
-  mutate(income = income * 350)
-
-ggplot(fake, aes(x = income)) + 
-  geom_histogram(color = "white", fill = red, alpha = .8) + 
-  theme_bw(base_family = "Fira Sans") + 
-  labs(title = "Fake distribution of household income in the US", 
-       x = NULL, y = NULL) + 
-  scale_x_continuous(labels = scales::dollar) + 
-  geom_vline(xintercept = mean(fake$income), 
-             lty = 2, 
-             size = 2, 
-             color = yellow) + 
-  geom_vline(xintercept = median(fake$income), 
-             lty = 2, 
-             size = 2, 
-             color = blue) + 
-  geom_label(aes(x = 300000, y = 50,
-                label = glue::glue("median: {scales::dollar(round(median(fake$income), 0))}")), 
-            color = blue, family = "Fira Sans", size = 5) + 
-  geom_label(aes(x = 300000, y = 40,
-                label = glue::glue("mean: {scales::dollar(round(mean(fake$income), 0))}")), 
-            color = yellow, family = "Fira Sans", size = 5)
+ggplot(data = hockey, aes(x = "", y = goals)) +
+  geom_boxplot(
+    alpha = 0.7,                       # transparency of the box fill
+    outlier.color = "cornflowerblue",  # color of outlier points
+    outlier.shape = 8,                 # outlier symbol is a star
+    outlier.size = 1                   # outlier size
+  ) +
+  stat_summary(fun = mean, geom = "point",
+               shape = 20, size = 4, color = "coral") +
+  labs(title = "Distribution of Regular Season Goals by Player",
+       subtitle = "NHL 2023–24",
+       x = "",
+       y = "Goals Scored") +
+  theme_minimal() +
+  theme(legend.position = "none")
 ```
 
 ::: notes
-What's happening here?
+The mean sits above the median: a few big scorers pull the mean up (right-skewed)
 :::
 
-## One more stat: variation {.center}
+# Multiple box plots {background-color="#dc354a"}
 
-. . .
+## 🚨 Your turn: 🏒 Goals by Position 🏒 🚨
 
-Another way to compare data is by how much a variable *varies*
+Using the `hockey` dataset:
 
-. . .
+1.  Build a box plot of `goals` with one box for each `position`.
 
-Some distributions are very *narrow*, others are very *wide*
+2.  Which position scores the most goals? Which scores the least?
 
-. . .
+::: callout-tip
+Put the grouping variable on the x-axis: `aes(x = position, y = goals)`
+:::
 
-Narrow = observations are similar; wide = observations are not similar
-
-. . .
-
-## Measuring variation: the standard deviation
-
-The formula:
-
-$$ s = \sqrt{\frac{1}{N-1} \sum_{i=1}^N (x_i - \overline{x})^2}$$
-
-. . .
-
-All the movement is here, the sum of the differences between each observation $x_i$ and the average observation $\overline{x}$
-
-$$\sum_{i=1}^N (x_i - \overline{x})^2$$
-
-## Variance intuition
-
-::::::: columns
-:::: {.column width="50%"}
-::: fragment
 ```{r}
-tibble(age = round(rnorm(n = 50, mean = 50, sd = 20), 0)) |> 
-  mutate(avg_age = mean(age),
-         diff = age - avg_age,
-         square = diff^2) |> 
-  slice_head(n = 5) |> 
-  rename("\\(\\overline{age}\\)" = avg_age, "\\(\\ age - \\overline{age}\\)" = diff,
-         "\\(\\ (age - \\overline{age})^2 \\)" = square) |> 
-  kbl(digits = 1, escape = FALSE, caption = "Wide distribution", align = "cccc")
+countdown::countdown(minutes = 3L)
 ```
-:::
-::::
 
-:::: {.column width="50%"}
-::: fragment
+## 🚨 🏒 Goals by Position Answer 🏒 🚨 {.smaller}
+
 ```{r}
-tibble(age = round(rnorm(n = 50, mean = 50, sd = 2), 0)) |> 
-  mutate(avg_age = mean(age),
-         diff = age - avg_age,
-         square = diff^2) |> 
-  slice_head(n = 5) |> 
-  rename("\\(\\overline{age}\\)" = avg_age, "\\(\\ age - \\overline{age}\\)" = diff,
-         "\\(\\ (age - \\overline{age})^2 \\)" = square) |> 
-  kbl(digits = 1, escape = FALSE, caption = "Narrow distribution", align = "cccc")
+#| echo: true
+#| output-location: column
+
+ggplot(data = hockey, aes(x = position, y = goals)) +
+  geom_boxplot(fill = "gray", color = "black") +
+  labs(title = "Regular Season Goals by Position",
+       subtitle = "NHL 2023–24",
+       x = "Position",
+       y = "Goals Scored") +
+  theme_minimal()
 ```
+
+## 🚨 Your turn: 🏒 Team Goals by Position 🏒 🚨
+
+What **percent** of each team's goals comes from each position?
+
+Using `hockey_goals`:
+
+1.  Make a new object called `hockey_boxplot` with the percent of goals from each position: `rw_percent`, `lw_percent`, `c_percent`, `d_percent`.
+
+2.  Make a box plot for each position and combine them with `patchwork`.
+
+::: callout-tip
+1.  Percent = the position's goals divided by `Total`, times 100. Use `mutate()`
+
+2.  Combine plots with `+` and set the layout with `plot_layout(ncol = 4)`
 :::
-::::
-:::::::
-
-$$\sum_{i=1}^N (age_i - \overline{age})^2$$
-
-. . .
-
-The farther observations are from the mean, the **larger** the standard deviation
-
-## Measuring variation
-
-Same average (\~\$50,000), different **standard deviations**
 
 ```{r}
-fake = tibble(`narrow, sd = $5,000` = rnorm(n = 200, mean = 50, sd = 5), 
-              `wide, sd = $10,000` = rnorm(n = 200, mean = 50, sd = 10), 
-              `very wide, sd = $20,000` = rnorm(n = 200, mean = 50, sd = 20)) %>% 
-  pivot_longer(everything()) %>% 
-  mutate(value = value * 1000, 
-         name = factor(name, levels = c("narrow, sd = $5,000", 
-                                        "wide, sd = $10,000",
-                                        "very wide, sd = $20,000")))
+countdown::countdown(minutes = 7L)
+```
 
-ggplot(fake, aes(x = value, fill = name)) + 
-  geom_density(color = "white", alpha = .8) + 
-  facet_wrap(vars(name)) + 
-  scale_x_continuous(labels = scales::comma) + 
-  theme_bw(base_family = "Fira Sans", base_size = 14) + 
-  theme(legend.position = "none") + 
-  scale_fill_viridis_d(option = "rocket", end = .8) + 
-  labs(x = NULL, y = NULL, title = "Household income across three fake towns")
+## 🚨 🏒 Team Goals by Position Answer 🏒 🚨 {.smaller}
+
+Step 1: the percentages
+
+```{r}
+#| echo: true
+
+hockey_boxplot <- hockey_goals |>
+  mutate(
+    rw_percent = R / Total * 100,
+    lw_percent = L / Total * 100,
+    c_percent  = C / Total * 100,
+    d_percent  = D / Total * 100
+  )
+
+hockey_boxplot
+```
+
+## 🚨 🏒 Team Goals by Position Answer 🏒 🚨 {.smaller}
+
+Step 2: plot
+
+```{r}
+#| echo: true
+#| output-location: column
+
+rw <- ggplot(hockey_boxplot, aes(x = "", y = rw_percent)) +
+  geom_boxplot(fill = "gray", color = "black") +
+  labs(x = "Right Wing", y = "% of Team Goals")
+
+lw <- ggplot(hockey_boxplot, aes(x = "", y = lw_percent)) +
+  geom_boxplot(fill = "gray", color = "black") +
+  labs(x = "Left Wing", y = NULL)
+
+cen <- ggplot(hockey_boxplot, aes(x = "", y = c_percent)) +
+  geom_boxplot(fill = "gray", color = "black") +
+  labs(x = "Center", y = NULL)
+
+d <- ggplot(hockey_boxplot, aes(x = "", y = d_percent)) +
+  geom_boxplot(fill = "gray", color = "black") +
+  labs(x = "Defense", y = NULL)
+
+rw + lw + cen + d +
+  plot_layout(ncol = 4) +
+  plot_annotation(
+    title = "Boxplots of the Percentage of Goals Scored",
+    subtitle = "by Position Across all NHL Teams",
+    caption = "NHL Regular Season 2023–24"
+  ) & scale_y_continuous(limits = c(0, 100))
+```
+
+## 🚨 🏒 Team Goals by Position Adv. Answer 🏒 🚨 {.smaller}
+
+Use `pivot_longer()` so **one** `ggplot()` draws all four boxes
+
+```{r}
+#| echo: true
+#| output-location: column
+
+hockey_boxplot |>
+  pivot_longer(c(rw_percent, lw_percent, c_percent, d_percent),
+               names_to = "position", values_to = "percent") |>
+  mutate(position = factor(position,
+    levels = c("rw_percent", "lw_percent", "c_percent", "d_percent"),
+    labels = c("Right Wing", "Left Wing", "Center", "Defense"))) |>
+  ggplot(aes(x = position, y = percent)) +
+  geom_boxplot(fill = "gray", color = "black") +
+  scale_y_continuous(limits = c(0, 100)) +
+  labs(x = "Position", y = "% of Team Goals",
+       title = "Boxplots of the Percentage of Goals Scored",
+       subtitle = "by Position Across all NHL Teams",
+       caption = "NHL Regular Season 2023–24") +
+  theme_minimal()
+```
+
+# Time series {background-color="#dc354a"}
+
+## 🚨 Your turn: 🏒 Canadiens Searches 🏒 🚨
+
+Using the `google_trends` dataset:
+
+1.  Make a time series plot of the Google search score for the Montreal Canadiens (`montreal_canadiens`) by `month`, 2004 to 2026.
+
+2.  Label the x-axis every 2 years.
+
+3.  Add a trend line and a dashed line at the average score.
+
+4.  Add a title, subtitle, axis labels, and a caption.
+
+::: callout-tip
+1.  Connect the points with `geom_line()`
+
+2.  `scale_x_date(date_breaks = "2 years", date_labels = "%Y")`
+
+3.  Trend line: `geom_smooth(method = lm, se = FALSE)`. Average: `geom_hline(yintercept = mean(...), linetype = 2)`
+:::
+
+```{r}
+countdown::countdown(minutes = 6.5L)
+```
+
+## 🚨 🏒 Canadiens Searches Answer 🏒 🚨 {.smaller}
+
+```{r}
+#| echo: true
+#| output-location: column
+
+ggplot(google_trends, aes(x = month, y = montreal_canadiens)) +
+  geom_line(color = "coral2") +
+  geom_smooth(method = lm, se = FALSE,
+              color = "grey40", linewidth = .5) +
+  geom_hline(yintercept = mean(google_trends$montreal_canadiens, na.rm = TRUE),
+             linetype = 2) +
+  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
+  labs(title = "U.S. Google searches for the Montreal Canadiens spike each spring",
+       subtitle = "Monthly Google Trends interest, January 2004 to October 2026",
+       y = "Search interest (0–100)", x = "Month",
+       caption = "Source: Google Trends") +
+  theme_classic() +
+  theme(
+    axis.text.y = element_text(size = 11),
+    axis.text.x = element_text(angle = 45, hjust = 1, size = 9),
+    plot.caption = element_text(hjust = 1, size = 9),
+    plot.title = element_text(size = 14))
 ```
 
 ::: notes
-What could we measure with sd? Can we use standard deviation to measure *equality*?
+The biggest spikes are playoff runs: May 2010, May 2014, June 2021 (Stanley Cup Final), May 2026
 :::
 
-# Summarizing data in R {background-color="#dc354a"}
+# Creating a new variable {background-color="#dc354a"}
 
-## Summary statistics with `summarize()`
+## 🚨 Your turn: 🏒 Playoff Teams 🏒 🚨
 
-We can use `summarize()` to **calculate** things like the mean, median, etc.
+Using `hockey_boxplot` and the `playoffs_2024` list:
 
-```{r, out.width="50%"}
-knitr::include_graphics("img/summarize.png")
-```
+1.  Make a new variable called `playoffs` that is `"Clinched"` if the team made the playoffs and `"Eliminated"` if it did not.
 
-. . .
+2.  Store it as a new object called `hockey_newvar`.
 
-Summarizing **condenses** data into statistics
+::: callout-tip
+1.  `case_when()` goes **inside** `mutate()`
 
-## Using `summarize()`
+2.  `%in%` checks whether a value is in a list: `team %in% playoffs_2024`
 
-Say I want to know the average life expectancy in the world in 2007:
-
-. . .
-
-```{r, echo = TRUE}
-gapminder %>% 
-  filter(year == 2007)
-```
-
-## Using `summarize()`
-
-```{r, echo = TRUE}
-gapminder %>% 
-  filter(year == 2007) %>% 
-  summarize()
-```
-
-## Using `summarize()`
-
-```{r, echo = TRUE}
-gapminder %>% 
-  filter(year == 2007) %>% 
-  summarize(avg_life = mean(lifeExp))
-```
-
-Notice how the data has been *summarized*: only one row
-
-. . .
-
-Notice that I've *named* the summary statistic `avg_life`
-
-## Using `summarize()`
-
-What if I also wanted to know the **median** life expectancy?
-
-. . .
-
-```{r, echo = TRUE}
-gapminder %>% 
-  filter(year == 2007) %>% 
-  summarize(avg_life = mean(lifeExp), 
-            med_life = median(lifeExp)) 
-```
-
-Notice! how similar this looks to `mutate()`
-
-## Using `summarize()`
-
-What if I also wanted to know the **min** and **max** life expectancy?
-
-. . .
-
-```{r, echo = TRUE}
-gapminder %>% 
-  filter(year == 2007) %>% 
-  summarize(avg_life = mean(lifeExp), 
-            med_life = median(lifeExp), 
-            min_life = min(lifeExp), 
-            max_life = max(lifeExp))
-```
-
-## Using `summarize()`
-
-What if I also wanted to know the **standard deviation** of life expectancy?
-
-. . .
-
-```{r, echo = TRUE}
-gapminder %>% 
-  filter(year == 2007) %>% 
-  summarize(avg_life = mean(lifeExp), 
-            med_life = median(lifeExp), 
-            min_life = min(lifeExp), 
-            max_life = max(lifeExp), 
-            sd_life = sd(lifeExp))
-```
-
-## Using `summarize()`
-
-```{r, echo = TRUE, eval = FALSE}
-gapminder %>% 
-  filter(year == 2007) %>% 
-  summarize(avg_life = mean(lifeExp), 
-            med_life = median(lifeExp), 
-            min_life = min(lifeExp), 
-            max_life = max(lifeExp), 
-            sd_life = sd(lifeExp)) 
-```
-
-. . .
-
-`summarize()` is like `mutate()` in that you are creating *new variables*
-
-. . .
-
-So note that you have to *name* the new variables!
-
-## We can use summary functions in filter
-
-which country had the lowest life expectancy in 2007?
-
-. . .
-
-```{r, echo = TRUE}
-gapminder %>% 
-  filter(year == 2007) %>% 
-  filter(lifeExp == min(lifeExp))
-```
-
-## We can use summary functions in filter
-
-which countries had above average GPD but below average health?
-
-. . .
-
-```{r, echo = TRUE}
-gapminder %>% 
-  filter(year == 2007) %>% 
-  filter(gdpPercap > mean(gdpPercap), lifeExp < mean(lifeExp))
-```
-
-## Woe unto us: missing data
-
-. . .
-
-In life, sometimes data is **missing**
-
-. . .
-
-respondent doesn't answer a question, no one knows Afghanistan's GDP in 1943, etc.
-
-. . .
-
-R represents missing data as **NA**
-
-. . .
+3.  There is no `!%in%`. For "not in", use `!(team %in% playoffs_2024)`
+:::
 
 ```{r}
-pokemon %>% 
-  filter(is.na(height_m)) %>% 
-  select(name, type1, type2, height_m, weight_kg) %>% 
-  sample_n(6) %>% 
-  knitr::kable()
+countdown::countdown(minutes = 4L)
 ```
 
-## Summarizing with missing data
+## 🚨 🏒 Playoff Teams Answer 🏒 🚨 {.smaller}
 
-If you try to *summarize* data that has missing values, R will return `NA`:
+```{r}
+#| echo: true
+
+hockey_newvar <- hockey_boxplot |>
+  mutate(playoffs = case_when(
+    team %in% playoffs_2024 ~ "Clinched",
+    !(team %in% playoffs_2024) ~ "Eliminated"
+  ))
+
+hockey_newvar |>
+  select(team, Total, playoffs)
+```
+
+::: callout-tip
+You can also write the last line as `TRUE ~ "Eliminated"`. `TRUE ~` means "everything else."
+:::
+
+## 🚨 Your turn: 🏒 Graphing the New Variable 🏒 🚨
+
+1.  Keep only the teams that **clinched** the playoffs.
+
+2.  Build box plots of the percent of goals by position for those teams, like before.
+
+::: callout-tip
+1.  Use `filter(playoffs == "Clinched")`
+
+2.  You can copy your box plot code from earlier: just change the data!
+:::
+
+```{r}
+countdown::countdown(minutes = 5L)
+```
+
+## 🚨 🏒 Graphing the New Variable Answer 🏒 🚨 {.smaller}
+
+```{r}
+#| echo: true
+#| output-location: column
+
+hockey_clinched <- hockey_newvar |>
+  filter(playoffs == "Clinched")
+
+rw <- ggplot(hockey_clinched, aes(x = "", y = rw_percent)) +
+  geom_boxplot(fill = "gray", color = "black") +
+  labs(x = "Right Wing", y = "% of Team Goals")
+
+lw <- ggplot(hockey_clinched, aes(x = "", y = lw_percent)) +
+  geom_boxplot(fill = "gray", color = "black") +
+  labs(x = "Left Wing", y = NULL)
+
+cen <- ggplot(hockey_clinched, aes(x = "", y = c_percent)) +
+  geom_boxplot(fill = "gray", color = "black") +
+  labs(x = "Center", y = NULL)
+
+d <- ggplot(hockey_clinched, aes(x = "", y = d_percent)) +
+  geom_boxplot(fill = "gray", color = "black") +
+  labs(x = "Defense", y = NULL)
+
+rw + lw + cen + d +
+  plot_layout(ncol = 4) +
+  plot_annotation(
+    title = "Boxplots of the Percentage of Goals Scored",
+    subtitle = "by Position across NHL Teams who Clinched the Playoffs",
+    caption = "NHL Regular Season 2023–24"
+  ) & scale_y_continuous(limits = c(0, 100))
+```
+
+## 🚨 🏒 Graphing the New Variable Adv. Answer 🏒 🚨 {.smaller}
+
+Compare clinched **and** eliminated teams in one plot
+
+```{r}
+#| echo: true
+#| output-location: column
+
+rink_colors <- c("Clinched" = "#0A9396", "Eliminated" = "#BB3E03")
+
+hockey_newvar |>
+  pivot_longer(c(rw_percent, lw_percent, c_percent, d_percent),
+               names_to = "position", values_to = "percent") |>
+  mutate(position = factor(position,
+    levels = c("rw_percent", "lw_percent", "c_percent", "d_percent"),
+    labels = c("Right Wing", "Left Wing", "Center", "Defense"))) |>
+  ggplot(aes(x = position, y = percent, fill = playoffs)) +
+  geom_boxplot(alpha = 0.7) +
+  scale_fill_manual(values = rink_colors, name = "Playoffs") +
+  scale_y_continuous(limits = c(0, 100)) +
+  labs(x = "Position", y = "% of Team Goals",
+       title = "Percentage of Goals Scored by Position",
+       subtitle = "Playoff vs. non-playoff teams",
+       caption = "NHL Regular Season 2023–24") +
+  theme_minimal()
+```
+
+# t-tests {background-color="#dc354a"}
+
+## 🚨 Your turn: 🏒 t-test 🏒 🚨
+
+Using `hockey_newvar`:
+
+1.  Test whether teams that made the playoffs scored more **total goals** (`Total`) than teams that did not.
+
+2.  Make a new variable `offense_perct`: the percent of goals from forwards (right wing + left wing + center).
+
+3.  Test whether playoff teams get a different percent of their goals from **defense** (`d_percent`).
+
+4.  Which differences are statistically significant?
+
+::: callout-tip
+1.  The formula is `t.test(OUTCOME ~ GROUP, data = DATA)`
+
+2.  A difference is statistically significant if the **p-value** is less than 0.05
+:::
+
+```{r}
+countdown::countdown(minutes = 6.5L)
+```
+
+## 🚨 🏒 t-test Answer 🏒 🚨 {.smaller}
+
+```{r}
+#| echo: true
+#| output-location: column
+
+t.test(Total ~ playoffs, data = hockey_newvar)
+
+hockey_ttest <- hockey_newvar |>
+  mutate(offense_perct = rw_percent + lw_percent + c_percent)
+
+t.test(d_percent ~ playoffs, data = hockey_ttest)
+```
 
 . . .
 
-```{r, echo = TRUE}
-pokemon %>% 
-  summarise(average_height = mean(height_m))
-```
+**Total goals**: playoff teams scored about 269 goals vs. 232, p = 0.0004: **significant**
+
+. . .
+
+**Defense share**: p = 0.15: **not** significant
 
 . . .
 
 ::: callout-note
-Any math operation with `NA` will return `NA` (.e.g, 3 + `NA` = `NA`)
+`offense_perct` and `d_percent` always add up to 100, so testing `offense_perct` gives the same p-value
 :::
 
-## What to do?
-
-. . .
-
-There are whole classes on what to do with missing data (impute, simulate, model, etc.)
-
-. . .
-
-In this class we will tell R to ignore missing observations
-
-. . .
-
-We can do this by adding the `na.rm = TRUE` argument to summary
-
-```{r, echo = TRUE}
-pokemon %>% 
-  summarise(average_height = mean(height_m, na.rm = TRUE)) 
-```
-
-## Remember...
-
-. . .
-
-If you're trying to calculate a summary statistic and keep getting `NA`...
-
-. . .
-
-99.99999% of the time you need to add `na.rm = TRUE` to your function!
-
-. . .
-
-```{r, echo = TRUE, eval = TRUE}
-pokemon %>% 
-  summarise(average_height = mean(height_m, na.rm = TRUE)) 
-```
-
-## 🚨 Your turn: 🚢 trade 🚢 🚨
-
-Dataset from `juanr` on international trade:
-
-```{r}
-trade %>% 
-  head() %>% 
-  knitr::kable(caption = "Trade patterns around the world")
-```
-
-## 🚨 Your turn: 🚢 trade 🚢 🚨
-
-Using the `trade` dataset:
-
-1.  How has Inter-Governmental Organizations (IGOs) membership expanded over time? Calculate the *median* number of IGOs that countries belonged to in 1960. Repeat for 2010. About how much has IGO membership grown in 50 years?
-
-2.  What is having a sea border worth? Look only at countries that have at least one sea border in the year 2010. What is the average value of exports among these countries? Do the same for countries with no sea borders. About how much more do countries with sea borders export than countries without?
-
-3.  What was the country with the *most* exports in 1960? What about in 2012?
-
-::: callout-tip
-1.  Remember to attach your libraries using `library()`
-2.  Trade is in the `juanr` package and these functions are found in the `tidyverse` package, also run the `library(dyplr)` after these two (this will already be installed)
-3.  `?trade` to look at the variables and `distinct()` to look at a variables values
-:::
-
-```{r}
-countdown::countdown(minutes = 15L)
-```
-
-## 🚨 🚢 trade Q1 🚢 🚨 {.smaller}
-
-```{r}
-#| echo: true
-
-library(juanr)
-library(tidyverse)
-library(dplyr)
-
-trade_1960 <- trade |>
-  filter(year == 1960) |>
-  summarise(
-   median_igos = median(sum_igos, na.rm = TRUE)
-  )
-
-trade_2010 <- trade |>
-  filter(year == 2010) |>
-  summarise(
-   median_igos = median(sum_igos, na.rm = TRUE)
-  )
-
-trade_1960 
-trade_2010
-
-```
-
-## 🚨 🚢 trade Q2 🚢 🚨
-
-```{r}
-#| echo: true
-
-trade_seaborders <- trade |>
-  filter(sea_borders >= 1 & year == 2010) |>
-  summarise(
-   avg_exports = mean(exports, na.rm = TRUE)
-  )
-
-trade_no_seaborders <- trade |>
-  filter(sea_borders == 0 & year == 2010) |>
-  summarise(
-   avg_exports = mean(exports, na.rm = TRUE)
-  )
-
-trade_seaborders
-trade_no_seaborders
-
-```
-
-## 🚨 🚢 trade Q3 🚢 🚨 {.smaller}
-
-```{r}
-#| echo: true
-
-## Option 1
-trade_exp1960 <- trade |>
-  filter(year == 1960) |>
-  filter(exports == max(exports, na.rm=TRUE))
-
-trade_exp2012 <- trade |>
-  filter(year == 2012) |>
-  filter(exports == max(exports, na.rm=TRUE))
-
-trade_exp1960
-trade_exp2012 
-
-## Option 2
-trade_exp1960 <- trade |>
-  filter(year == 1960) |>
-  arrange(desc(exports))
-
-trade_exp2012 <- trade |>
-  filter(year == 2012) |>
-  arrange(desc(exports))
-
-trade_exp1960[1,]
-trade_exp2012[1,]
-
-```
-
-##  {.center}
-
-## Relationships {.center}
-
-. . .
-
-`summarize()` lets us calculate statistics for the whole dataset
-
-. . .
-
-But what if we want to do this for different *groups* within the data?
-
-. . .
-
-This is at the heart of making **comparisons**
-
-## Variation in trade over time: the brutal way
-
-How much do country imports **vary** for each country over time?
-
-. . .
-
-Tedious: `filter()` to calculate standard deviation of imports for each country
-
-. . .
-
-Starting with China
-
-```{r, echo = TRUE}
-trade %>% 
-  filter(country == "China") %>%  
-  summarise(var_trade = sd(imports, na.rm = TRUE)) 
-```
-
-## Variation in trade over time: the brutal way
-
-I could go on to another country:
-
-```{r, echo = TRUE}
-trade %>% 
-  filter(country == "Algeria") %>%  
-  summarise(var_trade = sd(imports, na.rm = TRUE)) 
-```
-
-## Variation in trade over time: the brutal way
-
-And so on for all countries... but this is brutally tedious
-
-```{r, echo = TRUE}
-trade %>% 
-  filter(country == "Nepal") %>%  
-  summarise(var_trade = sd(imports, na.rm = TRUE)) 
-```
-
-## Using `group_by()`
-
-We can use `group_by()` in combination with `summarize()` to calculate some stat **by** another variable in the data:
-
-. . .
-
-```{r, echo = TRUE}
-trade %>% 
-  group_by(country) %>%  
-  summarise(var_trade = sd(imports, na.rm = TRUE)) 
-```
-
-## Using `group_by()`
-
-Like with anything else, we can store our results as a new object:
-
-```{r, echo = TRUE}
-var_time = trade %>% 
-  group_by(country) %>% 
-  summarise(var_trade = sd(imports, na.rm = TRUE))
-
-var_time
-```
-
-## Variation in trade over time
-
-And use our object to make plots:
-
-```{r, echo = FALSE, out.width="100%"}
-top = var_time %>% 
-  slice_max(var_trade, n = 10) %>% 
-  mutate(type = "Top 10")
-bottom = var_time %>% 
-  slice_min(var_trade, n = 10) %>% 
-  mutate(type = "Bottom 10")
-
-bind_rows(top, bottom) %>% 
-  ggplot(aes(x = reorder(country, var_trade), 
-             y = var_trade, color = type)) + 
-  ggalt::geom_lollipop(size = 1.2, alpha = .8) + 
-  facet_wrap(vars(type), scales = "free_y") + 
-  coord_flip() + 
-  scale_x_discrete(labels = scales::label_wrap(20)) + 
-  theme(legend.position = "none") + 
-  scale_color_manual(values = c(red, blue)) + 
-  scale_y_continuous(labels = scales::dollar) + 
-  labs(x = NULL, y = "Variation in trade over time\n(in millions of USD)")
-```
-
-::: notes
-What does this graph tell us?
-:::
-
-## Using `group_by()`
-
-We can even `group_by()` multiple variables 🤯
-
-. . .
-
-Average life expectancy per **time**:
-
-. . .
-
-```{r, echo = TRUE}
-gapminder %>%
-  group_by(year) %>% 
-  summarise(avg_life = mean(lifeExp))
-```
-
-## Using `group_by()`
-
-We can even `group_by()` multiple variables 🤯
-
-. . .
-
-Average life expectancy per **year** and **continent**:
-
-. . .
-
-```{r, echo = TRUE}
-gapminder %>%
-  group_by(year, continent) %>% 
-  summarise(avg_life = mean(lifeExp))
-```
-
-## Using `group_by()`
-
-Store as object:
-
-```{r, echo = TRUE}
-life_continent_year = gapminder %>% 
-  group_by(year, continent) %>%
-  summarise(avg_life = mean(lifeExp))
-```
-
-## Make the plot
-
-```{r, echo = TRUE, out.width="80%"}
-ggplot(life_continent_year, aes(x = year, y = avg_life, color = continent)) + 
-  geom_line(size = 2, alpha = .8) + labs(x = "Year", y = "Average life expectancy")
-```
-
-## 🚨 Your turn: 🌡️ ugly prejudice 🌡️ 🚨
-
-. . .
-
-Researchers use *feeling thermometers* to measure how people feel about different groups
-
-. . .
-
-🌡 goes from zero (strong dislike) to 100 (strong like), with 50 as the neutral point
-
-. . .
-
-```{r}
-therm %>% 
-  head() %>% 
-  #select(birth_year, sex, race, party_id, ft_black_2017, ft_white_2017) %>% 
-  knitr::kable()
-```
-
-## 🚨 Your turn: 🌡️ ugly prejudice 🌡️ 🚨
-
-Using the `therm` dataset:
-
-1.  Calculate average 🌡 towards **two** groups of your choosing, broken down **by** one respondent characteristic. Make sense of the finding.
-
-2.  Calculate average 🌡 towards **two** groups of your choosing, broken down **by** two (🤯🤯🤯) respondent characteristics. Make sense of the finding.
-
-3.  Tell the class what you found.
-
-::: callout-tip
-1.  `?therm` to look at the the variables and `distinct()` to look at a variables values
-:::
-
-```{r}
-countdown::countdown(minutes = 15L)
-```
+##

@@ -18,7 +18,7 @@ This page contains an outline of the topics and materials for the Fall 2026 disc
 | [2](/weeks/week-2.html) | Fri, Oct 9 | Data Visualization | [📖](/weeks/week-2.html#prepare)  | [🖥️](slides/lec-2.html) |
 | [3](/weeks/week-3.html) | Fri, Oct 16 | Data Wrangling I | [📖](/weeks/week-3.html#prepare) | [🖥️](slides/lec-3.html) |
 | [4](/weeks/week-4.html) | Fri, Oct 23 | Data Wrangling II | [📖](/weeks/week-4.html#prepare) | [🖥️](slides/lec-4.html) |
-| 5 | Fri, Oct 30 | Relationships |  |  |
+| [5](/weeks/week-5.html) | Fri, Oct 30 | Project 1 Practice | [📖](/weeks/week-5.html#prepare) | [🖥️](slides/lec-5.html) |
 | 6 | Fri, Nov 6 | Modeling and Causality  |  |  |
 | 7 | Fri, Nov 13 | Uncertainty & Hypothesis Testing |  |  |
 | 8 | Fri, Nov 20 | Prediction & Natural Experiments |  |  |

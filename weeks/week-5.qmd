@@ -1,22 +1,58 @@
 ---
 title: "Week 5"
-subtitle: "Hypothesis Testing, Prediction, and Natural Experiments"
+subtitle: "Project 1 Practice"
 editor: visual
 ---
 
 ::: callout-important
--   Peer Review Due - Wed. July 22
+-   Project #1 is projected to be due Nov. 5
 :::
 
-## Discussion Materials
+## Prepare
 
-🖥️ [Lecture 13 - Hypothesis testing](/slides/lec-13.html)
+### Data Visualization
 
-## Recommended Readings
+📖 Read the box plot section of [Data Visualization by ModernDive](https://moderndive.com/v2/viz.html)
 
-📖 Read [CH.6 in ModernDive](https://moderndive.com/v2/multiple-regression.html), but ignore the stuff on interactions
+### Hypothesis Testing
 
-📖 Read [Chapter 9 in ModernDive](https://moderndive.com/v2/hypothesis-testing.html)
+📖 Read [Hypothesis Testing by ModernDive](https://moderndive.com/v2/09-hypothesis-testing.html)
+
+## Lectures
+
+🖥️ [Lecture 5 - Project 1 Practice](../slides/lec-5.html)
+
+## Handout
+
+📝 [Download the Project 1 Practice handout (.qmd)](../files/project1-practice.qmd){download="project1-practice.qmd"}
+
+Open it in RStudio or Posit Cloud and fill in each code chunk. The answers are in the lecture slides.
+
+### More on This Week's Functions
+
+`geom_boxplot()`
+
+-   <https://ggplot2.tidyverse.org/reference/geom_boxplot.html>
+
+`pivot_wider()` and `pivot_longer()`
+
+-   <https://r4ds.hadley.nz/data-tidy.html>
+
+`patchwork`
+
+-   <https://patchwork.data-imaginist.com/articles/patchwork.html>
+
+`scale_x_date()`
+
+-   <https://ggplot2.tidyverse.org/reference/scale_date.html>
+
+`case_when()`
+
+-   <https://www.rdocumentation.org/packages/dplyr/versions/1.0.10/topics/case_when>
+
+`t.test()`
+
+-   <https://moderndive.com/v2/09-hypothesis-testing.html>
 
 <br><br>
 

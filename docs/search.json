@@ -876,7 +876,7 @@
     "href": "slides/lec-4.html#who-won-the-county",
     "title": "Data wrangling II",
     "section": "Who won the county?",
-    "text": "Who won the county?\n\n\n\nsample from elections dataset\n\n\nname\nstate\nper_gop_2020\nper_dem_2020\n\n\n\n\nTipton County\nTN\n0.73\n0.25\n\n\nNew Haven County\nCT\n0.41\n0.58\n\n\nPawnee County\nNE\n0.75\n0.23\n\n\nFranklin County\nAR\n0.80\n0.18\n\n\nDickinson County\nMI\n0.66\n0.33\n\n\nFreeborn County\nMN\n0.57\n0.41\n\n\nHardin County\nOH\n0.75\n0.23\n\n\nTuscola County\nMI\n0.69\n0.30\n\n\nLos Alamos County\nNM\n0.35\n0.61\n\n\nSan Francisco County\nCA\n0.13\n0.85"
+    "text": "Who won the county?\n\n\n\nsample from elections dataset\n\n\nname\nstate\nper_gop_2020\nper_dem_2020\n\n\n\n\nThomas County\nKS\n0.82\n0.16\n\n\nRed Willow County\nNE\n0.83\n0.15\n\n\nMadison Parish\nLA\n0.41\n0.57\n\n\nRefugio County\nTX\n0.66\n0.33\n\n\nFord County\nKS\n0.65\n0.33\n\n\nUpshur County\nWV\n0.76\n0.22\n\n\nFord County\nIL\n0.72\n0.25\n\n\nPrince William County\nVA\n0.36\n0.63\n\n\nAdair County\nOK\n0.79\n0.20\n\n\nCochran County\nTX\n0.81\n0.18"
   },
   {
     "objectID": "slides/lec-4.html#who-won-the-county-1",
@@ -974,7 +974,7 @@
     "href": "slides/lec-4.html#woe-unto-us-missing-data",
     "title": "Data wrangling II",
     "section": "Woe unto us: missing data",
-    "text": "Woe unto us: missing data\n\nIn life, sometimes data is missing\n\n\nrespondent doesn’t answer a question, no one knows Afghanistan’s GDP in 1943, etc.\n\n\nR represents missing data as NA\n\n\n\n\n\n\n\nname\ntype1\ntype2\nheight_m\nweight_kg\n\n\n\n\nMuk\npoison\npoison\nNA\nNA\n\n\nLycanroc\nrock\nNA\nNA\nNA\n\n\nHoopa\npsychic\nghost\nNA\nNA\n\n\nGolem\nrock\nground\nNA\nNA\n\n\nGraveler\nrock\nground\nNA\nNA\n\n\nMeowth\nnormal\ndark\nNA\nNA"
+    "text": "Woe unto us: missing data\n\nIn life, sometimes data is missing\n\n\nrespondent doesn’t answer a question, no one knows Afghanistan’s GDP in 1943, etc.\n\n\nR represents missing data as NA\n\n\n\n\n\n\n\nname\ntype1\ntype2\nheight_m\nweight_kg\n\n\n\n\nDiglett\nground\nground\nNA\nNA\n\n\nGeodude\nrock\nground\nNA\nNA\n\n\nRattata\nnormal\ndark\nNA\nNA\n\n\nDugtrio\nground\nground\nNA\nNA\n\n\nLycanroc\nrock\nNA\nNA\nNA\n\n\nRaticate\nnormal\ndark\nNA\nNA"
   },
   {
     "objectID": "slides/lec-4.html#summarizing-with-missing-data",
@@ -5350,5 +5350,327 @@
     "title": "Week 6",
     "section": "Perform",
     "text": "Perform\nNo lab"
+  },
+  {
+    "objectID": "slides/lec-5.html#nhl-player-stats-202324",
+    "href": "slides/lec-5.html#nhl-player-stats-202324",
+    "title": "Project 1 Practice",
+    "section": "NHL player stats, 2023–24",
+    "text": "NHL player stats, 2023–24\nOne row per player per team, regular season only\n\nhockey = read_csv(\"https://raw.githubusercontent.com/hbdaarstad/NHL-22-24-Season-Data/main/hockey_stats.csv\") |&gt;\n  filter(!is.na(position), position != \"G\")\n\nhockey |&gt;\n  select(player, team, position, goals, assists, points)\n\n# A tibble: 916 × 6\n   player           team  position goals assists points\n   &lt;chr&gt;            &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;\n 1 Nikita Kucherov  TBL   R           44     100    144\n 2 Nathan MacKinnon COL   C           51      89    140\n 3 Connor McDavid   EDM   C           32     100    132\n 4 Artemi Panarin   NYR   L           49      71    120\n 5 David Pastrnak   BOS   R           47      63    110\n 6 Auston Matthews  TOR   C           69      38    107\n 7 Leon Draisaitl   EDM   C           41      65    106\n 8 Mikko Rantanen   COL   R           42      62    104\n 9 J.T. Miller      VAN   C           37      66    103\n10 William Nylander TOR   R           40      58     98\n# ℹ 906 more rows\n\n\n\n\n\n\n\n\nNote\n\n\nPositions: C = center, L = left wing, R = right wing, D = defense. We drop goalies (G)."
+  },
+  {
+    "objectID": "slides/lec-5.html#google-trends-montreal-canadiens",
+    "href": "slides/lec-5.html#google-trends-montreal-canadiens",
+    "title": "Project 1 Practice",
+    "section": "Google Trends: Montreal Canadiens",
+    "text": "Google Trends: Montreal Canadiens\nMonthly U.S. search interest, 2004 to 2026\n\ngoogle_trends = read_csv(\"https://raw.githubusercontent.com/hbdaarstad/NHL-22-24-Season-Data/main/google_trends.csv\") |&gt;\n  select(month, montreal_canadiens)\n\ngoogle_trends\n\n# A tibble: 274 × 2\n   month      montreal_canadiens\n   &lt;date&gt;                  &lt;dbl&gt;\n 1 2004-01-01                 10\n 2 2004-02-01                 10\n 3 2004-03-01                 10\n 4 2004-04-01                 18\n 5 2004-05-01                  8\n 6 2004-06-01                  7\n 7 2004-07-01                  8\n 8 2004-08-01                  7\n 9 2004-09-01                  7\n10 2004-10-01                  5\n# ℹ 264 more rows\n\n\n\n\n\n\n\n\nNote\n\n\nGoogle Trends scores each month 0–100, where 100 = the busiest month in the whole period. It is not a count of searches."
+  },
+  {
+    "objectID": "slides/lec-5.html#what-is-a-box-plot",
+    "href": "slides/lec-5.html#what-is-a-box-plot",
+    "title": "Box plots, time series, and t-tests",
+    "section": "What is a box plot?",
+    "text": "What is a box plot?\nA box plot shows the distribution of one numeric variable\n\nThe line in the middle of the box is the median\n\n\nThe box covers the middle 50% of the data (25th to 75th percentile)\n\n\nThe whiskers stretch to the most extreme values that are not unusual\n\n\nThe dots past the whiskers are outliers"
+  },
+  {
+    "objectID": "slides/lec-5.html#building-a-box-plot",
+    "href": "slides/lec-5.html#building-a-box-plot",
+    "title": "Box plots, time series, and t-tests",
+    "section": "Building a box plot",
+    "text": "Building a box plot\nHow many goals did NHL skaters score in 2023–24?\n\nggplot(data = hockey, aes(x = \"\", y = goals)) +\n  geom_boxplot()\n\n\n\nx = “” gives a single box with no category"
+  },
+  {
+    "objectID": "slides/lec-5.html#building-a-box-plot-1",
+    "href": "slides/lec-5.html#building-a-box-plot-1",
+    "title": "Box plots, time series, and t-tests",
+    "section": "Building a box plot",
+    "text": "Building a box plot\nHighlight the outliers\n\nggplot(data = hockey, aes(x = \"\", y = goals)) +\n  geom_boxplot(\n    alpha = 0.7,                       # transparency of the box fill\n    outlier.color = \"cornflowerblue\",  # color of outlier points\n    outlier.shape = 8,                 # outlier symbol is a star\n    outlier.size = 1                   # outlier size\n  )"
+  },
+  {
+    "objectID": "slides/lec-5.html#building-a-box-plot-2",
+    "href": "slides/lec-5.html#building-a-box-plot-2",
+    "title": "Box plots, time series, and t-tests",
+    "section": "Building a box plot",
+    "text": "Building a box plot\nAdd the mean with stat_summary()\n\nggplot(data = hockey, aes(x = \"\", y = goals)) +\n  geom_boxplot(alpha = 0.7, outlier.color = \"cornflowerblue\",\n               outlier.shape = 8, outlier.size = 1) +\n  stat_summary(fun = mean, geom = \"point\", shape = 20, size = 4, color = \"coral\")\n\n\n\n\n\n\n\n\nNote\n\n\nThe mean (coral dot) sits above the median (line). A few big scorers pull the mean up: the data is right-skewed."
+  },
+  {
+    "objectID": "slides/lec-5.html#building-a-box-plot-3",
+    "href": "slides/lec-5.html#building-a-box-plot-3",
+    "title": "Box plots, time series, and t-tests",
+    "section": "Building a box plot",
+    "text": "Building a box plot\nFinish with labels and a theme\n\n\nggplot(data = hockey, aes(x = \"\", y = goals)) +\n  geom_boxplot(\n    alpha = 0.7,\n    outlier.color = \"cornflowerblue\",\n    outlier.shape = 8,\n    outlier.size = 1\n  ) +\n  stat_summary(fun = mean, geom = \"point\",\n               shape = 20, size = 4, color = \"coral\") +\n  labs(title = \"Distribution of Regular Season Goals by Player\",\n       subtitle = \"NHL 2023–24\",\n       x = \"\",\n       y = \"Goals Scored\") +\n  theme_minimal() +\n  theme(legend.position = \"none\")"
+  },
+  {
+    "objectID": "slides/lec-5.html#one-box-per-group",
+    "href": "slides/lec-5.html#one-box-per-group",
+    "title": "Box plots, time series, and t-tests",
+    "section": "One box per group",
+    "text": "One box per group\nPut the grouping variable on the x-axis\n\nggplot(data = hockey, aes(x = position, y = goals)) +\n  geom_boxplot()\n\n\n\nForwards (C, L, R) score a lot more than defense (D)"
+  },
+  {
+    "objectID": "slides/lec-5.html#what-share-of-a-teams-goals-comes-from-each-position",
+    "href": "slides/lec-5.html#what-share-of-a-teams-goals-comes-from-each-position",
+    "title": "Box plots, time series, and t-tests",
+    "section": "What share of a team’s goals comes from each position?",
+    "text": "What share of a team’s goals comes from each position?\nStep 1: add up goals by team and position with group_by() and summarize()\n\nhockey |&gt;\n  group_by(team, position) |&gt;\n  summarize(goals = sum(goals, na.rm = TRUE), .groups = \"drop\")\n\n# A tibble: 128 × 3\n   team  position goals\n   &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt;\n 1 ANA   C           80\n 2 ANA   D           19\n 3 ANA   L           25\n 4 ANA   R           75\n 5 ARI   C           95\n 6 ARI   D           32\n 7 ARI   L           71\n 8 ARI   R           51\n 9 BOS   C          121\n10 BOS   D           31\n# ℹ 118 more rows"
+  },
+  {
+    "objectID": "slides/lec-5.html#what-share-of-a-teams-goals-comes-from-each-position-1",
+    "href": "slides/lec-5.html#what-share-of-a-teams-goals-comes-from-each-position-1",
+    "title": "Box plots, time series, and t-tests",
+    "section": "What share of a team’s goals comes from each position?",
+    "text": "What share of a team’s goals comes from each position?\nStep 2: pivot_wider() so each position gets its own column\n\nhockey_goals = hockey |&gt;\n  group_by(team, position) |&gt;\n  summarize(goals = sum(goals, na.rm = TRUE), .groups = \"drop\") |&gt;\n  pivot_wider(names_from = position, values_from = goals, values_fill = 0) |&gt;\n  mutate(Total = rowSums(across(-team)))\n\nhockey_goals\n\n# A tibble: 32 × 6\n   team      C     D     L     R Total\n   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1 ANA      80    19    25    75   199\n 2 ARI      95    32    71    51   249\n 3 BOS     121    31    59    47   258\n 4 BUF      68    41    64    71   244\n 5 CAR     125    49    63    39   276\n 6 CBJ      82    39    48    62   231\n 7 CGY     157    52    38     5   252\n 8 CHI     107    19    31    19   176\n 9 COL      95    61    57    85   298\n10 DAL     168    36    72    12   288\n# ℹ 22 more rows\n\n\n\n\n\n\n\n\nNote\n\n\nacross(-team) means “every column except team,” so rowSums() adds up C, D, L and R"
+  },
+  {
+    "objectID": "slides/lec-5.html#what-share-of-a-teams-goals-comes-from-each-position-2",
+    "href": "slides/lec-5.html#what-share-of-a-teams-goals-comes-from-each-position-2",
+    "title": "Box plots, time series, and t-tests",
+    "section": "What share of a team’s goals comes from each position?",
+    "text": "What share of a team’s goals comes from each position?\nStep 3: mutate() the percentages\n\nhockey_boxplot = hockey_goals |&gt;\n  mutate(\n    rw_percent = R / Total * 100,\n    lw_percent = L / Total * 100,\n    c_percent  = C / Total * 100,\n    d_percent  = D / Total * 100\n  )\n\nhockey_boxplot |&gt;\n  select(team, Total, rw_percent, lw_percent, c_percent, d_percent)\n\n# A tibble: 32 × 6\n   team  Total rw_percent lw_percent c_percent d_percent\n   &lt;chr&gt; &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;\n 1 ANA     199      37.7        12.6      40.2      9.55\n 2 ARI     249      20.5        28.5      38.2     12.9 \n 3 BOS     258      18.2        22.9      46.9     12.0 \n 4 BUF     244      29.1        26.2      27.9     16.8 \n 5 CAR     276      14.1        22.8      45.3     17.8 \n 6 CBJ     231      26.8        20.8      35.5     16.9 \n 7 CGY     252       1.98       15.1      62.3     20.6 \n 8 CHI     176      10.8        17.6      60.8     10.8 \n 9 COL     298      28.5        19.1      31.9     20.5 \n10 DAL     288       4.17       25        58.3     12.5 \n# ℹ 22 more rows"
+  },
+  {
+    "objectID": "slides/lec-5.html#what-share-of-a-teams-goals-comes-from-each-position-3",
+    "href": "slides/lec-5.html#what-share-of-a-teams-goals-comes-from-each-position-3",
+    "title": "Box plots, time series, and t-tests",
+    "section": "What share of a team’s goals comes from each position?",
+    "text": "What share of a team’s goals comes from each position?\nStep 4: one plot per position, combined with patchwork\n\n\nrw = ggplot(hockey_boxplot, aes(x = \"\", y = rw_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Right Wing\", y = \"% of Team Goals\")\n\nlw = ggplot(hockey_boxplot, aes(x = \"\", y = lw_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Left Wing\", y = NULL)\n\ncen = ggplot(hockey_boxplot, aes(x = \"\", y = c_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Center\", y = NULL)\n\nd = ggplot(hockey_boxplot, aes(x = \"\", y = d_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Defense\", y = NULL)\n\nrw + lw + cen + d +\n  plot_layout(ncol = 4) +\n  plot_annotation(\n    title = \"Percentage of Goals Scored by Position\",\n    subtitle = \"Across all NHL teams\",\n    caption = \"NHL Regular Season 2023–24\"\n  ) & scale_y_continuous(limits = c(0, 100))"
+  },
+  {
+    "objectID": "slides/lec-5.html#a-shortcut-pivot_longer",
+    "href": "slides/lec-5.html#a-shortcut-pivot_longer",
+    "title": "Box plots, time series, and t-tests",
+    "section": "A shortcut: pivot_longer()",
+    "text": "A shortcut: pivot_longer()\nMake the data long, then one ggplot() draws all four boxes\n\n\nhockey_boxplot |&gt;\n  pivot_longer(c(rw_percent, lw_percent, c_percent, d_percent),\n               names_to = \"position\", values_to = \"percent\") |&gt;\n  mutate(position = factor(position,\n    levels = c(\"rw_percent\", \"lw_percent\", \"c_percent\", \"d_percent\"),\n    labels = c(\"Right Wing\", \"Left Wing\", \"Center\", \"Defense\"))) |&gt;\n  ggplot(aes(x = position, y = percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  scale_y_continuous(limits = c(0, 100)) +\n  labs(x = \"Position\", y = \"% of Team Goals\",\n       title = \"Percentage of Goals Scored by Position\",\n       subtitle = \"Across all NHL teams\",\n       caption = \"NHL Regular Season 2023–24\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTip\n\n\nfactor() with levels and labels sets the order and the names of the boxes"
+  },
+  {
+    "objectID": "slides/lec-5.html#time-series-1",
+    "href": "slides/lec-5.html#time-series-1",
+    "title": "Box plots, time series, and t-tests",
+    "section": "Time series",
+    "text": "Time series\nA time series shows how a variable changes over time\n\nTime goes on the x-axis, and we connect the points with geom_line()\n\n\n\nggplot(google_trends, aes(x = month, y = montreal_canadiens)) +\n  geom_line(color = \"coral2\")"
+  },
+  {
+    "objectID": "slides/lec-5.html#time-series-2",
+    "href": "slides/lec-5.html#time-series-2",
+    "title": "Box plots, time series, and t-tests",
+    "section": "Time series",
+    "text": "Time series\nControl the date labels with scale_x_date()\n\nggplot(google_trends, aes(x = month, y = montreal_canadiens)) +\n  geom_line(color = \"coral2\") +\n  scale_x_date(date_breaks = \"2 years\", date_labels = \"%Y\")\n\n\n\n\n\n\n\n\nNote\n\n\n%Y = 4-digit year, %b = short month name, %d = day"
+  },
+  {
+    "objectID": "slides/lec-5.html#time-series-3",
+    "href": "slides/lec-5.html#time-series-3",
+    "title": "Box plots, time series, and t-tests",
+    "section": "Time series",
+    "text": "Time series\nAdd a trend line and the average\n\nggplot(google_trends, aes(x = month, y = montreal_canadiens)) +\n  geom_line(color = \"coral2\") +\n  scale_x_date(date_breaks = \"2 years\", date_labels = \"%Y\") +\n  geom_smooth(method = lm, se = FALSE, color = \"grey40\", linewidth = .5) +\n  geom_hline(yintercept = mean(google_trends$montreal_canadiens, na.rm = TRUE), linetype = 2)"
+  },
+  {
+    "objectID": "slides/lec-5.html#time-series-4",
+    "href": "slides/lec-5.html#time-series-4",
+    "title": "Box plots, time series, and t-tests",
+    "section": "Time series",
+    "text": "Time series\nFinish with labels and a theme\n\n\nggplot(google_trends, aes(x = month, y = montreal_canadiens)) +\n  geom_line(color = \"coral2\") +\n  geom_smooth(method = lm, se = FALSE,\n              color = \"grey40\", linewidth = .5) +\n  geom_hline(yintercept = mean(google_trends$montreal_canadiens, na.rm = TRUE),\n             linetype = 2) +\n  scale_x_date(date_breaks = \"2 years\", date_labels = \"%Y\") +\n  labs(title = \"U.S. Google searches for the Montreal Canadiens spike each spring\",\n       subtitle = \"Monthly Google Trends interest, January 2004 to October 2026\",\n       y = \"Search interest (0–100)\", x = \"Month\",\n       caption = \"Source: Google Trends\") +\n  theme_classic() +\n  theme(\n    axis.text.y = element_text(size = 11),\n    axis.text.x = element_text(angle = 45, hjust = 1, size = 9),\n    plot.caption = element_text(hjust = 1, size = 9),\n    plot.title = element_text(size = 14))\n\n\n\n\n\n\n\n\n\n\nThe biggest spikes are playoff runs: May 2010, May 2014, June 2021 (Stanley Cup Final), May 2026"
+  },
+  {
+    "objectID": "slides/lec-5.html#who-made-the-playoffs",
+    "href": "slides/lec-5.html#who-made-the-playoffs",
+    "title": "Box plots, time series, and t-tests",
+    "section": "Who made the playoffs?",
+    "text": "Who made the playoffs?\nRemember: objects can store values, not just data\n\n\nplayoffs_2024 = c(\"FLA\", \"BOS\", \"TOR\", \"TBL\", \"NYR\", \"WSH\", \"CAR\", \"NYI\",\n                  \"DAL\", \"VGK\", \"COL\", \"WPG\", \"VAN\", \"NSH\", \"EDM\", \"LAK\")\n\n\n\n%in% checks whether a value is in a list\n\n\n\n\"EDM\" %in% playoffs_2024\n\n[1] TRUE\n\n\"SJS\" %in% playoffs_2024\n\n[1] FALSE"
+  },
+  {
+    "objectID": "slides/lec-5.html#who-made-the-playoffs-1",
+    "href": "slides/lec-5.html#who-made-the-playoffs-1",
+    "title": "Box plots, time series, and t-tests",
+    "section": "Who made the playoffs?",
+    "text": "Who made the playoffs?\nThe general formula: case_when(CONDITION ~ LABEL)\n\nhockey_boxplot |&gt;\n  mutate(playoffs = case_when(team %in% playoffs_2024 ~ \"Clinched\")) |&gt;\n  select(team, Total, playoffs)\n\n# A tibble: 32 × 3\n   team  Total playoffs\n   &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;   \n 1 ANA     199 &lt;NA&gt;    \n 2 ARI     249 &lt;NA&gt;    \n 3 BOS     258 Clinched\n 4 BUF     244 &lt;NA&gt;    \n 5 CAR     276 Clinched\n 6 CBJ     231 &lt;NA&gt;    \n 7 CGY     252 &lt;NA&gt;    \n 8 CHI     176 &lt;NA&gt;    \n 9 COL     298 Clinched\n10 DAL     288 Clinched\n# ℹ 22 more rows\n\n\n\npoint out the NA"
+  },
+  {
+    "objectID": "slides/lec-5.html#who-made-the-playoffs-2",
+    "href": "slides/lec-5.html#who-made-the-playoffs-2",
+    "title": "Box plots, time series, and t-tests",
+    "section": "Who made the playoffs?",
+    "text": "Who made the playoffs?\nThe general formula: case_when(CONDITION ~ LABEL)\n\nhockey_boxplot |&gt;\n  mutate(playoffs = case_when(team %in% playoffs_2024 ~ \"Clinched\",\n                              !(team %in% playoffs_2024) ~ \"Eliminated\")) |&gt;\n  select(team, Total, playoffs)\n\n# A tibble: 32 × 3\n   team  Total playoffs  \n   &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;     \n 1 ANA     199 Eliminated\n 2 ARI     249 Eliminated\n 3 BOS     258 Clinched  \n 4 BUF     244 Eliminated\n 5 CAR     276 Clinched  \n 6 CBJ     231 Eliminated\n 7 CGY     252 Eliminated\n 8 CHI     176 Eliminated\n 9 COL     298 Clinched  \n10 DAL     288 Clinched  \n# ℹ 22 more rows\n\n\n\n\n\n\n\n\nNote\n\n\nThere is no !%in% in R. To say “not in”, put ! in front of the whole test: !(team %in% playoffs_2024)"
+  },
+  {
+    "objectID": "slides/lec-5.html#dont-forget-to-store-it",
+    "href": "slides/lec-5.html#dont-forget-to-store-it",
+    "title": "Box plots, time series, and t-tests",
+    "section": "Don’t forget to store it!",
+    "text": "Don’t forget to store it!\n\nhockey_newvar = hockey_boxplot |&gt;\n  mutate(playoffs = case_when(team %in% playoffs_2024 ~ \"Clinched\",\n                              TRUE ~ \"Eliminated\"))\n\n\n\n\n\n\n\n\nTip\n\n\nTRUE ~ means “everything else”: any team that didn’t match the line above it"
+  },
+  {
+    "objectID": "slides/lec-5.html#graphing-the-new-variable",
+    "href": "slides/lec-5.html#graphing-the-new-variable",
+    "title": "Box plots, time series, and t-tests",
+    "section": "Graphing the new variable",
+    "text": "Graphing the new variable\nKeep the playoff teams with filter(), then plot\n\n\nhockey_clinched = hockey_newvar |&gt;\n  filter(playoffs == \"Clinched\")\n\nrw = ggplot(hockey_clinched, aes(x = \"\", y = rw_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Right Wing\", y = \"% of Team Goals\")\n\nlw = ggplot(hockey_clinched, aes(x = \"\", y = lw_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Left Wing\", y = NULL)\n\ncen = ggplot(hockey_clinched, aes(x = \"\", y = c_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Center\", y = NULL)\n\nd = ggplot(hockey_clinched, aes(x = \"\", y = d_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Defense\", y = NULL)\n\nrw + lw + cen + d +\n  plot_layout(ncol = 4) +\n  plot_annotation(\n    title = \"Percentage of Goals Scored by Position\",\n    subtitle = \"NHL teams that clinched the playoffs\",\n    caption = \"NHL Regular Season 2023–24\"\n  ) & scale_y_continuous(limits = c(0, 100))"
+  },
+  {
+    "objectID": "slides/lec-5.html#what-is-a-t-test",
+    "href": "slides/lec-5.html#what-is-a-t-test",
+    "title": "Box plots, time series, and t-tests",
+    "section": "What is a t-test?",
+    "text": "What is a t-test?\nA t-test compares the means of two groups\n\nIs the difference bigger than we would expect from chance alone?\n\n\nThe p-value answers that question\n\n\nIf p &lt; 0.05, we call the difference statistically significant"
+  },
+  {
+    "objectID": "slides/lec-5.html#using-t.test",
+    "href": "slides/lec-5.html#using-t.test",
+    "title": "Box plots, time series, and t-tests",
+    "section": "Using t.test()",
+    "text": "Using t.test()\nThe general formula: t.test(OUTCOME ~ GROUP, data = DATA)\n\nDo playoff teams score more goals?\n\n\n\nt.test(Total ~ playoffs, data = hockey_newvar)\n\n\n    Welch Two Sample t-test\n\ndata:  Total by playoffs\nt = 4.044, df = 28.598, p-value = 0.0003621\nalternative hypothesis: true difference in means between group Clinched and group Eliminated is not equal to 0\n95 percent confidence interval:\n 18.02924 54.97076\nsample estimates:\n  mean in group Clinched mean in group Eliminated \n                268.9375                 232.4375"
+  },
+  {
+    "objectID": "slides/lec-5.html#reading-the-output",
+    "href": "slides/lec-5.html#reading-the-output",
+    "title": "Box plots, time series, and t-tests",
+    "section": "Reading the output",
+    "text": "Reading the output\n\nt.test(Total ~ playoffs, data = hockey_newvar)\n\n\nSample estimates: playoff teams scored about 269 goals on average, and eliminated teams about 232\n\n\np-value = 0.0004, much smaller than 0.05\n\n\nSo playoff teams scored significantly more goals"
+  },
+  {
+    "objectID": "slides/lec-5.html#do-playoff-teams-rely-more-on-their-defense",
+    "href": "slides/lec-5.html#do-playoff-teams-rely-more-on-their-defense",
+    "title": "Box plots, time series, and t-tests",
+    "section": "Do playoff teams rely more on their defense?",
+    "text": "Do playoff teams rely more on their defense?\n\nhockey_ttest = hockey_newvar |&gt;\n  mutate(offense_perct = rw_percent + lw_percent + c_percent)\n\nt.test(d_percent ~ playoffs, data = hockey_ttest)\n\n\n    Welch Two Sample t-test\n\ndata:  d_percent by playoffs\nt = -1.4916, df = 29.895, p-value = 0.1463\nalternative hypothesis: true difference in means between group Clinched and group Eliminated is not equal to 0\n95 percent confidence interval:\n -4.2476960  0.6621946\nsample estimates:\n  mean in group Clinched mean in group Eliminated \n                13.41861                 15.21136 \n\n\n\np = 0.15, bigger than 0.05: no significant difference\n\n\n\n\n\n\nNote\n\n\noffense_perct and d_percent always add up to 100, so testing both gives the same answer twice"
+  },
+  {
+    "objectID": "slides/lec-5.html#your-turn-playoff-players",
+    "href": "slides/lec-5.html#your-turn-playoff-players",
+    "title": "Box plots, time series, and t-tests",
+    "section": "🚨 Your turn: 🏒 Playoff players 🏒 🚨",
+    "text": "🚨 Your turn: 🏒 Playoff players 🏒 🚨\nUsing the hockey dataset:\n\nMake a new variable called playoffs that says whether each player’s team clinched or was eliminated.\nMake a box plot of points for the two groups.\nUse a t-test to check whether players on playoff teams scored more points.\n\n\n\n\n\n\n\nTip\n\n\n\nUse case_when() inside mutate(), and %in% with the playoffs_2024 list\nThe t-test formula is t.test(OUTCOME ~ GROUP, data = DATA)"
+  },
+  {
+    "objectID": "slides/lec-5.html#playoff-players-answer",
+    "href": "slides/lec-5.html#playoff-players-answer",
+    "title": "Box plots, time series, and t-tests",
+    "section": "🚨 🏒 Playoff players Answer 🏒 🚨",
+    "text": "🚨 🏒 Playoff players Answer 🏒 🚨\n\n\nlibrary(tidyverse)\n\nhockey_players &lt;- hockey |&gt;\n  mutate(playoffs = case_when(\n    team %in% playoffs_2024 ~ \"Clinched\",\n    TRUE ~ \"Eliminated\"\n  ))\n\nggplot(hockey_players, aes(x = playoffs, y = points)) +\n  geom_boxplot() +\n  labs(title = \"Points by Player, Playoff vs. Non-Playoff Teams\",\n       x = \"Team Result\",\n       y = \"Points\")\n\n\n\n\n\n\n\n\nt.test(points ~ playoffs, data = hockey_players)\n\n\n    Welch Two Sample t-test\n\ndata:  points by playoffs\nt = 3.6968, df = 806.73, p-value = 0.0002331\nalternative hypothesis: true difference in means between group Clinched and group Eliminated is not equal to 0\n95 percent confidence interval:\n 2.752412 8.984429\nsample estimates:\n  mean in group Clinched mean in group Eliminated \n                26.57763                 20.70921"
+  },
+  {
+    "objectID": "slides/lec-5.html#playoff-players-adv.-answer",
+    "href": "slides/lec-5.html#playoff-players-adv.-answer",
+    "title": "Box plots, time series, and t-tests",
+    "section": "🚨 🏒 Playoff players Adv. Answer 🏒 🚨",
+    "text": "🚨 🏒 Playoff players Adv. Answer 🏒 🚨\n\n\nlibrary(tidyverse)\n\nhockey_players &lt;- hockey |&gt;\n  mutate(playoffs = case_when(\n    team %in% playoffs_2024 ~ \"Clinched\",\n    TRUE ~ \"Eliminated\"\n  ))\n\nrink_colors &lt;- c(\"Clinched\" = \"#0A9396\", \"Eliminated\" = \"#BB3E03\")\n\nggplot(hockey_players, aes(x = playoffs, y = points, fill = playoffs)) +\n  geom_boxplot(alpha = 0.7, outlier.shape = 8) +\n  stat_summary(fun = mean, geom = \"point\",\n               shape = 20, size = 4, color = \"black\") +\n  scale_fill_manual(values = rink_colors) +\n  labs(title = \"Points by Player, Playoff vs. Non-Playoff Teams\",\n       subtitle = \"Black dot = mean\",\n       x = \"Team Result\",\n       y = \"Points\",\n       caption = \"NHL Regular Season 2023–24\") +\n  theme_minimal() +\n  theme(legend.position = \"none\")\n\n\n\n\n\n\n\n\nt.test(points ~ playoffs, data = hockey_players)\n\n\n    Welch Two Sample t-test\n\ndata:  points by playoffs\nt = 3.6968, df = 806.73, p-value = 0.0002331\nalternative hypothesis: true difference in means between group Clinched and group Eliminated is not equal to 0\n95 percent confidence interval:\n 2.752412 8.984429\nsample estimates:\n  mean in group Clinched mean in group Eliminated \n                26.57763                 20.70921"
+  },
+  {
+    "objectID": "slides/lec-5.html#your-turn-goals-box-plot",
+    "href": "slides/lec-5.html#your-turn-goals-box-plot",
+    "title": "Project 1 Practice",
+    "section": "🚨 Your turn: 🏒 Goals Box Plot 🏒 🚨",
+    "text": "🚨 Your turn: 🏒 Goals Box Plot 🏒 🚨\nUsing the hockey dataset:\n\nBuild a box plot of the number of goals scored by all NHL players in the 2023–24 regular season.\nColor the outliers and change their shape.\nAdd a point for the mean number of goals.\nAdd a title, subtitle, and axis labels.\n\n\n\n\n\n\n\nTip\n\n\n\nUse aes(x = \"\", y = goals) to get a single box\nOutliers are set inside geom_boxplot() with outlier.color =, outlier.shape =, outlier.size =\nTo add the mean: stat_summary(fun = mean, geom = \"point\")"
+  },
+  {
+    "objectID": "slides/lec-5.html#goals-box-plot-answer",
+    "href": "slides/lec-5.html#goals-box-plot-answer",
+    "title": "Project 1 Practice",
+    "section": "🚨 🏒 Goals Box Plot Answer 🏒 🚨",
+    "text": "🚨 🏒 Goals Box Plot Answer 🏒 🚨\n\n\nggplot(data = hockey, aes(x = \"\", y = goals)) +\n  geom_boxplot(\n    alpha = 0.7,                       # transparency of the box fill\n    outlier.color = \"cornflowerblue\",  # color of outlier points\n    outlier.shape = 8,                 # outlier symbol is a star\n    outlier.size = 1                   # outlier size\n  ) +\n  stat_summary(fun = mean, geom = \"point\",\n               shape = 20, size = 4, color = \"coral\") +\n  labs(title = \"Distribution of Regular Season Goals by Player\",\n       subtitle = \"NHL 2023–24\",\n       x = \"\",\n       y = \"Goals Scored\") +\n  theme_minimal() +\n  theme(legend.position = \"none\")\n\n\n\n\n\n\n\n\n\n\nThe mean sits above the median: a few big scorers pull the mean up (right-skewed)"
+  },
+  {
+    "objectID": "slides/lec-5.html#your-turn-goals-by-position",
+    "href": "slides/lec-5.html#your-turn-goals-by-position",
+    "title": "Project 1 Practice",
+    "section": "🚨 Your turn: 🏒 Goals by Position 🏒 🚨",
+    "text": "🚨 Your turn: 🏒 Goals by Position 🏒 🚨\nUsing the hockey dataset:\n\nBuild a box plot of goals with one box for each position.\nWhich position scores the most goals? Which scores the least?\n\n\n\n\n\n\n\nTip\n\n\nPut the grouping variable on the x-axis: aes(x = position, y = goals)"
+  },
+  {
+    "objectID": "slides/lec-5.html#goals-by-position-answer",
+    "href": "slides/lec-5.html#goals-by-position-answer",
+    "title": "Project 1 Practice",
+    "section": "🚨 🏒 Goals by Position Answer 🏒 🚨",
+    "text": "🚨 🏒 Goals by Position Answer 🏒 🚨\n\n\nggplot(data = hockey, aes(x = position, y = goals)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(title = \"Regular Season Goals by Position\",\n       subtitle = \"NHL 2023–24\",\n       x = \"Position\",\n       y = \"Goals Scored\") +\n  theme_minimal()"
+  },
+  {
+    "objectID": "slides/lec-5.html#your-turn-team-goals-by-position",
+    "href": "slides/lec-5.html#your-turn-team-goals-by-position",
+    "title": "Project 1 Practice",
+    "section": "🚨 Your turn: 🏒 Team Goals by Position 🏒 🚨",
+    "text": "🚨 Your turn: 🏒 Team Goals by Position 🏒 🚨\nWhat percent of each team’s goals comes from each position?\n\nAdd up the goals for each team and position, then use pivot_wider() so each position is its own column. Call it hockey_goals.\nMake a Total column with each team’s total goals.\nMake a new object called hockey_boxplot with the percent of goals from each position: rw_percent, lw_percent, c_percent, d_percent.\nMake a box plot for each position and combine them with patchwork.\n\n\n\n\n\n\n\nTip\n\n\n\ngroup_by(team, position) |&gt; summarize(goals = sum(goals, na.rm = TRUE), .groups = \"drop\")\npivot_wider(names_from = position, values_from = goals, values_fill = 0)\nrowSums(across(-team)) adds up every column except team\nCombine plots with + and set the layout with plot_layout(ncol = 4)"
+  },
+  {
+    "objectID": "slides/lec-5.html#team-goals-by-position-answer",
+    "href": "slides/lec-5.html#team-goals-by-position-answer",
+    "title": "Project 1 Practice",
+    "section": "🚨 🏒 Team Goals by Position Answer 🏒 🚨",
+    "text": "🚨 🏒 Team Goals by Position Answer 🏒 🚨\nSteps 1–3: wrangle the data\n\nhockey_goals &lt;- hockey |&gt;\n  group_by(team, position) |&gt;\n  summarize(goals = sum(goals, na.rm = TRUE), .groups = \"drop\") |&gt;\n  pivot_wider(names_from = position, values_from = goals, values_fill = 0) |&gt;\n  mutate(Total = rowSums(across(-team)))\n\nhockey_boxplot &lt;- hockey_goals |&gt;\n  mutate(\n    rw_percent = R / Total * 100,\n    lw_percent = L / Total * 100,\n    c_percent  = C / Total * 100,\n    d_percent  = D / Total * 100\n  )\n\nhockey_boxplot\n\n# A tibble: 32 × 10\n   team      C     D     L     R Total rw_percent lw_percent c_percent d_percent\n   &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;\n 1 ANA      80    19    25    75   199      37.7        12.6      40.2      9.55\n 2 ARI      95    32    71    51   249      20.5        28.5      38.2     12.9 \n 3 BOS     121    31    59    47   258      18.2        22.9      46.9     12.0 \n 4 BUF      68    41    64    71   244      29.1        26.2      27.9     16.8 \n 5 CAR     125    49    63    39   276      14.1        22.8      45.3     17.8 \n 6 CBJ      82    39    48    62   231      26.8        20.8      35.5     16.9 \n 7 CGY     157    52    38     5   252       1.98       15.1      62.3     20.6 \n 8 CHI     107    19    31    19   176      10.8        17.6      60.8     10.8 \n 9 COL      95    61    57    85   298      28.5        19.1      31.9     20.5 \n10 DAL     168    36    72    12   288       4.17       25        58.3     12.5 \n# ℹ 22 more rows"
+  },
+  {
+    "objectID": "slides/lec-5.html#team-goals-by-position-answer-1",
+    "href": "slides/lec-5.html#team-goals-by-position-answer-1",
+    "title": "Project 1 Practice",
+    "section": "🚨 🏒 Team Goals by Position Answer 🏒 🚨",
+    "text": "🚨 🏒 Team Goals by Position Answer 🏒 🚨\nStep 4: plot\n\n\nrw &lt;- ggplot(hockey_boxplot, aes(x = \"\", y = rw_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Right Wing\", y = \"% of Team Goals\")\n\nlw &lt;- ggplot(hockey_boxplot, aes(x = \"\", y = lw_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Left Wing\", y = NULL)\n\ncen &lt;- ggplot(hockey_boxplot, aes(x = \"\", y = c_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Center\", y = NULL)\n\nd &lt;- ggplot(hockey_boxplot, aes(x = \"\", y = d_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Defense\", y = NULL)\n\nrw + lw + cen + d +\n  plot_layout(ncol = 4) +\n  plot_annotation(\n    title = \"Boxplots of the Percentage of Goals Scored\",\n    subtitle = \"by Position Across all NHL Teams\",\n    caption = \"NHL Regular Season 2023–24\"\n  ) & scale_y_continuous(limits = c(0, 100))"
+  },
+  {
+    "objectID": "slides/lec-5.html#team-goals-by-position-adv.-answer",
+    "href": "slides/lec-5.html#team-goals-by-position-adv.-answer",
+    "title": "Project 1 Practice",
+    "section": "🚨 🏒 Team Goals by Position Adv. Answer 🏒 🚨",
+    "text": "🚨 🏒 Team Goals by Position Adv. Answer 🏒 🚨\nUse pivot_longer() so one ggplot() draws all four boxes\n\n\nhockey_boxplot |&gt;\n  pivot_longer(c(rw_percent, lw_percent, c_percent, d_percent),\n               names_to = \"position\", values_to = \"percent\") |&gt;\n  mutate(position = factor(position,\n    levels = c(\"rw_percent\", \"lw_percent\", \"c_percent\", \"d_percent\"),\n    labels = c(\"Right Wing\", \"Left Wing\", \"Center\", \"Defense\"))) |&gt;\n  ggplot(aes(x = position, y = percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  scale_y_continuous(limits = c(0, 100)) +\n  labs(x = \"Position\", y = \"% of Team Goals\",\n       title = \"Boxplots of the Percentage of Goals Scored\",\n       subtitle = \"by Position Across all NHL Teams\",\n       caption = \"NHL Regular Season 2023–24\") +\n  theme_minimal()"
+  },
+  {
+    "objectID": "slides/lec-5.html#your-turn-canadiens-searches",
+    "href": "slides/lec-5.html#your-turn-canadiens-searches",
+    "title": "Project 1 Practice",
+    "section": "🚨 Your turn: 🏒 Canadiens Searches 🏒 🚨",
+    "text": "🚨 Your turn: 🏒 Canadiens Searches 🏒 🚨\nUsing the google_trends dataset:\n\nMake a time series plot of the Google search score for the Montreal Canadiens (montreal_canadiens) by month, 2004 to 2026.\nLabel the x-axis every 2 years.\nAdd a trend line and a dashed line at the average score.\nAdd a title, subtitle, axis labels, and a caption.\n\n\n\n\n\n\n\nTip\n\n\n\nConnect the points with geom_line()\nscale_x_date(date_breaks = \"2 years\", date_labels = \"%Y\")\nTrend line: geom_smooth(method = lm, se = FALSE). Average: geom_hline(yintercept = mean(...), linetype = 2)"
+  },
+  {
+    "objectID": "slides/lec-5.html#canadiens-searches-answer",
+    "href": "slides/lec-5.html#canadiens-searches-answer",
+    "title": "Project 1 Practice",
+    "section": "🚨 🏒 Canadiens Searches Answer 🏒 🚨",
+    "text": "🚨 🏒 Canadiens Searches Answer 🏒 🚨\n\n\nggplot(google_trends, aes(x = month, y = montreal_canadiens)) +\n  geom_line(color = \"coral2\") +\n  geom_smooth(method = lm, se = FALSE,\n              color = \"grey40\", linewidth = .5) +\n  geom_hline(yintercept = mean(google_trends$montreal_canadiens, na.rm = TRUE),\n             linetype = 2) +\n  scale_x_date(date_breaks = \"2 years\", date_labels = \"%Y\") +\n  labs(title = \"U.S. Google searches for the Montreal Canadiens spike each spring\",\n       subtitle = \"Monthly Google Trends interest, January 2004 to October 2026\",\n       y = \"Search interest (0–100)\", x = \"Month\",\n       caption = \"Source: Google Trends\") +\n  theme_classic() +\n  theme(\n    axis.text.y = element_text(size = 11),\n    axis.text.x = element_text(angle = 45, hjust = 1, size = 9),\n    plot.caption = element_text(hjust = 1, size = 9),\n    plot.title = element_text(size = 14))\n\n\n\n\n\n\n\n\n\n\nThe biggest spikes are playoff runs: May 2010, May 2014, June 2021 (Stanley Cup Final), May 2026"
+  },
+  {
+    "objectID": "slides/lec-5.html#your-turn-playoff-teams",
+    "href": "slides/lec-5.html#your-turn-playoff-teams",
+    "title": "Project 1 Practice",
+    "section": "🚨 Your turn: 🏒 Playoff Teams 🏒 🚨",
+    "text": "🚨 Your turn: 🏒 Playoff Teams 🏒 🚨\nThese 16 teams made the 2024 Stanley Cup playoffs:\n\nplayoffs_2024 &lt;- c(\"FLA\", \"BOS\", \"TOR\", \"TBL\", \"NYR\", \"WSH\", \"CAR\", \"NYI\",\n                   \"DAL\", \"VGK\", \"COL\", \"WPG\", \"VAN\", \"NSH\", \"EDM\", \"LAK\")\n\n\nUsing hockey_boxplot, make a new variable called playoffs that is \"Clinched\" if the team made the playoffs and \"Eliminated\" if it did not.\nStore it as a new object called hockey_newvar.\n\n\n\n\n\n\n\nTip\n\n\n\ncase_when() goes inside mutate()\n%in% checks whether a value is in a list: team %in% playoffs_2024\nThere is no !%in%. For “not in”, use !(team %in% playoffs_2024)"
+  },
+  {
+    "objectID": "slides/lec-5.html#playoff-teams-answer",
+    "href": "slides/lec-5.html#playoff-teams-answer",
+    "title": "Project 1 Practice",
+    "section": "🚨 🏒 Playoff Teams Answer 🏒 🚨",
+    "text": "🚨 🏒 Playoff Teams Answer 🏒 🚨\n\nhockey_newvar &lt;- hockey_boxplot |&gt;\n  mutate(playoffs = case_when(\n    team %in% playoffs_2024 ~ \"Clinched\",\n    !(team %in% playoffs_2024) ~ \"Eliminated\"\n  ))\n\nhockey_newvar |&gt;\n  select(team, Total, playoffs)\n\n# A tibble: 32 × 3\n   team  Total playoffs  \n   &lt;chr&gt; &lt;dbl&gt; &lt;chr&gt;     \n 1 ANA     199 Eliminated\n 2 ARI     249 Eliminated\n 3 BOS     258 Clinched  \n 4 BUF     244 Eliminated\n 5 CAR     276 Clinched  \n 6 CBJ     231 Eliminated\n 7 CGY     252 Eliminated\n 8 CHI     176 Eliminated\n 9 COL     298 Clinched  \n10 DAL     288 Clinched  \n# ℹ 22 more rows\n\n\n\n\n\n\n\n\nTip\n\n\nYou can also write the last line as TRUE ~ \"Eliminated\". TRUE ~ means “everything else.”"
+  },
+  {
+    "objectID": "slides/lec-5.html#your-turn-graphing-the-new-variable",
+    "href": "slides/lec-5.html#your-turn-graphing-the-new-variable",
+    "title": "Project 1 Practice",
+    "section": "🚨 Your turn: 🏒 Graphing the New Variable 🏒 🚨",
+    "text": "🚨 Your turn: 🏒 Graphing the New Variable 🏒 🚨\n\nKeep only the teams that clinched the playoffs.\nBuild box plots of the percent of goals by position for those teams, like before.\n\n\n\n\n\n\n\nTip\n\n\n\nUse filter(playoffs == \"Clinched\")\nYou can copy your box plot code from earlier: just change the data!"
+  },
+  {
+    "objectID": "slides/lec-5.html#graphing-the-new-variable-answer",
+    "href": "slides/lec-5.html#graphing-the-new-variable-answer",
+    "title": "Project 1 Practice",
+    "section": "🚨 🏒 Graphing the New Variable Answer 🏒 🚨",
+    "text": "🚨 🏒 Graphing the New Variable Answer 🏒 🚨\n\n\nhockey_clinched &lt;- hockey_newvar |&gt;\n  filter(playoffs == \"Clinched\")\n\nrw &lt;- ggplot(hockey_clinched, aes(x = \"\", y = rw_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Right Wing\", y = \"% of Team Goals\")\n\nlw &lt;- ggplot(hockey_clinched, aes(x = \"\", y = lw_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Left Wing\", y = NULL)\n\ncen &lt;- ggplot(hockey_clinched, aes(x = \"\", y = c_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Center\", y = NULL)\n\nd &lt;- ggplot(hockey_clinched, aes(x = \"\", y = d_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Defense\", y = NULL)\n\nrw + lw + cen + d +\n  plot_layout(ncol = 4) +\n  plot_annotation(\n    title = \"Boxplots of the Percentage of Goals Scored\",\n    subtitle = \"by Position across NHL Teams who Clinched the Playoffs\",\n    caption = \"NHL Regular Season 2023–24\"\n  ) & scale_y_continuous(limits = c(0, 100))"
+  },
+  {
+    "objectID": "slides/lec-5.html#graphing-the-new-variable-adv.-answer",
+    "href": "slides/lec-5.html#graphing-the-new-variable-adv.-answer",
+    "title": "Project 1 Practice",
+    "section": "🚨 🏒 Graphing the New Variable Adv. Answer 🏒 🚨",
+    "text": "🚨 🏒 Graphing the New Variable Adv. Answer 🏒 🚨\nCompare clinched and eliminated teams in one plot\n\n\nrink_colors &lt;- c(\"Clinched\" = \"#0A9396\", \"Eliminated\" = \"#BB3E03\")\n\nhockey_newvar |&gt;\n  pivot_longer(c(rw_percent, lw_percent, c_percent, d_percent),\n               names_to = \"position\", values_to = \"percent\") |&gt;\n  mutate(position = factor(position,\n    levels = c(\"rw_percent\", \"lw_percent\", \"c_percent\", \"d_percent\"),\n    labels = c(\"Right Wing\", \"Left Wing\", \"Center\", \"Defense\"))) |&gt;\n  ggplot(aes(x = position, y = percent, fill = playoffs)) +\n  geom_boxplot(alpha = 0.7) +\n  scale_fill_manual(values = rink_colors, name = \"Playoffs\") +\n  scale_y_continuous(limits = c(0, 100)) +\n  labs(x = \"Position\", y = \"% of Team Goals\",\n       title = \"Percentage of Goals Scored by Position\",\n       subtitle = \"Playoff vs. non-playoff teams\",\n       caption = \"NHL Regular Season 2023–24\") +\n  theme_minimal()"
+  },
+  {
+    "objectID": "slides/lec-5.html#your-turn-t-test",
+    "href": "slides/lec-5.html#your-turn-t-test",
+    "title": "Project 1 Practice",
+    "section": "🚨 Your turn: 🏒 t-test 🏒 🚨",
+    "text": "🚨 Your turn: 🏒 t-test 🏒 🚨\nUsing hockey_newvar:\n\nTest whether teams that made the playoffs scored more total goals (Total) than teams that did not.\nMake a new variable offense_perct: the percent of goals from forwards (right wing + left wing + center).\nTest whether playoff teams get a different percent of their goals from defense (d_percent).\nWhich differences are statistically significant?\n\n\n\n\n\n\n\nTip\n\n\n\nThe formula is t.test(OUTCOME ~ GROUP, data = DATA)\nA difference is statistically significant if the p-value is less than 0.05"
+  },
+  {
+    "objectID": "slides/lec-5.html#t-test-answer",
+    "href": "slides/lec-5.html#t-test-answer",
+    "title": "Project 1 Practice",
+    "section": "🚨 🏒 t-test Answer 🏒 🚨",
+    "text": "🚨 🏒 t-test Answer 🏒 🚨\n\n\nt.test(Total ~ playoffs, data = hockey_newvar)\n\n\n\n    Welch Two Sample t-test\n\ndata:  Total by playoffs\nt = 4.044, df = 28.598, p-value = 0.0003621\nalternative hypothesis: true difference in means between group Clinched and group Eliminated is not equal to 0\n95 percent confidence interval:\n 18.02924 54.97076\nsample estimates:\n  mean in group Clinched mean in group Eliminated \n                268.9375                 232.4375 \n\nhockey_ttest &lt;- hockey_newvar |&gt;\n  mutate(offense_perct = rw_percent + lw_percent + c_percent)\n\nt.test(d_percent ~ playoffs, data = hockey_ttest)\n\n\n    Welch Two Sample t-test\n\ndata:  d_percent by playoffs\nt = -1.4916, df = 29.895, p-value = 0.1463\nalternative hypothesis: true difference in means between group Clinched and group Eliminated is not equal to 0\n95 percent confidence interval:\n -4.2476960  0.6621946\nsample estimates:\n  mean in group Clinched mean in group Eliminated \n                13.41861                 15.21136 \n\n\n\nTotal goals: playoff teams scored about 269 goals vs. 232, p = 0.0004: significant\n\n\nDefense share: p = 0.15: not significant\n\n\n\n\n\n\n\n\nNote\n\n\noffense_perct and d_percent always add up to 100, so testing offense_perct gives the same p-value"
   }
 ]
