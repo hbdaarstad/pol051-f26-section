@@ -92,7 +92,7 @@ hockey |>
 Positions: `C` = center, `L` = left wing, `R` = right wing, `D` = defense. We drop goalies (`G`).
 :::
 
-## Google Trends: Montreal Canadiens
+## Google Trends: Montreal Canadians
 
 Monthly U.S. search interest, 2004 to 2026
 
@@ -462,7 +462,7 @@ hockey_newvar |>
 
 Using `hockey_newvar`:
 
-1.  Test whether teams that made the playoffs scored more **total goals** (`Total`) than teams that did not.
+1.  Test whether teams that made the playoffs had more offense production than teams that did not.
 
 2.  Make a new variable `offense_perct`: the percent of goals from forwards (right wing + left wing + center).
 
@@ -486,10 +486,10 @@ countdown::countdown(minutes = 6.5L)
 #| echo: true
 #| eval: false
 
-t.test(Total ~ playoffs, data = hockey_newvar)
-
 hockey_ttest <- hockey_newvar |>
   mutate(offense_perct = rw_percent + lw_percent + c_percent)
+
+t.test(offense_perct  ~ playoffs, data = hockey_ttest)
 
 t.test(d_percent ~ playoffs, data = hockey_ttest)
 ```
@@ -500,10 +500,10 @@ t.test(d_percent ~ playoffs, data = hockey_ttest)
 #| echo: false
 #| output: column
 
-t.test(Total ~ playoffs, data = hockey_newvar)
-
 hockey_ttest <- hockey_newvar |>
   mutate(offense_perct = rw_percent + lw_percent + c_percent)
+
+t.test(offense_perct ~ playoffs, data = hockey_ttest)
 
 t.test(d_percent ~ playoffs, data = hockey_ttest)
 ```

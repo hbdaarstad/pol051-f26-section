@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.6.42">
 
   <meta name="author" content="Haley Daarstad">
-  <meta name="dcterms.date" content="2026-10-29">
+  <meta name="dcterms.date" content="2026-10-30">
   <title>POL 051 A04, A05, &amp; A06 - Fall 2026 – Project 1 Practice</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -214,7 +214,7 @@ Haley Daarstad
     </div>
 </div>
 
-  <p class="date">October 29, 2026</p>
+  <p class="date">October 30, 2026</p>
 </section>
 <section id="plan-for-today" class="title-slide slide level1 center" data-background-color="#dc354a">
 <h1>Plan for today</h1>
@@ -273,8 +273,8 @@ Haley Daarstad
 </div>
 </div>
 </section>
-<section id="google-trends-montreal-canadiens" class="slide level2">
-<h2>Google Trends: Montreal Canadiens</h2>
+<section id="google-trends-montreal-canadians" class="slide level2">
+<h2>Google Trends: Montreal Canadians</h2>
 <p>Monthly U.S. search interest, 2004 to 2026</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output cell-output-stdout">
@@ -371,7 +371,7 @@ Haley Daarstad
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_5f95903e" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_ce159e1d" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -448,7 +448,7 @@ Haley Daarstad
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_1465b518" minutes="7" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_363ad714" minutes="7" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -554,7 +554,7 @@ Haley Daarstad
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_dfb83f3c" minutes="6" seconds="30" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_c84fa4e9" minutes="6" seconds="30" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -663,7 +663,7 @@ Haley Daarstad
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_06a938c5" minutes="4" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_6c104fa6" minutes="4" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -728,7 +728,7 @@ Haley Daarstad
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_8b76f457" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_f45db175" minutes="5" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -813,7 +813,7 @@ Haley Daarstad
 <h2>🚨 Your turn: 🏒 t-test 🏒 🚨</h2>
 <p>Using <code>hockey_newvar</code>:</p>
 <ol type="1">
-<li class="fragment"><p>Test whether teams that made the playoffs scored more <strong>total goals</strong> (<code>Total</code>) than teams that did not.</p></li>
+<li class="fragment"><p>Test whether teams that made the playoffs had more offense production than teams that did not.</p></li>
 <li class="fragment"><p>Make a new variable <code>offense_perct</code>: the percent of goals from forwards (right wing + left wing + center).</p></li>
 <li class="fragment"><p>Test whether playoff teams get a different percent of their goals from <strong>defense</strong> (<code>d_percent</code>).</p></li>
 <li class="fragment"><p>Which differences are statistically significant?</p></li>
@@ -836,17 +836,17 @@ Haley Daarstad
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_716fefd7" minutes="6" seconds="30" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_d3c9778f" minutes="6" seconds="30" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 </section>
 <section id="t-test-code-answer" class="slide level2 smaller">
 <h2>🚨 🏒 t-test Code Answer 🏒 🚨</h2>
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">t.test</span>(Total <span class="sc">~</span> playoffs, <span class="at">data =</span> hockey_newvar)</span>
-<span id="cb15-2"><a></a></span>
-<span id="cb15-3"><a></a>hockey_ttest <span class="ot">&lt;-</span> hockey_newvar <span class="sc">|&gt;</span></span>
-<span id="cb15-4"><a></a>  <span class="fu">mutate</span>(<span class="at">offense_perct =</span> rw_percent <span class="sc">+</span> lw_percent <span class="sc">+</span> c_percent)</span>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>hockey_ttest <span class="ot">&lt;-</span> hockey_newvar <span class="sc">|&gt;</span></span>
+<span id="cb15-2"><a></a>  <span class="fu">mutate</span>(<span class="at">offense_perct =</span> rw_percent <span class="sc">+</span> lw_percent <span class="sc">+</span> c_percent)</span>
+<span id="cb15-3"><a></a></span>
+<span id="cb15-4"><a></a><span class="fu">t.test</span>(offense_perct  <span class="sc">~</span> playoffs, <span class="at">data =</span> hockey_ttest)</span>
 <span id="cb15-5"><a></a></span>
 <span id="cb15-6"><a></a><span class="fu">t.test</span>(d_percent <span class="sc">~</span> playoffs, <span class="at">data =</span> hockey_ttest)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -858,14 +858,14 @@ Haley Daarstad
 <pre><code>
     Welch Two Sample t-test
 
-data:  Total by playoffs
-t = 4.044, df = 28.598, p-value = 0.0003621
+data:  offense_perct by playoffs
+t = 1.4916, df = 29.895, p-value = 0.1463
 alternative hypothesis: true difference in means between group Clinched and group Eliminated is not equal to 0
 95 percent confidence interval:
- 18.02924 54.97076
+ -0.6621946  4.2476960
 sample estimates:
   mean in group Clinched mean in group Eliminated 
-                268.9375                 232.4375 </code></pre>
+                86.58139                 84.78864 </code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>

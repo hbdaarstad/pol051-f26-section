@@ -4147,14 +4147,14 @@
     "href": "slides/lec-5.html#your-turn-t-test",
     "title": "Project 1 Practice",
     "section": "🚨 Your turn: 🏒 t-test 🏒 🚨",
-    "text": "🚨 Your turn: 🏒 t-test 🏒 🚨\nUsing hockey_newvar:\n\nTest whether teams that made the playoffs scored more total goals (Total) than teams that did not.\nMake a new variable offense_perct: the percent of goals from forwards (right wing + left wing + center).\nTest whether playoff teams get a different percent of their goals from defense (d_percent).\nWhich differences are statistically significant?\n\n\n\n\n\n\n\nTip\n\n\n\nThe formula is t.test(OUTCOME ~ GROUP, data = DATA)\nA difference is statistically significant if the p-value is less than 0.05"
+    "text": "🚨 Your turn: 🏒 t-test 🏒 🚨\nUsing hockey_newvar:\n\nTest whether teams that made the playoffs had more offense production than teams that did not.\nMake a new variable offense_perct: the percent of goals from forwards (right wing + left wing + center).\nTest whether playoff teams get a different percent of their goals from defense (d_percent).\nWhich differences are statistically significant?\n\n\n\n\n\n\n\nTip\n\n\n\nThe formula is t.test(OUTCOME ~ GROUP, data = DATA)\nA difference is statistically significant if the p-value is less than 0.05"
   },
   {
     "objectID": "slides/lec-5.html#t-test-answer",
     "href": "slides/lec-5.html#t-test-answer",
     "title": "Project 1 Practice",
     "section": "🚨 🏒 t-test Answer 🏒 🚨",
-    "text": "🚨 🏒 t-test Answer 🏒 🚨\n\n\n\n    Welch Two Sample t-test\n\ndata:  Total by playoffs\nt = 4.044, df = 28.598, p-value = 0.0003621\nalternative hypothesis: true difference in means between group Clinched and group Eliminated is not equal to 0\n95 percent confidence interval:\n 18.02924 54.97076\nsample estimates:\n  mean in group Clinched mean in group Eliminated \n                268.9375                 232.4375 \n\n\n\n    Welch Two Sample t-test\n\ndata:  d_percent by playoffs\nt = -1.4916, df = 29.895, p-value = 0.1463\nalternative hypothesis: true difference in means between group Clinched and group Eliminated is not equal to 0\n95 percent confidence interval:\n -4.2476960  0.6621946\nsample estimates:\n  mean in group Clinched mean in group Eliminated \n                13.41861                 15.21136 \n\n\n\nTotal goals: playoff teams scored about 269 goals vs. 232, p = 0.0004: significant\n\n\nDefense share: p = 0.15: not significant\n\n\n\n\n\n\n\n\nNote\n\n\noffense_perct and d_percent always add up to 100, so testing offense_perct gives the same p-value"
+    "text": "🚨 🏒 t-test Answer 🏒 🚨\n\n\n\n    Welch Two Sample t-test\n\ndata:  offense_perct by playoffs\nt = 1.4916, df = 29.895, p-value = 0.1463\nalternative hypothesis: true difference in means between group Clinched and group Eliminated is not equal to 0\n95 percent confidence interval:\n -0.6621946  4.2476960\nsample estimates:\n  mean in group Clinched mean in group Eliminated \n                86.58139                 84.78864 \n\n\n\n    Welch Two Sample t-test\n\ndata:  d_percent by playoffs\nt = -1.4916, df = 29.895, p-value = 0.1463\nalternative hypothesis: true difference in means between group Clinched and group Eliminated is not equal to 0\n95 percent confidence interval:\n -4.2476960  0.6621946\nsample estimates:\n  mean in group Clinched mean in group Eliminated \n                13.41861                 15.21136 \n\n\n\nTotal goals: playoff teams scored about 269 goals vs. 232, p = 0.0004: significant\n\n\nDefense share: p = 0.15: not significant\n\n\n\n\n\n\n\n\nNote\n\n\noffense_perct and d_percent always add up to 100, so testing offense_perct gives the same p-value"
   },
   {
     "objectID": "slides/lec-7.html#patterns-in-the-data",
@@ -5078,6 +5078,13 @@
     "href": "slides/lec-5.html#t-test-code-answer",
     "title": "Project 1 Practice",
     "section": "🚨 🏒 t-test Code Answer 🏒 🚨",
-    "text": "🚨 🏒 t-test Code Answer 🏒 🚨\n\nt.test(Total ~ playoffs, data = hockey_newvar)\n\nhockey_ttest &lt;- hockey_newvar |&gt;\n  mutate(offense_perct = rw_percent + lw_percent + c_percent)\n\nt.test(d_percent ~ playoffs, data = hockey_ttest)"
+    "text": "🚨 🏒 t-test Code Answer 🏒 🚨\n\nhockey_ttest &lt;- hockey_newvar |&gt;\n  mutate(offense_perct = rw_percent + lw_percent + c_percent)\n\nt.test(offense_perct  ~ playoffs, data = hockey_ttest)\n\nt.test(d_percent ~ playoffs, data = hockey_ttest)"
+  },
+  {
+    "objectID": "slides/lec-5.html#google-trends-montreal-canadians",
+    "href": "slides/lec-5.html#google-trends-montreal-canadians",
+    "title": "Project 1 Practice",
+    "section": "Google Trends: Montreal Canadians",
+    "text": "Google Trends: Montreal Canadians\nMonthly U.S. search interest, 2004 to 2026\n\n\n# A tibble: 274 × 2\n   month      montreal_canadiens\n   &lt;date&gt;                  &lt;dbl&gt;\n 1 2004-01-01                 10\n 2 2004-02-01                 10\n 3 2004-03-01                 10\n 4 2004-04-01                 18\n 5 2004-05-01                  8\n 6 2004-06-01                  7\n 7 2004-07-01                  8\n 8 2004-08-01                  7\n 9 2004-09-01                  7\n10 2004-10-01                  5\n# ℹ 264 more rows\n\n\n\n\n\n\n\n\nNote\n\n\nGoogle Trends scores each month 0–100, where 100 = the busiest month in the whole period. It is not a count of searches."
   }
 ]

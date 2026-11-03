@@ -80,7 +80,7 @@ What **percent** of each team's goals comes from each position? `hockey_goals` (
 
 ## 4. Time Series
 
-Make a time series plot of the Google search score for the Montreal Canadiens (`montreal_canadiens`) by `month`, 2004 to 2026.
+Make a time series plot of the Google search score for the Montreal Canadians (`montreal_canadiens`) by `month`, 2004 to 2026.
 
 -   Label the x-axis every 2 years.
 -   Add a trend line and a dashed line at the average score.
