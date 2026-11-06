@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.6.42">
 
   <meta name="author" content="Haley Daarstad">
-  <meta name="dcterms.date" content="2026-10-29">
+  <meta name="dcterms.date" content="2026-11-06">
   <title>POL 051 A04, A05, &amp; A06 - Fall 2026 – Causality I</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -212,7 +212,7 @@ Haley Daarstad
     </div>
 </div>
 
-  <p class="date">October 29, 2026</p>
+  <p class="date">November 6, 2026</p>
 </section>
 <section>
 <section id="plan-for-today" class="title-slide slide level1 center" data-background-color="#dc354a">
@@ -532,8 +532,8 @@ Haley Daarstad
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">10</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1]  6.949790 14.027801 10.960668 10.811843  8.692834 13.798625  9.743443
- [8] 12.133162 10.962706 10.130319</code></pre>
+<pre><code> [1]  9.024326 11.817092  9.049124  8.476757 10.794869  9.388041 11.784327
+ [8] 11.177717  8.571075  7.449518</code></pre>
 </div>
 </div>
 <div class="fragment">
@@ -541,7 +541,7 @@ Haley Daarstad
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">5</span>, <span class="at">mean =</span> <span class="dv">50</span>, <span class="at">sd =</span> <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 49.11410 40.25305 47.72332 46.28520 59.13883</code></pre>
+<pre><code>[1] 59.27079 60.46298 62.24955 46.84546 53.44751</code></pre>
 </div>
 </div>
 </div>
@@ -550,7 +550,7 @@ Haley Daarstad
 <div class="cell" data-layout-align="center">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">rnorm</span>(<span class="at">n =</span> <span class="dv">4</span>, <span class="at">mean =</span> <span class="sc">-</span><span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1]  119.97385  -84.49219   32.91787 -137.57080</code></pre>
+<pre><code>[1] -49.90216 197.31052  46.34694 -55.23959</code></pre>
 </div>
 </div>
 <div class="callout callout-note callout-titled callout-style-default">
@@ -597,16 +597,16 @@ Haley Daarstad
 <pre><code># A tibble: 500 × 1
    party_share
          &lt;dbl&gt;
- 1        53.6
- 2        50.9
- 3        45.8
- 4        46.5
- 5        42.8
- 6        46.1
- 7        44.3
- 8        50.6
- 9        53.9
-10        52.6
+ 1        52.8
+ 2        48.1
+ 3        48.8
+ 4        45.3
+ 5        46.3
+ 6        49.2
+ 7        54.8
+ 8        44.6
+ 9        47.0
+10        47.3
 # ℹ 490 more rows</code></pre>
 </div>
 </div>
@@ -631,16 +631,16 @@ Haley Daarstad
 <pre><code># A tibble: 500 × 2
    party_share funding
          &lt;dbl&gt;   &lt;dbl&gt;
- 1        49.0  31105.
- 2        54.2  23078.
- 3        48.4  13547.
- 4        56.9  16517.
- 5        45.9  16782.
- 6        49.4  22235.
- 7        54.1  13576.
- 8        53.3  20432.
- 9        46.8  11677.
-10        55.8  19166.
+ 1        52.0  23257.
+ 2        44.4  17121.
+ 3        50.3  25420.
+ 4        48.0  15315.
+ 5        51.1  24705.
+ 6        46.1  15603.
+ 7        51.8  20640.
+ 8        53.2  20937.
+ 9        49.2  14357.
+10        51.6  20448.
 # ℹ 490 more rows</code></pre>
 </div>
 </div>
@@ -676,16 +676,16 @@ Haley Daarstad
 <pre><code># A tibble: 500 × 2
    party_share funding
          &lt;dbl&gt;   &lt;dbl&gt;
- 1        58.5 137553.
- 2        57.2 134736.
- 3        54.8 133910.
- 4        52.9 127093.
- 5        51.6 119538.
- 6        47.1 111460.
- 7        46.0 114502.
- 8        54.8 125868.
- 9        44.1 107359.
-10        47.5 119973.
+ 1        45.3 108434.
+ 2        48.1 117229.
+ 3        50.8 117785.
+ 4        51.2 119450.
+ 5        44.5 107907.
+ 6        49.4 120350.
+ 7        46.6 114443.
+ 8        48.6 117094.
+ 9        43.9 110061.
+10        46.0 110637.
 # ℹ 490 more rows</code></pre>
 </div>
 </div>
@@ -713,8 +713,8 @@ Haley Daarstad
 <pre><code># A tibble: 2 × 5
   term        estimate std.error statistic   p.value
   &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
-1 (Intercept)   17543.    1947.       9.01 4.42e- 18
-2 party_share    2047.      39.1     52.3  2.07e-204</code></pre>
+1 (Intercept)   19845.    1812.       11.0 3.72e- 25
+2 party_share    1996.      35.9      55.6 1.24e-215</code></pre>
 </div>
 </div>
 </div>
@@ -778,7 +778,7 @@ Haley Daarstad
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_3e5b7204" minutes="15" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;--countdown-font-size:1.5em;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_0c9f6efb" minutes="15" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;--countdown-font-size:1.5em;"></countdown-timer>
 </div>
 </div>
 </section>
@@ -829,32 +829,32 @@ Haley Daarstad
 <tr class="odd">
 <td style="text-align: left;">Canada</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Canada</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">China</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">5</td>
+<td style="text-align: right;">4</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">China</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">USA</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">USA</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
 </tr>
 </tbody>
 </table>
@@ -883,32 +883,32 @@ Haley Daarstad
 <tr class="odd">
 <td style="text-align: left;">Canada</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Canada</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">China</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">5</td>
+<td style="text-align: right;">4</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">China</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">USA</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">USA</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
 </tr>
 </tbody>
 </table>
@@ -936,32 +936,32 @@ Haley Daarstad
 <tr class="odd">
 <td style="text-align: left;">Canada</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">3</td>
+<td style="text-align: right;">1</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Canada</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">China</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">5</td>
+<td style="text-align: right;">4</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">China</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">USA</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">1</td>
+<td style="text-align: right;">3</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">USA</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
 </tr>
 </tbody>
 </table>
@@ -988,12 +988,12 @@ Haley Daarstad
 <tr class="even">
 <td style="text-align: left;">Canada</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">1</td>
+<td style="text-align: right;">4</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">China</td>
 <td style="text-align: right;">0</td>
-<td style="text-align: right;">5</td>
+<td style="text-align: right;">4</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">China</td>
@@ -1008,7 +1008,7 @@ Haley Daarstad
 <tr class="even">
 <td style="text-align: left;">USA</td>
 <td style="text-align: right;">1</td>
-<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
 </tr>
 </tbody>
 </table>
@@ -1043,8 +1043,8 @@ Haley Daarstad
 <pre><code># A tibble: 2 × 2
   democracy  wars
       &lt;dbl&gt; &lt;dbl&gt;
-1         0   5  
-2         1   1.5</code></pre>
+1         0   4  
+2         1   2.5</code></pre>
 </div>
 </div>
 </div>
@@ -1080,27 +1080,27 @@ Haley Daarstad
 <tr class="odd">
 <td style="text-align: right;">1</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: right;">93.2</td>
+<td style="text-align: right;">29.66</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">2</td>
 <td style="text-align: left;">No</td>
-<td style="text-align: right;">27.95</td>
+<td style="text-align: right;">69.6</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">3</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: right;">23.1</td>
+<td style="text-align: right;">49.03</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">4</td>
 <td style="text-align: left;">No</td>
-<td style="text-align: right;">63.25</td>
+<td style="text-align: right;">2.65</td>
 </tr>
 <tr class="odd">
 <td style="text-align: right;">5</td>
 <td style="text-align: left;">No</td>
-<td style="text-align: right;">97.64</td>
+<td style="text-align: right;">36.34</td>
 </tr>
 </tbody>
 </table>
@@ -1128,12 +1128,12 @@ Haley Daarstad
 <tr class="odd">
 <td style="text-align: right;">1</td>
 <td style="text-align: left;">Yes</td>
-<td style="text-align: right;">93.2</td>
+<td style="text-align: right;">29.66</td>
 </tr>
 <tr class="even">
 <td style="text-align: right;">2</td>
 <td style="text-align: left;">No</td>
-<td style="text-align: right;">27.95</td>
+<td style="text-align: right;">69.6</td>
 </tr>
 </tbody>
 </table>
@@ -1173,7 +1173,7 @@ Haley Daarstad
 </ol>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<countdown-timer class="countdown" id="timer_5c156336" minutes="10" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
+<countdown-timer class="countdown" id="timer_004a4807" minutes="10" seconds="0" update-every="1" tabindex="0" style="right:0;bottom:0;"></countdown-timer>
 </div>
 </div>
 

@@ -55,19 +55,9 @@ WaffleDivorce = read_delim("data/WaffleDivorce.csv", delim = ";")
 
 . . .
 
-Labs 1 - 3 graded
+No section next week 11/13/2026!
 
 . . .
-
-Email me if you used a waiver and on what assignment
-
-. . .
-
-Presentations moved to the Monday of Week 6, 07/28
-
-. . .
-
-If you have any questions or concerns let me know ASAP
 
 # Plan for today {.center background-color="#dc354a"}
 

@@ -1,34 +1,22 @@
 ---
 title: "Week 6"
-subtitle: "Final Presentations"
+subtitle: "Causality"
 editor: visual
 ---
 
 ::: callout-important
-PRESENTATION - Mon, July 27
+No Section Nov. 13th
 
-PROJECT DUE - Wed, July 29
+Project 1 due Nov. 10
 :::
 
 ## Prepare
 
-Prepare for your presentation Monday and your project due Wednesday.
+📖 Read [Directed Acyclical Graphs in Causal Inference: The Mixtape](https://mixtape.scunning.com/)^[2](https://quantpol.juanftellez.com/content/08-content.html#fn2)^
 
 ## Participate
 
-No lectures
-
-## Practice
-
-No application exercises
-
-## Perform
-
-No lab
-
-# We made it!!
-
-![](/weeks/images/pwhl-montreal-maureen-murphy.gif)
+🖥️ [Lecture 6 - Causality](/slides/lec-6.html)
 
 <br><br>
 

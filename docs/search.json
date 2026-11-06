@@ -189,7 +189,7 @@
     "text": "Not yet complete, will add soon. Check back later!",
     "crumbs": [
       "Weekly materials",
-      "Week 6"
+      "Week 7"
     ]
   },
   {
@@ -615,207 +615,284 @@
     "text": "🚨 👨‍👧‍👦 Kids Q2 👨‍👧‍👦 🚨\n\nlm(sibs ~ relig, data = gss_sm) |&gt;\n  tidy() |&gt;\n  arrange(desc(estimate))\n\n# A tibble: 13 × 5\n   term                          estimate std.error statistic   p.value\n   &lt;chr&gt;                            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;\n 1 (Intercept)                   3.77        0.0861  43.8     8.48e-321\n 2 religMoslem/Islam             1.86        0.736    2.53    1.15e-  2\n 3 religNative American          0.478       1.59     0.300   7.64e-  1\n 4 religCatholic                 0.452       0.152    2.97    2.96e-  3\n 5 religOther                    0.000631    0.488    0.00129 9.99e-  1\n 6 religOther Eastern           -0.0221      1.59    -0.0139  9.89e-  1\n 7 religChristian               -0.347       0.511   -0.680   4.97e-  1\n 8 religNone                    -0.484       0.154   -3.14    1.72e-  3\n 9 religOrthodox-Christian      -0.486       1.21    -0.403   6.87e-  1\n10 religInter-Nondenominational -0.915       1.21    -0.758   4.48e-  1\n11 religBuddhism                -0.963       0.700   -1.37    1.69e-  1\n12 religJewish                  -1.93        0.454   -4.25    2.23e-  5\n13 religHinduism                -2.00        0.887   -2.26    2.41e-  2"
   },
   {
-    "objectID": "slides/lec-6.html#the-feeling-thermometer",
-    "href": "slides/lec-6.html#the-feeling-thermometer",
-    "title": "Relationships II",
-    "section": "The feeling thermometer",
-    "text": "The feeling thermometer\nWe can use summarise() to measure average support for specific groups:\n\ntherm %&gt;% \n  summarise(avg_police = mean(ft_police, na.rm = TRUE)) \n\n# A tibble: 1 × 1\n  avg_police\n       &lt;dbl&gt;\n1       75.7"
+    "objectID": "slides/lec-6.html#causality",
+    "href": "slides/lec-6.html#causality",
+    "title": "Causality",
+    "section": "Causality",
+    "text": "Causality\n\n\n\n“How do we know if X causes y?”\nAre our estimates causal? Academics fight about this all day!\nThis question is at center of causal inference\nWe will learn why it is so difficult to establish causality with data\nWe will also learn potential solutions\n\n\n\n\n\n\n\nPictured: audience at a research presentation"
   },
   {
-    "objectID": "slides/lec-6.html#feeling-thermometer",
-    "href": "slides/lec-6.html#feeling-thermometer",
-    "title": "Relationships II",
-    "section": "Feeling thermometer",
-    "text": "Feeling thermometer\nWe can compare where support is highest and lowest:\n\ntherm %&gt;% \n  summarise(avg_police = mean(ft_police, na.rm = TRUE), \n            avg_muslim = mean(ft_muslim, na.rm = TRUE), \n            avg_white = mean(ft_white, na.rm = TRUE), \n            avg_immig = mean(ft_immig, na.rm = TRUE), \n            avg_fem = mean(ft_fem, na.rm = TRUE), \n            avg_black = mean(ft_black, na.rm = TRUE)) \n\n# A tibble: 1 × 6\n  avg_police avg_muslim avg_white avg_immig avg_fem avg_black\n       &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;\n1       75.7       50.0      76.1      61.9    52.1      71.3\n\n\n\npatterns"
+    "objectID": "slides/lec-6.html#what-do-we-mean-by-causality",
+    "href": "slides/lec-6.html#what-do-we-mean-by-causality",
+    "title": "Causality",
+    "section": "What do we mean by causality?",
+    "text": "What do we mean by causality?\n\n\nIn this class, we say X causes Y if…\nAn intervention that changes the value of X produces a probabilistic change in Y\n\nIntervention = X is being changed or altered\nProbabilistic = Y should change, on average, but need not in every instance"
   },
   {
-    "objectID": "slides/lec-6.html#breaking-down-support",
-    "href": "slides/lec-6.html#breaking-down-support",
-    "title": "Relationships II",
-    "section": "Breaking down support",
-    "text": "Breaking down support\nWe can look for patterns by using group_by() to separate average support by respondent characteristics:\n\n\ntherm %&gt;% \n  group_by(party_id) %&gt;% \n  summarise(avg_police = mean(ft_police, na.rm = TRUE), \n            avg_muslim = mean(ft_muslim, na.rm = TRUE), \n            avg_white = mean(ft_white, na.rm = TRUE), \n            avg_immig = mean(ft_immig, na.rm = TRUE), \n            avg_fem = mean(ft_fem, na.rm = TRUE), \n            avg_black = mean(ft_black, na.rm = TRUE))\n\n# A tibble: 5 × 7\n  party_id    avg_police avg_muslim avg_white avg_immig avg_fem avg_black\n  &lt;fct&gt;            &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;\n1 Democrat          67.8       64.6      74.1      71.7    73.9      78.3\n2 Republican        87.6       33.3      81.7      50.2    30.3      65.6\n3 Independent       74.2       49.0      74.1      61.5    48.3      69.1\n4 Other             72.7       45.1      71.1      65.4    40.7      70.2\n5 Not sure          70.1       47.1      70.8      56.9    54.0      66.7\n\n\n\ntake code and iteratively change it"
+    "objectID": "slides/lec-6.html#interventions-and-probability",
+    "href": "slides/lec-6.html#interventions-and-probability",
+    "title": "Causality",
+    "section": "Interventions and probability",
+    "text": "Interventions and probability\nHow do the two parts of our definition fit here?\n\nAspirin causes a reduction in fever symptoms\n\n\nIntervention = someone takes aspirin, we administer aspirin, we sneak it into someone’s food, etc.\n\n\nOutcome = Taking aspirin doesn’t work 100% of the time; but in general, on average, more often than not, etc., taking aspirin \\(\\rightarrow\\) less fever\n\n\nWhat about this example? Democratic institutions reduce the incidence of interstate war"
   },
   {
-    "objectID": "slides/lec-6.html#breaking-down-support-1",
-    "href": "slides/lec-6.html#breaking-down-support-1",
-    "title": "Relationships II",
-    "section": "Breaking down support",
-    "text": "Breaking down support\nWe can use filter() to focus our comparison on fewer categories:\n\n\ntherm_by_party = therm %&gt;% \n  filter(party_id %in% c(\"Democrat\", \"Republican\")) %&gt;% \n  group_by(party_id) %&gt;% \n  summarise(avg_police = mean(ft_police, na.rm = TRUE), \n            avg_muslim = mean(ft_muslim, na.rm = TRUE), \n            avg_white = mean(ft_white, na.rm = TRUE), \n            avg_immig = mean(ft_immig, na.rm = TRUE), \n            avg_fem = mean(ft_fem, na.rm = TRUE), \n            avg_black = mean(ft_black, na.rm = TRUE))\ntherm_by_party\n\n# A tibble: 2 × 7\n  party_id   avg_police avg_muslim avg_white avg_immig avg_fem avg_black\n  &lt;fct&gt;           &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;\n1 Democrat         67.8       64.6      74.1      71.7    73.9      78.3\n2 Republican       87.6       33.3      81.7      50.2    30.3      65.6\n\n\n\nWhere are the biggest partisan gaps? What’s going on with immigrants? Is this really an apples-to-apples comparison?"
+    "objectID": "slides/lec-6.html#the-problem-with-causality",
+    "href": "slides/lec-6.html#the-problem-with-causality",
+    "title": "Causality",
+    "section": "# The problem with causality",
+    "text": "# The problem with causality"
   },
   {
-    "objectID": "slides/lec-6.html#the-immigration-gap",
-    "href": "slides/lec-6.html#the-immigration-gap",
-    "title": "Relationships II",
-    "section": "The immigration gap",
-    "text": "The immigration gap\n\nWhat explains this gap? How much is it about each party’s ideology and how much is about who is in each party?\n\n\nImmigrants in the USA are more likely to identify as Democrat\n\n\nHow much of the difference we are observing across parties solely about parties and how much is it about demographic differences?\n\n\nIt might be, for instance, that the attitudes of non-migrants don’t differ much across parties\n\n\nthat is, the big gap we see is all because immigrants are both more likely to be Democrats and have stronger views of own community"
+    "objectID": "slides/lec-6.html#not-obvious-education-and-earnings",
+    "href": "slides/lec-6.html#not-obvious-education-and-earnings",
+    "title": "Causality",
+    "section": "Not obvious: education and earnings",
+    "text": "Not obvious: education and earnings\n\n\n\nPositive correlation between education and earnings, yet\nPeople who are already wealthy (or likely to become wealthy) get more education than people who are not wealthy\nIn other words: people self-select into education levels"
   },
   {
-    "objectID": "slides/lec-6.html#making-sense-of-the-immigration-gap",
-    "href": "slides/lec-6.html#making-sense-of-the-immigration-gap",
-    "title": "Relationships II",
-    "section": "Making sense of the immigration gap",
-    "text": "Making sense of the immigration gap\nWe want an apples to apples comparison: White Dems vs. White Reps, Asian Dems vs. Asian Reps, and so on\n\nWe can “test” this concern by breaking the data down further, by race:\n\n\n\ntherm %&gt;% \n  filter(party_id %in% c(\"Democrat\", \"Republican\")) %&gt;%\n  group_by(party_id, race) %&gt;%\n  summarise(avg_imm = mean(ft_immig, na.rm = TRUE))\n\n# A tibble: 14 × 3\n# Groups:   party_id [2]\n   party_id   race            avg_imm\n   &lt;fct&gt;      &lt;fct&gt;             &lt;dbl&gt;\n 1 Democrat   White              71.2\n 2 Democrat   Black              71.1\n 3 Democrat   Hispanic           76.2\n 4 Democrat   Asian              75.5\n 5 Democrat   Native American    62.9\n 6 Democrat   Mixed              74.6\n 7 Democrat   Other              84.1\n 8 Republican White              49.8\n 9 Republican Black              54.6\n10 Republican Hispanic           58.0\n11 Republican Asian              54.7\n12 Republican Native American    47.4\n13 Republican Mixed              51.4\n14 Republican Other              42.3"
+    "objectID": "slides/lec-6.html#the-trouble-with-causality",
+    "href": "slides/lec-6.html#the-trouble-with-causality",
+    "title": "Causality",
+    "section": "The trouble with causality",
+    "text": "The trouble with causality\n\nWe can’t directly observe a change in X causing a change in Y\n\n\nThis is true even in experiments, where we directly manipulate stuff\n\n\nAll we can see are correlations between X and Y\n\n\nSome of those correlations are causal; some are not; how can we tell?"
   },
   {
-    "objectID": "slides/lec-6.html#making-sense-of-the-immigration-gap-1",
-    "href": "slides/lec-6.html#making-sense-of-the-immigration-gap-1",
-    "title": "Relationships II",
-    "section": "Making sense of the immigration gap",
-    "text": "Making sense of the immigration gap\nWe can filter to focus on fewer races:\n\n\ntherm %&gt;% \n  filter(party_id %in% c(\"Democrat\", \"Republican\")) %&gt;%\n  filter(race %in% c(\"White\", \"Black\", \"Hispanic\", \"Asian\")) |&gt; \n  group_by(party_id, race) %&gt;%\n  summarise(avg_imm = mean(ft_immig, na.rm = TRUE))\n\n# A tibble: 8 × 3\n# Groups:   party_id [2]\n  party_id   race     avg_imm\n  &lt;fct&gt;      &lt;fct&gt;      &lt;dbl&gt;\n1 Democrat   White       71.2\n2 Democrat   Black       71.1\n3 Democrat   Hispanic    76.2\n4 Democrat   Asian       75.5\n5 Republican White       49.8\n6 Republican Black       54.6\n7 Republican Hispanic    58.0\n8 Republican Asian       54.7"
+    "objectID": "slides/lec-6.html#the-democratic-peace",
+    "href": "slides/lec-6.html#the-democratic-peace",
+    "title": "Causality",
+    "section": "The Democratic Peace?",
+    "text": "The Democratic Peace?\nDoes the spread of democracy reduce international conflict?\n\nTheory: war is costly and the costs are borne by citizens; countries where citizens have more input \\(\\rightarrow\\) less conflict\n\n\nX here is whether the country is a democracy (versus autocracy)\nY is the number of wars the country is involved in\n\n\nIdeal, imaginary approach: take a country, look at Y when democracy = 1, and then when democracy = 0\n\n\nDo this for all countries, take the average"
   },
   {
-    "objectID": "slides/lec-6.html#visualizing-the-pattern",
-    "href": "slides/lec-6.html#visualizing-the-pattern",
-    "title": "Relationships II",
-    "section": "Visualizing the pattern",
-    "text": "Visualizing the pattern\nWe can create a new object to make a nice plot:\n\ntherm_party_immig = therm %&gt;% \n  filter(party_id %in% c(\"Democrat\", \"Republican\")) %&gt;%\n  filter(race %in% c(\"White\", \"Black\", \"Hispanic\", \"Asian\")) |&gt; \n  group_by(party_id, race) %&gt;%\n  summarise(avg_imm = mean(ft_immig, na.rm = TRUE))"
+    "objectID": "slides/lec-6.html#potential-outcomes",
+    "href": "slides/lec-6.html#potential-outcomes",
+    "title": "Causality",
+    "section": "Potential outcomes",
+    "text": "Potential outcomes\nThis magical world where we can compare the number of wars when a country is a democracy versus when it is not is called the potential outcomes\n\n\n\n\n\ncountry\ndemocracy\nwar\n\n\n\n\nCanada\n0\n2\n\n\nCanada\n1\n3\n\n\nChina\n0\n6\n\n\nChina\n1\n2\n\n\nUSA\n0\n5\n\n\nUSA\n1\n2"
   },
   {
-    "objectID": "slides/lec-6.html#the-immigration-attitudes-gap",
-    "href": "slides/lec-6.html#the-immigration-attitudes-gap",
-    "title": "Relationships II",
-    "section": "The immigration attitudes gap",
-    "text": "The immigration attitudes gap\n\n\ncomparing apples to apples, the gap persists"
+    "objectID": "slides/lec-6.html#potential-vs.-observed",
+    "href": "slides/lec-6.html#potential-vs.-observed",
+    "title": "Causality",
+    "section": "Potential vs. observed",
+    "text": "Potential vs. observed\nWe only observe the world on the right, but not the left\n\n\n\n\n\nPotential outcomes world\n\n\ncountry\ndemocracy\nwar\n\n\n\n\nCanada\n0\n2\n\n\nCanada\n1\n3\n\n\nChina\n0\n6\n\n\nChina\n1\n2\n\n\nUSA\n0\n5\n\n\nUSA\n1\n2\n\n\n\n\n\n\n\n\n\nObserved outcomes world\n\n\ncountry\ndemocracy\nwar\n\n\n\n\nCanada\n0\nNA\n\n\nCanada\n1\n3\n\n\nChina\n0\n6\n\n\nChina\n1\nNA\n\n\nUSA\n0\nNA\n\n\nUSA\n1\n2"
   },
   {
-    "objectID": "slides/lec-6.html#non-differences-can-be-surprsing-too",
-    "href": "slides/lec-6.html#non-differences-can-be-surprsing-too",
-    "title": "Relationships II",
-    "section": "Non-differences can be surprsing too",
-    "text": "Non-differences can be surprsing too\n\ntherm %&gt;% \n  summarise(avg_dems = mean(ft_dem, na.rm = TRUE), \n            avg_reps = mean(ft_rep, na.rm = TRUE))\n\n# A tibble: 1 × 2\n  avg_dems avg_reps\n     &lt;dbl&gt;    &lt;dbl&gt;\n1     49.4     43.3\n\n\n\nPretty neutral feelings; mass polarization is dead!"
+    "objectID": "slides/lec-6.html#the-fundamental-problem-of-causality",
+    "href": "slides/lec-6.html#the-fundamental-problem-of-causality",
+    "title": "Causality",
+    "section": "The fundamental problem of causality",
+    "text": "The fundamental problem of causality\n\nWe have missing data on “what would have happened” had the US been an autocracy\n\n\n“what would have happened” \\(\\rightarrow\\) the counterfactual\n\n\nOur goal in causal inference is to make as good a guess as possible as to what Y would have been had democracy = 0 instead of 1 (and vice versa)"
   },
   {
-    "objectID": "slides/lec-6.html#oh",
-    "href": "slides/lec-6.html#oh",
-    "title": "Relationships II",
-    "section": "Oh…",
-    "text": "Oh…\nBreaking down data says something different\n\n\ntherm %&gt;% \n  group_by(party_id) %&gt;% #&lt;&lt;\n  summarise(dems = mean(ft_dem, na.rm = TRUE), \n            reps = mean(ft_rep, na.rm = TRUE))\n\n# A tibble: 5 × 3\n  party_id     dems  reps\n  &lt;fct&gt;       &lt;dbl&gt; &lt;dbl&gt;\n1 Democrat     79.9  22.1\n2 Republican   21.5  72.4\n3 Independent  41.2  39.6\n4 Other        31.9  38.7\n5 Not sure     43.2  42.3"
+    "objectID": "slides/lec-6.html#comparing-apples-and-oranges",
+    "href": "slides/lec-6.html#comparing-apples-and-oranges",
+    "title": "Causality",
+    "section": "Comparing apples and oranges",
+    "text": "Comparing apples and oranges\nImplicitly, this means we are saying the countries that are autocracies are good counterfactuals for the countries that are democracies (and vice versa)\n\nFor instance, that China is a good counterfactual for the US\n\n\nBut China and the US are different in so many ways! They are not good counterfactuals of one another\n\n\nWe will see exactly why this is a problem in the following weeks"
   },
   {
-    "objectID": "slides/lec-6.html#negative-polarization",
-    "href": "slides/lec-6.html#negative-polarization",
-    "title": "Relationships II",
-    "section": "Negative polarization",
-    "text": "Negative polarization"
+    "objectID": "slides/lec-6.html#example-ideology",
+    "href": "slides/lec-6.html#example-ideology",
+    "title": "Causality",
+    "section": "Example: ideology",
+    "text": "Example: ideology\nWhere does (liberal) ideology come from?\n\nVariables in the literature: Income (I), Liberal (L), Age (A), Media (M), Parents (P)\n\n\n\n\n\n\n\n\n\n\n\n\nWhat are our assumptions? What’s this diagram saying (FYI its called a DAG)?"
   },
   {
-    "objectID": "slides/lec-6.html#dummy-variables-1",
-    "href": "slides/lec-6.html#dummy-variables-1",
-    "title": "Relationships II",
-    "section": "Dummy variables",
-    "text": "Dummy variables\nOften, categorical variables are coded 0/1 to represent “yes/no” or “presence/absence”\n\n\n\n\nsample from leaders dataset\n\n\ncountry\nleader\nmil_service\ncombat\n\n\n\n\nCAN\nBennett\n0\n0\n\n\nUSA\nWilson\n0\n0\n\n\nCAN\nPierre Trudeau\n0\n0\n\n\nBUI\nBagaza\n1\n0\n\n\nEST\nVares\n0\n0\n\n\nBUL\nBoris III\n1\n1\n\n\nAUL\nMenzies\n0\n0\n\n\nVEN\nMaduro\nNA\nNA\n\n\nBRA\nde Silva Pessoa\n0\n0\n\n\nLBR\nHilary Richard Wright Johnson\n0\n0"
+    "objectID": "slides/lec-6.html#waffles-and-divorce",
+    "href": "slides/lec-6.html#waffles-and-divorce",
+    "title": "Causality",
+    "section": "Waffles and Divorce",
+    "text": "Waffles and Divorce"
   },
   {
-    "objectID": "slides/lec-6.html#dummy-proportions",
-    "href": "slides/lec-6.html#dummy-proportions",
-    "title": "Relationships II",
-    "section": "Dummy proportions",
-    "text": "Dummy proportions\nDummy variables are useful for lots of reasons\n\nOne is that when you take the average of a dummy variable you get a proportion\n\n\nCoffee today? 1, 0, 0, 0, 1\n\n\nAverage of coffee = \\(\\frac{1 + 0 + 0 + 0 + 1}{5} = .40\\)\n\n\nWe can think about that proportion as a probability or likelihood\n\n\nWhat is the probability a random student in class has had coffee? 2/5 = 40%"
+    "objectID": "slides/lec-6.html#does-waffle-house-cause-divorce",
+    "href": "slides/lec-6.html#does-waffle-house-cause-divorce",
+    "title": "Causality",
+    "section": "Does Waffle House cause divorce?",
+    "text": "Does Waffle House cause divorce?\nDo cheap, delicious waffles put marriages at risk?\n\n\nSpeculate on underlying mechanism"
   },
   {
-    "objectID": "slides/lec-6.html#dummy-variables-2",
-    "href": "slides/lec-6.html#dummy-variables-2",
-    "title": "Relationships II",
-    "section": "Dummy variables",
-    "text": "Dummy variables\nWhen you take the average of a dummy variable you get a proportion:\n\nleader %&gt;% \n  summarise(combat = mean(combat, na.rm = TRUE)) \n\n# A tibble: 1 × 1\n  combat\n   &lt;dbl&gt;\n1  0.246\n\n\nApproximately 24% of world leaders have combat experience, or\n\nthere’s a 24% chance a randomly selected leader has combat experience"
+    "objectID": "slides/lec-6.html#does-waffle-house-cause-divorce-1",
+    "href": "slides/lec-6.html#does-waffle-house-cause-divorce-1",
+    "title": "Causality",
+    "section": "Does Waffle House cause divorce?",
+    "text": "Does Waffle House cause divorce?\n\nAlmost certainly not\n\n\nNo one thinks there is a plausible way in which Waffle House causes divorce\n\n\nWhen we see a correlation of this kind we wonder about other variables that are actually driving the relationship\n\n\nYou’ve likely thought about this before: a “lurking” variable, “other factors”, that “matter”\n\n\nBut what might that variable be? And how exactly does it lead us astray?"
   },
   {
-    "objectID": "slides/lec-6.html#dummy-variables-3",
-    "href": "slides/lec-6.html#dummy-variables-3",
-    "title": "Relationships II",
-    "section": "Dummy variables",
-    "text": "Dummy variables\nLike with anything else, we can take averages by groups\n\nFor example, combat experience by country\n\n\n\nleader %&gt;% \n  group_by(country) %&gt;%\n  summarise(combat = mean(combat, na.rm = TRUE)) |&gt; \n  arrange(desc(combat))\n\n# A tibble: 189 × 2\n   country combat\n   &lt;chr&gt;    &lt;dbl&gt;\n 1 AUH      0.958\n 2 TAJ      0.857\n 3 BFO      0.817\n 4 TOG      0.816\n 5 NIG      0.780\n 6 PRK      0.723\n 7 BEN      0.683\n 8 EQG      0.673\n 9 NIR      0.667\n10 CON      0.667\n# ℹ 179 more rows\n\n\nNote that arrange(desc(variable)) arranges the dataset in descending order"
+    "objectID": "slides/lec-6.html#the-lurking-variable",
+    "href": "slides/lec-6.html#the-lurking-variable",
+    "title": "Causality",
+    "section": "The lurking variable",
+    "text": "The lurking variable\nIt turns out that Waffle Houses originated in the South (Georgia), and most of them are still there\n\nThe South also happens to have some of the highest divorce rates in the country"
   },
   {
-    "objectID": "slides/lec-6.html#dummy-variables-4",
-    "href": "slides/lec-6.html#dummy-variables-4",
-    "title": "Relationships II",
-    "section": "Dummy variables",
-    "text": "Dummy variables\nWe can store as an object, to make a plot:\n\n\ncombat_country = leader %&gt;% \n  group_by(country) %&gt;%\n  # proportion who've seen combat\n  summarise(combat = mean(combat, na.rm = TRUE)) |&gt; \n  # subset to just the top 10 in terms of combat experience\n  slice_max(order_by = combat, n = 10)\n\nggplot(combat_country, aes(y = reorder(country, combat),\n                           x = combat)) + \n  geom_col()"
+    "objectID": "slides/lec-6.html#what-about-location",
+    "href": "slides/lec-6.html#what-about-location",
+    "title": "Causality",
+    "section": "What about location?",
+    "text": "What about location?\nA lurking variable in this case could be the south! So for example, South has an effect on Waffle Houses and Divorce, but Waffles do not cause Divorce\n\n\nThis is called confounding: the South is confounding the relationship between Waffles and Divorce"
   },
   {
-    "objectID": "slides/lec-6.html#your-turn-bob-ross",
-    "href": "slides/lec-6.html#your-turn-bob-ross",
-    "title": "Relationships II",
-    "section": "🚨 Your turn: 🎨 Bob Ross 🎨 🚨",
-    "text": "🚨 Your turn: 🎨 Bob Ross 🎨 🚨\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nepisode\nseason\nepisode_num\ntitle\napple_frame\naurora_borealis\nbarn\nbeach\nboat\nbridge\nbuilding\nbushes\ncabin\ncactus\ncircle_frame\ncirrus\ncliff\nclouds\nconifer\ncumulus\ndeciduous\ndiane_andre\ndock\ndouble_oval_frame\nfarm\nfence\nfire\nflorida_frame\nflowers\nfog\nframed\ngrass\nguest\nhalf_circle_frame\nhalf_oval_frame\nhills\nlake\nlakes\nlighthouse\nmill\nmoon\nmountain\nmountains\nnight\nocean\noval_frame\npalm_trees\npath\nperson\nportrait\nrectangle_3d_frame\nrectangular_frame\nriver\nrocks\nseashell_frame\nsnow\nsnowy_mountain\nsplit_frame\nsteve_ross\nstructure\nsun\ntomb_frame\ntree\ntrees\ntriple_frame\nwaterfall\nwaves\nwindmill\nwindow_frame\nwinter\nwood_framed\n\n\n\n\nS01E01\n1\n1\nA WALK IN THE WOODS\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n1\n0\n0\n0\n0\n0\n0\n0\n\n\nS01E02\n1\n2\nMT. MCKINLEY\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n1\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n1\n0\n0\n0\n0\n0\n1\n1\n0\n0\n0\n0\n0\n1\n0\n\n\nS01E03\n1\n3\nEBONY SUNSET\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n1\n0\n1\n1\n0\n0\n0\n0\n0\n1\n0\n\n\nS01E04\n1\n4\nWINTER MIST\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n1\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n1\n1\n0\n0\n0\n0\n0\n0\n0\n\n\nS01E05\n1\n5\nQUIET STREAM\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n1\n0\n0\n0\n0\n0\n0\n0\n0\n1\n1\n0\n0\n0\n0\n0\n0\n0\n\n\nS01E06\n1\n6\nWINTER MOON\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n0\n0\n0\n1\n1\n1\n1\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n0\n1\n1\n0\n0\n1\n0\n0\n1\n1\n0\n0\n0\n0\n0\n1\n0"
+    "objectID": "slides/lec-6.html#a-totally-confounded-relationship",
+    "href": "slides/lec-6.html#a-totally-confounded-relationship",
+    "title": "Causality",
+    "section": "A totally confounded relationship",
+    "text": "A totally confounded relationship\nThe a confounded relationship like the one on the left will produce an association like the one on the right\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nEven if Waffles and Divorce are causally unrelated"
   },
   {
-    "objectID": "slides/lec-6.html#your-turn-bob-ross-1",
-    "href": "slides/lec-6.html#your-turn-bob-ross-1",
-    "title": "Relationships II",
-    "section": "🚨 Your turn: 🎨 Bob Ross 🎨 🚨",
-    "text": "🚨 Your turn: 🎨 Bob Ross 🎨 🚨\nUsing the bob_ross data from fivethirtyeight package\n\nHow likely was Bob Ross to include a happy little tree in one of his paintings?\nHow has the frequency with which Bob Ross included clouds in his paintings changed across the show’s seasons? Make a time series to illustrate.\nIf there is a mountain in a Bob Ross painting, how likely is it that mountain is snowy (snowy_mountain)?\nHow much more likely was Steve Ross (steve) to paint a lake (lake) than his dad?"
+    "objectID": "slides/lec-6.html#whats-going-on-here",
+    "href": "slides/lec-6.html#whats-going-on-here",
+    "title": "Causality",
+    "section": "What’s going on here?",
+    "text": "What’s going on here?\n\n\nThink of causality as water flowing in the direction of the arrows\nWe want look at water flowing directly from a treatment to an outcome\nBut account for the fact that there is often indirect flow that contaminates our estimates\n\n\nSource: the mighty Andrew Heiss"
   },
   {
-    "objectID": "slides/lec-6.html#analyzing-categorical-data-1",
-    "href": "slides/lec-6.html#analyzing-categorical-data-1",
-    "title": "Relationships II",
-    "section": "Analyzing categorical data",
-    "text": "Analyzing categorical data\n\nSome variables have values that are categories (race, sex, etc.)\n\n\nCan’t take the mean of a category!\n\n\nBut we can look at the proportions of observations in each category, and look for patterns there"
+    "objectID": "slides/lec-6.html#whats-going-on-here-1",
+    "href": "slides/lec-6.html#whats-going-on-here-1",
+    "title": "Causality",
+    "section": "What’s going on here?",
+    "text": "What’s going on here?\nTo identify the effect of Waffles on Divorce we need to account, or control for, the influence of the South\nOtherwise we will be confounded"
   },
   {
-    "objectID": "slides/lec-6.html#pokemon-types",
-    "href": "slides/lec-6.html#pokemon-types",
-    "title": "Relationships II",
-    "section": "Pokemon types",
-    "text": "Pokemon types\nHow many Pokemon are there of each type? What are the most and least common types?\n\n\n\n\n\nname\ntype1\n\n\n\n\nRalts\npsychic\n\n\nSlowbro\nwater\n\n\nVulpix\nfire\n\n\nSigilyph\npsychic\n\n\nTropius\ngrass\n\n\nSnivy\ngrass\n\n\nArticuno\nice"
+    "objectID": "slides/lec-6.html#the-confounding-fork",
+    "href": "slides/lec-6.html#the-confounding-fork",
+    "title": "Causality",
+    "section": "The confounding fork 🍴",
+    "text": "The confounding fork 🍴\nY \\(\\leftarrow\\) Z \\(\\rightarrow\\) X\nThere is a third variable, Z, that is a common cause of X and Y"
   },
   {
-    "objectID": "slides/lec-6.html#counting-categories",
-    "href": "slides/lec-6.html#counting-categories",
-    "title": "Relationships II",
-    "section": "Counting categories",
-    "text": "Counting categories\nWe can use a new function tally(), in combination with group_by(), to count how many observations are in each category:\n\npokemon\n\n# A tibble: 801 × 14\n   name       type1 type2  height_m weight_kg capture_rate    hp attack defense\n   &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;     &lt;dbl&gt;     &lt;dbl&gt;        &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;\n 1 Bulbasaur  grass poison      0.7       6.9           45    45     49      49\n 2 Ivysaur    grass poison      1        13             45    60     62      63\n 3 Venusaur   grass poison      2       100             45    80    100     123\n 4 Charmander fire  &lt;NA&gt;        0.6       8.5           45    39     52      43\n 5 Charmeleon fire  &lt;NA&gt;        1.1      19             45    58     64      58\n 6 Charizard  fire  flying      1.7      90.5           45    78    104      78\n 7 Squirtle   water &lt;NA&gt;        0.5       9             45    44     48      65\n 8 Wartortle  water &lt;NA&gt;        1        22.5           45    59     63      80\n 9 Blastoise  water &lt;NA&gt;        1.6      85.5           45    79    103     120\n10 Caterpie   bug   &lt;NA&gt;        0.3       2.9          255    45     30      35\n# ℹ 791 more rows\n# ℹ 5 more variables: sp_attack &lt;dbl&gt;, sp_defense &lt;dbl&gt;, speed &lt;dbl&gt;,\n#   generation &lt;dbl&gt;, is_legendary &lt;dbl&gt;"
+    "objectID": "slides/lec-6.html#the-confounding-fork-1",
+    "href": "slides/lec-6.html#the-confounding-fork-1",
+    "title": "Causality",
+    "section": "The confounding fork",
+    "text": "The confounding fork\nWe’ve already seen this!\n\n\n\n\n\n\n\n\n\n\n\nCreates an association between X and Y that isn’t causal\n\n\n\n\n\n\n\n\n\n\nDistorts the true causal relation between X and Y\n\nNote that both of these fork scenarios will confound"
   },
   {
-    "objectID": "slides/lec-6.html#counting-categories-1",
-    "href": "slides/lec-6.html#counting-categories-1",
-    "title": "Relationships II",
-    "section": "Counting categories",
-    "text": "Counting categories\nWe can use a new function tally(), in combination with group_by(), to count how many observations are in each category:\n\npokemon %&gt;% \n  group_by(type1) \n\n# A tibble: 801 × 14\n# Groups:   type1 [18]\n   name       type1 type2  height_m weight_kg capture_rate    hp attack defense\n   &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;     &lt;dbl&gt;     &lt;dbl&gt;        &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;\n 1 Bulbasaur  grass poison      0.7       6.9           45    45     49      49\n 2 Ivysaur    grass poison      1        13             45    60     62      63\n 3 Venusaur   grass poison      2       100             45    80    100     123\n 4 Charmander fire  &lt;NA&gt;        0.6       8.5           45    39     52      43\n 5 Charmeleon fire  &lt;NA&gt;        1.1      19             45    58     64      58\n 6 Charizard  fire  flying      1.7      90.5           45    78    104      78\n 7 Squirtle   water &lt;NA&gt;        0.5       9             45    44     48      65\n 8 Wartortle  water &lt;NA&gt;        1        22.5           45    59     63      80\n 9 Blastoise  water &lt;NA&gt;        1.6      85.5           45    79    103     120\n10 Caterpie   bug   &lt;NA&gt;        0.3       2.9          255    45     30      35\n# ℹ 791 more rows\n# ℹ 5 more variables: sp_attack &lt;dbl&gt;, sp_defense &lt;dbl&gt;, speed &lt;dbl&gt;,\n#   generation &lt;dbl&gt;, is_legendary &lt;dbl&gt;"
+    "objectID": "slides/lec-6.html#dealing-with-forks",
+    "href": "slides/lec-6.html#dealing-with-forks",
+    "title": "Causality",
+    "section": "Dealing with forks",
+    "text": "Dealing with forks\nWe need to figure out what Z is, measure it, and adjust for it in our analysis"
   },
   {
-    "objectID": "slides/lec-6.html#counting-categories-2",
-    "href": "slides/lec-6.html#counting-categories-2",
-    "title": "Relationships II",
-    "section": "Counting categories",
-    "text": "Counting categories\nWe can use a new function tally(), in combination with group_by(), to count how many observations are in each category:\n\npokemon %&gt;% \n  group_by(type1) %&gt;% \n  tally() \n\n# A tibble: 18 × 2\n   type1        n\n   &lt;chr&gt;    &lt;int&gt;\n 1 bug         72\n 2 dark        29\n 3 dragon      27\n 4 electric    39\n 5 fairy       18\n 6 fighting    28\n 7 fire        52\n 8 flying       3\n 9 ghost       27\n10 grass       78\n11 ground      32\n12 ice         23\n13 normal     105\n14 poison      32\n15 psychic     53\n16 rock        45\n17 steel       24\n18 water      114"
+    "objectID": "slides/lec-6.html#the-perplexing-pipe",
+    "href": "slides/lec-6.html#the-perplexing-pipe",
+    "title": "Causality",
+    "section": "The perplexing pipe 🚰",
+    "text": "The perplexing pipe 🚰\nX \\(\\rightarrow\\) Z \\(\\rightarrow\\) Y\nX causes Z, which causes Y (or: Z mediates the effect of X on Y)\n\n\n\n\n\n\n\n\n\n\nWhat happens if we adjust for Z? We block the effect of X on Y"
   },
   {
-    "objectID": "slides/lec-6.html#from-counts-to-percents",
-    "href": "slides/lec-6.html#from-counts-to-percents",
-    "title": "Relationships II",
-    "section": "From counts to percents",
-    "text": "From counts to percents\nWe can can then use mutate() to calculate the percent in each group:\n\npokemon %&gt;% \n  group_by(type1) %&gt;% \n  tally() %&gt;% \n  mutate(percent = n / sum(n) * 100) \n\n# A tibble: 18 × 3\n   type1        n percent\n   &lt;chr&gt;    &lt;int&gt;   &lt;dbl&gt;\n 1 bug         72   8.99 \n 2 dark        29   3.62 \n 3 dragon      27   3.37 \n 4 electric    39   4.87 \n 5 fairy       18   2.25 \n 6 fighting    28   3.50 \n 7 fire        52   6.49 \n 8 flying       3   0.375\n 9 ghost       27   3.37 \n10 grass       78   9.74 \n11 ground      32   4.00 \n12 ice         23   2.87 \n13 normal     105  13.1  \n14 poison      32   4.00 \n15 psychic     53   6.62 \n16 rock        45   5.62 \n17 steel       24   3.00 \n18 water      114  14.2  \n\n\n\nstop to show the n/sum(n)"
+    "objectID": "slides/lec-6.html#an-example-foreign-intervention",
+    "href": "slides/lec-6.html#an-example-foreign-intervention",
+    "title": "Causality",
+    "section": "An example: foreign intervention",
+    "text": "An example: foreign intervention\nWhat effect does US foreign wars have on US support abroad?\n\nSay the DAG looks like this:\n\n\n\n\n\n\n\n\n\nIf we control for casualties we are blocking the effect of intervention on support"
   },
   {
-    "objectID": "slides/lec-6.html#group_by-tally",
-    "href": "slides/lec-6.html#group_by-tally",
-    "title": "Relationships II",
-    "section": "group_by + tally()",
-    "text": "group_by + tally()\nWe can then store as object for plotting:\n\ntype_pct = pokemon %&gt;% \n  group_by(type1) %&gt;% \n  tally() %&gt;% \n  mutate(percent = n/sum(n) * 100)"
+    "objectID": "slides/lec-6.html#an-example-foreign-intervention-1",
+    "href": "slides/lec-6.html#an-example-foreign-intervention-1",
+    "title": "Causality",
+    "section": "An example: foreign intervention",
+    "text": "An example: foreign intervention\nWhat if the relationship instead looked like this:\n\n\nWhat does it mean"
   },
   {
-    "objectID": "slides/lec-6.html#group_by-tally-1",
-    "href": "slides/lec-6.html#group_by-tally-1",
-    "title": "Relationships II",
-    "section": "group_by + tally()",
-    "text": "group_by + tally()\nWe can then store as object for plotting:\n\nggplot(type_pct, aes(y = reorder(type1, percent), \n                     x = percent)) + \n  geom_col(color = \"white\", fill = \"darkblue\") + \n  # suppress legend\n  theme(legend.position = \"none\")"
+    "objectID": "slides/lec-6.html#an-example-foreign-intervention-2",
+    "href": "slides/lec-6.html#an-example-foreign-intervention-2",
+    "title": "Causality",
+    "section": "An example: foreign intervention",
+    "text": "An example: foreign intervention\nTwo ways that War affects US sentiment: directly and indirectly\nAdjusting for casualties blocks the indirect effect; if that’s what we want, fine – But if we want the full effect then we’ll be wrong!\n\n\nWhat does it mean"
   },
   {
-    "objectID": "slides/lec-6.html#your-turn-flying-etiquette",
-    "href": "slides/lec-6.html#your-turn-flying-etiquette",
-    "title": "Relationships II",
-    "section": "🚨 Your turn: 💺 Flying etiquette 💺 🚨",
-    "text": "🚨 Your turn: 💺 Flying etiquette 💺 🚨\nA survey of what’s rude to do on a plane:\n\n\n\n\nSample from the flying dataset\n\n\ngender\nage\nheight\nchildren_under_18\nhousehold_income\neducation\nlocation\nfrequency\nrecline_frequency\nrecline_obligation\nrecline_rude\nrecline_eliminate\nswitch_seats_friends\nswitch_seats_family\nwake_up_bathroom\nwake_up_walk\nbaby\nunruly_child\ntwo_arm_rests\nmiddle_arm_rest\nshade\nunsold_seat\ntalk_stranger\nget_up\nelectronics\nsmoked\n\n\n\n\nFemale\n30-44\n5'4\"\nTRUE\nNA\nSome college or Associate degree\nMountain\nOnce a year or less\nAbout half the time\nFALSE\nNo\nFALSE\nSomewhat\nSomewhat\nNo\nNo\nNo\nNo\nWhoever puts their arm on the arm rest first\nWhoever puts their arm on the arm rest first\nThe person in the window seat should have exclusive control\nNo\nNo\nMore than five times times\nFALSE\nFALSE\n\n\nFemale\n45-60\n5'5\"\nFALSE\n$25,000 - $49,999\nHigh school degree\nSouth Atlantic\nOnce a year or less\nAlways\nTRUE\nNo\nFALSE\nVery\nNo\nNo\nNo\nNo\nVery\nThe arm rests should be shared\nThe arm rests should be shared\nEveryone in the row should have some say\nVery\nNo\nTwice\nFALSE\nFALSE\n\n\nFemale\n&gt; 60\n5'1\"\nFALSE\n$25,000 - $49,999\nBachelor degree\nWest North Central\nOnce a year or less\nOnce in a while\nTRUE\nSomewhat\nTRUE\nSomewhat\nNo\nNo\nSomewhat\nNo\nSomewhat\nThe arm rests should be shared\nThe arm rests should be shared\nThe person in the window seat should have exclusive control\nSomewhat\nNo\nThree times\nFALSE\nFALSE\n\n\nFemale\n45-60\n5'7\"\nFALSE\n$25,000 - $49,999\nGraduate degree\nWest South Central\nOnce a year or less\nAlways\nFALSE\nNo\nFALSE\nNo\nNo\nNo\nSomewhat\nVery\nVery\nWhoever puts their arm on the arm rest first\nWhoever puts their arm on the arm rest first\nThe person in the window seat should have exclusive control\nNo\nSomewhat\nTwice\nFALSE\nFALSE\n\n\nMale\n45-60\n5'9\"\nFALSE\n$25,000 - $49,999\nSome college or Associate degree\nMiddle Atlantic\nOnce a month or less\nAlways\nFALSE\nNo\nFALSE\nSomewhat\nSomewhat\nNo\nSomewhat\nNo\nSomewhat\nThe person in the middle seat gets both arm rests\nThe person in aisle\nThe person in the window seat should have exclusive control\nSomewhat\nSomewhat\nThree times\nFALSE\nFALSE\n\n\nMale\n45-60\n5'8\"\nFALSE\nNA\nGraduate degree\nPacific\nOnce a year or less\nUsually\nFALSE\nNo\nFALSE\nNo\nNo\nNo\nSomewhat\nNo\nSomewhat\nWhoever puts their arm on the arm rest first\nWhoever puts their arm on the arm rest first\nThe person in the window seat should have exclusive control\nNo\nNo\nThree times\nFALSE\nFALSE\n\n\nFemale\n30-44\n5'7\"\nTRUE\n$25,000 - $49,999\nSome college or Associate degree\nNew England\nOnce a year or less\nAbout half the time\nTRUE\nNo\nFALSE\nNo\nNo\nNo\nSomewhat\nNo\nVery\nThe arm rests should be shared\nThe arm rests should be shared\nThe person in the window seat should have exclusive control\nNo\nNo\nThree times\nFALSE\nFALSE\n\n\nFemale\n45-60\n5'5\"\nTRUE\n$50,000 - $99,999\nHigh school degree\nSouth Atlantic\nOnce a year or less\nOnce in a while\nFALSE\nNo\nFALSE\nNo\nNo\nNo\nSomewhat\nNo\nSomewhat\nWhoever puts their arm on the arm rest first\nWhoever puts their arm on the arm rest first\nEveryone in the row should have some say\nNo\nNo\nThree times\nFALSE\nFALSE\n\n\nMale\n30-44\n5'11\"\nTRUE\n$50,000 - $99,999\nSome college or Associate degree\nEast North Central\nOnce a year or less\nAlways\nTRUE\nNo\nFALSE\nNo\nNo\nNo\nSomewhat\nNo\nSomewhat\nThe arm rests should be shared\nThe arm rests should be shared\nEveryone in the row should have some say\nNo\nNo\nFour times\nFALSE\nFALSE\n\n\nFemale\n45-60\nUnder 5 ft.\nFALSE\n$50,000 - $99,999\nSome college or Associate degree\nEast North Central\nOnce a year or less\nOnce in a while\nTRUE\nNo\nFALSE\nNo\nNo\nNo\nSomewhat\nNo\nVery\nThe arm rests should be shared\nThe arm rests should be shared\nThe person in the window seat should have exclusive control\nNo\nNo\nTwice\nFALSE\nFALSE"
+    "objectID": "slides/lec-6.html#pipes-why-are-they-even-a-problem",
+    "href": "slides/lec-6.html#pipes-why-are-they-even-a-problem",
+    "title": "Causality",
+    "section": "Pipes: why are they even a problem?",
+    "text": "Pipes: why are they even a problem?\nJust leave pipes alone! It’s a problem of “over-adjusting”\n\nBad social science: sometimes we are so afraid of forks that we control for everything we have data on\n\n\nEspecially when a process seems very complicated"
   },
   {
-    "objectID": "slides/lec-6.html#your-turn-flying-etiquette-1",
-    "href": "slides/lec-6.html#your-turn-flying-etiquette-1",
-    "title": "Relationships II",
-    "section": "🚨 Your turn: 💺 flying etiquette 💺 🚨",
-    "text": "🚨 Your turn: 💺 flying etiquette 💺 🚨\nUsing the flying data from fivethirtyeight\n\nIn a row of three seats, who should get to use the middle arm rest (two_arm_rests)? Make a barplot of the percent of respondents who gave each answer.\nIn general, is it rude to knowingly bring unruly children on a plane? Make a barplot of the percent who gave each answer, but separated by whether the respondent has a kid or not.\nMake a barplot of responses to an etiquette dilemma of your liking. Bonus points if you break it down by a respondent characteristic."
+    "objectID": "slides/lec-6.html#example-where-pipes-go-wrong",
+    "href": "slides/lec-6.html#example-where-pipes-go-wrong",
+    "title": "Causality",
+    "section": "Example: where pipes go wrong",
+    "text": "Example: where pipes go wrong\nThe effects of smoking on heart problems might be complex; lots of potential confounds to worry about\n\nResearcher might think they need to control for a study subject’s cholesterol because cholesterol affects heart health\n\n\n“We should compare people who smoke but have similar levels of cholesterol, because cholesterol affects heart health”"
+  },
+  {
+    "objectID": "slides/lec-6.html#example-where-pipes-go-wrong-1",
+    "href": "slides/lec-6.html#example-where-pipes-go-wrong-1",
+    "title": "Causality",
+    "section": "Example: where pipes go wrong",
+    "text": "Example: where pipes go wrong\nIf the DAG looks like this, cholesterol is a pipe and controlling is bad!"
+  },
+  {
+    "objectID": "slides/lec-6.html#the-explosive-collider",
+    "href": "slides/lec-6.html#the-explosive-collider",
+    "title": "Causality",
+    "section": "The explosive collider 💥",
+    "text": "The explosive collider 💥\n\\(X \\rightarrow Z \\leftarrow Y\\)\n\nX and Y have a common effect\n\n\nLeft alone, it’s no problem; but controlling for Z creates strange patterns"
+  },
+  {
+    "objectID": "slides/lec-6.html#example-the-nba",
+    "href": "slides/lec-6.html#example-the-nba",
+    "title": "Causality",
+    "section": "Example: the NBA",
+    "text": "Example: the NBA\n\n\nShould the NBA stop worrying about height when drafting players?"
+  },
+  {
+    "objectID": "slides/lec-6.html#no",
+    "href": "slides/lec-6.html#no",
+    "title": "Causality",
+    "section": "No!",
+    "text": "No!\nObviously, height helps in basketball\n\nBut among NBA players there might be no relationship between height and scoring, because…\n\n\nThe shorter players who are drafted have other advantages\n\n\nAmong NBA players = adjusting, or controlling for, being in the NBA"
+  },
+  {
+    "objectID": "slides/lec-6.html#another-example-bad-findings",
+    "href": "slides/lec-6.html#another-example-bad-findings",
+    "title": "Causality",
+    "section": "Another example: bad findings",
+    "text": "Another example: bad findings\n\n\nRichard McElreath asks: why are surprising findings so often untrustworthy?"
+  },
+  {
+    "objectID": "slides/lec-6.html#another-example-bad-findings-1",
+    "href": "slides/lec-6.html#another-example-bad-findings-1",
+    "title": "Causality",
+    "section": "Another example: bad findings",
+    "text": "Another example: bad findings"
+  },
+  {
+    "objectID": "slides/lec-6.html#its-a-collider",
+    "href": "slides/lec-6.html#its-a-collider",
+    "title": "Causality",
+    "section": "It’s a collider",
+    "text": "It’s a collider\nImagine that in reality there is no relationship between how surprising a finding is and how trustworthy it is"
+  },
+  {
+    "objectID": "slides/lec-6.html#its-a-collider-1",
+    "href": "slides/lec-6.html#its-a-collider-1",
+    "title": "Causality",
+    "section": "It’s a collider",
+    "text": "It’s a collider\nBut now imagine that studies are only published either if they’re very trustworthy OR very surprising"
+  },
+  {
+    "objectID": "slides/lec-6.html#its-a-collider-2",
+    "href": "slides/lec-6.html#its-a-collider-2",
+    "title": "Causality",
+    "section": "It’s a collider",
+    "text": "It’s a collider\nBy only looking at published papers (e.g., controlling for publication), we create a negative relationship that doesn’t exist"
+  },
+  {
+    "objectID": "slides/lec-6.html#exploding-colliders",
+    "href": "slides/lec-6.html#exploding-colliders",
+    "title": "Causality",
+    "section": "Exploding colliders",
+    "text": "Exploding colliders\nLike pipes, colliders are a problem of controlling for the wrong thing\nThey are often the result of a sample selection problem\nThey can obscure actual relationships or fabricate non-existent ones\nWe need to avoid controlling for colliders; but they are everywhere!"
+  },
+  {
+    "objectID": "slides/lec-6.html#your-turn-colliders",
+    "href": "slides/lec-6.html#your-turn-colliders",
+    "title": "Causality",
+    "section": "💥 Your turn: colliders 💥",
+    "text": "💥 Your turn: colliders 💥\nHow are the following examples of colliders?\n\nAmong employees at Google, there is a strong negative correlation between technical skills and social skills.\nA study of people who tested for COVID finds that people who smoke regularly are less likely to develop COVID-19. A real study!\n\n\nwe are conditioning on testing, these are the only people we observe anything that’s correlated with likelihood of testing here becomes a problem who gets tested? imagine that healthcare workers get tested a lot, and that people who actually have COVID 19 are tested a lot so smokers with no symptoms are very unlikely to be in the data so of those tested, non-smokers are more likely to have COVID19 than smokers"
   },
   {
     "objectID": "slides/lec-4.html#objects-and-pipes",
@@ -2103,7 +2180,7 @@
     "href": "slides/lec-10.html#does-waffle-house-cause-divorce",
     "title": "Causality II",
     "section": "Does Waffle House cause divorce?",
-    "text": "Does Waffle House cause divorce?\nStates with more waffle houses tend to have more divorce\n\n\n\n\n\nLocation\nMarriage\nDivorce\nWaffles per Person\n\n\n\n\nSouth Dakota\n20.1\n10.9\n0.00\n\n\nGeorgia\n22.1\n11.5\n39.32\n\n\nAlabama\n20.2\n12.7\n26.78\n\n\nUtah\n29.6\n10.2\n0.00\n\n\nWisconsin\n17.2\n8.3\n0.00\n\n\nCalifornia\n19.1\n8.0\n0.00\n\n\nRhode Island\n15.0\n9.4\n0.00"
+    "text": "Does Waffle House cause divorce?\nStates with more waffle houses tend to have more divorce\n\n\n\n\n\nLocation\nMarriage\nDivorce\nWaffles per Person\n\n\n\n\nMichigan\n16.5\n9.2\n0.00\n\n\nGeorgia\n22.1\n11.5\n39.32\n\n\nMontana\n18.5\n9.1\n0.00\n\n\nDistrict of Columbia\n17.7\n6.3\n0.00\n\n\nNew Hampshire\n16.7\n10.1\n0.00\n\n\nIllinois\n17.9\n8.0\n0.16\n\n\nAlaska\n26.0\n12.5\n0.00"
   },
   {
     "objectID": "slides/lec-10.html#does-waffle-house-cause-divorce-1",
@@ -2145,21 +2222,21 @@
     "href": "slides/lec-10.html#how-does-this-happen",
     "title": "Causality II",
     "section": "How does this happen?",
-    "text": "How does this happen?\nLet’s make up data to convince ourselves this is true\n\nfifty states, about half of them are in the South\n\n\n\ntibble(south = sample(c(0, 1), size = 50, replace = TRUE))\n\n# A tibble: 50 × 1\n   south\n   &lt;dbl&gt;\n 1     1\n 2     1\n 3     0\n 4     0\n 5     1\n 6     0\n 7     0\n 8     0\n 9     1\n10     0\n# ℹ 40 more rows\n\n\n\n\n\n\n\n\nNote\n\n\nsample() is choosing at random between 0 and 1, 50 times, with replacement"
+    "text": "How does this happen?\nLet’s make up data to convince ourselves this is true\n\nfifty states, about half of them are in the South\n\n\n\ntibble(south = sample(c(0, 1), size = 50, replace = TRUE))\n\n# A tibble: 50 × 1\n   south\n   &lt;dbl&gt;\n 1     1\n 2     0\n 3     1\n 4     0\n 5     1\n 6     0\n 7     1\n 8     1\n 9     0\n10     0\n# ℹ 40 more rows\n\n\n\n\n\n\n\n\nNote\n\n\nsample() is choosing at random between 0 and 1, 50 times, with replacement"
   },
   {
     "objectID": "slides/lec-10.html#simulate-the-treatment",
     "href": "slides/lec-10.html#simulate-the-treatment",
     "title": "Causality II",
     "section": "Simulate the treatment",
-    "text": "Simulate the treatment\nStep 2: make Waffle houses, let’s say about 20 per million residents, +/- 4\n\ntibble(south = sample(c(0, 1), size = 50, replace = TRUE), \n       waffle = rnorm(n = 50, mean = 20, sd = 4))\n\n# A tibble: 50 × 2\n   south waffle\n   &lt;dbl&gt;  &lt;dbl&gt;\n 1     0   25.9\n 2     1   25.1\n 3     1   22.2\n 4     0   21.7\n 5     1   16.6\n 6     1   18.9\n 7     1   22.5\n 8     0   15.1\n 9     1   27.4\n10     1   19.3\n# ℹ 40 more rows"
+    "text": "Simulate the treatment\nStep 2: make Waffle houses, let’s say about 20 per million residents, +/- 4\n\ntibble(south = sample(c(0, 1), size = 50, replace = TRUE), \n       waffle = rnorm(n = 50, mean = 20, sd = 4))\n\n# A tibble: 50 × 2\n   south waffle\n   &lt;dbl&gt;  &lt;dbl&gt;\n 1     1   19.8\n 2     0   18.7\n 3     1   20.4\n 4     0   18.5\n 5     0   16.4\n 6     1   20.8\n 7     0   15.3\n 8     0   31.7\n 9     0   22.3\n10     0   22.6\n# ℹ 40 more rows"
   },
   {
     "objectID": "slides/lec-10.html#make-waffles-more-common-in-the-south",
     "href": "slides/lec-10.html#make-waffles-more-common-in-the-south",
     "title": "Causality II",
     "section": "Make Waffles more common in the South",
-    "text": "Make Waffles more common in the South\nStep 3: The arrow from South to Waffles, let’s say Southern states have about 10 more Waffles, on average\n\ntibble(south = sample(c(0, 1), size = 50, replace = TRUE), \n       waffle = rnorm(n = 50, mean = 20, sd = 4) + 10 * south)\n\n# A tibble: 50 × 2\n   south waffle\n   &lt;dbl&gt;  &lt;dbl&gt;\n 1     1   31.7\n 2     1   25.8\n 3     1   24.6\n 4     1   33.1\n 5     0   20.4\n 6     0   22.4\n 7     0   21.2\n 8     0   15.3\n 9     1   29.8\n10     0   19.9\n# ℹ 40 more rows"
+    "text": "Make Waffles more common in the South\nStep 3: The arrow from South to Waffles, let’s say Southern states have about 10 more Waffles, on average\n\ntibble(south = sample(c(0, 1), size = 50, replace = TRUE), \n       waffle = rnorm(n = 50, mean = 20, sd = 4) + 10 * south)\n\n# A tibble: 50 × 2\n   south waffle\n   &lt;dbl&gt;  &lt;dbl&gt;\n 1     0   16.8\n 2     1   31.5\n 3     1   29.7\n 4     1   31.0\n 5     0   25.7\n 6     0   19.1\n 7     1   22.1\n 8     0   10.6\n 9     0   19.0\n10     1   36.4\n# ℹ 40 more rows"
   },
   {
     "objectID": "slides/lec-10.html#simulate-the-outcome",
@@ -2278,7 +2355,7 @@
     "href": "slides/lec-10.html#the-second-scenario-1",
     "title": "Causality II",
     "section": "The second scenario",
-    "text": "The second scenario\nThe effect of Z (South) on X (Waffles) and Y (Divorce) will distort our estimates:\n\nmod = lm(divorce ~ waffle, data = fake) \ntidy(mod)\n\n# A tibble: 2 × 5\n  term        estimate std.error statistic  p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 (Intercept)   11.4      1.53        7.47 1.39e- 9\n2 waffle         0.512    0.0598      8.57 3.11e-11\n\n\n\nEstimate is \\(\\frac{estimated}{true}\\) = 5119.0037885 times larger than the true effect!"
+    "text": "The second scenario\nThe effect of Z (South) on X (Waffles) and Y (Divorce) will distort our estimates:\n\nmod = lm(divorce ~ waffle, data = fake) \ntidy(mod)\n\n# A tibble: 2 × 5\n  term        estimate std.error statistic  p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 (Intercept)   11.4      1.82        6.29 9.17e- 8\n2 waffle         0.553    0.0704      7.86 3.64e-10\n\n\n\nEstimate is \\(\\frac{estimated}{true}\\) = 5530.3701878 times larger than the true effect!"
   },
   {
     "objectID": "slides/lec-10.html#dealing-with-forks",
@@ -2455,7 +2532,7 @@
     "href": "index.html",
     "title": "POL 051: The Scientific Study of Politics",
     "section": "",
-    "text": "This page contains an outline of the topics and materials for the Fall 2026 discussion sections (A04, A05, A06). Note that this schedule will be updated as the quarter progresses, with all changes documented here.\n\n\n\n\n\n\n\n\nTA\nLecture\nDiscussion/Lab\n\n\n\n\nHaley Daarstad569 Kerr Hallhbdaarstad@ucdavis.eduOffice Hours: Tue 12:00 - 3:00 PM\nTuesday & Thursday3:10 pm - 4:30 pmWellman Hall 2\nFridayA04: 9:00 am - 9:50 amA05: 10:00 am - 10:50 amA06: 11:00 am - 11:50 amKerr Hall 451\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\nReadings\nSlides\n\n\n\n\n0\nFri, Sep 25\nNo Section\n\n\n\n\n1\nFri, Oct 2\nIntroduction to R\n📖\n🖥️\n\n\n2\nFri, Oct 9\nData Visualization\n📖\n🖥️\n\n\n3\nFri, Oct 16\nData Wrangling I\n📖\n🖥️\n\n\n4\nFri, Oct 23\nData Wrangling II\n📖\n🖥️\n\n\n5\nFri, Oct 30\nProject 1 Practice\n📖\n🖥️\n\n\n6\nFri, Nov 6\nModeling and Causality\n\n\n\n\n7\nFri, Nov 13\nUncertainty & Hypothesis Testing\n\n\n\n\n8\nFri, Nov 20\nPrediction & Natural Experiments\n\n\n\n\n9\nFri, Nov 27\nNo section - Thanksgiving holiday\n\n\n\n\n10\nFri, Dec 4\nReview & Wrap-up",
+    "text": "This page contains an outline of the topics and materials for the Fall 2026 discussion sections (A04, A05, A06). Note that this schedule will be updated as the quarter progresses, with all changes documented here.\n\n\n\n\n\n\n\n\nTA\nLecture\nDiscussion/Lab\n\n\n\n\nHaley Daarstad569 Kerr Hallhbdaarstad@ucdavis.eduOffice Hours: Tue 12:00 - 3:00 PM\nTuesday & Thursday3:10 pm - 4:30 pmWellman Hall 2\nFridayA04: 9:00 am - 9:50 amA05: 10:00 am - 10:50 amA06: 11:00 am - 11:50 amKerr Hall 451\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\nReadings\nSlides\n\n\n\n\n0\nFri, Sep 25\nNo Section\n\n\n\n\n1\nFri, Oct 2\nIntroduction to R\n📖\n🖥️\n\n\n2\nFri, Oct 9\nData Visualization\n📖\n🖥️\n\n\n3\nFri, Oct 16\nData Wrangling I\n📖\n🖥️\n\n\n4\nFri, Oct 23\nData Wrangling II\n📖\n🖥️\n\n\n5\nFri, Oct 30\nProject 1 Practice\n📖\n🖥️\n\n\n6\nFri, Nov 6\nCausality\n📖\n🖥️\n\n\n7\nFri, Nov 13\nNO IN-PERSON SECTION! Modeling\n\n\n\n\n8\nFri, Nov 20\nPrediction & Natural Experiments\n\n\n\n\n9\nFri, Nov 27\nNo section - Thanksgiving holiday\n\n\n\n\n10\nFri, Dec 4\nReview & Wrap-up",
     "crumbs": [
       "Course information",
       "Schedule"
@@ -4017,11 +4094,11 @@
     "text": "NHL player stats, 2023–24\nOne row per player per team, regular season only\n\n\n# A tibble: 916 × 6\n   player           team  position goals assists points\n   &lt;chr&gt;            &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;\n 1 Nikita Kucherov  TBL   R           44     100    144\n 2 Nathan MacKinnon COL   C           51      89    140\n 3 Connor McDavid   EDM   C           32     100    132\n 4 Artemi Panarin   NYR   L           49      71    120\n 5 David Pastrnak   BOS   R           47      63    110\n 6 Auston Matthews  TOR   C           69      38    107\n 7 Leon Draisaitl   EDM   C           41      65    106\n 8 Mikko Rantanen   COL   R           42      62    104\n 9 J.T. Miller      VAN   C           37      66    103\n10 William Nylander TOR   R           40      58     98\n# ℹ 906 more rows\n\n\n\n\n\n\n\n\nNote\n\n\nPositions: C = center, L = left wing, R = right wing, D = defense. We drop goalies (G)."
   },
   {
-    "objectID": "slides/lec-5.html#google-trends-montreal-canadiens",
-    "href": "slides/lec-5.html#google-trends-montreal-canadiens",
+    "objectID": "slides/lec-5.html#google-trends-montreal-canadians",
+    "href": "slides/lec-5.html#google-trends-montreal-canadians",
     "title": "Project 1 Practice",
-    "section": "Google Trends: Montreal Canadiens",
-    "text": "Google Trends: Montreal Canadiens\nMonthly U.S. search interest, 2004 to 2026\n\n\n# A tibble: 274 × 2\n   month      montreal_canadiens\n   &lt;date&gt;                  &lt;dbl&gt;\n 1 2004-01-01                 10\n 2 2004-02-01                 10\n 3 2004-03-01                 10\n 4 2004-04-01                 18\n 5 2004-05-01                  8\n 6 2004-06-01                  7\n 7 2004-07-01                  8\n 8 2004-08-01                  7\n 9 2004-09-01                  7\n10 2004-10-01                  5\n# ℹ 264 more rows\n\n\n\n\n\n\n\n\nNote\n\n\nGoogle Trends scores each month 0–100, where 100 = the busiest month in the whole period. It is not a count of searches."
+    "section": "Google Trends: Montreal Canadians",
+    "text": "Google Trends: Montreal Canadians\nMonthly U.S. search interest, 2004 to 2026\n\n\n# A tibble: 274 × 2\n   month      montreal_canadiens\n   &lt;date&gt;                  &lt;dbl&gt;\n 1 2004-01-01                 10\n 2 2004-02-01                 10\n 3 2004-03-01                 10\n 4 2004-04-01                 18\n 5 2004-05-01                  8\n 6 2004-06-01                  7\n 7 2004-07-01                  8\n 8 2004-08-01                  7\n 9 2004-09-01                  7\n10 2004-10-01                  5\n# ℹ 264 more rows\n\n\n\n\n\n\n\n\nNote\n\n\nGoogle Trends scores each month 0–100, where 100 = the busiest month in the whole period. It is not a count of searches."
   },
   {
     "objectID": "slides/lec-5.html#team-goals-by-position",
@@ -4052,20 +4129,6 @@
     "text": "🚨 🏒 Goals Box Plot Answer 🏒 🚨\n\n\nggplot(data = hockey, aes(y = \"\", x = goals)) +\n  geom_boxplot(\n    alpha = 0.7,                       # transparency of the box fill\n    outlier.color = \"cornflowerblue\",  # color of outlier points\n    outlier.shape = 8,                 # outlier symbol is a star\n    outlier.size = 1                   # outlier size\n  ) +\n  stat_summary(fun = mean, geom = \"point\",\n               shape = 20, size = 4, color = \"coral\") +\n  labs(title = \"Distribution of Regular Season Goals by Player\",\n       subtitle = \"NHL 2023–24\",\n       x = \"\",\n       y = \"Goals Scored\") +\n  theme_minimal() +\n  theme(legend.position = \"none\")\n\n\n\n\n\n\n\n\n\n\nThe mean sits above the median: a few big scorers pull the mean up (right-skewed)"
   },
   {
-    "objectID": "slides/lec-5.html#your-turn-goals-by-position",
-    "href": "slides/lec-5.html#your-turn-goals-by-position",
-    "title": "Project 1 Practice",
-    "section": "🚨 Your turn: 🏒 Goals by Position 🏒 🚨",
-    "text": "🚨 Your turn: 🏒 Goals by Position 🏒 🚨\nUsing the hockey dataset:\n\nBuild a box plot of goals with one box for each position.\nWhich position scores the most goals? Which scores the least?\n\n\n\n\n\n\n\nTip\n\n\nPut the grouping variable on the x-axis: aes(x = position, y = goals)"
-  },
-  {
-    "objectID": "slides/lec-5.html#goals-by-position-answer",
-    "href": "slides/lec-5.html#goals-by-position-answer",
-    "title": "Project 1 Practice",
-    "section": "🚨 🏒 Goals by Position Answer 🏒 🚨",
-    "text": "🚨 🏒 Goals by Position Answer 🏒 🚨\n\n\nggplot(data = hockey, aes(x = position, y = goals)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(title = \"Regular Season Goals by Position\",\n       subtitle = \"NHL 2023–24\",\n       x = \"Position\",\n       y = \"Goals Scored\") +\n  theme_minimal()"
-  },
-  {
     "objectID": "slides/lec-5.html#your-turn-team-goals-by-position",
     "href": "slides/lec-5.html#your-turn-team-goals-by-position",
     "title": "Project 1 Practice",
@@ -4087,25 +4150,18 @@
     "text": "🚨 🏒 Team Goals by Position Answer 🏒 🚨\nStep 2: plot\n\n\nrw &lt;- ggplot(hockey_boxplot, aes(x = \"\", y = rw_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Right Wing\", y = \"% of Team Goals\")\n\nlw &lt;- ggplot(hockey_boxplot, aes(x = \"\", y = lw_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Left Wing\", y = NULL)\n\ncen &lt;- ggplot(hockey_boxplot, aes(x = \"\", y = c_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Center\", y = NULL)\n\nd &lt;- ggplot(hockey_boxplot, aes(x = \"\", y = d_percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  labs(x = \"Defense\", y = NULL)\n\nrw + lw + cen + d +\n  plot_layout(ncol = 4) +\n  plot_annotation(\n    title = \"Boxplots of the Percentage of Goals Scored\",\n    subtitle = \"by Position Across all NHL Teams\",\n    caption = \"NHL Regular Season 2023–24\"\n  ) & scale_y_continuous(limits = c(0, 100))"
   },
   {
-    "objectID": "slides/lec-5.html#team-goals-by-position-adv.-answer",
-    "href": "slides/lec-5.html#team-goals-by-position-adv.-answer",
+    "objectID": "slides/lec-5.html#your-turn-canadians-searches",
+    "href": "slides/lec-5.html#your-turn-canadians-searches",
     "title": "Project 1 Practice",
-    "section": "🚨 🏒 Team Goals by Position Adv. Answer 🏒 🚨",
-    "text": "🚨 🏒 Team Goals by Position Adv. Answer 🏒 🚨\nUse pivot_longer() so one ggplot() draws all four boxes\n\n\nhockey_boxplot |&gt;\n  pivot_longer(c(rw_percent, lw_percent, c_percent, d_percent),\n               names_to = \"position\", values_to = \"percent\") |&gt;\n  mutate(position = factor(position,\n    levels = c(\"rw_percent\", \"lw_percent\", \"c_percent\", \"d_percent\"),\n    labels = c(\"Right Wing\", \"Left Wing\", \"Center\", \"Defense\"))) |&gt;\n  ggplot(aes(x = position, y = percent)) +\n  geom_boxplot(fill = \"gray\", color = \"black\") +\n  scale_y_continuous(limits = c(0, 100)) +\n  labs(x = \"Position\", y = \"% of Team Goals\",\n       title = \"Boxplots of the Percentage of Goals Scored\",\n       subtitle = \"by Position Across all NHL Teams\",\n       caption = \"NHL Regular Season 2023–24\") +\n  theme_minimal()"
+    "section": "🚨 Your turn: 🏒 Canadians Searches 🏒 🚨",
+    "text": "🚨 Your turn: 🏒 Canadians Searches 🏒 🚨\nUsing the google_trends dataset:\n\nMake a time series plot of the Google search score for the Montreal Canadians (montreal_canadiens) by month, 2004 to 2026.\nLabel the x-axis every 2 years.\nAdd a trend line and a dashed line at the average score.\nAdd a title, subtitle, axis labels, and a caption.\n\n\n\n\n\n\n\nTip\n\n\n\nConnect the points with geom_line()\nscale_x_date(date_breaks = \"2 years\", date_labels = \"%Y\")\nTrend line: geom_smooth(method = lm, se = FALSE). Average: geom_hline(yintercept = mean(...), linetype = 2)"
   },
   {
-    "objectID": "slides/lec-5.html#your-turn-canadiens-searches",
-    "href": "slides/lec-5.html#your-turn-canadiens-searches",
+    "objectID": "slides/lec-5.html#canadians-searches-answer",
+    "href": "slides/lec-5.html#canadians-searches-answer",
     "title": "Project 1 Practice",
-    "section": "🚨 Your turn: 🏒 Canadiens Searches 🏒 🚨",
-    "text": "🚨 Your turn: 🏒 Canadiens Searches 🏒 🚨\nUsing the google_trends dataset:\n\nMake a time series plot of the Google search score for the Montreal Canadiens (montreal_canadiens) by month, 2004 to 2026.\nLabel the x-axis every 2 years.\nAdd a trend line and a dashed line at the average score.\nAdd a title, subtitle, axis labels, and a caption.\n\n\n\n\n\n\n\nTip\n\n\n\nConnect the points with geom_line()\nscale_x_date(date_breaks = \"2 years\", date_labels = \"%Y\")\nTrend line: geom_smooth(method = lm, se = FALSE). Average: geom_hline(yintercept = mean(...), linetype = 2)"
-  },
-  {
-    "objectID": "slides/lec-5.html#canadiens-searches-answer",
-    "href": "slides/lec-5.html#canadiens-searches-answer",
-    "title": "Project 1 Practice",
-    "section": "🚨 🏒 Canadiens Searches Answer 🏒 🚨",
-    "text": "🚨 🏒 Canadiens Searches Answer 🏒 🚨\n\n\nggplot(google_trends, aes(x = month, y = montreal_canadiens)) +\n  geom_line(color = \"coral2\") +\n  geom_smooth(method = lm, se = FALSE,\n              color = \"grey40\", linewidth = .5) +\n  geom_hline(yintercept = mean(google_trends$montreal_canadiens, na.rm = TRUE),\n             linetype = 2) +\n  scale_x_date(date_breaks = \"2 years\", date_labels = \"%Y\") +\n  labs(title = \"U.S. Google searches for the Montreal Canadiens spike each spring\",\n       subtitle = \"Monthly Google Trends interest, January 2004 to October 2026\",\n       y = \"Search interest (0–100)\", x = \"Month\",\n       caption = \"Source: Google Trends\") +\n  theme_classic() +\n  theme(\n    axis.text.y = element_text(size = 11),\n    axis.text.x = element_text(angle = 45, hjust = 1, size = 9),\n    plot.caption = element_text(hjust = 1, size = 9),\n    plot.title = element_text(size = 14))\n\n\n\n\n\n\n\n\n\n\nThe biggest spikes are playoff runs: May 2010, May 2014, June 2021 (Stanley Cup Final), May 2026"
+    "section": "🚨 🏒 Canadians Searches Answer 🏒 🚨",
+    "text": "🚨 🏒 Canadians Searches Answer 🏒 🚨\n\n\nggplot(google_trends, aes(x = month, y = montreal_canadiens)) +\n  geom_line(color = \"coral2\") +\n  geom_smooth(method = lm, se = FALSE,\n              color = \"grey40\", linewidth = .5) +\n  geom_hline(yintercept = mean(google_trends$montreal_canadiens, na.rm = TRUE),\n             linetype = 2) +\n  scale_x_date(date_breaks = \"2 years\", date_labels = \"%Y\") +\n  labs(title = \"U.S. Google searches for the Montreal Canadiens spike each spring\",\n       subtitle = \"Monthly Google Trends interest, January 2004 to October 2026\",\n       y = \"Search interest (0–100)\", x = \"Month\",\n       caption = \"Source: Google Trends\") +\n  theme_classic() +\n  theme(\n    axis.text.y = element_text(size = 11),\n    axis.text.x = element_text(angle = 45, hjust = 1, size = 9),\n    plot.caption = element_text(hjust = 1, size = 9),\n    plot.title = element_text(size = 14))\n\n\n\n\n\n\n\n\n\n\nThe biggest spikes are playoff runs: May 2010, May 2014, June 2021 (Stanley Cup Final), May 2026\n\nHow do we add a line for the playoff runs? 🏒\n\nggplot(google_trends, aes(x = month, y = montreal_canadiens)) +\n  geom_line(color = \"coral2\") +\n  geom_smooth(method = lm, se = FALSE,\n              color = \"grey40\", linewidth = .5) +\n  geom_hline(yintercept = mean(google_trends$montreal_canadiens, na.rm = TRUE),\n             linetype = 2) +\n  geom_vline(xintercept = as.Date(c(\"2010-05-01\", \"2014-05-01\",\n                                    \"2021-06-01\", \"2026-05-01\")),\n             linetype = 2) +\n  scale_x_date(date_breaks = \"2 years\", date_labels = \"%Y\") +\n  labs(title = \"U.S. Google searches for the Montreal Canadians spike each spring\",\n       subtitle = \"Monthly Google Trends interest, January 2004 to October 2026\",\n       y = \"Search interest (0–100)\", x = \"Month\",\n       caption = \"Source: Google Trends\") +\n  theme_classic() +\n  theme(\n    axis.text.y = element_text(size = 11),\n    axis.text.x = element_text(angle = 45, hjust = 1, size = 9),\n    plot.caption = element_text(hjust = 1, size = 9),\n    plot.title = element_text(size = 14))"
   },
   {
     "objectID": "slides/lec-5.html#your-turn-playoff-teams",
@@ -4148,6 +4204,13 @@
     "title": "Project 1 Practice",
     "section": "🚨 Your turn: 🏒 t-test 🏒 🚨",
     "text": "🚨 Your turn: 🏒 t-test 🏒 🚨\nUsing hockey_newvar:\n\nTest whether teams that made the playoffs had more offense production than teams that did not.\nMake a new variable offense_perct: the percent of goals from forwards (right wing + left wing + center).\nTest whether playoff teams get a different percent of their goals from defense (d_percent).\nWhich differences are statistically significant?\n\n\n\n\n\n\n\nTip\n\n\n\nThe formula is t.test(OUTCOME ~ GROUP, data = DATA)\nA difference is statistically significant if the p-value is less than 0.05"
+  },
+  {
+    "objectID": "slides/lec-5.html#t-test-code-answer",
+    "href": "slides/lec-5.html#t-test-code-answer",
+    "title": "Project 1 Practice",
+    "section": "🚨 🏒 t-test Code Answer 🏒 🚨",
+    "text": "🚨 🏒 t-test Code Answer 🏒 🚨\n\nhockey_ttest &lt;- hockey_newvar |&gt;\n  mutate(offense_perct = rw_percent + lw_percent + c_percent)\n\nt.test(offense_perct  ~ playoffs, data = hockey_ttest)\n\nt.test(d_percent ~ playoffs, data = hockey_ttest)"
   },
   {
     "objectID": "slides/lec-5.html#t-test-answer",
@@ -4595,7 +4658,7 @@
     "href": "slides/lec-9.html#drawing-from-a-normal-distribution",
     "title": "Causality I",
     "section": "Drawing from a normal distribution",
-    "text": "Drawing from a normal distribution\nGenerate 10 random numbers, most of which are +/- 2 away from 10:\n\nrnorm(n = 10, mean = 10, sd = 2)\n\n [1]  6.949790 14.027801 10.960668 10.811843  8.692834 13.798625  9.743443\n [8] 12.133162 10.962706 10.130319\n\n\n\nGenerate 5 random numbers, most of which are +/- 10 away from 50:\n\nrnorm(n = 5, mean = 50, sd = 10)\n\n[1] 49.11410 40.25305 47.72332 46.28520 59.13883\n\n\n\n\nGenerate 4 random numbers, most of which are +/- 100 away from -10:\n\nrnorm(n = 4, mean = -10, sd = 100)\n\n[1]  119.97385  -84.49219   32.91787 -137.57080\n\n\n\n\n\n\n\n\nNote\n\n\nn = number of draws, mean = average, sd = standard deviation"
+    "text": "Drawing from a normal distribution\nGenerate 10 random numbers, most of which are +/- 2 away from 10:\n\nrnorm(n = 10, mean = 10, sd = 2)\n\n [1]  9.024326 11.817092  9.049124  8.476757 10.794869  9.388041 11.784327\n [8] 11.177717  8.571075  7.449518\n\n\n\nGenerate 5 random numbers, most of which are +/- 10 away from 50:\n\nrnorm(n = 5, mean = 50, sd = 10)\n\n[1] 59.27079 60.46298 62.24955 46.84546 53.44751\n\n\n\n\nGenerate 4 random numbers, most of which are +/- 100 away from -10:\n\nrnorm(n = 4, mean = -10, sd = 100)\n\n[1] -49.90216 197.31052  46.34694 -55.23959\n\n\n\n\n\n\n\n\nNote\n\n\nn = number of draws, mean = average, sd = standard deviation"
   },
   {
     "objectID": "slides/lec-9.html#do-winners-keep-winning",
@@ -4609,7 +4672,7 @@
     "href": "slides/lec-9.html#faking-simulating-the-treatment",
     "title": "Causality I",
     "section": "Faking (simulating) the treatment",
-    "text": "Faking (simulating) the treatment\nWe can use tibble() and rnorm() to simulate variables\n\nelections (treatment) = 500 elections, vote share is 50% of the vote on average, +/- 5%\n\n\n\nfake_election = tibble(party_share = rnorm(n = 500, mean = 50, sd = 5))\nfake_election\n\n# A tibble: 500 × 1\n   party_share\n         &lt;dbl&gt;\n 1        53.6\n 2        50.9\n 3        45.8\n 4        46.5\n 5        42.8\n 6        46.1\n 7        44.3\n 8        50.6\n 9        53.9\n10        52.6\n# ℹ 490 more rows"
+    "text": "Faking (simulating) the treatment\nWe can use tibble() and rnorm() to simulate variables\n\nelections (treatment) = 500 elections, vote share is 50% of the vote on average, +/- 5%\n\n\n\nfake_election = tibble(party_share = rnorm(n = 500, mean = 50, sd = 5))\nfake_election\n\n# A tibble: 500 × 1\n   party_share\n         &lt;dbl&gt;\n 1        52.8\n 2        48.1\n 3        48.8\n 4        45.3\n 5        46.3\n 6        49.2\n 7        54.8\n 8        44.6\n 9        47.0\n10        47.3\n# ℹ 490 more rows"
   },
   {
     "objectID": "slides/lec-9.html#and-we-can-plot-it",
@@ -4623,7 +4686,7 @@
     "href": "slides/lec-9.html#making-the-outcome",
     "title": "Causality I",
     "section": "Making the outcome",
-    "text": "Making the outcome\nNext we want to make up campaign fundraising (outcome)\n\nLet’s say parties raise about 20k on average, plus or minus 4k\n\n\n\nfake_election = tibble(party_share = rnorm(n = 500, mean = 50, sd = 5), \n                       funding = rnorm(n = 500, mean = 20000, sd = 4000))\nfake_election\n\n# A tibble: 500 × 2\n   party_share funding\n         &lt;dbl&gt;   &lt;dbl&gt;\n 1        49.0  31105.\n 2        54.2  23078.\n 3        48.4  13547.\n 4        56.9  16517.\n 5        45.9  16782.\n 6        49.4  22235.\n 7        54.1  13576.\n 8        53.3  20432.\n 9        46.8  11677.\n10        55.8  19166.\n# ℹ 490 more rows"
+    "text": "Making the outcome\nNext we want to make up campaign fundraising (outcome)\n\nLet’s say parties raise about 20k on average, plus or minus 4k\n\n\n\nfake_election = tibble(party_share = rnorm(n = 500, mean = 50, sd = 5), \n                       funding = rnorm(n = 500, mean = 20000, sd = 4000))\nfake_election\n\n# A tibble: 500 × 2\n   party_share funding\n         &lt;dbl&gt;   &lt;dbl&gt;\n 1        52.0  23257.\n 2        44.4  17121.\n 3        50.3  25420.\n 4        48.0  15315.\n 5        51.1  24705.\n 6        46.1  15603.\n 7        51.8  20640.\n 8        53.2  20937.\n 9        49.2  14357.\n10        51.6  20448.\n# ℹ 490 more rows"
   },
   {
     "objectID": "slides/lec-9.html#and-we-can-plot-it-1",
@@ -4644,7 +4707,7 @@
     "href": "slides/lec-9.html#making-x-cause-y-1",
     "title": "Causality I",
     "section": "Making X cause Y",
-    "text": "Making X cause Y\nWe can do this in R like so:\n\nfake_election = tibble(party_share = rnorm(n = 500, mean = 50, sd = 5), \n                       funding = rnorm(n = 500, mean = 20000, sd = 4000) + 2000 * party_share)\nfake_election\n\n# A tibble: 500 × 2\n   party_share funding\n         &lt;dbl&gt;   &lt;dbl&gt;\n 1        58.5 137553.\n 2        57.2 134736.\n 3        54.8 133910.\n 4        52.9 127093.\n 5        51.6 119538.\n 6        47.1 111460.\n 7        46.0 114502.\n 8        54.8 125868.\n 9        44.1 107359.\n10        47.5 119973.\n# ℹ 490 more rows\n\n\n\nAs an equation, this looks like: \\(Donations_{i} = Party\\_share_{i} \\times 2000\\)"
+    "text": "Making X cause Y\nWe can do this in R like so:\n\nfake_election = tibble(party_share = rnorm(n = 500, mean = 50, sd = 5), \n                       funding = rnorm(n = 500, mean = 20000, sd = 4000) + 2000 * party_share)\nfake_election\n\n# A tibble: 500 × 2\n   party_share funding\n         &lt;dbl&gt;   &lt;dbl&gt;\n 1        45.3 108434.\n 2        48.1 117229.\n 3        50.8 117785.\n 4        51.2 119450.\n 5        44.5 107907.\n 6        49.4 120350.\n 7        46.6 114443.\n 8        48.6 117094.\n 9        43.9 110061.\n10        46.0 110637.\n# ℹ 490 more rows\n\n\n\nAs an equation, this looks like: \\(Donations_{i} = Party\\_share_{i} \\times 2000\\)"
   },
   {
     "objectID": "slides/lec-9.html#eyeballing-it",
@@ -4658,7 +4721,7 @@
     "href": "slides/lec-9.html#can-we-get-the-causal-estimate-back",
     "title": "Causality I",
     "section": "Can we get the causal estimate back?",
-    "text": "Can we get the causal estimate back?\nWe know the effect of vote share on campaign donations: it’s 2k per percent of the vote\n\nCan we use a model to get that estimate back?\n\n\nYes!\n\nmod = lm(funding ~ party_share, data = fake_election)\ntidy(mod)\n\n# A tibble: 2 × 5\n  term        estimate std.error statistic   p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;\n1 (Intercept)   17543.    1947.       9.01 4.42e- 18\n2 party_share    2047.      39.1     52.3  2.07e-204"
+    "text": "Can we get the causal estimate back?\nWe know the effect of vote share on campaign donations: it’s 2k per percent of the vote\n\nCan we use a model to get that estimate back?\n\n\nYes!\n\nmod = lm(funding ~ party_share, data = fake_election)\ntidy(mod)\n\n# A tibble: 2 × 5\n  term        estimate std.error statistic   p.value\n  &lt;chr&gt;          &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;\n1 (Intercept)   19845.    1812.       11.0 3.72e- 25\n2 party_share    1996.      35.9      55.6 1.24e-215"
   },
   {
     "objectID": "slides/lec-9.html#hope",
@@ -4693,21 +4756,21 @@
     "href": "slides/lec-9.html#potential-outcomes",
     "title": "Causality I",
     "section": "Potential outcomes",
-    "text": "Potential outcomes\nThis magical world where we can compare the number of wars when a country is a democracy versus when it is not is called the potential outcomes\n\n\n\n\n\ncountry\ndemocracy\nwar\n\n\n\n\nCanada\n0\n3\n\n\nCanada\n1\n1\n\n\nChina\n0\n5\n\n\nChina\n1\n0\n\n\nUSA\n0\n1\n\n\nUSA\n1\n2"
+    "text": "Potential outcomes\nThis magical world where we can compare the number of wars when a country is a democracy versus when it is not is called the potential outcomes\n\n\n\n\n\ncountry\ndemocracy\nwar\n\n\n\n\nCanada\n0\n1\n\n\nCanada\n1\n4\n\n\nChina\n0\n4\n\n\nChina\n1\n1\n\n\nUSA\n0\n3\n\n\nUSA\n1\n1"
   },
   {
     "objectID": "slides/lec-9.html#the-fundamental-problem-of-causality",
     "href": "slides/lec-9.html#the-fundamental-problem-of-causality",
     "title": "Causality I",
     "section": "The fundamental problem of causality",
-    "text": "The fundamental problem of causality\n\n\nIn reality, we can only observe democracy at one value for each country\nThe US is a democracy, we can observe wars when democracy = 1, but not when democracy = 0\nChina is not a democracy, we can observe wars when democracy = 0, but not when democracy = 1\n\n\n\n\n\n\ncountry\ndemocracy\nwar\n\n\n\n\nCanada\n0\n3\n\n\nCanada\n1\n1\n\n\nChina\n0\n5\n\n\nChina\n1\n0\n\n\nUSA\n0\n1\n\n\nUSA\n1\n2"
+    "text": "The fundamental problem of causality\n\n\nIn reality, we can only observe democracy at one value for each country\nThe US is a democracy, we can observe wars when democracy = 1, but not when democracy = 0\nChina is not a democracy, we can observe wars when democracy = 0, but not when democracy = 1\n\n\n\n\n\n\ncountry\ndemocracy\nwar\n\n\n\n\nCanada\n0\n1\n\n\nCanada\n1\n4\n\n\nChina\n0\n4\n\n\nChina\n1\n1\n\n\nUSA\n0\n3\n\n\nUSA\n1\n1"
   },
   {
     "objectID": "slides/lec-9.html#potential-vs.-observed",
     "href": "slides/lec-9.html#potential-vs.-observed",
     "title": "Causality I",
     "section": "Potential vs. observed",
-    "text": "Potential vs. observed\nWe only observe the world on the right, but not the left\n\n\n\n\n\nPotential outcomes world\n\n\ncountry\ndemocracy\nwar\n\n\n\n\nCanada\n0\n3\n\n\nCanada\n1\n1\n\n\nChina\n0\n5\n\n\nChina\n1\n0\n\n\nUSA\n0\n1\n\n\nUSA\n1\n2\n\n\n\n\n\n\n\n\n\nObserved outcomes world\n\n\ncountry\ndemocracy\nwar\n\n\n\n\nCanada\n0\nNA\n\n\nCanada\n1\n1\n\n\nChina\n0\n5\n\n\nChina\n1\nNA\n\n\nUSA\n0\nNA\n\n\nUSA\n1\n2"
+    "text": "Potential vs. observed\nWe only observe the world on the right, but not the left\n\n\n\n\n\nPotential outcomes world\n\n\ncountry\ndemocracy\nwar\n\n\n\n\nCanada\n0\n1\n\n\nCanada\n1\n4\n\n\nChina\n0\n4\n\n\nChina\n1\n1\n\n\nUSA\n0\n3\n\n\nUSA\n1\n1\n\n\n\n\n\n\n\n\n\nObserved outcomes world\n\n\ncountry\ndemocracy\nwar\n\n\n\n\nCanada\n0\nNA\n\n\nCanada\n1\n4\n\n\nChina\n0\n4\n\n\nChina\n1\nNA\n\n\nUSA\n0\nNA\n\n\nUSA\n1\n1"
   },
   {
     "objectID": "slides/lec-9.html#the-fundamental-problem-of-causality-1",
@@ -4721,7 +4784,7 @@
     "href": "slides/lec-9.html#comparing-apples-and-oranges",
     "title": "Causality I",
     "section": "Comparing apples and oranges",
-    "text": "Comparing apples and oranges\nWhy not just compare the number of wars for countries where democracy = 0 (autocracies) versus the countries where democracy = 1 (democracies)?\n\nIf democracies fight less, then democracy reduces conflict\n\n\n\nobserved %&gt;% \n  group_by(democracy) %&gt;% \n  summarise(wars = mean(war, na.rm = TRUE))\n\n# A tibble: 2 × 2\n  democracy  wars\n      &lt;dbl&gt; &lt;dbl&gt;\n1         0   5  \n2         1   1.5"
+    "text": "Comparing apples and oranges\nWhy not just compare the number of wars for countries where democracy = 0 (autocracies) versus the countries where democracy = 1 (democracies)?\n\nIf democracies fight less, then democracy reduces conflict\n\n\n\nobserved %&gt;% \n  group_by(democracy) %&gt;% \n  summarise(wars = mean(war, na.rm = TRUE))\n\n# A tibble: 2 × 2\n  democracy  wars\n      &lt;dbl&gt; &lt;dbl&gt;\n1         0   4  \n2         1   2.5"
   },
   {
     "objectID": "slides/lec-9.html#comparing-apples-and-oranges-1",
@@ -4735,14 +4798,14 @@
     "href": "slides/lec-9.html#why-experiments-work",
     "title": "Causality I",
     "section": "Why experiments work",
-    "text": "Why experiments work\nIn an experiment, we randomly expose participants to some treatment, while others are exposed to nothing (or a placebo)\n\n\n\n\n\n\nPerson\nShown an ad?\nDemocrats thermometer\n\n\n\n\n1\nYes\n93.2\n\n\n2\nNo\n27.95\n\n\n3\nYes\n23.1\n\n\n4\nNo\n63.25\n\n\n5\nNo\n97.64\n\n\n\n\n\n\n\nWe then compare the outcome of those who did and didn’t get the treatment"
+    "text": "Why experiments work\nIn an experiment, we randomly expose participants to some treatment, while others are exposed to nothing (or a placebo)\n\n\n\n\n\n\nPerson\nShown an ad?\nDemocrats thermometer\n\n\n\n\n1\nYes\n29.66\n\n\n2\nNo\n69.6\n\n\n3\nYes\n49.03\n\n\n4\nNo\n2.65\n\n\n5\nNo\n36.34\n\n\n\n\n\n\n\nWe then compare the outcome of those who did and didn’t get the treatment"
   },
   {
     "objectID": "slides/lec-9.html#why-experiments-work-1",
     "href": "slides/lec-9.html#why-experiments-work-1",
     "title": "Causality I",
     "section": "Why experiments work",
-    "text": "Why experiments work\nExperiments have the same “problem” as the democracy and war example: we can’t observe the same person seeing and not seeing the ad\n\n\n\n\n\nPerson\nShown an ad?\nDemocrats thermometer\n\n\n\n\n1\nYes\n93.2\n\n\n2\nNo\n27.95\n\n\n\n\n\n\nBut since the experimental ad was randomly assigned, the people that did and didn’t see the ad are good counterfactuals of one another\n\n\nit is, by definition, just as likely a person who received treatment could have instead received the control/placebo (note how this differs from democracy \\(\\rightarrow\\) war)"
+    "text": "Why experiments work\nExperiments have the same “problem” as the democracy and war example: we can’t observe the same person seeing and not seeing the ad\n\n\n\n\n\nPerson\nShown an ad?\nDemocrats thermometer\n\n\n\n\n1\nYes\n29.66\n\n\n2\nNo\n69.6\n\n\n\n\n\n\nBut since the experimental ad was randomly assigned, the people that did and didn’t see the ad are good counterfactuals of one another\n\n\nit is, by definition, just as likely a person who received treatment could have instead received the control/placebo (note how this differs from democracy \\(\\rightarrow\\) war)"
   },
   {
     "objectID": "slides/lec-9.html#the-gold-standard",
@@ -4994,35 +5057,33 @@
     "href": "weeks/week-6.html",
     "title": "Week 6",
     "section": "",
-    "text": "Important\n\n\n\nPRESENTATION - Mon, July 27\nPROJECT DUE - Wed, July 29"
+    "text": "Important\n\n\n\nNo Section Nov. 13th\nProject 1 due Nov. 10",
+    "crumbs": [
+      "Weekly materials",
+      "Week 6"
+    ]
   },
   {
     "objectID": "weeks/week-6.html#prepare",
     "href": "weeks/week-6.html#prepare",
     "title": "Week 6",
     "section": "Prepare",
-    "text": "Prepare\nPrepare for your presentation Monday and your project due Wednesday."
+    "text": "Prepare\n📖 Read Directed Acyclical Graphs in Causal Inference: The Mixtape2",
+    "crumbs": [
+      "Weekly materials",
+      "Week 6"
+    ]
   },
   {
     "objectID": "weeks/week-6.html#participate",
     "href": "weeks/week-6.html#participate",
     "title": "Week 6",
     "section": "Participate",
-    "text": "Participate\nNo lectures"
-  },
-  {
-    "objectID": "weeks/week-6.html#practice",
-    "href": "weeks/week-6.html#practice",
-    "title": "Week 6",
-    "section": "Practice",
-    "text": "Practice\nNo application exercises"
-  },
-  {
-    "objectID": "weeks/week-6.html#perform",
-    "href": "weeks/week-6.html#perform",
-    "title": "Week 6",
-    "section": "Perform",
-    "text": "Perform\nNo lab"
+    "text": "Participate\n🖥️ Lecture 6 - Causality\n\n\nBack to course schedule ⏎",
+    "crumbs": [
+      "Weekly materials",
+      "Week 6"
+    ]
   },
   {
     "objectID": "weeks/week-8.html",
@@ -5058,33 +5119,5 @@
     "title": "Week 6",
     "section": "Perform",
     "text": "Perform\nNo lab"
-  },
-  {
-    "objectID": "slides/lec-5.html#your-turn-canadians-searches",
-    "href": "slides/lec-5.html#your-turn-canadians-searches",
-    "title": "Project 1 Practice",
-    "section": "🚨 Your turn: 🏒 Canadians Searches 🏒 🚨",
-    "text": "🚨 Your turn: 🏒 Canadians Searches 🏒 🚨\nUsing the google_trends dataset:\n\nMake a time series plot of the Google search score for the Montreal Canadians (montreal_canadiens) by month, 2004 to 2026.\nLabel the x-axis every 2 years.\nAdd a trend line and a dashed line at the average score.\nAdd a title, subtitle, axis labels, and a caption.\n\n\n\n\n\n\n\nTip\n\n\n\nConnect the points with geom_line()\nscale_x_date(date_breaks = \"2 years\", date_labels = \"%Y\")\nTrend line: geom_smooth(method = lm, se = FALSE). Average: geom_hline(yintercept = mean(...), linetype = 2)"
-  },
-  {
-    "objectID": "slides/lec-5.html#canadians-searches-answer",
-    "href": "slides/lec-5.html#canadians-searches-answer",
-    "title": "Project 1 Practice",
-    "section": "🚨 🏒 Canadians Searches Answer 🏒 🚨",
-    "text": "🚨 🏒 Canadians Searches Answer 🏒 🚨\n\n\nggplot(google_trends, aes(x = month, y = montreal_canadiens)) +\n  geom_line(color = \"coral2\") +\n  geom_smooth(method = lm, se = FALSE,\n              color = \"grey40\", linewidth = .5) +\n  geom_hline(yintercept = mean(google_trends$montreal_canadiens, na.rm = TRUE),\n             linetype = 2) +\n  scale_x_date(date_breaks = \"2 years\", date_labels = \"%Y\") +\n  labs(title = \"U.S. Google searches for the Montreal Canadiens spike each spring\",\n       subtitle = \"Monthly Google Trends interest, January 2004 to October 2026\",\n       y = \"Search interest (0–100)\", x = \"Month\",\n       caption = \"Source: Google Trends\") +\n  theme_classic() +\n  theme(\n    axis.text.y = element_text(size = 11),\n    axis.text.x = element_text(angle = 45, hjust = 1, size = 9),\n    plot.caption = element_text(hjust = 1, size = 9),\n    plot.title = element_text(size = 14))\n\n\n\n\n\n\n\n\n\n\nThe biggest spikes are playoff runs: May 2010, May 2014, June 2021 (Stanley Cup Final), May 2026\n\nHow do we add a line for the playoff runs? 🏒\n\nggplot(google_trends, aes(x = month, y = montreal_canadiens)) +\n  geom_line(color = \"coral2\") +\n  geom_smooth(method = lm, se = FALSE,\n              color = \"grey40\", linewidth = .5) +\n  geom_hline(yintercept = mean(google_trends$montreal_canadiens, na.rm = TRUE),\n             linetype = 2) +\n  geom_vline(xintercept = as.Date(c(\"2010-05-01\", \"2014-05-01\",\n                                    \"2021-06-01\", \"2026-05-01\")),\n             linetype = 2) +\n  scale_x_date(date_breaks = \"2 years\", date_labels = \"%Y\") +\n  labs(title = \"U.S. Google searches for the Montreal Canadians spike each spring\",\n       subtitle = \"Monthly Google Trends interest, January 2004 to October 2026\",\n       y = \"Search interest (0–100)\", x = \"Month\",\n       caption = \"Source: Google Trends\") +\n  theme_classic() +\n  theme(\n    axis.text.y = element_text(size = 11),\n    axis.text.x = element_text(angle = 45, hjust = 1, size = 9),\n    plot.caption = element_text(hjust = 1, size = 9),\n    plot.title = element_text(size = 14))"
-  },
-  {
-    "objectID": "slides/lec-5.html#t-test-code-answer",
-    "href": "slides/lec-5.html#t-test-code-answer",
-    "title": "Project 1 Practice",
-    "section": "🚨 🏒 t-test Code Answer 🏒 🚨",
-    "text": "🚨 🏒 t-test Code Answer 🏒 🚨\n\nhockey_ttest &lt;- hockey_newvar |&gt;\n  mutate(offense_perct = rw_percent + lw_percent + c_percent)\n\nt.test(offense_perct  ~ playoffs, data = hockey_ttest)\n\nt.test(d_percent ~ playoffs, data = hockey_ttest)"
-  },
-  {
-    "objectID": "slides/lec-5.html#google-trends-montreal-canadians",
-    "href": "slides/lec-5.html#google-trends-montreal-canadians",
-    "title": "Project 1 Practice",
-    "section": "Google Trends: Montreal Canadians",
-    "text": "Google Trends: Montreal Canadians\nMonthly U.S. search interest, 2004 to 2026\n\n\n# A tibble: 274 × 2\n   month      montreal_canadiens\n   &lt;date&gt;                  &lt;dbl&gt;\n 1 2004-01-01                 10\n 2 2004-02-01                 10\n 3 2004-03-01                 10\n 4 2004-04-01                 18\n 5 2004-05-01                  8\n 6 2004-06-01                  7\n 7 2004-07-01                  8\n 8 2004-08-01                  7\n 9 2004-09-01                  7\n10 2004-10-01                  5\n# ℹ 264 more rows\n\n\n\n\n\n\n\n\nNote\n\n\nGoogle Trends scores each month 0–100, where 100 = the busiest month in the whole period. It is not a count of searches."
   }
 ]

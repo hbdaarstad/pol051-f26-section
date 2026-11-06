@@ -1,5 +1,5 @@
 ---
-title: "Relationships II"
+title: "Causality"
 subtitle: "POL51"
 author: "Haley Daarstad"
 institute: "University of California, Davis"
@@ -8,11 +8,11 @@ date-format: long
 format:
   revealjs: 
     html-math-method: mathjax
-    chalkboard: true
     slide-number: true
     height: 900
     width: 1600
     code-line-numbers: true
+    code-overflow: wrap
     smooth-scrawl: true
     theme: [simple, html/custom.scss]
     incremental: true
@@ -37,474 +37,768 @@ knitr::opts_chunk$set(
   warning = FALSE
 )
 
-# libraries
-library(gapminder)
+# load libraries
 library(socviz)
 library(juanr)
-library(fivethirtyeight)
+library(gapminder)
+library(patchwork)
+library(broom)
+library(moderndive)
+library(ggdag)
 
 # source
-source(here::here("slides/R/funcs.R"))
+source(here::here("slides/R", "funcs.R"))
 
+WaffleDivorce = read_delim("data/WaffleDivorce.csv", delim = ";")
 
+# fake confounded waffle data (used in the plot, not shown on slides)
+fake = tibble(south = sample(c(0, 1), size = 50, replace = TRUE), 
+              waffle = rnorm(n = 50, mean = 20, sd = 4) + 10 * south,
+              divorce = rnorm(n = 50, mean = 20, sd = 2) + 8 * south)
 ```
 
-# Plan for today {.center background-color="#dc354a"}
+## Causality
+
+::::: columns
+::: {.column width="50%"}
+-   "How do we know if X **causes** y?"
+
+-   Are our estimates **causal**? Academics fight about this all day!
+
+-   This question is at center of **causal inference**
+
+-   We will learn why it is so difficult to establish causality with data
+
+-   We will also learn potential solutions
+:::
+
+::: {.column width="50%"}
+```{r, fig.cap="Pictured: audience at a research presentation"}
+knitr::include_graphics("img/the-thing.png")
+```
+:::
+:::::
+
+## What do we mean by causality?
+
+::::: columns
+::: {.column width="50%"}
+In this class, we say **X causes Y** if...
+
+An **intervention** that changes the value of X produces a **probabilistic** change in Y
+
+-   [Intervention]{.blue} = X is being **changed** or altered
+
+-   [Probabilistic]{.red} = Y should change, *on average*, but need not in every instance
+:::
+
+::: {.column width="50%"}
+```{r,out.width="70%"}
+knitr::include_graphics("img/hume.jpeg")
+```
+:::
+:::::
+
+## Interventions and probability
+
+How do the two parts of our definition fit here?
+
+> Aspirin causes a reduction in fever symptoms
 
 . . .
 
-Comparing across groups
+[Intervention]{.blue} = someone **takes** aspirin, we administer aspirin, we sneak it into someone's food, etc.
 
 . . .
 
-Dummy variables
+[Outcome]{.red} = Taking aspirin doesn't work 100% of the time; but *in general*, *on average*, *more often than not*, etc., taking aspirin $\rightarrow$ less fever
 
 . . .
 
-Summarizing categories
+What about this example? Democratic institutions reduce the incidence of interstate war
 
-# Comparing across groups {background-color="#dc354a"}
+## \# The problem with causality {.center background-color="#dc354a"}
 
-## The feeling thermometer
+## Not obvious: education and earnings
 
-We can use `summarise()` to measure average support for specific groups:
+::::: columns
+::: {.column width="50%"}
+-   Positive correlation between education and earnings, yet
+-   People who are already wealthy (or likely to become wealthy) get more education than people who are not wealthy
+-   In other words: people **self-select** into education levels
+:::
 
-```{r, echo = TRUE}
-therm %>% 
-  summarise(avg_police = mean(ft_police, na.rm = TRUE)) 
+::: {.column width="50%"}
+```{r}
+knitr::include_graphics("img/education.png")
+```
+:::
+:::::
+
+
+## The trouble with causality
+
+. . .
+
+We can't directly observe a change in X **causing** a change in Y
+
+. . .
+
+This is true even in **experiments**, where we directly manipulate stuff
+
+. . .
+
+All we can see are **correlations** between X and Y
+
+. . .
+
+Some of those correlations **are** causal; some **are not**; how can we tell?
+
+# Where does it all go wrong then? {.center background-color="#dc354a"}
+
+## The Democratic Peace?
+
+Does the spread of democracy reduce international conflict?
+
+. . .
+
+Theory: war is costly and the costs are borne by citizens; countries where citizens have more input $\rightarrow$ less conflict
+
+. . .
+
+X here is [whether the country is a democracy]{.blue} (versus autocracy)
+
+Y is [the number of wars the country is involved in]{.red}
+
+. . .
+
+Ideal, imaginary approach: take a country, look at Y when democracy = 1, and then when democracy = 0
+
+. . .
+
+Do this for all countries, take the average
+
+## Potential outcomes
+
+This magical world where we can compare the number of wars when a country is a democracy versus when it is not is called the **potential outcomes**
+
+```{r}
+dem_peace = crossing(country = c("USA", "Canada", "China"), 
+         democracy = c(1, 0)) %>% 
+  mutate(war = rpois(n = n(), lambda = 4 + -2*I(democracy==1)))
+
+knitr::kable(dem_peace)
 ```
 
-## Feeling thermometer
+## Potential vs. observed
 
-We can *compare* where support is highest and lowest:
+We only **observe** the world on the right, but not the left
 
-```{r, echo = TRUE}
-therm %>% 
-  summarise(avg_police = mean(ft_police, na.rm = TRUE), 
-            avg_muslim = mean(ft_muslim, na.rm = TRUE), 
-            avg_white = mean(ft_white, na.rm = TRUE), 
-            avg_immig = mean(ft_immig, na.rm = TRUE), 
-            avg_fem = mean(ft_fem, na.rm = TRUE), 
-            avg_black = mean(ft_black, na.rm = TRUE)) 
+::::: columns
+::: {.column width="50%"}
+```{r}
+knitr::kable(dem_peace, caption = "Potential outcomes world")
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+observed = dem_peace %>% 
+  mutate(war = case_when((country %in% c("Canada", "USA") &
+                           democracy == 0) | 
+                           (country == "China" & democracy == 1) ~ NA_integer_, 
+                         TRUE ~ war))
+
+knitr::kable(observed, caption = "Observed outcomes world")
+```
+:::
+:::::
+
+## The fundamental problem of causality
+
+. . .
+
+We have missing data on "what would have happened" had the US been an autocracy
+
+. . .
+
+"what would have happened" $\rightarrow$ the **counterfactual**
+
+. . .
+
+Our goal in causal inference is to make as good a guess as possible as to what Y would have been had democracy = 0 instead of 1 (and vice versa)
+
+## Comparing apples and oranges
+
+Implicitly, this means we are saying the countries that are *autocracies* are good **counterfactuals** for the countries that are democracies (and vice versa)
+
+. . .
+
+For instance, that China is a good counterfactual for the US
+
+. . .
+
+But China and the US are different in so many ways! They are not good **counterfactuals** of one another
+
+. . .
+
+We will see *exactly why* this is a problem in the following weeks
+
+
+## Example: ideology
+
+Where does (liberal) ideology come from?
+
+. . .
+
+Variables in the literature: Income (I), Liberal (L), Age (A), Media (M), Parents (P)
+
+. . .
+
+```{r, out.width="70%"}
+dag = dagify(L ~ M + P + A + I, 
+             M ~ P, 
+             exposure = "M", 
+             outcome = "L")
+ggdag(dag, stylized = TRUE) + theme_dag() + theme(legend.position = "none")
 ```
 
 ::: notes
-patterns
+What are our assumptions? What's this diagram saying (FYI its called a DAG)?
 :::
 
-## Breaking down support
+## Waffles and Divorce
 
-We can look for patterns by using `group_by()` to separate average support *by* respondent characteristics:
+```{r}
+knitr::include_graphics("img/waffle-house.png")
+```
 
-. . .
+## Does Waffle House cause divorce?
 
-```{r, echo = TRUE}
-therm %>% 
-  group_by(party_id) %>% 
-  summarise(avg_police = mean(ft_police, na.rm = TRUE), 
-            avg_muslim = mean(ft_muslim, na.rm = TRUE), 
-            avg_white = mean(ft_white, na.rm = TRUE), 
-            avg_immig = mean(ft_immig, na.rm = TRUE), 
-            avg_fem = mean(ft_fem, na.rm = TRUE), 
-            avg_black = mean(ft_black, na.rm = TRUE))
+Do cheap, delicious waffles put marriages at risk?
+
+```{r}
+ggplot(WaffleDivorce, aes(x = WaffleHouses/Population, y = Divorce)) + 
+  geom_point(size = 3, fill = red, alpha = .8, shape = 21, color = "white") + 
+  geom_smooth(method = "lm", color = red, fill = red) + 
+  theme_nice() + 
+  labs(x = "Waffle Houses per million residents", 
+       y = "Divorce rate per 1,000 adults")
 ```
 
 ::: notes
-take code and iteratively change it
+Speculate on underlying mechanism
 :::
 
-## Breaking down support
-
-We can use `filter()` to focus our comparison on fewer categories:
+## Does Waffle House cause divorce?
 
 . . .
 
-```{r, echo = TRUE}
-therm_by_party = therm %>% 
-  filter(party_id %in% c("Democrat", "Republican")) %>% 
-  group_by(party_id) %>% 
-  summarise(avg_police = mean(ft_police, na.rm = TRUE), 
-            avg_muslim = mean(ft_muslim, na.rm = TRUE), 
-            avg_white = mean(ft_white, na.rm = TRUE), 
-            avg_immig = mean(ft_immig, na.rm = TRUE), 
-            avg_fem = mean(ft_fem, na.rm = TRUE), 
-            avg_black = mean(ft_black, na.rm = TRUE))
-therm_by_party
+Almost certainly *not*
+
+. . .
+
+No one thinks there is a *plausible* way in which Waffle House causes divorce
+
+. . .
+
+When we see a correlation of this kind we wonder about other variables that are **actually** driving the relationship
+
+. . .
+
+You've likely thought about this before: *a "lurking" variable, "other factors", that "matter"*
+
+. . .
+
+But what might that *variable* be? And *how* exactly does it lead us astray?
+
+## The lurking variable
+
+It turns out that Waffle Houses originated in the South (Georgia), and most of them are still there
+
+. . .
+
+The South also happens to have some of the highest divorce rates in the country
+
+## What about location?
+
+A lurking variable in this case could be the south! So for example, South **has an effect on** Waffle Houses and Divorce, but Waffles **do not cause** Divorce
+
+```{r, out.width="80%"}
+dagify(Divorce ~ South, 
+       Waffle ~ South, 
+       exposure = "Waffle",
+       outcome = "Divorce", 
+       coords = list(x = c(Waffle = 0, Divorce = 2, South = 1), 
+                      y = c(Waffle = 0, Divorce = 0, South = 1))) %>% 
+  ggdag_status(text = FALSE, use_labels = "name", stylized = TRUE) + theme_dag_blank() + 
+  theme(legend.position = "none") + scale_color_manual(values = c(blue, red)) + 
+  scale_fill_manual(values = c(blue, red))
 ```
 
-::: notes
-Where are the biggest partisan gaps? What's going on with immigrants? Is this really an apples-to-apples comparison?
+. . .
+
+This is called **confounding**: the South is **confounding** the relationship between Waffles and Divorce
+
+## A totally confounded relationship
+
+The a confounded relationship like the one on the left will produce an association like the one on the right
+
+::::: columns
+::: {.column width="50%"}
+```{r}
+dagify(Divorce ~ South, 
+       Waffle ~ South, 
+       exposure = "Waffle",
+       outcome = "Divorce", 
+       coords = list(x = c(Waffle = 0, Divorce = 2, South = 1), 
+                      y = c(Waffle = 0, Divorce = 0, South = 1))) %>% 
+  ggdag_status(text = FALSE, use_labels = "name", stylized = TRUE) + theme_dag_blank() + 
+  theme(legend.position = "none") + scale_color_manual(values = c(blue, red)) + 
+  scale_fill_manual(values = c(blue, red))
+```
 :::
 
-## The immigration gap
+::: {.column width="50%"}
+```{r}
+ggplot(fake, aes(x = waffle, y = divorce)) + 
+  geom_point(size = 3, fill = red, alpha = .8, shape = 21, color = "white") + 
+  geom_smooth(method = "lm", color = red, fill = red) + 
+  theme_nice() + 
+  labs(title = "Our fake waffle data", 
+       x = "Waffle Houses per million residents", 
+       y = "Divorce rate per 1,000 adults")
+```
+:::
+:::::
 
-. . .
+Even if Waffles and Divorce are **causally** unrelated
 
-What explains this gap? How much is it about each party's **ideology** and how much is about **who** is in each party?
+## What's going on here?
 
-. . .
+::::: columns
+::: {.column width="50%"}
+Think of causality as water flowing in the direction of the arrows
 
-Immigrants in the USA are more likely to **identify** as Democrat
+We want look at water flowing **directly** from a **treatment** to an **outcome**
 
-. . .
+But **account** for the fact that there is often *indirect* flow that *contaminates* our estimates
+:::
 
-How much of the difference we are observing across parties solely about **parties** and how much is it about *demographic* differences?
+::: {.column width="50%"}
+{{< video "img/confound-heiss.mp4" >}}
 
-. . .
+Source: the mighty Andrew Heiss
+:::
+:::::
 
-It might be, for instance, that the attitudes of non-migrants don't differ much across parties
+## What's going on here?
 
-. . .
+To **identify** the effect of Waffles on Divorce we need to **account**, or **control for**, the influence of the South
 
-that is, the big gap we see is all because immigrants are *both* more likely to be Democrats *and* have stronger views of own community
+Otherwise we will be *confounded*
 
-## Making sense of the immigration gap
-
-We want an **apples to apples** comparison: White Dems vs. White Reps, Asian Dems vs. Asian Reps, and so on
-
-. . .
-
-We can "test" this concern by breaking the data down further, by race:
-
-. . .
-
-```{r, echo = TRUE}
-therm %>% 
-  filter(party_id %in% c("Democrat", "Republican")) %>%
-  group_by(party_id, race) %>%
-  summarise(avg_imm = mean(ft_immig, na.rm = TRUE))
+```{r, out.width="80%"}
+dagify(Divorce ~ South, 
+       Waffle ~ South, 
+       exposure = "Waffle",
+       outcome = "Divorce", 
+       coords = list(x = c(Waffle = 0, Divorce = 2, South = 1), 
+                      y = c(Waffle = 0, Divorce = 0, South = 1))) %>% 
+  ggdag_status(text = FALSE, use_labels = "name", stylized = TRUE) + theme_dag_blank() + 
+  theme(legend.position = "none") + scale_color_manual(values = c(blue, red)) + 
+  scale_fill_manual(values = c(blue, red))
 ```
 
-## Making sense of the immigration gap
+## The confounding fork 🍴
 
-We can filter to focus on fewer races:
+Y $\leftarrow$ Z $\rightarrow$ X
+
+There is a third variable, Z, that is a **common cause** of X and Y
+
+```{r, out.width="90%"}
+dagify(Y ~ Z, 
+       X ~ Z, 
+       exposure = "X",
+       outcome = "Y", 
+       coords = list(x = c(Y = 0, X = 2, Z = 1), 
+                      y = c(Y = 0, X = 0, Z = 1))) %>% 
+  ggdag_status(text = FALSE, use_labels = "name", stylized = TRUE) + theme_dag_blank() + 
+  theme(legend.position = "none") + scale_color_manual(values = c(blue, red)) + 
+  scale_fill_manual(values = c(blue, red))
+```
+
+## The confounding fork
+
+We've already seen this!
+
+::::: columns
+::: {.column width="50%"}
+```{r}
+dagify(Divorce ~ South, 
+       Waffle ~ South, 
+       exposure = "Waffle",
+       outcome = "Divorce", 
+       coords = list(x = c(Waffle = 0, Divorce = 2, South = 1), 
+                      y = c(Waffle = 0, Divorce = 0, South = 1))) %>% 
+  ggdag_status(text = FALSE, use_labels = "name", stylized = TRUE) + theme_dag_blank() + 
+  theme(legend.position = "none") + scale_color_manual(values = c(blue, red)) + 
+  scale_fill_manual(values = c(blue, red))
+```
+
+Creates an association between X and Y that isn't causal
+:::
+
+::: {.column width="50%"}
+```{r}
+dagify(Divorce ~ South + Waffle, 
+       Waffle ~ South, 
+       exposure = "Waffle",
+       outcome = "Divorce", 
+       coords = list(x = c(Waffle = 0, Divorce = 2, South = 1), 
+                      y = c(Waffle = 0, Divorce = 0, South = 1))) %>% 
+  ggdag_status(text = FALSE, use_labels = "name", stylized = TRUE) + theme_dag_blank() + 
+  theme(legend.position = "none") + scale_color_manual(values = c(blue, red)) + 
+  scale_fill_manual(values = c(blue, red))
+```
+
+Distorts the true causal relation between X and Y
+:::
+:::::
+
+Note that **both** of these fork scenarios will **confound**
+
+## Dealing with forks
+
+We need to figure out what Z is, measure it, and **adjust for it** in our analysis
+
+```{r, out.width="90%"}
+dagify(Y ~ Z, 
+       X ~ Z, 
+       exposure = "X",
+       outcome = "Y", 
+       coords = list(x = c(Y = 0, X = 2, Z = 1), 
+                      y = c(Y = 0, X = 0, Z = 1))) %>% 
+  ggdag_dseparated() + theme_dag_blank() + 
+  theme(legend.position = "none")
+```
+
+# The pipe 🚰 {.center background-color="#dc354a"}
+
+## The perplexing pipe 🚰
+
+X $\rightarrow$ Z $\rightarrow$ Y
+
+X causes Z, which causes Y (or: Z *mediates* the effect of X on Y)
 
 . . .
 
-```{r, echo = TRUE}
-therm %>% 
-  filter(party_id %in% c("Democrat", "Republican")) %>%
-  filter(race %in% c("White", "Black", "Hispanic", "Asian")) |> 
-  group_by(party_id, race) %>%
-  summarise(avg_imm = mean(ft_immig, na.rm = TRUE))
+```{r, out.width="50%"}
+dagify(Y ~ Z, 
+       Z ~ X, 
+       coords = list(x = c(X = -.5, Z = 0, Y = .5), 
+                     y = c(Y = 0, Z = 0, X = 0))) %>% 
+  ggdag() + theme_dag()
 ```
 
-## Visualizing the pattern
+What happens if we **adjust for Z**? We **block** the effect of X on Y
 
-We can create a new object to make a nice plot:
+## An example: foreign intervention
 
-```{r, echo = TRUE}
-therm_party_immig = therm %>% 
-  filter(party_id %in% c("Democrat", "Republican")) %>%
-  filter(race %in% c("White", "Black", "Hispanic", "Asian")) |> 
-  group_by(party_id, race) %>%
-  summarise(avg_imm = mean(ft_immig, na.rm = TRUE))
+What effect does [US foreign wars]{.blue} have on [US support abroad]{.red}?
+
+. . .
+
+Say the DAG looks like this:
+
+```{r, out.width = "50%"}
+dagify(Sentiment ~ Casualties, 
+       Casualties ~ War, 
+       exposure = "War",
+       outcome = "Sentiment") %>% 
+  ggdag_status(text = FALSE, use_labels = "name", stylized = TRUE) + theme_dag_blank() + 
+  theme(legend.position = "none") + scale_color_manual(values = c(blue, red)) + 
+  scale_fill_manual(values = c(blue, red))
 ```
 
-## The immigration attitudes gap
+If we control for *casualties* we are *blocking* the effect of intervention on support
 
-```{r,echo = FALSE, out.width="100%"}
-ggplot(therm_party_immig, aes(y = avg_imm, 
-                              x = race, fill = party_id)) + 
-  geom_col(position = "dodge") + 
-  labs(y = "Party Identification", x = "Average thermometer level\nfor immigrants", 
-       fill = "Respondent race:") + 
-  theme(legend.position = "none") + 
-  geom_label(aes(label = party_id), position = position_dodge(1), color = "white") + 
+## An example: foreign intervention
+
+What if the relationship instead looked like this:
+
+```{r}
+dagify(Support ~ Casualties + War, 
+       Casualties ~ War, 
+       exposure = "War",
+       outcome = "Support") %>% 
+  ggdag_status(text = FALSE, use_labels = "name", stylized = TRUE) + theme_dag_blank() + 
+  theme(legend.position = "none") + scale_color_manual(values = c(blue, red)) + 
   scale_fill_manual(values = c(blue, red))
 ```
 
 ::: notes
-comparing apples to apples, the gap persists
+What does it mean
 :::
 
-# Big picture
-
-The immigration gap persists (though smaller), even comparing non-immigrants against non-immigrants and immigrants against immigrants
-
-. . .
-
-This analysis is a way of **accounting** for differences in groups (Democrats versus Republicans); it's closer to an "apples to apples" comparison
-
-. . .
-
-Big differences **across groups** should raise eyebrows; what's going on here?
-
-. . .
-
-We can break the data down further to see what's going on beneath the surface
-
-## Non-differences can be surprsing too
-
-```{r, echo = TRUE}
-therm %>% 
-  summarise(avg_dems = mean(ft_dem, na.rm = TRUE), 
-            avg_reps = mean(ft_rep, na.rm = TRUE))
-```
-
-. . .
-
-Pretty neutral feelings; mass **polarization** is dead!
-
-## Oh...
-
-Breaking down data says something different
-
-. . .
-
-```{r, echo = TRUE}
-therm %>% 
-  group_by(party_id) %>% #<<
-  summarise(dems = mean(ft_dem, na.rm = TRUE), 
-            reps = mean(ft_rep, na.rm = TRUE))
-```
-
-## Negative polarization
-
-```{r}
-therm %>% 
-  filter(party_id %in% c("Democrat", "Republican")) %>% 
-  select(party_id, ft_dem, ft_rep) %>% 
-  pivot_longer(-party_id) %>% 
-  ggplot(aes(x = value, y = name, fill = party_id)) + 
-  ggridges::geom_density_ridges(color = "white", alpha = .8) + 
-  theme_nice() + 
-  scale_y_discrete(labels = c("Democrats", "Republicans")) + 
-  theme(legend.position = "top") + 
-  labs(y = "How respondents feel about...", 
-       x = "Thermometer rating", fill = "Respondent is a...") + 
-  scale_fill_brewer(palette = "Set1", direction = -1)
-```
-
-# Dummy variables {background-color="#dc354a"}
-
-## Dummy variables
-
-Often, *categorical* variables are coded 0/1 to represent "yes/no" or "presence/absence"
-
-. . .
-
-```{r}
-leader |> 
-  select(country, leader, mil_service, combat, combat) |> 
-  sample_n(10) |> 
-  kbl(caption = "sample from leaders dataset")
-```
-
-## Dummy proportions
-
-Dummy variables are useful for lots of reasons
-
-. . .
-
-One is that when you take the average of a dummy variable you get a **proportion**
-
-. . .
-
-Coffee today? 1, 0, 0, 0, 1
-
-. . .
-
-Average of coffee = $\frac{1 + 0 + 0 + 0 + 1}{5} = .40$
-
-. . .
-
-We can think about that proportion as a **probability** or **likelihood**
-
-. . .
-
-What is the **probability** a random student in class has had coffee? 2/5 = 40%
-
-## Dummy variables
-
-When you take the average of a dummy variable you get a proportion:
-
-```{r, echo = TRUE}
-leader %>% 
-  summarise(combat = mean(combat, na.rm = TRUE)) 
-```
-
-Approximately 24% of world leaders have combat experience, or
-
-. . .
-
-there's a 24% **chance** a randomly selected leader has combat experience
-
-## Dummy variables
-
-Like with anything else, we can take averages by groups
-
-. . .
-
-For example, combat experience by country
-
-. . .
-
-```{r,echo = TRUE}
-leader %>% 
-  group_by(country) %>%
-  summarise(combat = mean(combat, na.rm = TRUE)) |> 
-  arrange(desc(combat))
-```
-
-Note that `arrange(desc(variable))` arranges the dataset in descending order
-
-## Dummy variables
-
-We can store as an object, to make a plot:
-
-```{r,echo=TRUE}
-#| output-location: column
-combat_country = leader %>% 
-  group_by(country) %>%
-  # proportion who've seen combat
-  summarise(combat = mean(combat, na.rm = TRUE)) |> 
-  # subset to just the top 10 in terms of combat experience
-  slice_max(order_by = combat, n = 10)
-
-ggplot(combat_country, aes(y = reorder(country, combat),
-                           x = combat)) + 
-  geom_col()
-```
-
-## 🚨 Your turn: 🎨 Bob Ross 🎨 🚨
-
-```{r}
-knitr::kable(head(bob_ross))
-```
-
-## 🚨 Your turn: 🎨 Bob Ross 🎨 🚨
-
-Using the `bob_ross` data from `fivethirtyeight` package
-
-1.  How likely was Bob Ross to include a happy little `tree` in one of his paintings?
-
-2.  How has the frequency with which Bob Ross included `clouds` in his paintings changed across the show's seasons? Make a time series to illustrate.
-
-3.  If there is a `mountain` in a Bob Ross painting, how likely is it that mountain is *snowy* (`snowy_mountain`)?
-
-4.  How much more likely was Steve Ross (`steve`) to paint a lake (`lake`) than his dad?
-
-```{r}
-countdown::countdown(minutes = 10L)
-```
-
-# Analyzing categorical data {background-color="#dc354a"}
-
-## Analyzing categorical data
-
-. . .
-
-Some variables have values that are **categories** (race, sex, etc.)
-
-. . .
-
-Can't take the **mean** of a category!
-
-. . .
-
-But we *can* look at the *proportions* of observations in each category, and look for patterns there
-
-## Pokemon types
-
-How many Pokemon are there of each type? What are the most and least common types?
-
-```{r}
-pokemon %>% 
-  select(name, type1) %>% 
-  sample_n(7) %>% 
-  knitr::kable()
-```
-
-## Counting categories
-
-We can use a new function `tally()`, in combination with `group_by()`, to **count** how many observations are in each category:
-
-```{r, echo = TRUE}
-pokemon
-```
-
-## Counting categories
-
-We can use a new function `tally()`, in combination with `group_by()`, to **count** how many observations are in each category:
-
-```{r, echo = TRUE}
-pokemon %>% 
-  group_by(type1) 
-```
-
-## Counting categories
-
-We can use a new function `tally()`, in combination with `group_by()`, to **count** how many observations are in each category:
-
-```{r, echo = TRUE}
-pokemon %>% 
-  group_by(type1) %>% 
-  tally() 
-```
-
-## From counts to percents
-
-We can can then use `mutate()` to calculate the **percent** in each group:
-
-```{r, echo = TRUE}
-pokemon %>% 
-  group_by(type1) %>% 
-  tally() %>% 
-  mutate(percent = n / sum(n) * 100) 
+## An example: foreign intervention
+
+Two ways that War affects US sentiment: directly and indirectly
+
+Adjusting for **casualties** blocks the *indirect* effect; if that's what we want, fine -- But if we want the full effect then we'll be wrong!
+
+```{r, out.width="80%"}
+dagify(Support ~ Casualties + War, 
+       Casualties ~ War, 
+       exposure = "War",
+       outcome = "Support") %>% 
+  ggdag_status(text = FALSE, use_labels = "name", stylized = TRUE) + theme_dag_blank() + 
+  theme(legend.position = "none") + scale_color_manual(values = c(blue, red)) + 
+  scale_fill_manual(values = c(blue, red))
 ```
 
 ::: notes
-stop to show the n/sum(n)
+What does it mean
 :::
 
-## group_by + tally()
+## Pipes: why are they even a problem?
 
-We can then store as object for plotting:
-
-```{r, echo = TRUE}
-type_pct = pokemon %>% 
-  group_by(type1) %>% 
-  tally() %>% 
-  mutate(percent = n/sum(n) * 100)
-```
-
-## group_by + tally()
-
-We can then store as object for plotting:
-
-```{r, echo = TRUE, out.width="80%"}
-ggplot(type_pct, aes(y = reorder(type1, percent), 
-                     x = percent)) + 
-  geom_col(color = "white", fill = "darkblue") + 
-  # suppress legend
-  theme(legend.position = "none")
-```
-
-## 🚨 Your turn: 💺 Flying etiquette 💺 🚨
-
-A survey of what's rude to do on a plane:
+Just leave pipes alone! It's a problem of "over-adjusting"
 
 . . .
 
-```{r}
-flying %>% 
-  select(-respondent_id) %>% 
-  drop_na(gender) |> 
-  sample_n(10) |> 
-  kbl(caption = "Sample from the flying dataset")
+Bad social science: sometimes we are so afraid of **forks** that we control for everything we have data on
+
+. . .
+
+Especially when a process seems very complicated
+
+## Example: where pipes go wrong
+
+The effects of **smoking** on **heart problems** might be complex; lots of potential confounds to worry about
+
+. . .
+
+Researcher might think they need to control for a study subject's **cholesterol** because cholesterol affects heart health
+
+. . .
+
+"We should compare people who smoke but have similar levels of cholesterol, because cholesterol affects heart health"
+
+## Example: where pipes go wrong
+
+If the DAG looks like this, **cholesterol** is a pipe and controlling is bad!
+
+. . .
+
+```{r, out.width="80%"}
+smoking_ca_dag = dagify(cardiacarrest ~ cholesterol,
+                         cholesterol ~ smoking + weight,
+                         smoking ~ unhealthy,
+                         weight ~ unhealthy,
+                         labels = c("cardiacarrest" = "Cardiac\n Arrest", 
+                                    "smoking" = "Smoking",
+                                    "cholesterol" = "Cholesterol",
+                                    "unhealthy" = "Unhealthy\n Lifestyle",
+                                    "weight" = "Fat content"),
+                         exposure = "smoking",
+                         outcome = "cardiacarrest")
+
+ggdag_status(smoking_ca_dag, text = FALSE, use_labels = "name", stylized = TRUE) + theme_dag_blank() + 
+  theme(legend.position = "none") + scale_color_manual(values = c(blue, red)) + 
+  scale_fill_manual(values = c(blue, red))
 ```
 
-## 🚨 Your turn: 💺 flying etiquette 💺 🚨
+# The collider 💥 {.center background-color="#dc354a"}
 
-Using the `flying` data from `fivethirtyeight`
+## The explosive collider 💥
 
-1.  In a row of three seats, who should get to use the middle arm rest (`two_arm_rests`)? Make a barplot of the *percent* of respondents who gave each answer.
+$X \rightarrow Z \leftarrow Y$
 
-2.  In general, is it rude to knowingly bring unruly children on a plane? Make a barplot of the *percent* who gave each answer, but **separated by** whether the respondent has a kid or not.
+. . .
 
-3.  Make a barplot of responses to an etiquette dilemma of your liking. Bonus points if you break it down by a respondent characteristic.
+X and Y have a common **effect**
+
+. . .
+
+Left alone, it's no problem; but **controlling for Z** creates strange patterns
+
+. . .
+
+```{r, out.width="60%"}
+collider_triangle(x = "X", y = "Y", m = "Z") %>% 
+  ggdag(use_labels = "label", text = FALSE, stylized = TRUE) + theme_dag()
+```
+
+## Example: the NBA
+
+```{r,out.width="50%"}
+knitr::include_graphics("img/nba-height.png")
+```
+
+. . .
+
+Should the NBA stop worrying about height when drafting players?
+
+## No!
+
+Obviously, height helps in basketball
+
+. . .
+
+But **among NBA players** there might be no relationship between height and scoring, because...
+
+. . .
+
+The shorter players **who are drafted** have other advantages
+
+. . .
+
+**Among NBA players** = adjusting, or controlling for, being in the NBA
+
+. . .
+
+```{r, out.width="50%"}
+dagify(Scoring ~ Height, 
+       NBA ~ Scoring + Height, 
+       exposure = "Height", 
+       outcome = "Scoring",
+       coords = list(x = c(Height = -.5, NBA = 0, Scoring = .5), 
+                     y = c(Height = 0, NBA = -.5, Scoring = 0))) %>% 
+  ggdag_status(text = FALSE, use_labels = "name", stylized = TRUE) + theme_dag_blank() + 
+  theme(legend.position = "none") + scale_color_manual(values = c(blue, red)) + 
+  scale_fill_manual(values = c(blue, red))
+```
+
+## Another example: bad findings
+
+::::: columns
+::: {.column width="50%"}
+Richard McElreath asks: why are surprising findings so often untrustworthy?
+:::
+
+::: {.column width="50%"}
+```{r}
+knitr::include_graphics("img/hurricanes.png")
+```
+:::
+:::::
+
+## Another example: bad findings
+
+```{r, out.width="60%"}
+knitr::include_graphics("img/shark-elections.png")
+```
+
+## It's a collider
+
+Imagine that in reality there is no relationship between how **surprising** a finding is and how **trustworthy** it is
 
 ```{r}
-countdown::countdown(minutes = 15L)
+# simulate fake study selection data
+n = 500 # number of studies
+p = 0.1 # proportion of studies that get chosen
+df = tibble(newsworthy = rnorm(n), 
+            trustworthy = rnorm(n), 
+            total = newsworthy + trustworthy, 
+            top10 = quantile(total, probs = 1 - p), 
+            published = ifelse(total >= top10, TRUE, FALSE))
+
+
+
+ggplot(df, aes(x = newsworthy, y = trustworthy)) + 
+  geom_point(size = 3, fill = red, alpha = .8, shape = 21, color = "white") + 
+  theme_nice() +
+  labs(x = "How Surprising the Study is", 
+       y = "How Trustworthy the Study is") + 
+  theme(legend.position = "none") + 
+  scale_x_continuous(breaks = c(-2, 2), labels = c("Very unsurprising", "Very surprising")) + 
+  scale_x_continuous(breaks = c(-2, 2), labels = c("Very untrustworthy", "Very trustworthy"))
+
 ```
+
+## It's a collider
+
+But now imagine that studies are only published **either** if they're *very trustworthy* OR *very surprising*
+
+```{r}
+ggplot(df, aes(x = newsworthy, y = trustworthy, fill = published)) + 
+  geom_point(size = 3, alpha = .8, shape = 21, color = "white") + 
+  theme_nice() +
+  labs(x = "How Surprising the Study is", 
+       y = "How Trustworthy the Study is") + 
+  theme(legend.position = "none") + 
+  scale_x_continuous(breaks = c(-2, 2), labels = c("Very unsurprising", "Very surprising")) + 
+  scale_y_continuous(breaks = c(-2, 2), labels = c("Very untrustworthy", "Very trustworthy")) +
+  scale_fill_manual(values = c(red, blue)) + 
+  theme(legend.position = "top")
+```
+
+## It's a collider
+
+By only looking at *published papers* (e.g., **controlling for publication**), we create a negative relationship that doesn't exist
+
+```{r}
+ggplot(df, aes(x = newsworthy, y = trustworthy, fill = published)) + 
+  geom_point(size = 3, alpha = .8, shape = 21, color = "white") + 
+  theme_nice() +
+  labs(x = "How Surprising the Study is", 
+       y = "How Trustworthy the Study is") + 
+  theme(legend.position = "none") + 
+  scale_x_continuous(breaks = c(-2, 2), labels = c("Very unsurprising", "Very surprising")) + 
+  scale_x_continuous(breaks = c(-2, 2), labels = c("Very untrustworthy", "Very trustworthy")) +
+  scale_fill_manual(values = c(red, blue)) + 
+  theme(legend.position = "top") + 
+  geom_smooth(data = filter(df, published == TRUE), method = "lm")
+```
+
+## Exploding colliders
+
+Like pipes, colliders are a problem of controlling for the wrong thing
+
+They are often the result of a **sample selection** problem
+
+They can **obscure** actual relationships or **fabricate** non-existent ones
+
+We need to avoid controlling for colliders; but they are everywhere!
+
+::::: columns
+::: {.column width="50%"}
+```{r}
+dagify(Scoring ~ Height, 
+       NBA ~ Scoring + Height, 
+       exposure = "Height", 
+       outcome = "Scoring",
+       coords = list(x = c(Height = -.5, NBA = 0, Scoring = .5), 
+                     y = c(Height = 0, NBA = -.5, Scoring = 0))) %>% 
+  ggdag_status(text = FALSE, use_labels = "name", stylized = TRUE) + theme_dag_blank() + 
+  theme(legend.position = "none") + scale_color_manual(values = c(blue, red)) + 
+  scale_fill_manual(values = c(blue, red))
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+dagify(Published ~ Trustworth + Surprising, 
+       exposure = "Surprising", 
+       outcome = "Trustworth",
+       coords = list(x = c(Surprising = -.5, Published = 0, Trustworth = .5), 
+                     y = c(Surprising = 0, Published = -.5, Trustworth = 0))) %>% 
+  ggdag_status(text = FALSE, use_labels = "name", stylized = TRUE) + theme_dag_blank() + 
+  theme(legend.position = "none") + scale_color_manual(values = c(blue, red)) + 
+  scale_fill_manual(values = c(blue, red))
+```
+:::
+:::::
+
+## 💥 Your turn: colliders 💥
+
+How are the following examples of colliders?
+
+1.  Among employees at Google, there is a strong negative correlation between technical skills and social skills.
+
+2.  A study of people who tested for COVID finds that people who smoke regularly are *less likely* to develop COVID-19. A real study!
+
+::: notes
+we are conditioning on testing, these are the only people we observe anything that's correlated with likelihood of testing here becomes a problem who gets tested? imagine that healthcare workers get tested a lot, and that people who actually have COVID 19 are tested a lot so smokers with no symptoms are very unlikely to be in the data so of those tested, non-smokers are more likely to have COVID19 than smokers
+:::
